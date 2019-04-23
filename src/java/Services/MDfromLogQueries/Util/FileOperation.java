@@ -1,13 +1,15 @@
 package Services.MDfromLogQueries.Util;
 
-
-import Services.Statistics.Statistics1;
-import Services.Statistics.StatisticsAnalytic;
+import Statistics.Statistics1;
+import Statistics.StatisticsAnalytic;
 import org.apache.jena.query.Query;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.StmtIterator;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -27,7 +29,7 @@ public class FileOperation {
 
         File file = new File(readingFilePath);
         String line;
-        ArrayList<String> collection = new ArrayList<String>();
+        ArrayList<String> collection = new ArrayList<>();
         BufferedReader br = null;
         int linesNumbers = 0; // for statistical matters
         try {
@@ -54,16 +56,45 @@ public class FileOperation {
     }
 
 
+    public static void writeQueriesNumberInFile(String writingFilePath, String operation, int number) {
+
+        File file = new File(writingFilePath);
+        BufferedWriter bw = null;
+        try {
+            if (!file.isFile()) file.createNewFile();
+
+            bw = new BufferedWriter(new FileWriter(file, true));
+
+            bw.write("\n" + operation);
+            bw.write("\n Time : \t " + number);
+
+            bw.flush();
+
+        } catch (IOException e) {
+            System.out.println("Impossible file creation");
+        } finally {
+
+            try {
+                bw.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
+    }
+
+
+
     public static ArrayList<ArrayList<String>> ReadFile4Transform(String readingFilePath) {
 
         File file = new File(readingFilePath);
         String line;
 
 
-        ArrayList<ArrayList<String>> collections = new ArrayList<ArrayList<String>>();
+        ArrayList<ArrayList<String>> collections = new ArrayList<>();
 
 
-        ArrayList<String> collection =new ArrayList<String>();
+        ArrayList<String> collection = new ArrayList<>();
 
         BufferedReader br = null;
         int linesNumbers = 0; // for statistical matters
@@ -217,36 +248,6 @@ public class FileOperation {
 
         }
     }
-
-    public static void writeQueriesNumberInFile(String writingFilePath, String operation,int number) {
-
-        File file = new File(writingFilePath);
-        BufferedWriter bw = null;
-        try {
-            if (!file.isFile()) file.createNewFile();
-
-            bw = new BufferedWriter(new FileWriter(file, true));
-
-            bw.write("\n" + operation);
-            bw.write("\n Time : \t " + number);
-
-            bw.flush();
-
-        } catch (IOException e) {
-            System.out.println("Impossible file creation");
-        } finally {
-
-            try {
-                bw.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-        }
-    }
-
-
-
 
 
     public static  void WriteInFileParallel (String writingFilePath, CopyOnWriteArrayList synchronizedList)
@@ -490,6 +491,24 @@ public class FileOperation {
                 e.printStackTrace();
             }
 
+        }
+    }
+    private void createDirectory (String fileName)
+    {
+
+        Path path = Paths.get(fileName);
+        System.out.println(fileName);
+        try {
+            if (!Files.exists(path)) {
+                Files.createDirectories(path);
+                System.out.println("Directory created");
+            } else {
+
+                System.out.println("Directory already exists");
+            }
+        }catch (Exception e)
+        {
+            e.printStackTrace();
         }
     }
 }

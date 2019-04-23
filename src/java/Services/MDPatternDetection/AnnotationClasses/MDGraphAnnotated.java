@@ -47,8 +47,10 @@ public class MDGraphAnnotated {
         //Iterator<Resource> subjects = mdModel.listSubjects();
         ConstantsUtil constantsUtil = new ConstantsUtil();
 
-
-        subject = model.getResource(modelSubject);
+        if (model.getResource(modelSubject)!= null)
+            subject = model.getResource(modelSubject);
+        else
+            subject = model.listSubjects().next();
 
         if (subject != null) {
             subject.addProperty(RDF.type, Annotations.FACT.toString());

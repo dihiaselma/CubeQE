@@ -1,5 +1,6 @@
-package Services.Scenarios;
+package Services.MDPatternDetection.AnalyticalQueriesClasses;
 
+import Services.MDPatternDetection.AnnotationClasses.MDGraphAnnotated;
 import Services.MDPatternDetection.ExecutionClasses.QueryExecutor;
 import Services.MDPatternDetection.GraphConstructionClasses.QueryUpdate;
 import Services.MDfromLogQueries.Declarations.Declarations;
@@ -22,14 +23,11 @@ import org.apache.jena.sparql.core.BasicPattern;
 import org.apache.jena.sparql.expr.ExprAggregator;
 import org.apache.jena.vocabulary.RDF;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.*;
 
 public class AnalyticQueries {
 
+    /* Returns if a query is analytic or not (if aggregator is count(*) it's not analytics ) */
     public static boolean isAnalytic(Query query) {
         List<ExprAggregator> exprAggregatorList;
         int i = 0;
@@ -46,12 +44,13 @@ public class AnalyticQueries {
         return (i > 0);
     }
 
+    /* Returns a list of analytic Queries from an input list of queries */
     public static ArrayList<String> getAnalyticQueries(ArrayList<String> queryList) {
         ArrayList<String> analyticQueriesList = new ArrayList<>();
         int nb_line = 0; //for statistical needs
         int nb = 0;
         String queryStr;
-        Query query = QueryFactory.create();
+        Query query;
         int size = queryList.size();
         while (nb_line < size) {
             try {
@@ -71,6 +70,7 @@ public class AnalyticQueries {
         return analyticQueriesList;
     }
 
+    /* Execution of analytic queries and construction of resulting models */
     public static HashSet<Model> executeAnalyticQueriesList(ArrayList<String> queryList) {
         int nb_line = 0; //for statistical needs
         int nb = 0;
@@ -111,6 +111,7 @@ public class AnalyticQueries {
         return modelHashSet;
     }
 
+    /* Construct models from Query Solutions after execution */
     public static HashSet<Model> constructModels(ResultSet resultSet, BasicPattern bpConstruct, AnalyticQuery analyticQuery
             , List<Triple> bpWhereTriples) {
         List<Triple> tripleList;
@@ -169,6 +170,7 @@ public class AnalyticQueries {
         return modelHashSet;
     }
 
+    /* Returns the rdf:type variable of an instance variable given in input */
     private static Node getRdfTypeVariable(List<Triple> bpWhereTriples, String variable) {
         Node rdfTypeVar = NodeFactory.createBlankNode();
 
@@ -181,82 +183,49 @@ public class AnalyticQueries {
         return rdfTypeVar;
     }
 
-    public static void main(String args[]) {
-        ArrayList<String> analyticQueriesList = new ArrayList<>();
-        Query query = null;
-        ArrayList<String> queryList;
-        AnalyticQueries analyticQueries = new AnalyticQueries();
-        queryList = (ArrayList<String>) FileOperation.ReadFile(Declarations.syntaxValidFile2);
-        analyticQueriesList = getAnalyticQueries(queryList);
-        //System.out.println("Size of validQueryList : "+validQueryList.size());
-        FileOperation.WriteInFile(Declarations.AnalyticQueriesFile, analyticQueriesList);
+    public static void AnalyticQueries()
+    {
+        ArrayList<String> analyticQueriesList;
         new Constants2();
         new TdbOperation();
-        // ArrayList<String> queryList;
-        //queryList = (ArrayList<String>) FileOperation.ReadFile(Declarations.AnalyticSelectQueriesFile);
+        ArrayList<String> queryList;
+        queryList = (ArrayList<String>) FileOperation.ReadFile(Declarations.syntaxValidFile2);
+        analyticQueriesList = getAnalyticQueries(queryList);
+        FileOperation.WriteInFile(Declarations.AnalyticQueriesFile, analyticQueriesList);
         HashSet<Model> modelHashSet = executeAnalyticQueriesList(queryList);
         TdbOperation.persistNonNamedModels(modelHashSet, TdbOperation.dataSetAnalytic);
 
         HashMap<String, Model> modelHashMap = TdbOperation.unpersistModelsMap(TdbOperation.dataSetAnalytic);
 
-        Set<String> keys = modelHashMap.keySet();
+        HashMap<String,Model> modelHashMapAnnotated = new HashMap<>();
+        if (modelHashMap != null) {
+            modelHashMapAnnotated  = MDGraphAnnotated.constructMDGraphs(modelHashMap);
+        }
+        TdbOperation.persistAnnotatedHashMap(modelHashMapAnnotated,TdbOperation.dataSetAnalyticAnnotated);
+    }
+
+    public static void main(String args[]) {
+        HashMap<String, Model> modelHashMapAnnotated = TdbOperation.unpersistModelsMap(TdbOperation.dataSetAnalyticAnnotated);
+
+        Set<String> keys = modelHashMapAnnotated.keySet();
         Model model;
         for (String key : keys) {
-            model = modelHashMap.get(key);
+            model = modelHashMapAnnotated.get(key);
             System.out.println("*************************" + key + "*********************");
-          //  ConsolidationTest.afficherModel(model);
+           // ConsolidationTest.afficherModel(model);
         }
 
     }
 
-    public static void writeresultsInFile(HashMap<String, ResultSet> resultSetHashMap, String writingFilePath) {
-        File file = new File(writingFilePath);
-        BufferedWriter bw = null;
-        try {
-            if (!file.isFile()) file.createNewFile();
-            bw = new BufferedWriter(new FileWriter(file, true));
-            Set<String> keyset = resultSetHashMap.keySet();
-            ResultSet resultSet;
-            int i = 0;
-            for (String key : keyset) {
-                i++;
-                bw.write("\n******************************************* Requete " + i + " *******************************************\n");
-                bw.write(key);
-                resultSet = resultSetHashMap.get(key);
-                while (resultSet.hasNext()) {
-                    bw.write(resultSet.next().toString() + "\n");
-                }
-                bw.write("\n****************************** Fin de la requete *******************************************\n");
-            }
-            bw.flush();
-        } catch (
-                IOException e) {
-            System.out.println("Impossible file creation");
-        } finally {
-
-            try {
-                bw.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-        }
-    }
-
-    public boolean containsAggregator(Query query) {
-        List<ExprAggregator> exprAggregatorList = new ArrayList<>();
-        return query.hasAggregators();
-    }
 
 
 }
 
 class AnalyticQuery {
-    protected Query selectQuery;
-    protected Query constructQuery;
-    protected String aggregVariables;
+    Query selectQuery;
+    String aggregVariables;
 
-    public String getAggregVariable() {
+    String getAggregVariable() {
 
         aggregVariables = selectQuery.getAggregators().get(0).getAggregator().getExprList().get(0).getVarName();
         return aggregVariables;

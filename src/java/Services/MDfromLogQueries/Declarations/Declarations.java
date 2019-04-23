@@ -63,6 +63,7 @@ public class Declarations {
     public static String dataSetAnnotated = root2+"tdbDirectoryAnnotated";
     public static String _toString = root2+"_toString";
     public static String dataSetAnalytic = root2+rootScenarioAnalytic+"tdbDirectoryAnalytic";
+    public static String dataSetAnalyticAnnotated = root2+rootScenarioAnalytic+"tdbDirectoryAnalyticAnnotated";
 
     public static String propertiesOntology = root+"ontologies_namespaces\\addedOntology.ttl";
     public static String directoryPathCopie = "C:\\Users\\pc\\Desktop\\PFE\\Files\\DataLog\\test - Copie";
