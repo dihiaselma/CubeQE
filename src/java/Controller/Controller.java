@@ -16,11 +16,6 @@ import static Services.MDfromLogQueries.Declarations.Declarations.*;
 
 public class Controller {
 
-
-
-
-
-
     @RequestMapping("/index2")
     public String pageAccueil(Model model){
 
