@@ -218,11 +218,25 @@ public class FileOperation {
     }
 
 
+    public HashMap<String, String> toStringStringMap ( Map<String, Object> map){
+
+
+        HashMap<String, String> hashmap = new  HashMap<>();
+
+
+        Set<String> kies = map.keySet();
+
+        for (String key: kies){
+            hashmap.put(key, map.get(key).toString());
+        }
+       return hashmap;
+    }
+
     /**
      * Read from file for front end
      **/
 
-    public static Map<String, Object> loadYamlFile(String filePath) {
+    public static Map<String, Integer> loadYamlFile(String filePath) {
         try {
 
             File file = new File(filePath);
@@ -235,9 +249,10 @@ public class FileOperation {
 
             Yaml yaml = new Yaml();
 
-            Object loaded = yaml.load(fis);
+            Map<String, Integer> loaded = yaml.load(fis);
 
-            return (loaded instanceof Map) ? (Map<String, Object>) loaded : new HashMap<>();
+            //return (loaded instanceof Map) ? (Map<String, Object>) loaded : new HashMap<>();
+            return  loaded ;
 
         } catch (Exception ex) {
 
@@ -251,9 +266,9 @@ public class FileOperation {
 
     public static void writeInYAMLFile(String writingFilePath, String operation, int number) {
 
-        Map<String, Object> data = loadYamlFile(writingFilePath);
+        Map<String, Integer> data = loadYamlFile(writingFilePath);
         if (data == null) {
-            data= new HashMap<String, Object>();
+            data= new HashMap<String, Integer>();
 
         }
             data.put(operation, number);
