@@ -19,6 +19,14 @@ public class Controller {
         return "index2";
     }
 
+    @RequestMapping("/testTree")
+    public String pageTree(Model model){
+
+        String erreur ="";
+        model.addAttribute("erreur",erreur);
+        return "testTree";
+    }
+
 
     @RequestMapping("/cleaning")
     public String Cleaning(Model model){
