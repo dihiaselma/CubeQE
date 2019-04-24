@@ -20,15 +20,19 @@ public class TdbOperation {
     public static Dataset dataSetConsolidate = TDBFactory.createDataset(Declarations.dataSetConsolidated);
     public static Dataset dataSetAnnotated = TDBFactory.createDataset(Declarations.dataSetAnnotated);
     public static Dataset dataSetAnalytic = TDBFactory.createDataset(Declarations.dataSetAnalytic);
+    public static Dataset dataSetAnalyticAnnotated = TDBFactory.createDataset(Declarations.dataSetAnalyticAnnotated);
 
 
 
     public static void main(String... argv) {
 
+        new TdbOperation();
     }
 
     public TdbOperation() {
     }
+
+
 
     public static boolean exists(String name, Dataset dt) {
 

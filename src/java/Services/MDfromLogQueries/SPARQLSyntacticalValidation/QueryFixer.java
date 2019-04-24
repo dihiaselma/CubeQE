@@ -59,8 +59,7 @@ public class QueryFixer {
      * Load the file containing different name spaces  to use them to verify the query's namespace
      **/
     private static Map<String, String> loadMap() {
-        try  {
-            InputStream inputStream = Resources.getResourceAsStream("ns_map.yaml");
+        try (InputStream inputStream = Resources.getResourceAsStream("ns_map.yaml")) {
             Yaml yaml = new Yaml();
             Object object = yaml.load(inputStream);
 
@@ -68,7 +67,7 @@ public class QueryFixer {
                 /*System.out.println(((Map) object).get("rdf").toString());*/
                 return (Map<String, String>) object;
             }
-        } catch (Exception ignored) {
+        } catch (IOException ignored) {
         }
         return new HashMap<>();
     }
@@ -171,7 +170,7 @@ public class QueryFixer {
 
     private static ArrayList<String> asVariables(String select)
     {
-        ArrayList<String> stringList = new ArrayList<String>();
+        ArrayList<String> stringList = new ArrayList<>();
         Pattern asPattern = Pattern.compile("((as )(\\?[\\w_-]+))",Pattern.CASE_INSENSITIVE);
         Matcher matcherAs = asPattern.matcher(select);
         while (matcherAs.find())
@@ -183,8 +182,8 @@ public class QueryFixer {
     /** Finds the undeclared prefixes **/
     private static Set<String> findUndeclared(String queryStr) {
         Matcher m = PREFIX_PATTERN.matcher(queryStr);
-        Set<String> declared = new LinkedHashSet<String>();
-        Set<String> usedOrUndeclared = new LinkedHashSet<String>();
+        Set<String> declared = new LinkedHashSet<>();
+        Set<String> usedOrUndeclared = new LinkedHashSet<>();
         while (m.find()) {
             String keyword = m.group(1);
             String prefix = m.group(2);
@@ -203,6 +202,15 @@ public class QueryFixer {
         Query maybeQuery = null;
         try {
             maybeQuery = QueryFactory.create(queryStr, Syntax.syntaxARQ);
+            if (!maybeQuery.isSelectType())
+            {
+                if(maybeQuery.isConstructType())
+                    maybeQuery.setQuerySelectType();
+                else {
+                    return null;
+                }
+            }
+
         }catch (QueryParseException queryParseException)
         {
            System.out.println("erreur 2");
