@@ -118,22 +118,22 @@
                                     <tbody >
                                     <tr>
                                         <td>Cleaning</td>
-                                        <td> ${queriesNumber}  </td>
-                                        <td> ${cleanedQueriesNumber}</td>
+                                        <td> ${queriesNumbersMap.get("Log_Cleaning")}  </td>
+                                        <td> ${timesMap.get("Log_Cleaning")}</td>
                                         <td> <div class="text-muted"> <i class="fa fa-clock-o"></i> 5:15 </div> </td>
                                         <td><span class="badge bg-red">55%</span></td>
                                     </tr>
                                     <tr>
                                         <td>Deduplication</td>
-                                        <td> ${cleanedQueriesNumber} </td>
-                                        <td> ${dedupQueriesNumber} </td>
+                                        <td> ${queriesNumbersMap.get("Deduplication")} </td>
+                                        <td> ${timesMap.get("Deduplication")} </td>
                                         <td> <div class="text-muted"> <i class="fa fa-clock-o"></i> 5:15 </div> </td>
                                         <td><span class="badge bg-yellow">70%</span></td>
                                     </tr>
                                     <tr>
                                         <td>Validation</td>
-                                        <td> ${dedupQueriesNumber}  </td>
-                                        <td> ${validatedQueriesNumber} </td>
+                                        <td> ${queriesNumbersMap.get("Syntactical_Validation")}  </td>
+                                        <td> ${timesMap.get("Syntactical_Validation")} </td>
                                         <td> <div class="text-muted"> <i class="fa fa-clock-o"></i> 5:15 </div> </td>
                                         <td><span class="badge bg-light-blue">30%</span></td>
                                     </tr>

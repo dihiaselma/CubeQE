@@ -81,6 +81,7 @@ public class Declarations {
 
     /** Execution time of programs **/
     public static String timesFilePath = root + "ProgramOutput\\Fichier_Temps.txt";
+    public static String timesFilePathTest = root + "ProgramOutput\\Fichier_TempsTest.yaml";
     public static String queriesNumberFilePath = root + "ProgramOutput\\Fichier_queriesNumber.txt";
     public static String queriesNumberFilePathTest = root + "ProgramOutput\\Fichier_queriesNumberTest.yaml";
 
