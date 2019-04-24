@@ -27,6 +27,8 @@ import java.util.*;
 
 public class AnalyticQueries {
 
+    public static int queriesNumber=0;
+
     /* Returns if a query is analytic or not (if aggregator is count(*) it's not analytics ) */
     public static boolean isAnalytic(Query query) {
         List<ExprAggregator> exprAggregatorList;
@@ -59,6 +61,7 @@ public class AnalyticQueries {
                 query = QueryFactory.create(queryStr);
                 if (query.hasAggregators() && isAnalytic(query)) {
                     analyticQueriesList.add(query.toString());
+                    queriesNumber++;
                 }
                 System.out.println("line \t" + nb_line);
             } catch (Exception e) {
@@ -71,7 +74,7 @@ public class AnalyticQueries {
     }
 
     /* Execution of analytic queries and construction of resulting models */
-    public static HashSet<Model> executeAnalyticQueriesList(ArrayList<String> queryList) {
+    public static HashSet<Model> executeAnalyticQueriesList(ArrayList<String> queryList,String endpoint) {
         int nb_line = 0; //for statistical needs
         int nb = 0;
         String queryStr;
@@ -86,21 +89,7 @@ public class AnalyticQueries {
                 //queryStr = line;
                 System.out.println("requete num : " + nb_line);
                 queryStr = queryList.get(nb_line);
-                query = QueryFactory.create(queryStr);
-                QueryUpdate queryUpdate = new QueryUpdate(query);// Adding missing rdf:type statements to the query
-                query = queryUpdate.addAddedVariablesToResultVars(query); // Adding new variables to the resulting vars
-                BasicPattern bpConstruct = queryUpdate.getQueryConstruction().getBpConstruct(); // Getting construct BasicPattern to use it to construct the Graph Pattern
-                List<Triple> bpWhereTriples = queryUpdate.getQueryConstruction().getBpWhere().getList();
-
-                analyticQuery.selectQuery = query;
-                analyticQuery.selectQuery.addResultVar(analyticQuery.getAggregVariable());
-
-
-                ResultSet resultSet;
-                resultSet = queryExecutor.executeQuerySelect(query, "https://dbpedia.org/sparql");
-
-                modelHashSet.addAll(constructModels(resultSet, bpConstruct, analyticQuery, bpWhereTriples));
-
+                modelHashSet.addAll(executeAnalyticQuery(queryStr,endpoint));
                 System.out.println("line \t" + nb_line);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -111,7 +100,30 @@ public class AnalyticQueries {
         return modelHashSet;
     }
 
-    /* Construct models from Query Solutions after execution */
+    public static HashSet<Model> executeAnalyticQuery(String queryStr,String endpoint) {
+        QueryExecutor queryExecutor = new QueryExecutor();
+        HashSet<Model> modelHashSet = new HashSet<>();
+        AnalyticQuery analyticQuery = new AnalyticQuery();
+
+        Query query = QueryFactory.create(queryStr);
+        QueryUpdate queryUpdate = new QueryUpdate(query);// Adding missing rdf:type statements to the query
+        query = queryUpdate.addAddedVariablesToResultVars(query); // Adding new variables to the resulting vars
+        BasicPattern bpConstruct = queryUpdate.getQueryConstruction().getBpConstruct(); // Getting construct BasicPattern to use it to construct the Graph Pattern
+        List<Triple> bpWhereTriples = queryUpdate.getQueryConstruction().getBpWhere().getList();
+
+        analyticQuery.selectQuery = query;
+        analyticQuery.selectQuery.addResultVar(analyticQuery.getAggregVariable());
+
+        ResultSet resultSet;
+        resultSet = queryExecutor.executeQuerySelect(query, endpoint);
+
+        modelHashSet.addAll(constructModels(resultSet, bpConstruct, analyticQuery, bpWhereTriples));
+        return modelHashSet;
+    }
+
+
+
+        /* Construct models from Query Solutions after execution */
     public static HashSet<Model> constructModels(ResultSet resultSet, BasicPattern bpConstruct, AnalyticQuery analyticQuery
             , List<Triple> bpWhereTriples) {
         List<Triple> tripleList;
@@ -183,26 +195,36 @@ public class AnalyticQueries {
         return rdfTypeVar;
     }
 
-    public static void AnalyticQueries()
+    public static void AnalyticQueriesProcessing()
     {
         ArrayList<String> analyticQueriesList;
         new Constants2();
         new TdbOperation();
+        String endpoint = "https://dbpedia.org/sparql";
         ArrayList<String> queryList;
         queryList = (ArrayList<String>) FileOperation.ReadFile(Declarations.syntaxValidFile2);
         analyticQueriesList = getAnalyticQueries(queryList);
         FileOperation.WriteInFile(Declarations.AnalyticQueriesFile, analyticQueriesList);
-        HashSet<Model> modelHashSet = executeAnalyticQueriesList(queryList);
+        HashSet<Model> modelHashSet = executeAnalyticQueriesList(queryList,endpoint);
         TdbOperation.persistNonNamedModels(modelHashSet, TdbOperation.dataSetAnalytic);
 
-        HashMap<String, Model> modelHashMap = TdbOperation.unpersistModelsMap(TdbOperation.dataSetAnalytic);
+    }
 
+    public static void AnalyticQueriesAnnotation()
+    {
+        ArrayList<String> analyticQueriesList;
+        new Constants2();
+        new TdbOperation();
+
+        HashMap<String, Model> modelHashMap = TdbOperation.unpersistModelsMap(TdbOperation.dataSetAnalytic);
         HashMap<String,Model> modelHashMapAnnotated = new HashMap<>();
         if (modelHashMap != null) {
             modelHashMapAnnotated  = MDGraphAnnotated.constructMDGraphs(modelHashMap);
         }
         TdbOperation.persistAnnotatedHashMap(modelHashMapAnnotated,TdbOperation.dataSetAnalyticAnnotated);
     }
+
+
 
     public static void main(String args[]) {
         HashMap<String, Model> modelHashMapAnnotated = TdbOperation.unpersistModelsMap(TdbOperation.dataSetAnalyticAnnotated);

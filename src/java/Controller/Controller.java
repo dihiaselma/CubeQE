@@ -11,11 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 public class Controller {
 
-
-
-
-
-
     @RequestMapping("/index2")
     public String pageAccueil(Model model){
 
