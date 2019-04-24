@@ -26,7 +26,7 @@ public class test {
 
 
         HashMap<String, Integer> map= (HashMap<String, Integer>) FileOperation.loadYamlFile(timesFilePathTest);
-*/
+
 
 
         FileOperation.writeInYAMLFile(queriesNumberFilePathTest, "Log_Cleaning", 34567 );
@@ -35,7 +35,7 @@ public class test {
         FileOperation.writeInYAMLFile(queriesNumberFilePathTest, "Execution_QueriesnonExecuted", 34567 );
         FileOperation.writeInYAMLFile(queriesNumberFilePathTest, "Consolidation_nbModels", 34567 );
         FileOperation.writeInYAMLFile(queriesNumberFilePathTest, "Annotation", 34567 );
-
+*/
 
         HashMap<String, Integer> map= (HashMap<String, Integer>) FileOperation.loadYamlFile(queriesNumberFilePathTest);
 
