@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.HashMap;
+
 import static Services.MDfromLogQueries.Declarations.Declarations.*;
 
 @org.springframework.stereotype.Controller
