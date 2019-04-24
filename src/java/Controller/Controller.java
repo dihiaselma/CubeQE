@@ -41,7 +41,7 @@ public class Controller {
     public String Cleaning(Model model){
 
 
-        System.out.println("je suis n'importe quoi ");
+        System.out.println("je suis n'importe quoi apres nv commit ");
         String erreur ="";
 
         Map<String, Integer> map= FileOperation.loadYamlFile(timesFilePathTest);
