@@ -1,18 +1,19 @@
 package Services.MDfromLogQueries.Util;
 
 
+import Services.MDfromLogQueries.SPARQLSyntacticalValidation.Resources;
 import Services.Statistics.Statistics1;
 import Services.Statistics.StatisticsAnalytic;
 import org.apache.jena.query.Query;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.StmtIterator;
+import org.yaml.snakeyaml.Yaml;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class FileOperation {
@@ -21,7 +22,7 @@ public class FileOperation {
      * This class implements some recurrent file operations
      **/
 
-    public static int nbTotalLines =0;
+    public static int nbTotalLines = 0;
 
     public static Collection<String> ReadFile(String readingFilePath) {
 
@@ -39,7 +40,7 @@ public class FileOperation {
             }
         } catch (IOException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             try {
                 br.close();
 
@@ -47,7 +48,7 @@ public class FileOperation {
                 e.printStackTrace();
             }
         }
-        nbTotalLines+=linesNumbers;
+        nbTotalLines += linesNumbers;
         /*System.out.println("number of lines in the file  :   "+linesNumbers );*/
 
         return collection;
@@ -63,7 +64,7 @@ public class FileOperation {
         ArrayList<ArrayList<String>> collections = new ArrayList<ArrayList<String>>();
 
 
-        ArrayList<String> collection =new ArrayList<String>();
+        ArrayList<String> collection = new ArrayList<String>();
 
         BufferedReader br = null;
         int linesNumbers = 0; // for statistical matters
@@ -97,7 +98,7 @@ public class FileOperation {
 
         } catch (IOException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             try {
                 br.close();
 
@@ -114,10 +115,8 @@ public class FileOperation {
     }
 
 
-
-    public static  void WriteInFile (String writingFilePath, Collection<String> collection)
-    {
-        File file =new File(writingFilePath);
+    public static void WriteInFile(String writingFilePath, Collection<String> collection) {
+        File file = new File(writingFilePath);
         BufferedWriter bw = null;
         try {
             if (!file.isFile()) file.createNewFile();
@@ -125,13 +124,13 @@ public class FileOperation {
 
             for (String query : collection) {
 
-                bw.write(query.replaceAll("[\n\r]","\t")+"\n");
+                bw.write(query.replaceAll("[\n\r]", "\t") + "\n");
 
                 bw.flush();
             }
-        }        catch (IOException e) {
+        } catch (IOException e) {
             System.out.println("Impossible file creation");
-        }finally {
+        } finally {
 
             try {
                 bw.close();
@@ -218,7 +217,65 @@ public class FileOperation {
         }
     }
 
-    public static void writeQueriesNumberInFile(String writingFilePath, String operation,int number) {
+
+    /**
+     * Read from file for front end
+     **/
+
+    public static Map<String, Object> loadYamlFile(String filePath) {
+        try {
+
+            File file = new File(filePath);
+            if (!file.isFile()) {
+                file.createNewFile();
+            }
+
+            FileInputStream fis = new FileInputStream(file);
+
+
+            Yaml yaml = new Yaml();
+
+            Object loaded = yaml.load(fis);
+
+            return (loaded instanceof Map) ? (Map<String, Object>) loaded : new HashMap<>();
+
+        } catch (Exception ex) {
+
+            //ex = new FileNotFoundException("Failed to load yaml object");
+            ex.printStackTrace();
+            return null;
+        }
+
+    }
+
+
+    public static void writeInYAMLFile(String writingFilePath, String operation, int number) {
+
+        Map<String, Object> data = loadYamlFile(writingFilePath);
+        if (data == null) {
+            data= new HashMap<String, Object>();
+
+        }
+            data.put(operation, number);
+
+            Yaml yaml = new Yaml();
+
+            try {
+                FileWriter writer = new FileWriter(writingFilePath);
+
+                yaml.dump(data, writer);
+
+            } catch (IOException ex) {
+
+              //  ex = new IOException("Failed to load yaml object");
+                ex.printStackTrace();
+
+            }
+
+
+    }
+
+    public static void writeQueriesNumberInFile(String writingFilePath, String operation, int number) {
 
         File file = new File(writingFilePath);
         BufferedWriter bw = null;
@@ -246,26 +303,22 @@ public class FileOperation {
     }
 
 
-
-
-
-    public static  void WriteInFileParallel (String writingFilePath, CopyOnWriteArrayList synchronizedList)
-    {
-        File file =new File(writingFilePath);
+    public static void WriteInFileParallel(String writingFilePath, CopyOnWriteArrayList synchronizedList) {
+        File file = new File(writingFilePath);
         BufferedWriter bw = null;
         try {
             if (!file.isFile()) file.createNewFile();
             bw = new BufferedWriter(new FileWriter(file, true));
 
-            for ( int i=0; i<synchronizedList.size(); i++) {
+            for (int i = 0; i < synchronizedList.size(); i++) {
 
                 bw.write(synchronizedList.get(i) + "\n");
 
                 bw.flush();
             }
-        }        catch (IOException e) {
+        } catch (IOException e) {
             System.out.println("Imposible file creation");
-        }finally {
+        } finally {
 
             try {
                 bw.close();
@@ -275,7 +328,6 @@ public class FileOperation {
 
         }
     }
-
 
 
     public static void writeStatisticsInFile2(Statistics1 statistics1, String typeStat, String writingFilePath) {
@@ -325,7 +377,6 @@ public class FileOperation {
             for (Statistics1 stat : statistisArrayList) {
                 i++;
                 bw.write("\n********************************* Graph number " + i + "  *********************************\n");
-
 
 
                 bw.write("Total number of classes of the star S\t:\tNC(S) =\t" + stat.getNC() + "\n");

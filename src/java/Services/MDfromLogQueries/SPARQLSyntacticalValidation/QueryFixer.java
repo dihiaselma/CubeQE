@@ -70,7 +70,7 @@ public class QueryFixer {
             }
         } catch (Exception ignored) {
         }
-        return new HashMap<String, String>();
+        return new HashMap<>();
     }
 
     /** Eliminates commas if present in the query **/
