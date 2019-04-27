@@ -9,6 +9,7 @@ import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.StmtIterator;
 import org.yaml.snakeyaml.Yaml;
 
+import javax.naming.event.ObjectChangeListener;
 import java.io.*;
 import java.util.*;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -236,7 +237,7 @@ public class FileOperation {
      * Read from file for front end
      **/
 
-    public static Map<String, Integer> loadYamlFile(String filePath) {
+    public static Map<String, Object> loadYamlFile(String filePath) {
         try {
 
             File file = new File(filePath);
@@ -249,10 +250,11 @@ public class FileOperation {
 
             Yaml yaml = new Yaml();
 
-            Map<String, Integer> loaded = yaml.load(fis);
+          //  Map<String, Integer> loaded = yaml.load(fis);
+           Object loaded = yaml.load(fis);
 
-            //return (loaded instanceof Map) ? (Map<String, Object>) loaded : new HashMap<>();
-            return  loaded ;
+            return (loaded instanceof Map) ? (Map<String, Object>) loaded : new HashMap<>();
+           // return  loaded ;
 
         } catch (Exception ex) {
 
@@ -266,9 +268,10 @@ public class FileOperation {
 
     public static void writeInYAMLFile(String writingFilePath, String operation, int number) {
 
-        Map<String, Integer> data = loadYamlFile(writingFilePath);
+        //Map<String, Integer> data = loadYamlFile(writingFilePath);
+        Map<String, Object> data = loadYamlFile(writingFilePath);
         if (data == null) {
-            data= new HashMap<String, Integer>();
+            data= new HashMap<String, Object>();
 
         }
             data.put(operation, number);

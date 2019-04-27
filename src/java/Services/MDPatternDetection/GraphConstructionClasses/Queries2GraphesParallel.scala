@@ -10,8 +10,10 @@ import scala.io.Source
 
 object Queries2GraphesParallel extends App {
 
+  var queriesNumber=0
+  var queriesNumberNonConstructed=0
+
   val t1 = System.currentTimeMillis()
-  val duration = System.currentTimeMillis() - t1
 
   //: util.ArrayList[Query]
   def TransformQueriesInFile(filePath: String) = {
@@ -45,6 +47,7 @@ object Queries2GraphesParallel extends App {
             } catch {
               case unknown => {
                 println("une erreur\n\n\n\n\n\n\n\n\n")
+                queriesNumberNonConstructed+=1
                 writeInLogFile(constructLogFileParallel, constructedQuery)
                 None
               }
@@ -56,8 +59,11 @@ object Queries2GraphesParallel extends App {
 
         println("--------------------- un group finished ---------------------------------- ")
 
-        writeInFile(constructQueriesFile2, treatedGroupOfLines.collect { case Some(x) => x })
-        // writeInFile(constructQueriesFileTest, treatedGroupOfLines.collect { case Some(x) => x })
+        val constructedQueries: ParSeq[Query]= treatedGroupOfLines.collect { case Some(x) => x }
+        writeInFile(constructQueriesFile2, constructedQueries )
+        queriesNumber+=constructedQueries.size
+
+        //writeInFile(constructQueriesFileTest, treatedGroupOfLines.collect { case Some(x) => x })
       }
     }
 
@@ -84,6 +90,8 @@ object Queries2GraphesParallel extends App {
 
     writer.close()
   }
+
+  val duration = System.currentTimeMillis() - t1
 
   println(duration)
 

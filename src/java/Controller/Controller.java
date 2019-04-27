@@ -4,6 +4,7 @@ import Services.MDfromLogQueries.LogCleaning.LogCleaningTemp;
 import Services.MDfromLogQueries.LogCleaning.QueriesDeduplicator;
 import Services.MDfromLogQueries.SPARQLSyntacticalValidation.SyntacticValidationParallel;
 import Services.MDfromLogQueries.Util.FileOperation;
+import com.github.jsonldjava.utils.Obj;
 import org.springframework.ui.Model;
 
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +20,11 @@ import static Services.MDfromLogQueries.Declarations.Declarations.*;
 
 public class Controller {
 
-    @RequestMapping("/index2")
+    private Map<String, Object> times= FileOperation.loadYamlFile(timesFilePathTest);
+    private Map<String, Object> queriesNumbers = FileOperation.loadYamlFile(queriesNumberFilePathTest);
+
+
+    @RequestMapping("/index")
     public String pageAccueil(Model model){
 
         String erreur ="";
@@ -28,32 +33,42 @@ public class Controller {
         return "index2";
     }
 
+    @RequestMapping("/beforeGraphs")
+    public String beforeGraphs(Model model){
+
+        String erreur ="";
+
+        model.addAttribute("erreur",erreur);
+        return "beforeGraphs";
+    }
+
+
 
     @RequestMapping("/cleaning")
     public String Cleaning(Model model){
 
-
-        System.out.println("je suis n'importe quoi apres nv commit ");
         String erreur ="";
 
-        Map<String, Integer> map= FileOperation.loadYamlFile(timesFilePathTest);
+        model.addAttribute("timesMap", times);
 
-        model.addAttribute("timesMap",map);
-
-
-        Set<String> kies= map.keySet();
-        for (String key:kies){
-
-            System.out.println(key+" : "+map.get(key));
-        }
-
-        model.addAttribute("queriesNumbersMap", FileOperation.loadYamlFile(queriesNumberFilePathTest));
+        model.addAttribute("queriesNumbersMap", queriesNumbers);
 
         model.addAttribute("erreur",erreur);
         return "cleaning";
     }
 
+    @RequestMapping("/execution")
+    public String executing(Model model){
 
+        String erreur ="";
+
+        model.addAttribute("timesMap", times);
+
+        model.addAttribute("queriesNumbersMap", queriesNumbers);
+
+        model.addAttribute("erreur",erreur);
+        return "execution";
+    }
 
 
 

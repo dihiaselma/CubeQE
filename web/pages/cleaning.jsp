@@ -6,7 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 
-<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
@@ -49,9 +50,9 @@
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
     <!-- contains the header -->
-    <%@ include file="header.jsp"%>
+    <%@ include file="header.jsp" %>
 
-    <%@ include file="menu.jsp"%>
+    <%@ include file="menu.jsp" %>
 
     <!-- Left side column. contains the logo and sidebar -->
 
@@ -78,64 +79,76 @@
                 <div class="col-md-12">
                     <!-- TABLE: LATEST ORDERS -->
 
-                    <div class="form-group">
-                        <label> Choose the log you want to proceed </label>
-                        <select class="form-control select2" style="width: 100%;">
-                            <option selected="selected">dbpedia</option>
-                            <option>wikidata</option>
-                            <option>dog food</option>
-                            <option>british museum</option>
-                            <option>geolinked data </option>
-                        </select>
-                    </div>
-
-
-
-
                     <div class="box box-info">
                         <div class="box-header with-border">
                             <h3 class="box-title">Results</h3>
 
                             <div class="box-tools pull-right">
-                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                        class="fa fa-minus"></i>
                                 </button>
-                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i
+                                        class="fa fa-times"></i></button>
                             </div>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
                             <div class="table-responsive">
-                                <table  class="table no-margin">
-                                    <thead >
+                                <table class="table no-margin">
+                                    <thead>
                                     <tr>
                                         <th>Phase</th>
                                         <th>Number of queries</th>
-                                        <th>Number of resulting queries </th>
+                                        <th>Number of resulting queries</th>
                                         <th>Execution time</th>
                                         <th>Percentage decrease</th>
                                     </tr>
                                     </thead>
-                                    <tbody >
+                                    <tbody>
                                     <tr>
                                         <td>Cleaning</td>
+                                        <td>${queriesNumbersMap.get("Log_Cleaning_nbLines")}</td>
                                         <td>${queriesNumbersMap.get("Log_Cleaning")}</td>
-                                        <td>${timesMap.get("Log_Cleaning")}</td>
-                                        <td><div class="text-muted"> <i class="fa fa-clock-o"></i> 5:15 </div></td>
-                                        <td><span class="badge bg-red">55%</span></td>
+                                        <td>
+                                            <div class="text-muted"><i
+                                                    class="fa fa-clock-o"></i>${timesMap.get("Log_Cleaning")} </div>
+                                        </td>
+                                        <td><span class="badge bg-red">
+                                                <fmt:formatNumber
+                                                        value=" ${(queriesNumbersMap.get('Log_Cleaning')/queriesNumbersMap.get('Log_Cleaning_nbLines'))*100}"
+                                                        maxFractionDigits="2"/>
+                                            %</span></td>
                                     </tr>
                                     <tr>
                                         <td>Deduplication</td>
+                                        <td>${queriesNumbersMap.get("Log_Cleaning")}</td>
                                         <td>${queriesNumbersMap.get("Deduplication")}</td>
-                                        <td>${timesMap.get("Deduplication")}</td>
-                                        <td><div class="text-muted"> <i class="fa fa-clock-o"></i> 5:15 </div></td>
-                                        <td><span class="badge bg-yellow">70%</span></td>
+                                        <td>
+                                            <div class="text-muted"><i
+                                                    class="fa fa-clock-o"></i> ${timesMap.get("Deduplication")} </div>
+                                        </td>
+                                        <td><span class="badge bg-yellow">
+
+                                                   <fmt:formatNumber
+                                                           value="${(queriesNumbersMap.get('Deduplication')/queriesNumbersMap.get('Log_Cleaning'))*100}"
+                                                           maxFractionDigits="2"/>
+
+                                            %</span></td>
                                     </tr>
                                     <tr>
                                         <td>Validation</td>
+                                        <td>${queriesNumbersMap.get("Deduplication")}</td>
                                         <td>${queriesNumbersMap.get("Syntactical_Validation")}</td>
-                                        <td>${timesMap.get("Syntactical_Validation")}</td>
-                                        <td><div class="text-muted"> <i class="fa fa-clock-o"></i> 5:15 </div></td>
-                                        <td><span class="badge bg-light-blue">30%</span></td>
+                                        <td>
+                                            <div class="text-muted"><i
+                                                    class="fa fa-clock-o"></i>${timesMap.get("Syntactical_Validation")}
+                                            </div>
+                                        </td>
+                                        <td><span class="badge bg-light-blue">
+                                                   <fmt:formatNumber
+                                                           value="${(queriesNumbersMap.get('Syntactical_Validation')/ queriesNumbersMap.get('Deduplication'))*100} "
+                                                           maxFractionDigits="2"/>
+                                            %</span></td>
                                     </tr>
 
                                     </tbody>
@@ -146,7 +159,8 @@
                         <!-- /.box-body -->
                         <div class="box-footer clearfix">
                             <a href="javascript:void(0)" class="btn  bg-red-gradient pull-left">Cancel</a>
-                            <a href="javascript:void(0)" class="btn  btn-default bg-purple-gradient pull-right">Construct MD graphs</a>
+                            <a href="execution.j" class="btn  btn-default bg-purple-gradient pull-right">Construct MD
+                                graphs</a>
                         </div>
                         <!-- /.box-footer -->
                     </div>
@@ -165,10 +179,10 @@
     <!-- /.content-wrapper -->
 
 
-    <%@ include file="footer.jsp"%>
+    <%@ include file="footer.jsp" %>
 
 
-    <%@ include file="menu-side.jsp"%>
+    <%@ include file="menu-side.jsp" %>
 
 
     <!-- Add the sidebar's background. This div must be placed

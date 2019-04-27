@@ -12,6 +12,7 @@ import scala.collection.{JavaConverters, mutable}
 object ConsolidationParallel extends App {
 
   var modelsNumber=0
+  var originalModelsNumber=0
 
   val tdbOperation = new TdbOperation()
 
@@ -123,6 +124,7 @@ object ConsolidationParallel extends App {
     val modelHashMap = new mutable.HashMap[String, Model]
     var modelsFromOneModel = new mutable.HashMap[String, Model]
     var nb = 0
+
     it.grouped(50000).foreach {
       listOfKies => {
 
@@ -142,7 +144,9 @@ object ConsolidationParallel extends App {
               }
               else modelHashMap.put(key2, modelsFromOneModel(key2))
             }
+
           }
+            originalModelsNumber+=nb
         }
 
         println(s" ------------------------- finish with the group ------------------------------- ")

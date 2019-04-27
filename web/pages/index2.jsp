@@ -178,7 +178,7 @@
                         <div class="box-footer clearfix">
                             <a href="javascript:void(0)" class="btn  bg-red-gradient pull-left">Annuler</a>
 
-                            <a  href="cleaning.j" class="btn  btn-default bg-purple-gradient pull-right">n+1? selon l'étape n</a>
+                            <a  href="cleaning.j" class="btn  btn-default bg-purple-gradient pull-right">start 1st step</a>
                         </div>
                         <!-- /.box-footer -->
                     </div>
