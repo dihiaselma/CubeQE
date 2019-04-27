@@ -6,6 +6,7 @@ import Services.Statistics.Statistics1;
 import Services.Statistics.StatisticsAnalytic;
 import org.apache.jena.query.Query;
 import org.apache.jena.rdf.model.Model;
+import org.apache.jena.rdf.model.Statement;
 import org.apache.jena.rdf.model.StmtIterator;
 import org.yaml.snakeyaml.Yaml;
 
@@ -53,6 +54,45 @@ public class FileOperation {
         /*System.out.println("number of lines in the file  :   "+linesNumbers );*/
 
         return collection;
+    }
+
+
+
+
+
+    public static void writeModelInFile(String writingFilePath,Model model) {
+        System.out.println("RAni sdakhel Write\n");
+
+        File file = new File(writingFilePath);
+        FileOutputStream outputFile = null;
+        OutputStream out = null;
+
+        Statement statement;
+
+        try {
+            if (!file.isFile()) file.createNewFile();
+
+            outputFile = new FileOutputStream(file);
+
+
+            BufferedWriter bw = new BufferedWriter(new FileWriter(file, true));
+            out = new FileOutputStream(file);
+
+            model.write(out, "RDF/JSON");
+
+            //bw.flush();
+            System.out.println("kamalt write\n");
+        } catch (IOException e) {
+            System.out.println("Impossible file creation");
+        } finally {
+
+            try {
+                out.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
     }
 
 

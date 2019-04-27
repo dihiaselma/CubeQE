@@ -25,8 +25,17 @@ public class TdbOperation {
 
 
     public static void main(String... argv) {
-
         new TdbOperation();
+
+        HashMap<String,Model> modelHashMap = unpersistNumberOfModelsMap(dataSetAnnotated,2);
+        Iterator<String> kies = modelHashMap.keySet().iterator();
+        while (kies.hasNext())
+        {
+            String key = kies.next();
+          //  ModelUtil.modelToJSON(modelHashMap.get(key),key);
+            System.out.println(ModelUtil.modelToJSON(modelHashMap.get(key),key).toJSONString());
+        }
+
     }
 
     public TdbOperation() {
@@ -149,6 +158,41 @@ public class TdbOperation {
                 Model model = dataset.getNamedModel(name);
 
                 if (name != null && model != null) results.put(name, model);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+        System.out.println("taille de la liste  " + results.size());
+        return results;
+    }
+    public static HashMap<String, Model> unpersistNumberOfModelsMap(Dataset dataset, int number) {
+        HashMap<String, Model> results = new HashMap<>();
+
+        //Dataset dataset = TDBFactory.createDataset(tdbDirectory);
+
+
+        TDB.sync(dataset);
+        if (dataset == null) return null;
+
+        Iterator<String> it = dataset.listNames();
+
+        String name;
+        int nb = 0;
+        try {
+
+            while (it.hasNext() && nb<number) {
+                name = it.next();
+
+                while (name == null) {
+                    name = it.next();
+                }
+
+                Model model = dataset.getNamedModel(name);
+
+                if (name != null && model != null) results.put(name, model);
+                nb++;
             }
         } catch (Exception e) {
             e.printStackTrace();

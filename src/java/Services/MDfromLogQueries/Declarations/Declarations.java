@@ -2,10 +2,10 @@ package Services.MDfromLogQueries.Declarations;
 
 public class Declarations {
     public static String endpoint = "dbPedia";
-    //public static String root = "C:\\Users\\KamilaB\\Desktop\\3CS\\Prototypage\\Step_1\\endpoints\\"+endpoint+"\\Support_Files\\";
-    //public static String root2 = "C:\\Users\\KamilaB\\Desktop\\3CS\\Prototypage\\Step_1\\endpoints\\"+endpoint+"\\TdbDirectories\\";
-    public static String root = "C:\\Users\\pc\\Desktop\\PFE\\Files\\" + endpoint+"\\" ;
-    public static String root2 = "E:\\TdbDirectories\\" + endpoint + "\\TdbDirectories\\";
+    public static String root = "C:\\Users\\KamilaB\\Desktop\\3CS\\Prototypage\\Step_1\\endpoints\\"+endpoint+"\\Support_Files\\";
+    public static String root2 = "C:\\Users\\KamilaB\\Desktop\\3CS\\Prototypage\\Step_1\\endpoints\\"+endpoint+"\\Support_Files\\TdbDirectories\\";
+    //public static String root = "C:\\Users\\pc\\Desktop\\PFE\\Files\\" + endpoint+"\\" ;
+    //public static String root2 = "E:\\TdbDirectories\\" + endpoint + "\\TdbDirectories\\";
 
 
 
@@ -84,5 +84,6 @@ public class Declarations {
     public static String timesFilePathTest = root + "ProgramOutput\\Fichier_TempsTest.yaml";
     public static String queriesNumberFilePath = root + "ProgramOutput\\Fichier_queriesNumber.txt";
     public static String queriesNumberFilePathTest = root + "ProgramOutput\\Fichier_queriesNumberTest.yaml";
+    public static String test = root + "ProgramOutput\\fich.json";
 
 }
