@@ -2,6 +2,7 @@ package Services.MDPatternDetection.AnnotationClasses;
 
 
 import Services.MDfromLogQueries.Util.ConstantsUtil;
+import Services.MDfromLogQueries.Util.Datatype_Types;
 import Services.MDfromLogQueries.Util.TdbOperation;
 import Services.MDfromLogQueries.Util.XSDMeasure_Types;
 import com.google.common.base.Stopwatch;
@@ -11,6 +12,8 @@ import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.rdf.model.Statement;
 import org.apache.jena.rdf.model.impl.PropertyImpl;
 import org.apache.jena.vocabulary.RDF;
+import org.apache.jena.vocabulary.RDFS;
+import org.apache.jena.vocabulary.XSD;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -91,7 +94,7 @@ public class MDGraphAnnotated {
                             default: {
                                 //TODO Ajouter ce cas là
                                 //   if (constantsUtil.askDatatypePropEndpoint(property, "https://dbpedia.org/sparql") || statement.getObject().asNode().getURI().matches("http://www.w3.org/2000/01/rdf-schema#Literal")) {
-                                if (statement.getObject().asNode().getURI().matches("http://www.w3.org/2000/01/rdf-schema#Literal")) {
+                                if (statement.getObject().asNode().getURI().equals(RDFS.Literal) || statement.getObject().asResource().getNameSpace().matches(XSD.getURI()) || Datatype_Types.types.contains(statement.getObject().asResource())) {
                                     statement.getObject().asResource().addProperty(RDF.type, Annotations.FACTATTRIBUTE.toString());
                                 } else {
                                     //TODO sinon il faut demander au endpoint si c fonctionnel
