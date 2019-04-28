@@ -5,7 +5,7 @@ public class Declarations {
     //public static String root = "C:\\Users\\KamilaB\\Desktop\\3CS\\Prototypage\\Step_1\\endpoints\\"+endpoint+"\\Support_Files\\";
     //public static String root2 = "C:\\Users\\KamilaB\\Desktop\\3CS\\Prototypage\\Step_1\\endpoints\\"+endpoint+"\\Support_Files\\TdbDirectories\\";
     public static String root = "C:\\Users\\pc\\Desktop\\PFE\\Files\\" + endpoint+"\\" ;
-    public static String root2 = "E:\\TdbDirectories\\" + endpoint + "\\TdbDirectories\\";
+    public static String root2 = "E:\\TdbDirectories\\" + endpoint +"\\";
 
 
 
@@ -60,10 +60,10 @@ public class Declarations {
     public static String tdbDirectory = root2+"tdbDirectory";
     public static String originalTdbDirectory = root2+"originalTdbDirectory";
     public static String dataSetConsolidated = root2+"originalTdbDirConsolidated";
-    public static String dataSetAnnotated = root2+"tdbDirectoryAnnotated";
+    public static String dataSetAnnotated = root2+"dataSetAnnotated";
     public static String _toString = root2+"_toString";
-    public static String dataSetAnalytic = root2+rootScenarioAnalytic+"tdbDirectoryAnalytic";
-    public static String dataSetAnalyticAnnotated = root2+rootScenarioAnalytic+"tdbDirectoryAnalyticAnnotated";
+    public static String dataSetAnalytic = root2+"tdbDirectoryAnalytic";
+    public static String dataSetAnalyticAnnotated = root2+"tdbDirectoryAnalyticAnnotated";
 
     public static String propertiesOntology = root+"ontologies_namespaces\\addedOntology.ttl";
     public static String directoryPathCopie = "C:\\Users\\pc\\Desktop\\PFE\\Files\\DataLog\\test - Copie";

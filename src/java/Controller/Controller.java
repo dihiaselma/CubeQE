@@ -1,18 +1,12 @@
 package Controller;
-import Services.MDfromLogQueries.LogCleaning.LogCleaning;
-import Services.MDfromLogQueries.LogCleaning.LogCleaningTemp;
-import Services.MDfromLogQueries.LogCleaning.QueriesDeduplicator;
-import Services.MDfromLogQueries.SPARQLSyntacticalValidation.SyntacticValidationParallel;
 import Services.MDfromLogQueries.Util.FileOperation;
 import Services.MDfromLogQueries.Util.ModelUtil;
 import Services.MDfromLogQueries.Util.TdbOperation;
-import com.github.jsonldjava.utils.Obj;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.ui.Model;
 
 import org.springframework.web.bind.annotation.RequestMapping;
-import scala.Int;
 
 import java.util.*;
 
@@ -29,19 +23,19 @@ public class Controller {
     @RequestMapping("/index")
     public String pageAccueil(Model model){
 
-        String erreur ="";
+        String error ="";
 
-        model.addAttribute("erreur",erreur);
+        model.addAttribute("error",error);
         return "index2";
     }
 
     @RequestMapping("/beforeGraphs")
     public String beforeGraphs(Model model){
 
-        String erreur ="";
+        String error ="";
 
-        model.addAttribute("erreur",erreur);
-        return "beforeGraphs";
+        model.addAttribute("error",error);
+        return "subjectsBlocks";
     }
 
 
@@ -49,26 +43,26 @@ public class Controller {
     @RequestMapping("/cleaning")
     public String Cleaning(Model model){
 
-        String erreur ="";
+        String error ="";
 
         model.addAttribute("timesMap", times);
 
         model.addAttribute("queriesNumbersMap", queriesNumbers);
 
-        model.addAttribute("erreur",erreur);
+        model.addAttribute("error",error);
         return "cleaning";
     }
 
     @RequestMapping("/execution")
     public String executing(Model model){
 
-        String erreur ="";
+        String error ="";
 
         model.addAttribute("timesMap", times);
 
         model.addAttribute("queriesNumbersMap", queriesNumbers);
 
-        model.addAttribute("erreur",erreur);
+        model.addAttribute("error",error);
         return "execution";
     }
 
@@ -77,6 +71,7 @@ public class Controller {
         JSONArray jsonArray = new JSONArray();
 
         HashMap<String, org.apache.jena.rdf.model.Model> modelHashMap = TdbOperation.unpersistNumberOfModelsMap(TdbOperation.dataSetAnnotated,3);
+
         Iterator<String> kies = modelHashMap.keySet().iterator();
 
 
@@ -85,15 +80,49 @@ public class Controller {
             String key = kies.next();
             jsonArray.add(ModelUtil.modelToJSON(modelHashMap.get(key),key));
         }
-        String erreur ="";
+
+        String error ="";
         System.out.println(jsonArray.toJSONString());
 
 
         model.addAttribute("models",jsonArray.toJSONString());
-        model.addAttribute("erreur",erreur);
+        model.addAttribute("error",error);
         return "treeView";
     }
+    
+    
+    @RequestMapping("/subjectsBlocks")
+    public String subjectsBlocks(Model model){
+        String error ="Error";
+        
+        JSONArray jsonArray = new JSONArray();
 
+        HashMap<String, org.apache.jena.rdf.model.Model> modelHashMap = TdbOperation.unpersistNumberOfModelsMap(TdbOperation.dataSetAnnotated,5);
+
+        Set<String> kies = modelHashMap.keySet();
+
+        for (String key:kies){
+            JSONObject jsonObject = new JSONObject();
+
+
+
+            jsonObject.put("name", key);
+            jsonObject.put("value",1);
+            jsonArray.add(jsonObject);
+
+        }
+
+        JSONObject jsonChildren = new JSONObject();
+        jsonChildren.put("children", jsonArray);
+        jsonChildren.put("name", "Subjects");
+        System.out.println(jsonArray.toJSONString());
+
+
+
+        model.addAttribute("subjects",jsonChildren.toJSONString());
+        model.addAttribute("error", error);
+        return "subjectsBlocks";
+    }
 
 
 }

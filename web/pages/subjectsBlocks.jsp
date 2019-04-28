@@ -41,6 +41,8 @@
         var chart = am4core.create("chartdiv", am4charts.TreeMap);
         chart.hiddenState.properties.opacity = 0; // this makes initial fade in effect
 
+        chart.data =${subjects}
+/*
         chart.data = [{
             name: "First",
             children: [
@@ -61,22 +63,21 @@
                     value: 10
                 }
             ]
-        },
-            {
-                name: "Second",
-                children: [
-                    {
+        }, {
+            name: "Second",
+            children: [
+                {
                         name: "B1",
                         value: 135
-                    },
-                    {
+                },
+                {
                         name: "B2",
                         value: 98
-                    },
-                    {
+                },
+                {
                         name: "B3",
                         value: 56
-                    }
+                }
                 ]
             },
             {
@@ -139,7 +140,7 @@
                     }
                 ]
             }];
-
+*/
         chart.colors.step = 2;
 
 // define data fields
@@ -177,7 +178,7 @@
         bullet1.label.text = "{name}";
         bullet1.label.fill = am4core.color("#ffffff");
 
-        chart.maxLevels = 2;
+        chart.maxLevels = 3;
 
     }); // end am4core.ready()
 </script>

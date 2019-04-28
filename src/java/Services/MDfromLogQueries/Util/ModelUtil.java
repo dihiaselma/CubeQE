@@ -22,6 +22,17 @@ public class ModelUtil {
         return jsonObject;
     }
 
+    public static JSONObject subjectToJSON( String e_subject)
+    {
+         JSONObject jsonObject = new JSONObject();
+
+
+        jsonObject.put("name", e_subject);
+       return jsonObject;
+    }
+
+
+
     public static JSONArray propertyIterate(Resource subject,Set<Resource> visitedNodes)
     {
         List<Statement> propertyIterator = subject.listProperties().toList();
@@ -36,7 +47,7 @@ public class ModelUtil {
             jsonObject.put("value",1);
             //jsonObject.put("value",stat.getPredicate().getURI());
             if (stat.getObject().isResource() && stat.getObject().asResource().listProperties().hasNext() && !visitedNodes.contains(stat.getObject().asResource()))
-                jsonObject.put("children",propertyIterate(stat.getObject().asResource(),visitedNodes));
+            jsonObject.put("children",propertyIterate(stat.getObject().asResource(),visitedNodes));
             jsonArray.add(jsonObject);
         }
         return jsonArray;
