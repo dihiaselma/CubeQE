@@ -22,11 +22,11 @@
     }
 </style>
 
-<!-- Resources -->
-<script src="https://www.amcharts.com/lib/4/core.js"></script>
-<script src="https://www.amcharts.com/lib/4/charts.js"></script>
-<script src="https://www.amcharts.com/lib/4/themes/spiritedaway.js"></script>
-<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+
+<script src="../plugins/amcharts4/core.js"></script>
+<script src="../plugins/amcharts4/charts.js"></script>
+<script src="../plugins/amcharts4/themes/spiritedaway.js"></script>
+<script src="../plugins/amcharts4/themes/animated.js"></script>
 
 <!-- Chart code -->
 <script>
@@ -182,10 +182,10 @@
     }); // end am4core.ready()
 </script>
 
+
+
 <!-- HTML -->
 <div id="chartdiv"></div>
-
-
 
 <!--<script src="../dist/js/pages/beforeGraphs.js"></script>-->
 </body>
