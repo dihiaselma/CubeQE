@@ -23,7 +23,6 @@ public class Controller {
 
     private Map<String, Object> times = FileOperation.loadYamlFile(timesFilePathTest);
     private Map<String, Object> queriesNumbers = FileOperation.loadYamlFile(queriesNumberFilePathTest);
-    Declarations declarations = new Declarations();
 
     @RequestMapping("/")
     public String redirect(){

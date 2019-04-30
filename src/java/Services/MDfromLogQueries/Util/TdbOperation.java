@@ -9,13 +9,13 @@ import org.apache.jena.tdb.TDBFactory;
 
 import java.util.*;
 
-import static Services.MDfromLogQueries.Declarations.Declarations.originalTdbDirectory;
+import static Services.MDfromLogQueries.Declarations.Declarations.dataSetOriginal;
 import static Services.MDfromLogQueries.Declarations.Declarations.tdbDirectory;
 
 
 public class TdbOperation {
     private static Dataset dataset = TDBFactory.createDataset(tdbDirectory);
-    public static Dataset originalDataSet = TDBFactory.createDataset(originalTdbDirectory);
+    public static Dataset originalDataSet = TDBFactory.createDataset(dataSetOriginal);
     public static Dataset _toString = TDBFactory.createDataset(Declarations._toString);
     public static Dataset dataSetConsolidate = TDBFactory.createDataset(Declarations.dataSetConsolidated);
     public static Dataset dataSetAnnotated = TDBFactory.createDataset(Declarations.dataSetAnnotated);
