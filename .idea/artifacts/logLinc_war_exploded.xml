@@ -7,6 +7,7 @@
           <element id="module-output" name="logLinc" />
         </element>
         <element id="directory" name="lib">
+          <element id="library" level="application" name="scala-sdk-2.12.8" />
           <element id="library" level="project" name="Maven: org.springframework:spring-beans:5.1.6.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-core:5.1.6.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-jcl:5.1.6.RELEASE" />

@@ -38,6 +38,7 @@
 
 
 // define data fields
+        chart.dataFields.id = "id";
         chart.dataFields.value = "value";
         chart.dataFields.name = "name";
         chart.dataFields.children = "children";
@@ -85,7 +86,7 @@
             var data = label.dataItem;
 
             if (data.dataContext && data.dataContext.name) {
-                query = "?q=" + data.dataContext.name;
+                query = "?uri=" + data.dataContext.id;
             }
 
             return url+query;

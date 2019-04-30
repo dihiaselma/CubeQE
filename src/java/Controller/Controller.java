@@ -34,11 +34,11 @@ public class Controller {
     }
 
     @RequestMapping("/test")
-    public String testParam(Model model, @RequestParam String q) {
+    public String testParam(Model model, @RequestParam String uri) {
 
         String error = "";
 
-        System.out.println("**********  name : "+q);
+        System.out.println("**********  name : "+uri);
         model.addAttribute("error", error);
         return "index2";
     }
@@ -98,6 +98,7 @@ public class Controller {
 
         HashMap<String, org.apache.jena.rdf.model.Model> modelHashMap = TdbOperation.unpersistNumberOfModelsMap(TdbOperation.dataSetAnnotated, 10);
         Iterator<String> kies = modelHashMap.keySet().iterator();
+
         while (kies.hasNext()) {
             String key = kies.next();
             if (modelHashMap.get(key).size() < 100)
@@ -118,23 +119,24 @@ public class Controller {
         JSONArray jsonArray = new JSONArray();
         JSONArray jsonArrayGlobal = new JSONArray();
 
-        HashMap<String, org.apache.jena.rdf.model.Model> modelHashMap = TdbOperation.unpersistNumberOfModelsMap(TdbOperation.dataSetAnnotated, 20);
+        Iterator<String> it = TdbOperation.dataSetAnnotated.listNames();
 
-        Set<String> kies = modelHashMap.keySet();
         int i = 1;
 
-        for (String key : kies) {
+        while (it.hasNext() && i<50){
+       // while (it.hasNext() ){
+            String key = it.next();
             JSONObject jsonObject = new JSONObject();
 
             Resource subject = new ResourceImpl (key);
 
             jsonObject.put("name", subject.getLocalName());
 
-            jsonObject.put("fullName", key);
+            jsonObject.put("id", key);
             jsonObject.put("value", 10);
             jsonArray.add(jsonObject);
 
-            if (jsonArray.size() == 5) {
+            if (jsonArray.size() == 10) {
 
                 JSONObject jsonChildren = new JSONObject();
                 jsonChildren.put("children", jsonArray);
