@@ -1,4 +1,5 @@
 package Controller;
+
 import Services.MDfromLogQueries.Util.FileOperation;
 import Services.MDfromLogQueries.Util.ModelUtil;
 import Services.MDfromLogQueries.Util.TdbOperation;
@@ -16,110 +17,115 @@ import static Services.MDfromLogQueries.Declarations.Declarations.*;
 
 public class Controller {
 
-    private Map<String, Object> times= FileOperation.loadYamlFile(timesFilePathTest);
+    private Map<String, Object> times = FileOperation.loadYamlFile(timesFilePathTest);
     private Map<String, Object> queriesNumbers = FileOperation.loadYamlFile(queriesNumberFilePathTest);
 
 
     @RequestMapping("/index")
-    public String pageAccueil(Model model){
+    public String pageAccueil(Model model) {
 
-        String error ="";
+        String error = "";
 
-        model.addAttribute("error",error);
+        model.addAttribute("error", error);
         return "index2";
     }
 
     @RequestMapping("/beforeGraphs")
-    public String beforeGraphs(Model model){
+    public String beforeGraphs(Model model) {
 
-        String error ="";
+        String error = "";
 
-        model.addAttribute("error",error);
-        return "subjectsBlocks";
+        model.addAttribute("error", error);
+        return "beforeGraphs";
     }
 
 
-
     @RequestMapping("/cleaning")
-    public String Cleaning(Model model){
+    public String Cleaning(Model model) {
 
-        String error ="";
+        String error = "";
 
         model.addAttribute("timesMap", times);
 
         model.addAttribute("queriesNumbersMap", queriesNumbers);
 
-        model.addAttribute("error",error);
+        model.addAttribute("error", error);
         return "cleaning";
     }
 
     @RequestMapping("/execution")
-    public String executing(Model model){
+    public String executing(Model model) {
 
-        String error ="";
+        String error = "";
 
         model.addAttribute("timesMap", times);
 
         model.addAttribute("queriesNumbersMap", queriesNumbers);
 
-        model.addAttribute("error",error);
+        model.addAttribute("error", error);
         return "execution";
     }
 
     @RequestMapping("/testTree")
-    public String pageTree(Model model){
+    public String pageTree(Model model) {
         JSONArray jsonArray = new JSONArray();
 
-        HashMap<String, org.apache.jena.rdf.model.Model> modelHashMap = TdbOperation.unpersistNumberOfModelsMap(TdbOperation.dataSetAnnotated,3);
+        HashMap<String, org.apache.jena.rdf.model.Model> modelHashMap = TdbOperation.unpersistNumberOfModelsMap(TdbOperation.dataSetAnnotated, 3);
 
         Iterator<String> kies = modelHashMap.keySet().iterator();
 
 
-        while (kies.hasNext())
-        {
+        while (kies.hasNext()) {
             String key = kies.next();
-            jsonArray.add(ModelUtil.modelToJSON(modelHashMap.get(key),key));
+            jsonArray.add(ModelUtil.modelToJSON(modelHashMap.get(key), key));
         }
 
-        String error ="";
+        String error = "";
         System.out.println(jsonArray.toJSONString());
 
 
-        model.addAttribute("models",jsonArray.toJSONString());
-        model.addAttribute("error",error);
+        model.addAttribute("models", jsonArray.toJSONString());
+        model.addAttribute("error", error);
         return "treeView";
     }
-    
-    
-    @RequestMapping("/subjectsBlocks")
-    public String subjectsBlocks(Model model){
-        String error ="Error";
-        
-        JSONArray jsonArray = new JSONArray();
 
-        HashMap<String, org.apache.jena.rdf.model.Model> modelHashMap = TdbOperation.unpersistNumberOfModelsMap(TdbOperation.dataSetAnnotated,5);
+
+    @RequestMapping("/subjectsBlocks")
+    public String subjectsBlocks(Model model) {
+        String error = "Error";
+
+        JSONArray jsonArray = new JSONArray();
+        JSONArray jsonArrayGlobal = new JSONArray();
+
+        HashMap<String, org.apache.jena.rdf.model.Model> modelHashMap = TdbOperation.unpersistNumberOfModelsMap(TdbOperation.dataSetAnnotated, 20);
 
         Set<String> kies = modelHashMap.keySet();
+        int i = 1;
 
-        for (String key:kies){
+        for (String key : kies) {
             JSONObject jsonObject = new JSONObject();
 
-
-
             jsonObject.put("name", key);
-            jsonObject.put("value",1);
+            jsonObject.put("value", 10);
+
+            //    jsonObject.put( "listeners", " [{ 'event' : 'clickGraphItem', 'method': function(event) {  window.alert('Clicked on ');}]");
+
             jsonArray.add(jsonObject);
+
+            if (jsonArray.size() == 5) {
+
+                JSONObject jsonChildren = new JSONObject();
+                jsonChildren.put("children", jsonArray);
+                jsonChildren.put("name", "subjects" + i);
+                jsonArrayGlobal.add(jsonChildren);
+                i++;
+                jsonArray = new JSONArray();
+            }
 
         }
 
-        JSONObject jsonChildren = new JSONObject();
-        jsonChildren.put("children", jsonArray);
-        jsonChildren.put("name", "Subjects");
-        System.out.println(jsonArray.toJSONString());
 
-
-
-        model.addAttribute("subjects",jsonChildren.toJSONString());
+        model.addAttribute("subjects", jsonArrayGlobal.toJSONString());
         model.addAttribute("error", error);
         return "subjectsBlocks";
     }
