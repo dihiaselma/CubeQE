@@ -5,10 +5,17 @@
   Time: 16:43
   To change this template use File | Settings | File Templates.
 --%>
+
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+
 <!DOCTYPE html>
 <html>
 <head>
+
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>AdminLTE 2 | Dashboard</title>
@@ -53,12 +60,12 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Accueil
+                Home
                 <small>Version 1.0</small>
             </h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
-                <li class="active">Accueil</li>
+                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li class="active">Home</li>
             </ol>
         </section>
 
@@ -70,22 +77,9 @@
 
                 <div class="col-md-12">
                     <!-- TABLE: LATEST ORDERS -->
+                    <%@ include file="treeView.jsp"%>
 
-                    <div class="form-group">
-                        <label>Choisissez le log sur lequel vous souhaitez tester</label>
-                        <select class="form-control select2" style="width: 100%;" name="endpoint">
-                            <option selected="selected">Dbpedia</option>
-                            <option>Wikidata</option>
-                            <option>Dog food (scholarlyData)</option>
-                            <option>British museum</option>
-                            <option>Linked Geo Data</option>
-                        </select>
-                    </div>
 
-                    <div class="col-md-12 text-center box" style="text-align: center">
-                        <%@include file="scenarioGraph.jsp"%>
-                    </div>
-                    <!-- /.box -->
                 </div>
                 <!-- /.col -->
 
