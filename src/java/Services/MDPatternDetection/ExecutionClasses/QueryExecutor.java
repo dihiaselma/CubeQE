@@ -184,18 +184,19 @@ public class QueryExecutor {
 
     public Model executeQueryConstruct(Query query, String endpoint)
     {
-        Model results = null;
+        Model results;
         try{
-
             QueryEngineHTTP qexec = QueryExecutionFactory.createServiceRequest(endpoint, query);
             results = qexec.execConstruct();
-
             queriesNumber++;
+            qexec.close();
             /* System.out.println("Result "+ results.toString());*/
         }
         catch (Exception e){
             queriesLogNumber++;
-            FileOperation.writeQueryInLog(executionLogFile, "Construct", query);
+            System.out.println(e.getMessage());
+            throw e;
+            //FileOperation.writeQueryInLog(executionLogFile, "Construct", query);
         }
         return results;
     }
