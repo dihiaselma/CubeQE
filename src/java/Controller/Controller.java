@@ -3,11 +3,15 @@ package Controller;
 import Services.MDfromLogQueries.Util.FileOperation;
 import Services.MDfromLogQueries.Util.ModelUtil;
 import Services.MDfromLogQueries.Util.TdbOperation;
+import org.apache.jena.rdf.model.Resource;
+import org.apache.jena.rdf.model.ResourceFactory;
+import org.apache.jena.rdf.model.impl.ResourceImpl;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.ui.Model;
 
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.*;
 
@@ -29,6 +33,19 @@ public class Controller {
         model.addAttribute("error", error);
         return "index2";
     }
+
+    @RequestMapping("/test")
+    public String testParam(Model model, @RequestParam String q) {
+
+        String error = "";
+
+        System.out.println("**********  name : "+q);
+        model.addAttribute("error", error);
+        return "index2";
+    }
+
+
+
 
     @RequestMapping("/beforeGraphs")
     public String beforeGraphs(Model model) {
@@ -105,11 +122,12 @@ public class Controller {
         for (String key : kies) {
             JSONObject jsonObject = new JSONObject();
 
-            jsonObject.put("name", key);
+            Resource subject = new ResourceImpl (key);
+
+            jsonObject.put("name", subject.getLocalName());
+
+            jsonObject.put("fullName", key);
             jsonObject.put("value", 10);
-
-            //    jsonObject.put( "listeners", " [{ 'event' : 'clickGraphItem', 'method': function(event) {  window.alert('Clicked on ');}]");
-
             jsonArray.add(jsonObject);
 
             if (jsonArray.size() == 5) {
