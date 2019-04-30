@@ -21,20 +21,16 @@ import static Services.MDfromLogQueries.Declarations.Declarations.*;
 
 public class Controller {
 
-    private Map<String, Object> times = FileOperation.loadYamlFile(timesFilePathTest);
-    private Map<String, Object> queriesNumbers = FileOperation.loadYamlFile(queriesNumberFilePathTest);
-    Declarations declarations = new Declarations();
+    private Map<String, Object> times; //= FileOperation.loadYamlFile(timesFilePathTest);
+    private Map<String, Object> queriesNumbers; //= FileOperation.loadYamlFile(queriesNumberFilePathTest);
+    Declarations declarations = new Declarations("dbPedia");
 
-    @RequestMapping("/")
-    public String redirect(){
-        return "redirect:/index.j";
-    }
+
 
     @RequestMapping("/index")
     public String pageAccueil(Model model) {
-
+        Declarations.setEndpoint("dbPedia");
         String error = "";
-
         model.addAttribute("error", error);
         return "index2";
     }
@@ -74,12 +70,13 @@ public class Controller {
     @RequestMapping("/cleaning")
     public String Cleaning(Model model, @RequestParam String endpoint) {
         System.out.println(endpoint);
-        if (!endpoint.isEmpty())
+        //if (!endpoint.isEmpty())
             Declarations.setEndpoint(endpoint);
         String error = "";
          times = FileOperation.loadYamlFile(timesFilePathTest);
         queriesNumbers = FileOperation.loadYamlFile(queriesNumberFilePathTest);
 
+        System.out.println(Declarations.endpoint+" "+Declarations.root);
         System.out.println(times.get("Deduplication"));
         model.addAttribute("timesMap", times);
 

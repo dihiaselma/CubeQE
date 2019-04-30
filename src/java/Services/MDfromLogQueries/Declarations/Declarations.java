@@ -85,11 +85,14 @@ public class Declarations {
     public static String test = root + "ProgramOutput\\fich.json";
 
 
-
+    public Declarations(String endpoint)
+    {
+        this.endpoint = endpoint;
+    }
 
 
     public static void setEndpoint(String endpoint) {
-        Declarations.endpoint = endpoint;
+        new Declarations(endpoint);
     }
 
 }
