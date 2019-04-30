@@ -42,9 +42,9 @@
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
     <!-- contains the header -->
-    <%@ include file="header.jsp"%>
+    <%@ include file="header.jsp" %>
 
-    <%@ include file="menu.jsp"%>
+    <%@ include file="menu.jsp" %>
 
     <!-- Left side column. contains the logo and sidebar -->
 
@@ -72,18 +72,21 @@
                     <!-- TABLE: LATEST ORDERS -->
 
                     <div class="form-group">
-                        <label>Choisissez le log sur lequel vous souhaitez tester</label>
-                        <select class="form-control select2" style="width: 100%;" name="endpoint">
-                            <option selected="selected">Dbpedia</option>
-                            <option>Wikidata</option>
-                            <option>Dog food (scholarlyData)</option>
-                            <option>British museum</option>
-                            <option>Linked Geo Data</option>
-                        </select>
+                        <form method="post" action="cleaning.j">
+                            <label>Choisissez le log sur lequel vous souhaitez tester</label>
+                            <select  class="form-control select2" style="width: 100%;" name="endpoint" id="endpoint">
+                                <option selected="selected" value="dbPedia">Dbpedia</option>
+                                <option value="Wikidate">Wikidata</option>
+                                <option value="DogFood">Dog food (scholarlyData)</option>
+                                <option value="BritishMuseum">British museum</option>
+                                <option value="LinkedGeoData">Linked Geo Data</option>
+                            </select>
+                            <input type="submit" value="Choose" style="width: 100px" class="btn btn-block btn-default"/>
+                        </form>
                     </div>
 
                     <div class="col-md-12 text-center box" style="text-align: center">
-                        <%@include file="scenarioGraph.jsp"%>
+                        <%@include file="scenarioGraph.jsp" %>
                     </div>
                     <!-- /.box -->
                 </div>
@@ -100,10 +103,10 @@
     <!-- /.content-wrapper -->
 
 
-    <%@ include file="footer.jsp"%>
+    <%@ include file="footer.jsp" %>
 
 
-    <%@ include file="menu-side.jsp"%>
+    <%@ include file="menu-side.jsp" %>
 
 
     <!-- Add the sidebar's background. This div must be placed
