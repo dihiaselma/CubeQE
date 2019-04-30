@@ -36,7 +36,6 @@ public class ModelUtil {
     public static JSONArray propertyIterate(Resource subject,Set<Resource> visitedNodes)
     {
         List<Statement> propertyIterator = subject.listProperties().toList();
-        System.out.println(propertyIterator.toString());
         JSONArray jsonArray = new JSONArray();
         JSONObject jsonObject;
         visitedNodes.add(subject);
@@ -45,7 +44,6 @@ public class ModelUtil {
             jsonObject.put("id",stat.getObject().toString());
             jsonObject.put("name",stat.getPredicate().getURI());
             jsonObject.put("value",5);
-            //jsonObject.put("value",stat.getPredicate().getURI());
             if (stat.getObject().isResource() && stat.getObject().asResource().listProperties().hasNext() && !visitedNodes.contains(stat.getObject().asResource()))
             jsonObject.put("children",propertyIterate(stat.getObject().asResource(),visitedNodes));
             jsonArray.add(jsonObject);

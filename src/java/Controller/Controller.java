@@ -91,21 +91,19 @@ public class Controller {
         return "execution";
     }
 
-    @RequestMapping("/testTree")
-    public String pageTree(Model model) {
-        Set<JSONObject> models = new HashSet<>();
+    @RequestMapping("/mdGraph")
+    public String pageTree(Model model,  @RequestParam String uri) {
+
         JSONArray jsonArray = new JSONArray();
 
-        HashMap<String, org.apache.jena.rdf.model.Model> modelHashMap = TdbOperation.unpersistNumberOfModelsMap(TdbOperation.dataSetAnnotated, 10);
-        Iterator<String> kies = modelHashMap.keySet().iterator();
+         org.apache.jena.rdf.model.Model graphModel = TdbOperation.dataSetAnnotated.getNamedModel(uri);
 
-        while (kies.hasNext()) {
-            String key = kies.next();
-            if (modelHashMap.get(key).size() < 100)
-                jsonArray.add(ModelUtil.modelToJSON(modelHashMap.get(key), key));
-        }
+         if (graphModel.size() < 100) jsonArray.add(ModelUtil.modelToJSON(graphModel, uri));
+
+
         String erreur = "";
-        System.out.println(jsonArray.toJSONString());
+
+
         model.addAttribute("models", jsonArray);
         model.addAttribute("erreur", erreur);
         return "MDGraph";
@@ -123,7 +121,7 @@ public class Controller {
 
         int i = 1;
 
-        while (it.hasNext() && i<50){
+        while (it.hasNext() && i<20){
        // while (it.hasNext() ){
             String key = it.next();
             JSONObject jsonObject = new JSONObject();
@@ -136,7 +134,7 @@ public class Controller {
             jsonObject.put("value", 10);
             jsonArray.add(jsonObject);
 
-            if (jsonArray.size() == 10) {
+            if (jsonArray.size() == 5) {
 
                 JSONObject jsonChildren = new JSONObject();
                 jsonChildren.put("children", jsonArray);
