@@ -11,6 +11,7 @@
     <list default="true" id="8fca0a3d-5b72-4465-b9de-ab3f33a87585" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/pages/menu-side.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/pages/menu-side.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/pages/menu.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/pages/menu.jsp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="web/bower_components/" />
@@ -56,7 +57,7 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="JAVA" value="25" />
-          <entry key="JSP" value="26" />
+          <entry key="JSP" value="27" />
           <entry key="JavaScript" value="12" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="Scala" value="5" />
@@ -68,7 +69,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JAVA" value="1322" />
-          <entry key="JSP" value="2435" />
+          <entry key="JSP" value="2441" />
           <entry key="JavaScript" value="110" />
           <entry key="PLAIN_TEXT" value="111" />
           <entry key="RegExp" value="1" />
@@ -116,11 +117,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/pages/menu-side.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="18" column="3" selection-start-line="18" selection-start-column="3" selection-end-line="18" selection-end-column="3" />
+            <state relative-caret-position="192">
+              <caret line="12" column="6" lean-forward="true" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web/pages/menu.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="256">
+              <caret line="19" column="20" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -224,6 +234,7 @@
         <option value="$PROJECT_DIR$/web/pages/cleaning.jsp" />
         <option value="$PROJECT_DIR$/web/pages/execution.jsp" />
         <option value="$PROJECT_DIR$/web/pages/menu-side.jsp" />
+        <option value="$PROJECT_DIR$/web/pages/menu.jsp" />
       </list>
     </option>
   </component>
@@ -450,7 +461,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556636400178" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556638117133" />
     <property name="jsx.switch.disabled" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/.idea/workspace.xml" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -671,17 +682,23 @@
       <option name="project" value="LOCAL" />
       <updated>1556635676185</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="enlever l'ption to remove table in cleaning and execution pages">
+      <created>1556636545701</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1556636545701</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66183000" />
+    <option name="totallyTimeSpent" value="67218000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20939597" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20939597" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -689,7 +706,7 @@
       <window_info id="Favorites" order="5" side_tool="true" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="Web" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Run" order="0" weight="0.45673758" />
+      <window_info active="true" anchor="bottom" id="Run" order="0" visible="true" weight="0.45673758" />
       <window_info anchor="bottom" id="Application Servers" order="1" weight="0.32907802" />
       <window_info anchor="bottom" id="SBT Console" order="2" />
       <window_info anchor="bottom" id="Spring" order="3" />
@@ -978,8 +995,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/pages/menu-side.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="18" column="3" selection-start-line="18" selection-start-column="3" selection-end-line="18" selection-end-column="3" />
+        <state relative-caret-position="192">
+          <caret line="12" column="6" lean-forward="true" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/pages/menu.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="19" column="20" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
         </state>
       </provider>
     </entry>

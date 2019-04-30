@@ -11,7 +11,7 @@
     <title>menu-side</title>
 </head>
 <body>
-<aside class="control-sidebar control-sidebar-dark sidebar-collapse">
+<aside class="control-sidebar control-sidebar-dark ">
     <!-- Create the tabs -->
     <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
         <li class="active"><a href="#control-sidebar-theme-demo-options-tab" data-toggle="tab" aria-expanded="true"><i class="fa fa-wrench"></i></a></li>
