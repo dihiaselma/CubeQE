@@ -94,37 +94,43 @@ public class Controller {
         model.addAttribute("erreur",erreur);
         return "MDGraph";
     }
-    
-    
-    @RequestMapping("/subjectsBlocks")
-    public String subjectsBlocks(Model model){
-        String error ="Error";
-        
-        JSONArray jsonArray = new JSONArray();
 
-        HashMap<String, org.apache.jena.rdf.model.Model> modelHashMap = TdbOperation.unpersistNumberOfModelsMap(TdbOperation.dataSetAnnotated,5);
+
+    @RequestMapping("/subjectsBlocks")
+    public String subjectsBlocks(Model model) {
+        String error = "Error";
+
+        JSONArray jsonArray = new JSONArray();
+        JSONArray jsonArrayGlobal = new JSONArray();
+
+        HashMap<String, org.apache.jena.rdf.model.Model> modelHashMap = TdbOperation.unpersistNumberOfModelsMap(TdbOperation.dataSetAnnotated, 20);
 
         Set<String> kies = modelHashMap.keySet();
+        int i = 1;
 
-        for (String key:kies){
+        for (String key : kies) {
             JSONObject jsonObject = new JSONObject();
 
-
-
             jsonObject.put("name", key);
-            jsonObject.put("value",1);
+            jsonObject.put("value", 10);
+
+            //    jsonObject.put( "listeners", " [{ 'event' : 'clickGraphItem', 'method': function(event) {  window.alert('Clicked on ');}]");
+
             jsonArray.add(jsonObject);
 
-        }
+            if (jsonArray.size() == 5) {
 
-        JSONObject jsonChildren = new JSONObject();
-        jsonChildren.put("children", jsonArray);
-        jsonChildren.put("name", "Subjects");
-        System.out.println(jsonArray.toJSONString());
+                JSONObject jsonChildren = new JSONObject();
+                jsonChildren.put("children", jsonArray);
+                jsonChildren.put("name", "subjects" + i);
+                jsonArrayGlobal.add(jsonChildren);
+                i++;
+                jsonArray = new JSONArray();
+            }
 
 
 
-        model.addAttribute("subjects",jsonChildren.toJSONString());
+        model.addAttribute("subjects", jsonArrayGlobal.toJSONString());
         model.addAttribute("error", error);
         return "subjectsBlocks";
     }
