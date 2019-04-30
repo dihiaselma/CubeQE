@@ -1,4 +1,5 @@
 package Controller;
+import Services.MDfromLogQueries.Declarations.Declarations;
 import Services.MDfromLogQueries.Util.FileOperation;
 import Services.MDfromLogQueries.Util.ModelUtil;
 import Services.MDfromLogQueries.Util.TdbOperation;
@@ -22,7 +23,12 @@ public class Controller {
 
     private Map<String, Object> times = FileOperation.loadYamlFile(timesFilePathTest);
     private Map<String, Object> queriesNumbers = FileOperation.loadYamlFile(queriesNumberFilePathTest);
+    Declarations declarations = new Declarations();
 
+    @RequestMapping("/")
+    public String redirect(){
+        return "redirect:/index.j";
+    }
 
     @RequestMapping("/index")
     public String pageAccueil(Model model) {
@@ -66,10 +72,15 @@ public class Controller {
 
 
     @RequestMapping("/cleaning")
-    public String Cleaning(Model model) {
-
+    public String Cleaning(Model model, @RequestParam String endpoint) {
+        System.out.println(endpoint);
+        if (!endpoint.isEmpty())
+            Declarations.setEndpoint(endpoint);
         String error = "";
+         times = FileOperation.loadYamlFile(timesFilePathTest);
+        queriesNumbers = FileOperation.loadYamlFile(queriesNumberFilePathTest);
 
+        System.out.println(times.get("Deduplication"));
         model.addAttribute("timesMap", times);
 
         model.addAttribute("queriesNumbersMap", queriesNumbers);

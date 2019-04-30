@@ -2,12 +2,10 @@ package Services.MDfromLogQueries.Declarations;
 
 public class Declarations {
     public static String endpoint = "dbPedia";
-    //public static String root = "C:\\Users\\KamilaB\\Desktop\\3CS\\Prototypage\\Step_1\\endpoints\\"+endpoint+"\\Support_Files\\";
-    //public static String root2 = "C:\\Users\\KamilaB\\Desktop\\3CS\\Prototypage\\Step_1\\endpoints\\"+endpoint+"\\Support_Files\\TdbDirectories\\";
-    public static String root = "C:\\Users\\pc\\Desktop\\PFE\\Files\\" + endpoint+"\\" ;
-    public static String root2 = "E:\\TdbDirectories\\" + endpoint +"\\";
-
-
+    public static String root = "C:\\Users\\KamilaB\\Desktop\\3CS\\Prototypage\\Step_1\\endpoints\\"+endpoint+"\\Support_Files\\";
+    public static String root2 = "C:\\Users\\KamilaB\\Desktop\\3CS\\Prototypage\\Step_1\\endpoints\\"+endpoint+"\\Support_Files\\TdbDirectories\\";
+    //public static String root = "C:\\Users\\pc\\Desktop\\PFE\\Files\\" + endpoint+"\\" ;
+    //public static String root2 = "E:\\TdbDirectories\\" + endpoint +"\\";
 
     public static String rootScenarioAnalytic = "Analytic\\";
     public static String statististicsRoot = "Statistics\\";
@@ -60,7 +58,7 @@ public class Declarations {
     public static String tdbDirectory = root2+"tdbDirectory";
     public static String originalTdbDirectory = root2+"originalTdbDirectory";
     public static String dataSetConsolidated = root2+"originalTdbDirConsolidated";
-    public static String dataSetAnnotated = root2+"dataSetAnnotated";
+    public static String dataSetAnnotated = root2+"tdbDirectoryAnnotated";
     public static String _toString = root2+"_toString";
     public static String dataSetAnalytic = root2+"tdbDirectoryAnalytic";
     public static String dataSetAnalyticAnnotated = root2+"tdbDirectoryAnalyticAnnotated";
@@ -85,5 +83,13 @@ public class Declarations {
     public static String queriesNumberFilePath = root + "ProgramOutput\\Fichier_queriesNumber.txt";
     public static String queriesNumberFilePathTest = root + "ProgramOutput\\Fichier_queriesNumberTest.yaml";
     public static String test = root + "ProgramOutput\\fich.json";
+
+
+
+
+
+    public static void setEndpoint(String endpoint) {
+        Declarations.endpoint = endpoint;
+    }
 
 }

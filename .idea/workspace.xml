@@ -9,9 +9,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8fca0a3d-5b72-4465-b9de-ab3f33a87585" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/pages/menu-side.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/pages/menu-side.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/pages/menu.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/pages/menu.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/Controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/Controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Declarations/Declarations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Declarations/Declarations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/pages/index2.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/pages/index2.jsp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="web/bower_components/" />
@@ -126,11 +126,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/pages/menu.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="256">
-              <caret line="19" column="20" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
+            <state relative-caret-position="448">
+              <caret line="28" column="41" lean-forward="true" selection-start-line="28" selection-start-column="41" selection-end-line="28" selection-end-column="41" />
             </state>
           </provider>
         </entry>
@@ -139,7 +139,7 @@
         <entry file="file://$PROJECT_DIR$/src/java/Controller/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="227">
-              <caret line="100" column="69" lean-forward="true" selection-start-line="100" selection-start-column="69" selection-end-line="100" selection-end-column="69" />
+              <caret line="111" column="69" lean-forward="true" selection-start-line="111" selection-start-column="69" selection-end-line="111" selection-end-column="69" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -165,11 +165,15 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Declarations/Declarations.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="992">
-              <caret line="62" column="69" lean-forward="true" selection-start-line="62" selection-start-column="69" selection-end-line="62" selection-end-column="69" />
+            <state relative-caret-position="16">
+              <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+              <folding>
+                <element signature="e#5670#5671#0" expanded="true" />
+                <element signature="e#5718#5719#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -365,92 +369,7 @@
               <item name="logLinc" type="b2602c69:ProjectViewProjectNode" />
               <item name="logLinc2" type="462c0819:PsiDirectoryNode" />
               <item name="web" type="462c0819:PsiDirectoryNode" />
-              <item name="dist" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="logLinc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="logLinc2" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-              <item name="dist" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="logLinc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="logLinc2" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-              <item name="dist" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="logLinc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="logLinc2" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="logLinc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="logLinc2" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-              <item name="plugins" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="logLinc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="logLinc2" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-              <item name="plugins" type="462c0819:PsiDirectoryNode" />
-              <item name="amcharts4" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="logLinc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="logLinc2" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-              <item name="plugins" type="462c0819:PsiDirectoryNode" />
-              <item name="amcharts4" type="462c0819:PsiDirectoryNode" />
-              <item name="themes" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="logLinc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="logLinc2" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-              <item name="plugins" type="462c0819:PsiDirectoryNode" />
-              <item name="amcharts4" type="462c0819:PsiDirectoryNode" />
-              <item name="themes" type="462c0819:PsiDirectoryNode" />
-              <item name="amcharts.js" type="620a8d5e:NestingTreeNode" />
-            </path>
-            <path>
-              <item name="logLinc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="logLinc2" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-              <item name="plugins" type="462c0819:PsiDirectoryNode" />
-              <item name="amcharts4" type="462c0819:PsiDirectoryNode" />
-              <item name="themes" type="462c0819:PsiDirectoryNode" />
-              <item name="frozen.js" type="620a8d5e:NestingTreeNode" />
-            </path>
-            <path>
-              <item name="logLinc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="logLinc2" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-              <item name="plugins" type="462c0819:PsiDirectoryNode" />
-              <item name="amcharts4" type="462c0819:PsiDirectoryNode" />
-              <item name="themes" type="462c0819:PsiDirectoryNode" />
-              <item name="kelly.js" type="620a8d5e:NestingTreeNode" />
-            </path>
-            <path>
-              <item name="logLinc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="logLinc2" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-              <item name="plugins" type="462c0819:PsiDirectoryNode" />
-              <item name="amcharts4" type="462c0819:PsiDirectoryNode" />
-              <item name="core.js" type="620a8d5e:NestingTreeNode" />
-            </path>
-            <path>
-              <item name="logLinc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="logLinc2" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-              <item name="plugins" type="462c0819:PsiDirectoryNode" />
-              <item name="amcharts4" type="462c0819:PsiDirectoryNode" />
-              <item name="maps.js" type="620a8d5e:NestingTreeNode" />
             </path>
           </expand>
           <select />
@@ -697,6 +616,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20939597" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -706,8 +626,8 @@
       <window_info id="Favorites" order="5" side_tool="true" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="Web" order="7" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Run" order="0" visible="true" weight="0.45673758" />
-      <window_info anchor="bottom" id="Application Servers" order="1" weight="0.32907802" />
+      <window_info active="true" anchor="bottom" id="Run" order="0" weight="0.45673758" />
+      <window_info anchor="bottom" id="Application Servers" order="1" visible="true" weight="0.32907802" />
       <window_info anchor="bottom" id="SBT Console" order="2" />
       <window_info anchor="bottom" id="Spring" order="3" />
       <window_info anchor="bottom" id="Terminal" order="4" weight="0.32907802" />
@@ -950,8 +870,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Declarations/Declarations.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="992">
-          <caret line="62" column="69" lean-forward="true" selection-start-line="62" selection-start-column="69" selection-end-line="62" selection-end-column="69" />
+        <state relative-caret-position="16">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+          <folding>
+            <element signature="e#5670#5671#0" expanded="true" />
+            <element signature="e#5718#5719#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -965,7 +889,7 @@
     <entry file="file://$PROJECT_DIR$/src/java/Controller/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="227">
-          <caret line="100" column="69" lean-forward="true" selection-start-line="100" selection-start-column="69" selection-end-line="100" selection-end-column="69" />
+          <caret line="111" column="69" lean-forward="true" selection-start-line="111" selection-start-column="69" selection-end-line="111" selection-end-column="69" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1002,8 +926,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/pages/menu.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="19" column="20" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
+        <state relative-caret-position="448">
+          <caret line="28" column="41" lean-forward="true" selection-start-line="28" selection-start-column="41" selection-end-line="28" selection-end-column="41" />
         </state>
       </provider>
     </entry>
