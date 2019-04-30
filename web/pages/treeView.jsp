@@ -34,6 +34,8 @@
 
         networkSeries.data = ${models.toJSONString()}
 
+
+
         networkSeries.dataFields.linkWith = "linkWith";
         networkSeries.dataFields.name = "name";
         networkSeries.dataFields.id = "id";
@@ -45,9 +47,9 @@
 
 
         networkSeries.nodes.template.label.text = "{id}";// Représente le nom dans la bulle
-        networkSeries.fontSize = 10;
+        networkSeries.fontSize = 15;
         networkSeries.maxLevels = 2;
-        networkSeries.maxRadius = am4core.percent(6);
+        networkSeries.maxRadius = am4core.percent(10);
         networkSeries.manyBodyStrength = -16;
         networkSeries.nodes.template.label.hideOversized = false;
         networkSeries.nodes.template.label.truncate = true;

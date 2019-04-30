@@ -3,6 +3,9 @@ import Services.MDfromLogQueries.Declarations.Declarations;
 import Services.MDfromLogQueries.Util.FileOperation;
 import Services.MDfromLogQueries.Util.ModelUtil;
 import Services.MDfromLogQueries.Util.TdbOperation;
+import org.apache.jena.rdf.model.Resource;
+import org.apache.jena.rdf.model.ResourceFactory;
+import org.apache.jena.rdf.model.impl.ResourceImpl;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.ui.Model;
@@ -35,6 +38,19 @@ public class Controller {
         model.addAttribute("error", error);
         return "index2";
     }
+
+    @RequestMapping("/test")
+    public String testParam(Model model, @RequestParam String uri) {
+
+        String error = "";
+
+        System.out.println("**********  name : "+uri);
+        model.addAttribute("error", error);
+        return "index2";
+    }
+
+
+
 
     @RequestMapping("/beforeGraphs")
     public String beforeGraphs(Model model) {
@@ -86,20 +102,19 @@ public class Controller {
         return "execution";
     }
 
-    @RequestMapping("/testTree")
-    public String pageTree(Model model) {
-        Set<JSONObject> models = new HashSet<>();
+    @RequestMapping("/mdGraph")
+    public String pageTree(Model model,  @RequestParam String uri) {
+
         JSONArray jsonArray = new JSONArray();
 
-        HashMap<String, org.apache.jena.rdf.model.Model> modelHashMap = TdbOperation.unpersistNumberOfModelsMap(TdbOperation.dataSetAnnotated, 10);
-        Iterator<String> kies = modelHashMap.keySet().iterator();
-        while (kies.hasNext()) {
-            String key = kies.next();
-            if (modelHashMap.get(key).size() < 100)
-                jsonArray.add(ModelUtil.modelToJSON(modelHashMap.get(key), key));
-        }
+         org.apache.jena.rdf.model.Model graphModel = TdbOperation.dataSetAnnotated.getNamedModel(uri);
+
+         if (graphModel.size() < 100) jsonArray.add(ModelUtil.modelToJSON(graphModel, uri));
+
+
         String erreur = "";
-        System.out.println(jsonArray.toJSONString());
+
+
         model.addAttribute("models", jsonArray);
         model.addAttribute("erreur", erreur);
         return "MDGraph";
@@ -113,19 +128,21 @@ public class Controller {
         JSONArray jsonArray = new JSONArray();
         JSONArray jsonArrayGlobal = new JSONArray();
 
-        HashMap<String, org.apache.jena.rdf.model.Model> modelHashMap = TdbOperation.unpersistNumberOfModelsMap(TdbOperation.dataSetAnnotated, 20);
+        Iterator<String> it = TdbOperation.dataSetAnnotated.listNames();
 
-        Set<String> kies = modelHashMap.keySet();
         int i = 1;
 
-        for (String key : kies) {
+        while (it.hasNext() && i<20){
+       // while (it.hasNext() ){
+            String key = it.next();
             JSONObject jsonObject = new JSONObject();
 
-            jsonObject.put("name", key);
+            Resource subject = new ResourceImpl (key);
+
+            jsonObject.put("name", subject.getLocalName());
+
+            jsonObject.put("id", key);
             jsonObject.put("value", 10);
-
-            //    jsonObject.put( "listeners", " [{ 'event' : 'clickGraphItem', 'method': function(event) {  window.alert('Clicked on ');}]");
-
             jsonArray.add(jsonObject);
 
             if (jsonArray.size() == 5) {

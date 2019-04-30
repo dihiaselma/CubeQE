@@ -19,16 +19,6 @@
 
 <!-- Chart code -->
 <script>
-    function myFunction(ev) {
-
-        window.alert("Clicked on ");
-
-       // ev.childNodes.on("hit",  window.alert("Clicked on "),this);
-        println("je suis dans my fct");
-
-        console.log(ev.target);
-
-    }
 
     am4core.ready(function() {
 
@@ -40,67 +30,15 @@
 // create chart
         var chart = am4core.create("chartdiv", am4charts.TreeMap);
 
-
         chart.hiddenState.properties.opacity = 0; // this makes initial fade in effect
 
         chart.data =${subjects};
 
-
-       // chart.listeners();
-
-       /* chart.data.element.childNodes.element.childNodes.forEach(function(name)
-        {
-              name.onclick = function(){
-                  window. alert('You clicked on '+this.textContent);
-            }
-        });*/
-
-
-       /**
-         "listeners": [{
-    "event": "clickGraphItem",
-    "method": function(event) {
-      alert(event.item.category);
-    }
-  }]
-
-       * */
-
-
-
-
         chart.colors.step = 2;
-
-       /* chart.events.on("hit", function(ev) {
-
-           //window.alert("Clicked on "+ ev.target.children.children.name);
-           window.alert("Clicked on ");
-           console.log(ev.target.dataItems.getChildren());
-
-
-        }, this);
-
-
-   /*    chart.events.on("hit", function(ev) {
-
-
-
-           //window.alert("Clicked on "+ ev.target.children.children.name);
-           window.alert("Clicked on ");
-
-           console.log(ev.target);
-       }, this);
-
-
-*/
-
-        //on("hit", myFunction, this);
-
-       // chart.events.on("hit", myFunction(chart.dataFields), this);
-
 
 
 // define data fields
+        chart.dataFields.id = "id";
         chart.dataFields.value = "value";
         chart.dataFields.name = "name";
         chart.dataFields.children = "children";
@@ -141,18 +79,19 @@
         bullet1.label.fill = am4core.color("#ecf0f5");
 
 
-        bullet1.label.url = "http://localhost:8022/index.j"; // url de la page
+        bullet1.label.url = "http://localhost:8022/mdGraph.j"; // url de la page
 
         bullet1.label.adapter.add("url", function(url, label) {
             var query = "";
             var data = label.dataItem;
-            if (data.dataContext && data.dataContext.name) {
-                query = "?q=" + data.dataContext.name;
-            }
-           // return url + query;
-            return url ;
-        });
 
+            if (data.dataContext && data.dataContext.name) {
+                query = "?uri=" + data.dataContext.id;
+            }
+
+            return url+query;
+
+        });
 
         chart.maxLevels =3;
 

@@ -7,7 +7,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="40cced35-abb7-4e08-893e-9148dcd3932a" name="Default Changelist" comment="Merge branch 'master' of https://github.com/SaidouneRouaya/logLinc2&#10;&#10;# Conflicts:&#10;#&#9;src/java/Controller/Controller.java">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/logLinc_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/logLinc_war_exploded.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/Controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/Controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Util/ModelUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Util/ModelUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/pages/beforeGraphs.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/pages/beforeGraphs.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/pages/chooseScenario.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/pages/chooseScenario.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/pages/cleaning.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/pages/cleaning.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/pages/execution.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/pages/execution.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/pages/treeView.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/pages/treeView.jsp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="web/bower_components/" />
@@ -104,25 +111,16 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/java/Controller/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="68" lean-forward="true" selection-start-line="68" selection-end-line="68" />
+            <state relative-caret-position="132">
+              <caret line="137" column="9" selection-start-line="137" selection-start-column="9" selection-end-line="137" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#872#873#0" expanded="true" />
-                <element signature="e#896#897#0" expanded="true" />
+                <element signature="e#1070#1071#0" expanded="true" />
+                <element signature="e#1112#1113#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="20" column="67" lean-forward="true" selection-start-line="20" selection-start-column="67" selection-end-line="20" selection-end-column="67" />
             </state>
           </provider>
         </entry>
@@ -683,13 +681,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="64303000" />
+    <option name="totallyTimeSpent" value="64988000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="55" y="-7" width="1488" height="878" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20728292" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20728292" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -697,7 +695,7 @@
       <window_info id="Favorites" order="5" side_tool="true" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="Web" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Run" order="0" visible="true" weight="0.45771813" />
+      <window_info anchor="bottom" id="Run" order="0" weight="0.45771813" />
       <window_info anchor="bottom" id="Application Servers" order="1" weight="0.32885906" />
       <window_info anchor="bottom" id="SBT Console" order="2" />
       <window_info anchor="bottom" id="Spring" order="3" />
@@ -706,7 +704,7 @@
       <window_info anchor="bottom" id="Messages" order="6" weight="0.557047" />
       <window_info anchor="bottom" id="Java Enterprise" order="7" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="9" weight="0.32885906" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="9" visible="true" weight="0.32885906" />
       <window_info anchor="bottom" id="SBT Execute" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="11" />
       <window_info anchor="bottom" id="Find" order="12" weight="0.32907802" />
@@ -948,22 +946,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/Controller/Controller.java">
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="68" lean-forward="true" selection-start-line="68" selection-end-line="68" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#872#873#0" expanded="true" />
-            <element signature="e#896#897#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="272">
+          <caret line="17" column="47" selection-start-line="17" selection-start-column="47" selection-end-line="17" selection-end-column="47" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+    <entry file="file://$PROJECT_DIR$/src/java/Controller/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="20" column="67" lean-forward="true" selection-start-line="20" selection-start-column="67" selection-end-line="20" selection-end-column="67" />
+        <state relative-caret-position="132">
+          <caret line="137" column="9" selection-start-line="137" selection-start-column="9" selection-end-line="137" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1070#1071#0" expanded="true" />
+            <element signature="e#1112#1113#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -90,8 +90,7 @@
                                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
                                         class="fa fa-minus"></i>
                                 </button>
-                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i
-                                        class="fa fa-times"></i></button>
+
                             </div>
                         </div>
                         <!-- /.box-header -->
@@ -116,7 +115,7 @@
                                         <td>${queriesNumbersMap.get("ConstructMSGraphs_nbQueriesNonConstructed")}</td>
                                         <td>
                                             <div class="text-muted">
-                                                <i class="fa fa-clock-o"></i> ${timesMap.get("ConstructMSGraphs")}
+                                                <i class="fa fa-clock-o"></i>   ${timesMap.get("ConstructMSGraphs")} seconds
                                             </div>
                                         </td>
 
@@ -176,7 +175,7 @@
                                         <td>${queriesNumbersMap.get("Execution_nbQueriesNonExecuted")}</td>
                                         <td>
                                             <div class="text-muted">
-                                                <i class="fa fa-clock-o"></i> ${timesMap.get("Execution")}
+                                                <i class="fa fa-clock-o"></i>   ${timesMap.get("Execution")} seconds
                                             </div>
                                         </td>
                                         <td><span class="badge bg-yellow">
@@ -233,7 +232,7 @@
                                         <td>${queriesNumbersMap.get("Consolidation_nbModels")}</td>
                                         <td>
                                             <div class="text-muted">
-                                                <i class="fa fa-clock-o"></i> ${timesMap.get("Consolidation")}
+                                                <i class="fa fa-clock-o"></i>    ${timesMap.get("Consolidation")} seconds
                                             </div>
                                         </td>
                                         <td>

@@ -87,8 +87,7 @@
                                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
                                         class="fa fa-minus"></i>
                                 </button>
-                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i
-                                        class="fa fa-times"></i></button>
+
                             </div>
                         </div>
                         <!-- /.box-header -->
@@ -111,7 +110,7 @@
                                         <td>${queriesNumbersMap.get("Log_Cleaning")}</td>
                                         <td>
                                             <div class="text-muted"><i
-                                                    class="fa fa-clock-o"></i>${timesMap.get("Log_Cleaning")} </div>
+                                                    class="fa fa-clock-o"></i>   ${timesMap.get("Log_Cleaning")} seconds</div>
                                         </td>
                                         <td><span class="badge bg-red">
                                                 <fmt:formatNumber
@@ -125,7 +124,7 @@
                                         <td>${queriesNumbersMap.get("Deduplication")}</td>
                                         <td>
                                             <div class="text-muted"><i
-                                                    class="fa fa-clock-o"></i> ${timesMap.get("Deduplication")} </div>
+                                                    class="fa fa-clock-o"></i>   ${timesMap.get("Deduplication")} seconds </div>
                                         </td>
                                         <td><span class="badge bg-yellow">
 
@@ -141,7 +140,7 @@
                                         <td>${queriesNumbersMap.get("Syntactical_Validation")}</td>
                                         <td>
                                             <div class="text-muted"><i
-                                                    class="fa fa-clock-o"></i>${timesMap.get("Syntactical_Validation")}
+                                                    class="fa fa-clock-o"></i>   ${timesMap.get("Syntactical_Validation")} seconds
                                             </div>
                                         </td>
                                         <td><span class="badge bg-light-blue">
