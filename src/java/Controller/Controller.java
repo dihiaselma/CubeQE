@@ -1,5 +1,4 @@
 package Controller;
-
 import Services.MDfromLogQueries.Util.FileOperation;
 import Services.MDfromLogQueries.Util.ModelUtil;
 import Services.MDfromLogQueries.Util.TdbOperation;
@@ -53,7 +52,16 @@ public class Controller {
         String error = "";
 
         model.addAttribute("error", error);
-        return "beforeGraphs";
+        return "subjectsBlocks";
+    }
+
+    @RequestMapping("/chooseScenario")
+    public String chooseScnerio(Model model) {
+
+        String error = "";
+
+        model.addAttribute("error", error);
+        return "chooseScenario";
     }
 
 
@@ -85,25 +93,21 @@ public class Controller {
 
     @RequestMapping("/testTree")
     public String pageTree(Model model) {
+        Set<JSONObject> models = new HashSet<>();
         JSONArray jsonArray = new JSONArray();
 
-        HashMap<String, org.apache.jena.rdf.model.Model> modelHashMap = TdbOperation.unpersistNumberOfModelsMap(TdbOperation.dataSetAnnotated, 3);
-
+        HashMap<String, org.apache.jena.rdf.model.Model> modelHashMap = TdbOperation.unpersistNumberOfModelsMap(TdbOperation.dataSetAnnotated, 10);
         Iterator<String> kies = modelHashMap.keySet().iterator();
-
-
         while (kies.hasNext()) {
             String key = kies.next();
-            jsonArray.add(ModelUtil.modelToJSON(modelHashMap.get(key), key));
+            if (modelHashMap.get(key).size() < 100)
+                jsonArray.add(ModelUtil.modelToJSON(modelHashMap.get(key), key));
         }
-
-        String error = "";
+        String erreur = "";
         System.out.println(jsonArray.toJSONString());
-
-
-        model.addAttribute("models", jsonArray.toJSONString());
-        model.addAttribute("error", error);
-        return "treeView";
+        model.addAttribute("models", jsonArray);
+        model.addAttribute("erreur", erreur);
+        return "MDGraph";
     }
 
 
@@ -147,6 +151,5 @@ public class Controller {
         model.addAttribute("error", error);
         return "subjectsBlocks";
     }
-
 
 }

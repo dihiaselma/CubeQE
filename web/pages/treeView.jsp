@@ -1,16 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: KamilaB
-  Date: 24/04/2019
-  Time: 13:35
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
+
 <!-- Styles -->
 <style>
     #chartdiv {
@@ -44,8 +32,7 @@
         var networkSeries = chart.series.push(new am4plugins_forceDirected.ForceDirectedSeries());
 
 
-        networkSeries.data = ${models}
-
+        networkSeries.data = ${models.toJSONString()}
 
         networkSeries.dataFields.linkWith = "linkWith";
         networkSeries.dataFields.name = "name";
@@ -55,6 +42,7 @@
 
         networkSeries.nodes.template.tooltipText = "{id}\nProperty : {name}";// Représente l'étiquette qui sort de la bulle
         networkSeries.nodes.template.fillOpacity = 1;
+
 
         networkSeries.nodes.template.label.text = "{id}";// Représente le nom dans la bulle
         networkSeries.fontSize = 10;
@@ -68,11 +56,10 @@
         networkSeries.links.template.label.tooltipText = "edge";
 
 
-    }); // end am4core.ready()
 
+    }); // end am4core.ready()
 </script>
 
 <!-- HTML -->
 <div id="chartdiv"></div>
-</body>
-</html>
+

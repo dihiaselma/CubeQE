@@ -44,7 +44,7 @@ public class ModelUtil {
             jsonObject = new JSONObject();
             jsonObject.put("id",stat.getObject().toString());
             jsonObject.put("name",stat.getPredicate().getURI());
-            jsonObject.put("value",1);
+            jsonObject.put("value",5);
             //jsonObject.put("value",stat.getPredicate().getURI());
             if (stat.getObject().isResource() && stat.getObject().asResource().listProperties().hasNext() && !visitedNodes.contains(stat.getObject().asResource()))
             jsonObject.put("children",propertyIterate(stat.getObject().asResource(),visitedNodes));

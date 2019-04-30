@@ -23,18 +23,20 @@ object ConsolidationParallel extends App {
    val modelsAnnotated = MDGraphAnnotated.constructMDGraphs(modelsConsolidated)
    writeInTdb(convertToScalaMap(modelsAnnotated), TdbOperation.dataSetAnnotated)*/
 
+  writeInTdb(consolidate(),TdbOperation.dataSetConsolidate)
   val duration = System.currentTimeMillis() - t1
 
   /** *************************************************** Functions ***********************************************************************/
 
-  def consolidate(modelHashMap: util.HashMap[String, Model]): mutable.HashMap[String, Model] = {
+  def consolidate(): mutable.HashMap[String, Model] = {
 
     println(" consolidation ")
     toStringModelsHashmap2(unpersistModelsMap(TdbOperation.originalDataSet))
 
+    val modelHashMap = TdbOperation.unpersistModelsMap(TdbOperation._toString)
+
     if (modelHashMap == null) return null
     var nb = 0
-
     var modelsHashMap: mutable.HashMap[String, Model] = convertToScalaMap(modelHashMap)
 
 
