@@ -60,7 +60,7 @@ object Scenario_LogOnly extends App{
 
   /** 6. Consolidation **/
   var t_consolidation: Long = System.currentTimeMillis()
-  writeInTdb(consolidate(TdbOperation.unpersistModelsMap(TdbOperation.originalDataSet)), TdbOperation.dataSetConsolidate)
+  writeInTdb(consolidate(), TdbOperation.dataSetConsolidate)
   FileOperation.writeInYAMLFile(timesFilePath, "Consolidation", (System.currentTimeMillis() - t_consolidation).toInt)
   FileOperation.writeInYAMLFile(queriesNumberFilePath, "Consolidation_nbModelsNonConsolidated", ConsolidationParallel.originalModelsNumber)
   FileOperation.writeInYAMLFile(queriesNumberFilePath, "Consolidation_nbModels", ConsolidationParallel.modelsNumber)

@@ -27,14 +27,15 @@ object ConsolidationParallel extends App {
 
   /** *************************************************** Functions ***********************************************************************/
 
-  def consolidate(modelHashMap: util.HashMap[String, Model]): mutable.HashMap[String, Model] = {
+  def consolidate(): mutable.HashMap[String, Model] = {
 
     println(" consolidation ")
     toStringModelsHashmap2(unpersistModelsMap(TdbOperation.originalDataSet))
 
+    val modelHashMap = TdbOperation.unpersistModelsMap(TdbOperation._toString)
+
     if (modelHashMap == null) return null
     var nb = 0
-
     var modelsHashMap: mutable.HashMap[String, Model] = convertToScalaMap(modelHashMap)
 
 
