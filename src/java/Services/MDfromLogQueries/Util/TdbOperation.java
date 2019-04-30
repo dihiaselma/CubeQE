@@ -27,13 +27,16 @@ public class TdbOperation {
     public static void main(String... argv) {
         new TdbOperation();
 
-        HashMap<String,Model> modelHashMap = unpersistNumberOfModelsMap(dataSetAnnotated,2);
+        HashMap<String,Model> modelHashMap = unpersistNumberOfModelsMap(originalDataSet,30);
         Iterator<String> kies = modelHashMap.keySet().iterator();
         while (kies.hasNext())
         {
             String key = kies.next();
+            System.out.println(key);
+            System.out.println(modelHashMap.get(key));
           //  ModelUtil.modelToJSON(modelHashMap.get(key),key);
-            System.out.println(ModelUtil.modelToJSON(modelHashMap.get(key),key).toJSONString());
+            //System.out.println(ModelUtil.modelToJSON(modelHashMap.get(key),key).toJSONString());
+
         }
 
     }

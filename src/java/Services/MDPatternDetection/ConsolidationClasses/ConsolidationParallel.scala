@@ -23,6 +23,7 @@ object ConsolidationParallel extends App {
    val modelsAnnotated = MDGraphAnnotated.constructMDGraphs(modelsConsolidated)
    writeInTdb(convertToScalaMap(modelsAnnotated), TdbOperation.dataSetAnnotated)*/
 
+  writeInTdb(consolidate(),TdbOperation.dataSetConsolidate)
   val duration = System.currentTimeMillis() - t1
 
   /** *************************************************** Functions ***********************************************************************/

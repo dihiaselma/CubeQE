@@ -10,7 +10,8 @@
     #chartdiv {
         width: 100%;
         max-width: 100%;
-        height:400px;
+        height:500px;
+        background-color: white;
     }
 </style>
 
@@ -58,6 +59,28 @@
                 {
                     name : 'Birthdate', value : 10
                 }]
+        },{
+            name: 'Employee',
+            children: [{
+                name: 'Address', value: 10,
+                children: [{
+                    name: 'City', value: 10,
+                    children : [{
+                        name : 'Country', value : 10
+                    }]
+                }]
+            },
+                {
+                    name : 'Employment', value : 10,
+                    children : [
+                        {
+                            name : 'Enterprise' , value : 10
+                        }
+                    ]
+                },
+                {
+                    name : 'Birthdate', value : 10
+                }]
         }, {
             name: 'Sales',
             children: [{
@@ -83,6 +106,46 @@
                 }]
             }, {
                 name: 'Shop',
+                children: [{
+                    name: 'Address', value: 10,
+                    children: [{
+                        name: 'City', value: 10,
+                        children : [{
+                            name : 'Country', value : 10
+                        }]
+                    }]
+                }]
+            }, {
+                name: 'Product',
+                children: [{
+                    name: 'Category', value: 10
+                }]
+            }]
+        },{
+            name: 'Production',
+            children: [{
+                name: 'Supplier',
+                children: [{
+                    name: 'Category', value: 10
+                }]
+            }, {
+                name: 'Date',
+                children: [{
+                    name: 'Day', value: 10,
+                    children : [{
+                        name : 'Month', value : 10,
+                        children : [
+                            {
+                                name : 'Year', value : 10
+                            },
+                            {
+                                name : 'Season', value : 10
+                            }
+                        ]
+                    }]
+                }]
+            }, {
+                name: 'Factory',
                 children: [{
                     name: 'Address', value: 10,
                     children: [{
