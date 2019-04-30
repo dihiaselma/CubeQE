@@ -16,82 +16,80 @@ import static Services.MDfromLogQueries.Declarations.Declarations.*;
 
 public class Controller {
 
-    private Map<String, Object> times= FileOperation.loadYamlFile(timesFilePathTest);
+    private Map<String, Object> times = FileOperation.loadYamlFile(timesFilePathTest);
     private Map<String, Object> queriesNumbers = FileOperation.loadYamlFile(queriesNumberFilePathTest);
 
 
     @RequestMapping("/index")
-    public String pageAccueil(Model model){
+    public String pageAccueil(Model model) {
 
-        String error ="";
+        String error = "";
 
-        model.addAttribute("error",error);
+        model.addAttribute("error", error);
         return "index2";
     }
 
     @RequestMapping("/beforeGraphs")
-    public String beforeGraphs(Model model){
+    public String beforeGraphs(Model model) {
 
-        String error ="";
+        String error = "";
 
-        model.addAttribute("error",error);
+        model.addAttribute("error", error);
         return "subjectsBlocks";
     }
 
     @RequestMapping("/chooseScenario")
-    public String chooseScnerio(Model model){
+    public String chooseScnerio(Model model) {
 
-        String error ="";
+        String error = "";
 
-        model.addAttribute("error",error);
+        model.addAttribute("error", error);
         return "chooseScenario";
     }
 
 
-
     @RequestMapping("/cleaning")
-    public String Cleaning(Model model){
+    public String Cleaning(Model model) {
 
-        String error ="";
+        String error = "";
 
         model.addAttribute("timesMap", times);
 
         model.addAttribute("queriesNumbersMap", queriesNumbers);
 
-        model.addAttribute("error",error);
+        model.addAttribute("error", error);
         return "cleaning";
     }
 
     @RequestMapping("/execution")
-    public String executing(Model model){
+    public String executing(Model model) {
 
-        String error ="";
+        String error = "";
 
         model.addAttribute("timesMap", times);
 
         model.addAttribute("queriesNumbersMap", queriesNumbers);
 
-        model.addAttribute("error",error);
+        model.addAttribute("error", error);
         return "execution";
     }
 
     @RequestMapping("/testTree")
-    public String pageTree(Model model){
+    public String pageTree(Model model) {
         Set<JSONObject> models = new HashSet<>();
         JSONArray jsonArray = new JSONArray();
 
-        HashMap<String, org.apache.jena.rdf.model.Model> modelHashMap = TdbOperation.unpersistNumberOfModelsMap(TdbOperation.dataSetAnnotated,10);
+        HashMap<String, org.apache.jena.rdf.model.Model> modelHashMap = TdbOperation.unpersistNumberOfModelsMap(TdbOperation.dataSetAnnotated, 10);
         Iterator<String> kies = modelHashMap.keySet().iterator();
-        while (kies.hasNext())
-        {
+        while (kies.hasNext()) {
             String key = kies.next();
-            if (modelHashMap.get(key).size()<100)
-                jsonArray.add(ModelUtil.modelToJSON(modelHashMap.get(key),key));
+            if (modelHashMap.get(key).size() < 100)
+                jsonArray.add(ModelUtil.modelToJSON(modelHashMap.get(key), key));
         }
-        String erreur ="";
+        String erreur = "";
         System.out.println(jsonArray.toJSONString());
-        model.addAttribute("models",jsonArray);
-        model.addAttribute("erreur",erreur);
+        model.addAttribute("models", jsonArray);
+        model.addAttribute("erreur", erreur);
         return "MDGraph";
     }
 
@@ -128,12 +126,12 @@ public class Controller {
                 jsonArray = new JSONArray();
             }
 
+        }
 
 
         model.addAttribute("subjects", jsonArrayGlobal.toJSONString());
         model.addAttribute("error", error);
         return "subjectsBlocks";
     }
-
 
 }
