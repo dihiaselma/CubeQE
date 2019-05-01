@@ -14,10 +14,10 @@
     <meta charset="UTF-8">
     <title>Menu</title>
 </head>
-<body>
+<body  >
 <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
-    <section class="sidebar">
+    <section class="sidebar-collapse">
 
 
         <!-- /.search form -->
