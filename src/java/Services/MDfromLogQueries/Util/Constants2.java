@@ -35,6 +35,8 @@ public class Constants2 {
     private static OntModel addedPropertiesOntology = ModelFactory.createOntologyModel();
     private static String ontologyPath;
     private static String defaultOntologiesDirectory = defaultOntologiesDir;
+    private static XSDMeasure_Types xsdMeasure_types = new XSDMeasure_Types();
+    private static Datatype_Types datatype_types = new Datatype_Types();
 
     //TODO a changer pour le test d'autres endpoints (mettre en entrée)
     private static String endpoint = "https://dbpedia.org/sparql";

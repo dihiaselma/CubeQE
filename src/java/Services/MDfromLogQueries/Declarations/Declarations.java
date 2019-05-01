@@ -2,11 +2,11 @@ package Services.MDfromLogQueries.Declarations;
 
 public class Declarations {
 
-    public static String endpoint;
-   // public static String root = "C:\\Users\\KamilaB\\Desktop\\3CS\\Prototypage\\Step_1\\endpoints\\"+endpoint+"\\Support_Files\\";
-    //public static String root2 = "C:\\Users\\KamilaB\\Desktop\\3CS\\Prototypage\\Step_1\\endpoints\\"+endpoint+"\\Support_Files\\TdbDirectories\\";
-    public static String root = "C:\\Users\\pc\\Desktop\\PFE\\Files\\" + endpoint+"\\" ;
-    public static String root2 = "E:\\TdbDirectories\\" + endpoint +"\\";
+    public static String endpoint= "DogFood";
+    public static String root = "C:\\Users\\KamilaB\\Desktop\\3CS\\Prototypage\\Step_1\\endpoints\\"+endpoint+"\\Support_Files\\";
+    public static String root2 = "C:\\Users\\KamilaB\\Desktop\\3CS\\Prototypage\\Step_1\\endpoints\\"+endpoint+"\\Support_Files\\TdbDirectories\\";
+   // public static String root = "C:\\Users\\pc\\Desktop\\PFE\\Files\\" + endpoint+"\\" ;
+    //public static String root2 = "E:\\TdbDirectories\\" + endpoint +"\\";
 
     public static String rootScenarioAnalytic = "Analytic\\";
     public static String statististicsRoot = "Statistics\\";
@@ -57,7 +57,7 @@ public class Declarations {
 
     /** Triple databases directories **/
     public static String tdbDirectory = root2+"tdbDirectory";
-    public static String originalTdbDirectory = root2+"originalTdbDirectory";
+    public static String dataSetOriginal = root2+"originalTdbDirectory";
     public static String dataSetConsolidated = root2+"originalTdbDirConsolidated";
     public static String dataSetAnnotated = root2+"tdbDirectoryAnnotated";
     public static String _toString = root2+"_toString";

@@ -9,7 +9,7 @@ import java.util.HashSet;
 
 public class Datatype_Types {
 
-    public static HashSet<Resource> types;
+    public static HashSet<Resource> types =  new HashSet<>();
 
     public Datatype_Types() {
         types.add(RDF.langString);

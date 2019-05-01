@@ -94,8 +94,13 @@ public class MDGraphAnnotated {
                             default: {
                                 //TODO Ajouter ce cas là
                                 //   if (constantsUtil.askDatatypePropEndpoint(property, "https://dbpedia.org/sparql") || statement.getObject().asNode().getURI().matches("http://www.w3.org/2000/01/rdf-schema#Literal")) {
-                                if (statement.getObject().asNode().getURI().equals(RDFS.Literal) || statement.getObject().asResource().getNameSpace().matches(XSD.getURI()) || Datatype_Types.types.contains(statement.getObject().asResource())) {
-                                    statement.getObject().asResource().addProperty(RDF.type, Annotations.FACTATTRIBUTE.toString());
+                                if (statement.getObject().equals(RDFS.Literal) ||
+                                        statement.getObject().asResource().getNameSpace().matches(XSD.getURI()) ||
+                                        Datatype_Types.types.contains(statement.getObject().asResource())) {
+                                     if(XSDMeasure_Types.types.contains(statement.getObject().asResource()))
+                                         statement.getObject().asResource().addProperty(RDF.type, Annotations.MEASURE.toString());
+                                     else
+                                         statement.getObject().asResource().addProperty(RDF.type, Annotations.FACTATTRIBUTE.toString());
                                 } else {
                                     //TODO sinon il faut demander au endpoint si c fonctionnel
                                     statement.getObject().asResource().addProperty(RDF.type, Annotations.NONFUNCTIONALDIMENSION.toString());

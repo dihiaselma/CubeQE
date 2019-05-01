@@ -107,6 +107,7 @@ public class Controller {
 
         JSONArray jsonArray = new JSONArray();
 
+        System.out.println("je rentre ici");
          org.apache.jena.rdf.model.Model graphModel = TdbOperation.dataSetAnnotated.getNamedModel(uri);
 
          if (graphModel.size() < 100) jsonArray.add(ModelUtil.modelToJSON(graphModel, uri));
@@ -132,7 +133,7 @@ public class Controller {
 
         int i = 1;
 
-        while (it.hasNext() && i<20){
+        while (it.hasNext() && i<34){
        // while (it.hasNext() ){
             String key = it.next();
             JSONObject jsonObject = new JSONObject();
