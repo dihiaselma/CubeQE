@@ -79,7 +79,7 @@
         bullet1.label.fill = am4core.color("#ecf0f5");
 
 
-        bullet1.label.url = "http://localhost:8022/mdGraph.j"; // url de la page
+        bullet1.label.url = "http://localhost:8080/mdGraph.j"; // url de la page
 
         bullet1.label.adapter.add("url", function(url, label) {
             var query = "";
