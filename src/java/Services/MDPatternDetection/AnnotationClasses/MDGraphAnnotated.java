@@ -8,6 +8,7 @@ import org.apache.jena.rdf.model.Property;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.rdf.model.Statement;
 import org.apache.jena.rdf.model.impl.PropertyImpl;
+import org.apache.jena.rdf.model.impl.ResourceImpl;
 import org.apache.jena.vocabulary.RDFS;
 import org.apache.jena.vocabulary.XSD;
 
@@ -73,7 +74,7 @@ public class MDGraphAnnotated {
                                     statement.getObject().asResource().addProperty(annotProperty, Annotations.MEASURE.toString());
 
                                 } else {
-                                    statement.changeObject(statement.getObject().toString() + "FACT");
+                                    statement =  statement.changeObject(new ResourceImpl(statement.getObject().toString() + "FACT"));
                                     statement.getObject().asResource().addProperty(annotProperty, Annotations.FACTATTRIBUTE.toString());
                                 }
                             }
@@ -84,7 +85,6 @@ public class MDGraphAnnotated {
                             }
                             break;
                             default: {
-                                //TODO Ajouter ce cas là
                                 //   if (constantsUtil.askDatatypePropEndpoint(property, "https://dbpedia.org/sparql") || statement.getObject().asNode().getURI().matches("http://www.w3.org/2000/01/rdf-schema#Literal")) {
                                 if (statement.getObject().equals(RDFS.Literal) ||
                                         statement.getObject().asResource().getNameSpace().matches(XSD.getURI()) ||
@@ -92,7 +92,7 @@ public class MDGraphAnnotated {
                                     if (XSDMeasure_Types.types.contains(statement.getObject().asResource()))
                                         statement.getObject().asResource().addProperty(annotProperty, Annotations.MEASURE.toString());
                                     else {
-                                        statement.changeObject(statement.getObject().toString() + "FACT");
+                                        statement =  statement.changeObject(new ResourceImpl(statement.getObject().toString() + "FACT"));
                                         statement.getObject().asResource().addProperty(annotProperty, Annotations.FACTATTRIBUTE.toString());
                                     }
                                 } else {
@@ -130,7 +130,7 @@ public class MDGraphAnnotated {
                     propertyType = constantsUtil.getPropertyType(property);
                     switch (propertyType) {
                         case ("datatypeProperty"): {
-                            statement.changeObject(statement.getObject().toString() + "FACT");
+                            statement =  statement.changeObject(new ResourceImpl(statement.getObject().toString() + "DIMENSION"));
                             statement.getObject().asResource().addProperty(annotProperty, Annotations.DIMENSIONATTRIBUTE.toString());
                         }
                         break;
@@ -146,7 +146,7 @@ public class MDGraphAnnotated {
                             if (statement.getObject().equals(RDFS.Literal) ||
                                     statement.getObject().asResource().getNameSpace().matches(XSD.getURI()) ||
                                     Datatype_Types.types.contains(statement.getObject().asResource())) {
-                                statement.changeObject(statement.getObject().toString() + "FACT");
+                                statement =  statement.changeObject(new ResourceImpl(statement.getObject().toString() + "DIMENSION"));
                                 statement.getObject().asResource().addProperty(annotProperty, Annotations.DIMENSIONATTRIBUTE.toString());
                             } else {
                                 statement.getObject().asResource().addProperty(annotProperty, Annotations.DIMENSIONLEVEL.toString());
