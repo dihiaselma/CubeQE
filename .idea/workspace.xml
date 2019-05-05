@@ -7,9 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="40cced35-abb7-4e08-893e-9148dcd3932a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/java/Controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/Controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Declarations/Declarations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Declarations/Declarations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/pages/beforeGraphs.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/pages/beforeGraphs.jsp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="web/bower_components/" />
@@ -68,39 +67,39 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="1288" />
+          <entry key="java" value="1434" />
           <entry key="js" value="7" />
           <entry key="jsp" value="1376" />
           <entry key="scala" value="619" />
-          <entry key="txt" value="220" />
+          <entry key="txt" value="373" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="1288" />
+          <entry key="JAVA" value="1434" />
           <entry key="JSP" value="1376" />
           <entry key="JavaScript" value="7" />
-          <entry key="PLAIN_TEXT" value="220" />
+          <entry key="PLAIN_TEXT" value="373" />
           <entry key="Scala" value="619" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="html" value="1" />
-          <entry key="java" value="29" />
+          <entry key="java" value="35" />
           <entry key="js" value="1" />
-          <entry key="jsp" value="14" />
-          <entry key="scala" value="11" />
+          <entry key="jsp" value="15" />
+          <entry key="scala" value="12" />
           <entry key="xml" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="HTML" value="1" />
-          <entry key="JAVA" value="29" />
-          <entry key="JSP" value="14" />
+          <entry key="JAVA" value="35" />
+          <entry key="JSP" value="15" />
           <entry key="JavaScript" value="1" />
-          <entry key="Scala" value="11" />
+          <entry key="Scala" value="12" />
           <entry key="XML" value="1" />
         </counts>
       </usages-collector>
@@ -108,15 +107,98 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/java/Services/MDPatternDetection/AnnotationClasses/MDGraphAnnotated.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="112">
+              <caret line="149" selection-start-line="149" selection-end-line="149" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Util/ConstantsUtil.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="184">
+              <caret line="94" column="20" selection-start-line="94" selection-start-column="20" selection-end-line="94" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Declarations/Declarations.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="63" column="50" selection-start-line="63" selection-start-column="50" selection-end-line="63" selection-end-column="65" />
+            <state relative-caret-position="-752">
+              <caret line="4" column="42" selection-start-line="4" selection-start-column="42" selection-end-line="4" selection-end-column="42" />
               <folding>
                 <element signature="e#5618#5619#0" expanded="true" />
                 <element signature="e#5666#5667#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Util/TdbOperation.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1991">
+              <caret line="138" column="41" selection-start-line="138" selection-start-column="41" selection-end-line="138" selection-end-column="41" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/java/Services/MDPatternDetection/ConsolidationClasses/ConsolidationParallel.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1">
+              <caret line="19" column="37" lean-forward="true" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
+              <folding>
+                <element signature="e#58#74#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Util/OntologyFactory.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="414">
+              <caret line="39" selection-start-line="39" selection-end-line="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Util/Constants2.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="106">
+              <caret line="108" selection-start-line="108" selection-end-line="108" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/java/Controller/Controller.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="76">
+              <caret line="109" column="36" selection-start-line="109" selection-start-column="36" selection-end-line="109" selection-end-column="36" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1018#1019#0" expanded="true" />
+                <element signature="e#1060#1061#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/pages/beforeGraphs.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="112">
+              <caret line="88" column="53" selection-start-line="88" selection-start-column="53" selection-end-line="88" selection-end-column="53" />
             </state>
           </provider>
         </entry>
@@ -145,6 +227,10 @@
       <find>afficher</find>
       <find>RDF.type</find>
       <find>hasaff</find>
+      <find>conference</find>
+      <find>#conference</find>
+      <find>system.out</find>
+      <find>DimensionAttr</find>
     </findStrings>
     <replaceStrings>
       <replace>5</replace>
@@ -186,10 +272,10 @@
         <option value="$PROJECT_DIR$/src/java/Services/Scenarios/Scenario_Analytic.scala" />
         <option value="$PROJECT_DIR$/src/java/Services/MDPatternDetection/ConsolidationClasses/ConsolidationParallel.scala" />
         <option value="$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Util/ModelUtil.java" />
-        <option value="$PROJECT_DIR$/src/java/Services/MDPatternDetection/AnnotationClasses/MDGraphAnnotated.java" />
         <option value="$PROJECT_DIR$/web/pages/beforeGraphs.jsp" />
         <option value="$PROJECT_DIR$/src/java/Controller/Controller.java" />
         <option value="$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Declarations/Declarations.java" />
+        <option value="$PROJECT_DIR$/src/java/Services/MDPatternDetection/AnnotationClasses/MDGraphAnnotated.java" />
       </list>
     </option>
   </component>
@@ -375,7 +461,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557053401656" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557069208713" />
     <property name="jsx.switch.disabled" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Declarations" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -716,15 +802,35 @@
       <option name="project" value="LOCAL" />
       <updated>1557051533733</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Merge branch 'master' of https://github.com/SaidouneRouaya/logLinc2&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
+      <created>1557053450262</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1557053450262</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Suppression de la notion de nonFunctionalDimension">
+      <created>1557064553862</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1557064553862</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Réglage du probleme de Litéral qui apparait comme FactAttribute et DImensionAttribute en même temps">
+      <created>1557068263241</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1557068263241</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="93753000" />
+    <option name="totallyTimeSpent" value="100308000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="55" y="-7" width="1488" height="878" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49879518" visible="true" weight="0.21288516" />
       <window_info id="Structure" order="1" sideWeight="0.50120485" side_tool="true" weight="0.21008404" />
@@ -734,11 +840,11 @@
       <window_info id="Favorites" order="5" side_tool="true" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="Web" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Run" order="0" weight="0.88724834" />
+      <window_info active="true" anchor="bottom" id="Run" order="0" visible="true" weight="0.44161072" />
       <window_info anchor="bottom" id="Application Servers" order="1" weight="0.32885906" />
       <window_info anchor="bottom" id="SBT Console" order="2" />
-      <window_info anchor="bottom" id="Spring" order="3" />
-      <window_info anchor="bottom" id="Terminal" order="4" weight="0.32907802" />
+      <window_info anchor="bottom" id="Spring" order="3" weight="0.32885906" />
+      <window_info anchor="bottom" id="Terminal" order="4" weight="0.32885906" />
       <window_info anchor="bottom" id="Event Log" order="5" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="6" weight="0.557047" />
       <window_info anchor="bottom" id="Java Enterprise" order="7" />
@@ -801,7 +907,10 @@
     <MESSAGE value="Modification de l'execution : ajout du timeout" />
     <MESSAGE value="Merge branch 'master' of https://github.com/SaidouneRouaya/logLinc2&#10;&#10;# Conflicts:&#10;#&#9;src/java/Controller/Controller.java" />
     <MESSAGE value="Ajout de l'initialisation de Datatypes et Measure dans la classe Constants2 comme Static (c'est magique :') )" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ajout de l'initialisation de Datatypes et Measure dans la classe Constants2 comme Static (c'est magique :') )" />
+    <MESSAGE value="Merge branch 'master' of https://github.com/SaidouneRouaya/logLinc2&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
+    <MESSAGE value="Suppression de la notion de nonFunctionalDimension" />
+    <MESSAGE value="Réglage du probleme de Litéral qui apparait comme FactAttribute et DImensionAttribute en même temps" />
+    <option name="LAST_COMMIT_MESSAGE" value="Réglage du probleme de Litéral qui apparait comme FactAttribute et DImensionAttribute en même temps" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/java/Services/MDfromLogQueries/SPARQLSyntacticalValidation/QueryFixer.java">
@@ -949,20 +1058,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Util/OntologyFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="39" selection-start-line="39" selection-end-line="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Util/Constants2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="106">
-          <caret line="107" column="18" selection-start-line="107" selection-start-column="18" selection-end-line="107" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/pages/MDGraph.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1264">
@@ -981,13 +1076,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="112">
           <caret line="10" column="58" selection-start-line="10" selection-start-column="58" selection-end-line="10" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Util/ConstantsUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
         </state>
       </provider>
     </entry>
@@ -1033,43 +1121,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/Services/MDPatternDetection/AnnotationClasses/MDGraphAnnotated.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="24" column="89" selection-start-line="24" selection-start-column="89" selection-end-line="24" selection-end-column="89" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/Services/MDPatternDetection/ConsolidationClasses/ConsolidationParallel.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="234" column="21" selection-start-line="234" selection-start-column="21" selection-end-line="234" selection-end-column="21" />
-          <folding>
-            <element signature="e#58#74#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Util/TdbOperation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1775">
-          <caret line="138" column="41" selection-start-line="138" selection-start-column="41" selection-end-line="138" selection-end-column="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/pages/beforeGraphs.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="313">
-          <caret line="88" column="53" selection-start-line="88" selection-start-column="53" selection-end-line="88" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/java/Controller/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="28">
+        <state relative-caret-position="76">
           <caret line="109" column="36" selection-start-line="109" selection-start-column="36" selection-end-line="109" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1079,13 +1133,68 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/web/pages/beforeGraphs.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="88" column="53" selection-start-line="88" selection-start-column="53" selection-end-line="88" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Util/Constants2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="106">
+          <caret line="108" selection-start-line="108" selection-end-line="108" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Util/OntologyFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="39" selection-start-line="39" selection-end-line="39" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Declarations/Declarations.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="63" column="50" selection-start-line="63" selection-start-column="50" selection-end-line="63" selection-end-column="65" />
+        <state relative-caret-position="-752">
+          <caret line="4" column="42" selection-start-line="4" selection-start-column="42" selection-end-line="4" selection-end-column="42" />
           <folding>
             <element signature="e#5618#5619#0" expanded="true" />
             <element signature="e#5666#5667#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Util/ConstantsUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="94" column="20" selection-start-line="94" selection-start-column="20" selection-end-line="94" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/Services/MDPatternDetection/ConsolidationClasses/ConsolidationParallel.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1">
+          <caret line="19" column="37" lean-forward="true" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
+          <folding>
+            <element signature="e#58#74#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/Services/MDPatternDetection/AnnotationClasses/MDGraphAnnotated.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="149" selection-start-line="149" selection-end-line="149" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Util/TdbOperation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1991">
+          <caret line="138" column="41" selection-start-line="138" selection-start-column="41" selection-end-line="138" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
