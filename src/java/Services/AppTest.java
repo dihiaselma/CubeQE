@@ -2,16 +2,12 @@ package Services;
 
 
 
-import Services.MDPatternDetection.ConsolidationClasses.Consolidation;
+import Services.MDPatternDetection.Alleviation.MDGraphsAlleviation;
 import Services.MDfromLogQueries.Util.TdbOperation;
 import com.google.common.base.Stopwatch;
 import org.apache.jena.rdf.model.Model;
-import org.apache.jena.rdf.model.Resource;
-import org.apache.jena.rdf.model.Statement;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 
 import static java.util.concurrent.TimeUnit.MILLISECONDS;
 //TODO delete this class
@@ -23,38 +19,16 @@ public class AppTest {
 
 
         Stopwatch stopwatch_total = Stopwatch.createStarted();
-        //Stopwatch stopwatch_exec = Stopwatch.createStarted();
-        // String endPoint = "https://dbpedia.org/sparql";
-
-        // execution + annotation + persisting
-        //QueryExecutor.executeQuiersInFile2(Declarations.syntaxValidFile, endPoint);
-        //stopwatch_exec.stop();
-
-        HashMap<String, Model> results = TdbOperation.unpersistModelsMap(TdbOperation.originalDataSet);
-        ArrayList<Model> models = (ArrayList<Model>) results.values();
 
 
-        HashMap<String, Model> resultsHashMap = Consolidation.consolidate(models);
-
-        TdbOperation.persistNonAnnotated(resultsHashMap, TdbOperation.dataSetConsolidate);
+        HashMap<String, Model> results = TdbOperation.unpersistModelsMap(TdbOperation.dataSetConsolidate);
 
 
+        System.out.println(" size of results dans le test "+results.size());
+        MDGraphsAlleviation.MDGraphsAlleviate(results);
 
-        HashMap<String, Model> modelHashMap;
-        Stopwatch stopwatch_unpersist = Stopwatch.createStarted();
-        //modelHashMap = TdbOperation.unpersistModelsMap();
-        stopwatch_unpersist.stop();
 
         stopwatch_total.stop();
-
-        Stopwatch stopwatch_stat = Stopwatch.createStarted();
-       /* Statistis1 statistis1 = new Statistis1();
-        statistis1.stat(modelHashMap);*/
-        stopwatch_stat.stop();
-
-        //System.out.println("\nTime elapsed for execution program is \t" + stopwatch_exec.elapsed(MILLISECONDS));
-        System.out.println("\nTime elapsed for unpersist program is \t" + stopwatch_unpersist.elapsed(MILLISECONDS));
-        System.out.println("\nTime elapsed for the statistics program is \t" + stopwatch_stat.elapsed(MILLISECONDS));
         System.out.println("\nTime elapsed for the whole program is \t" + stopwatch_total.elapsed(MILLISECONDS));
 
 
@@ -62,30 +36,6 @@ public class AppTest {
     }
 
 
-    //TODO a enlever après
-
-    public static void afficherModels(ArrayList<Model> results) {
-
-
-        for (Model m : results) {
-            System.out.println("________________________ NEW MODEL ____________________________________\n");
-
-            Iterator<Resource> listSubjects = m.listSubjects();
-
-            while (listSubjects.hasNext()) {
-                Resource sub = listSubjects.next();
-                Iterator<Statement> listProp = sub.listProperties();
-
-                while (listProp.hasNext()) {
-                    System.out.println(" \t\t\t " + listProp.next().toString());
-                }
-
-            }
-            System.out.println("_____________________________ END _______________________________\n");
-        }
-    }
-
-    //TODO a enlever après
 
 
 }
