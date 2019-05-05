@@ -27,7 +27,7 @@ public class TdbOperation {
     public static void main(String... argv) {
         new TdbOperation();
 
-        HashMap<String,Model> modelHashMap = unpersistNumberOfModelsMap(originalDataSet,30);
+        HashMap<String,Model> modelHashMap = unpersistNumberOfModelsMap(dataSetAnnotated,34);
         Iterator<String> kies = modelHashMap.keySet().iterator();
         while (kies.hasNext())
         {

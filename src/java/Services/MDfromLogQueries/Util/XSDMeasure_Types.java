@@ -8,7 +8,7 @@ import java.util.HashSet;
 
 public class XSDMeasure_Types {
 
-    public static HashSet<Resource> types;
+    public static HashSet<Resource> types = new HashSet<>();
 
     public XSDMeasure_Types() {
         types.add(XSD.integer);

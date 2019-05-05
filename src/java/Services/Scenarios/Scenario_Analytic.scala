@@ -9,7 +9,7 @@ import Services.MDfromLogQueries.LogCleaning.LogCleaning
 import Services.MDfromLogQueries.Util.FileOperation
 
 
-class Scenario_Analytic extends App{
+object Scenario_Analytic extends App{
 
   val endpoint = "https://dbpedia.org/sparql"
 
