@@ -21,9 +21,8 @@ import static Services.MDfromLogQueries.Declarations.Declarations.*;
 
 public class Controller {
 
-    private Map<String, Object> times; //= FileOperation.loadYamlFile(timesFilePathTest);
-    private Map<String, Object> queriesNumbers; //= FileOperation.loadYamlFile(queriesNumberFilePathTest);
-    Declarations declarations = new Declarations("dbPedia");
+    private Map<String, Object> times = FileOperation.loadYamlFile(timesFilePathTest);
+    private Map<String, Object> queriesNumbers = FileOperation.loadYamlFile(queriesNumberFilePathTest);
 
     @RequestMapping("/")
     public String redirect(){
@@ -32,8 +31,9 @@ public class Controller {
 
     @RequestMapping("/index")
     public String pageAccueil(Model model) {
-        Declarations.setEndpoint("dbPedia");
+
         String error = "";
+
         model.addAttribute("error", error);
         return "index2";
     }
@@ -79,7 +79,6 @@ public class Controller {
          times = FileOperation.loadYamlFile(timesFilePathTest);
         queriesNumbers = FileOperation.loadYamlFile(queriesNumberFilePathTest);
 
-        System.out.println(Declarations.endpoint+" "+Declarations.root);
         System.out.println(times.get("Deduplication"));
         model.addAttribute("timesMap", times);
 
@@ -106,9 +105,8 @@ public class Controller {
     public String pageTree(Model model,  @RequestParam String uri) {
 
         JSONArray jsonArray = new JSONArray();
+        uri=uri.replace("__", "#");
 
-        System.out.println("je rentre ici");
-        uri = uri.replace("__","#");
          org.apache.jena.rdf.model.Model graphModel = TdbOperation.dataSetAnnotated.getNamedModel(uri);
 
          if (graphModel.size() < 100) jsonArray.add(ModelUtil.modelToJSON(graphModel, uri));
@@ -134,7 +132,7 @@ public class Controller {
 
         int i = 1;
 
-        while (it.hasNext() && i<34){
+        while (it.hasNext() && i<20){
        // while (it.hasNext() ){
             String key = it.next();
             JSONObject jsonObject = new JSONObject();
@@ -143,7 +141,7 @@ public class Controller {
 
             jsonObject.put("name", subject.getLocalName());
 
-            jsonObject.put("id", key.replace("#","__"));
+            jsonObject.put("id", key.replace("#", "__"));
             jsonObject.put("value", 10);
             jsonArray.add(jsonObject);
 
