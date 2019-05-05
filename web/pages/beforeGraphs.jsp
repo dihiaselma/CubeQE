@@ -86,7 +86,7 @@
             var data = label.dataItem;
 
             if (data.dataContext && data.dataContext.name) {
-                query = "?uri=" + data.dataContext.id;
+                query = "?uri=" + data.dataContext.id ;
             }
 
             return url+query;

@@ -105,6 +105,7 @@ public class Controller {
     public String pageTree(Model model,  @RequestParam String uri) {
 
         JSONArray jsonArray = new JSONArray();
+        uri=uri.replace("__", "#");
 
          org.apache.jena.rdf.model.Model graphModel = TdbOperation.dataSetAnnotated.getNamedModel(uri);
 
@@ -140,7 +141,7 @@ public class Controller {
 
             jsonObject.put("name", subject.getLocalName());
 
-            jsonObject.put("id", key);
+            jsonObject.put("id", key.replace("#", "__"));
             jsonObject.put("value", 10);
             jsonArray.add(jsonObject);
 
