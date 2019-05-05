@@ -2,6 +2,7 @@ package Services.MDPatternDetection.ConsolidationClasses
 
 import java.util
 
+import Services.MDPatternDetection.AnnotationClasses.MDGraphAnnotated
 import Services.MDfromLogQueries.Util.TdbOperation
 import org.apache.jena.query.Dataset
 import org.apache.jena.rdf.model._
@@ -23,7 +24,10 @@ object ConsolidationParallel extends App {
    val modelsAnnotated = MDGraphAnnotated.constructMDGraphs(modelsConsolidated)
    writeInTdb(convertToScalaMap(modelsAnnotated), TdbOperation.dataSetAnnotated)*/
 
-  writeInTdb(consolidate(),TdbOperation.dataSetConsolidate)
+  val modelsConsolidated: util.HashMap[String, Model] = TdbOperation.unpersistModelsMap(TdbOperation.dataSetConsolidate)
+  val modelsAnnotated : util.HashMap[String, Model] = MDGraphAnnotated.constructMDGraphs(modelsConsolidated)
+  writeInTdb(convertToScalaMap(modelsAnnotated), TdbOperation.dataSetAnnotated)
+  //writeInTdb(consolidate(),TdbOperation.dataSetConsolidate)
   val duration = System.currentTimeMillis() - t1
 
   /** *************************************************** Functions ***********************************************************************/
@@ -212,7 +216,7 @@ object ConsolidationParallel extends App {
   def writeInTdb(models: mutable.HashMap[String, Model], dataset: Dataset) = {
 
     println(" nombres des models pour persisting " + models.size)
-
+    TDB.sync(dataset)
     models.foreach(m => {
       try {
         if (m != null) {
@@ -228,6 +232,7 @@ object ConsolidationParallel extends App {
         case ex: Exception => ex.printStackTrace()
       }
     })
+    TDB.sync(dataset)
   }
 
   def getModelsofModel(model: Model): mutable.HashMap[String, Model] = {
@@ -249,22 +254,17 @@ object ConsolidationParallel extends App {
   def getModelOfResource(resource: Resource, model: Model, visitedNodes: mutable.HashSet[RDFNode]): Model = {
     val stmtIterator = resource.listProperties
     var internModel = stmtIterator.toModel
-    //System.out.println(" le modele louwel "+resource+" "+internModel);
-    //System.out.println(" modeeelddd "+model);
+
     val list = resource.listProperties.toList
     import scala.collection.JavaConversions._
-    for (statement <- list) { //System.out.println("je rentre ici");
-      //System.out.println(" modeeel "+model);
+    for (statement <- list) {
       val contains = visitedNodes.contains(
         statement.getObject.asResource)
-      //System.out.println("le contains "+contains);
-      if (!contains) { //if (model.getResource(rdfNode.toString()))
+      if (!contains) {
         visitedNodes.add(statement.getObject)
         internModel.add(getModelOfResource(statement.getObject.asResource, internModel, visitedNodes))
       }
       else internModel = internModel.remove(statement)
-      //internModel = internModel.union(getModelOfResource(statement.getObject().asResource(),internModel));
-      //model.add();
     }
     internModel
   }

@@ -108,6 +108,7 @@ public class Controller {
         JSONArray jsonArray = new JSONArray();
 
         System.out.println("je rentre ici");
+        uri = uri.replace("__","#");
          org.apache.jena.rdf.model.Model graphModel = TdbOperation.dataSetAnnotated.getNamedModel(uri);
 
          if (graphModel.size() < 100) jsonArray.add(ModelUtil.modelToJSON(graphModel, uri));
@@ -142,7 +143,7 @@ public class Controller {
 
             jsonObject.put("name", subject.getLocalName());
 
-            jsonObject.put("id", key);
+            jsonObject.put("id", key.replace("#","__"));
             jsonObject.put("value", 10);
             jsonArray.add(jsonObject);
 
