@@ -8,6 +8,7 @@ import org.apache.jena.rdf.model.Property;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.rdf.model.Statement;
 import org.apache.jena.rdf.model.impl.PropertyImpl;
+import org.apache.jena.rdf.model.impl.ResourceImpl;
 import org.apache.jena.vocabulary.RDFS;
 import org.apache.jena.vocabulary.XSD;
 
@@ -47,7 +48,7 @@ public class MDGraphAnnotated {
         //Iterator<Resource> subjects = mdModel.listSubjects();
         ConstantsUtil constantsUtil = new ConstantsUtil();
 
-        if (model.getResource(modelSubject)!= null)
+        if (model.getResource(modelSubject) != null)
             subject = model.getResource(modelSubject);
         else
             subject = model.listSubjects().next();
@@ -73,34 +74,29 @@ public class MDGraphAnnotated {
                                     statement.getObject().asResource().addProperty(annotProperty, Annotations.MEASURE.toString());
 
                                 } else {
+                                    statement =  statement.changeObject(new ResourceImpl(statement.getObject().toString() + "FACT"));
                                     statement.getObject().asResource().addProperty(annotProperty, Annotations.FACTATTRIBUTE.toString());
                                 }
                             }
                             break;
                             case ("objectProperty"): {
-                                //TODO rendre nonFunctionalPrperty ==> Dimension
-                                if (constantsUtil.isFunctionalProperty(property)) {
-                                    statement.getObject().asResource().addProperty(annotProperty, Annotations.DIMENSION.toString());
-                                } else {
-                                    statement.getObject().asResource().addProperty(annotProperty, Annotations.NONFUNCTIONALDIMENSION.toString());
-
-                                }
+                                statement.getObject().asResource().addProperty(annotProperty, Annotations.DIMENSION.toString());
                                 addDimensionLevels(statement.getObject().asResource(), constantsUtil);
                             }
                             break;
                             default: {
-                                //TODO Ajouter ce cas là
                                 //   if (constantsUtil.askDatatypePropEndpoint(property, "https://dbpedia.org/sparql") || statement.getObject().asNode().getURI().matches("http://www.w3.org/2000/01/rdf-schema#Literal")) {
                                 if (statement.getObject().equals(RDFS.Literal) ||
                                         statement.getObject().asResource().getNameSpace().matches(XSD.getURI()) ||
                                         Datatype_Types.types.contains(statement.getObject().asResource())) {
-                                     if(XSDMeasure_Types.types.contains(statement.getObject().asResource()))
-                                         statement.getObject().asResource().addProperty(annotProperty, Annotations.MEASURE.toString());
-                                     else
-                                         statement.getObject().asResource().addProperty(annotProperty, Annotations.FACTATTRIBUTE.toString());
+                                    if (XSDMeasure_Types.types.contains(statement.getObject().asResource()))
+                                        statement.getObject().asResource().addProperty(annotProperty, Annotations.MEASURE.toString());
+                                    else {
+                                        statement =  statement.changeObject(new ResourceImpl(statement.getObject().toString() + "FACT"));
+                                        statement.getObject().asResource().addProperty(annotProperty, Annotations.FACTATTRIBUTE.toString());
+                                    }
                                 } else {
-                                    //TODO sinon il faut demander au endpoint si c fonctionnel
-                                    statement.getObject().asResource().addProperty(annotProperty, Annotations.NONFUNCTIONALDIMENSION.toString());
+                                    statement.getObject().asResource().addProperty(annotProperty, Annotations.DIMENSION.toString());
                                     addDimensionLevels(statement.getObject().asResource(), constantsUtil);
                                 }
                             }
@@ -111,7 +107,6 @@ public class MDGraphAnnotated {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-
 
 
             }
@@ -135,30 +130,26 @@ public class MDGraphAnnotated {
                     propertyType = constantsUtil.getPropertyType(property);
                     switch (propertyType) {
                         case ("datatypeProperty"): {
+                            statement =  statement.changeObject(new ResourceImpl(statement.getObject().toString() + "DIMENSION"));
                             statement.getObject().asResource().addProperty(annotProperty, Annotations.DIMENSIONATTRIBUTE.toString());
                         }
                         break;
                         case ("objectProperty"): {
 
-                            if (constantsUtil.isFunctionalProperty(property)) {
-                                statement.getObject().asResource().addProperty(annotProperty, Annotations.DIMENSIONLEVEL.toString());
-                                statement.getObject().asResource().addProperty(new PropertyImpl(Annotations.PARENTLEVEL.toString()), dimension);
-                            } else {
-                                statement.getObject().asResource().addProperty(annotProperty, Annotations.NONFUNCTIONALDIMENSION.toString());
-                                statement.getObject().asResource().addProperty(new PropertyImpl(Annotations.PARENTLEVEL.toString()), dimension);
-                            }
+                            statement.getObject().asResource().addProperty(annotProperty, Annotations.DIMENSIONLEVEL.toString());
+                            statement.getObject().asResource().addProperty(new PropertyImpl(Annotations.PARENTLEVEL.toString()), dimension);
+
                             addDimensionLevels(statement.getObject().asResource(), constantsUtil);
                         }
                         break;
                         default: {
-                            //TODO Ajouter ce cas là
                             if (statement.getObject().equals(RDFS.Literal) ||
                                     statement.getObject().asResource().getNameSpace().matches(XSD.getURI()) ||
                                     Datatype_Types.types.contains(statement.getObject().asResource())) {
+                                statement =  statement.changeObject(new ResourceImpl(statement.getObject().toString() + "DIMENSION"));
                                 statement.getObject().asResource().addProperty(annotProperty, Annotations.DIMENSIONATTRIBUTE.toString());
                             } else {
-                                //TODO sinon il faut demander au endpoint si c fonctionnel
-                                statement.getObject().asResource().addProperty(annotProperty, Annotations.NONFUNCTIONALDIMENSIONLEVEL.toString());
+                                statement.getObject().asResource().addProperty(annotProperty, Annotations.DIMENSIONLEVEL.toString());
                                 statement.getObject().asResource().addProperty(new PropertyImpl(Annotations.PARENTLEVEL.toString()), dimension);
                             }
                         }
