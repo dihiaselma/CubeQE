@@ -160,7 +160,7 @@ public class TdbOperation {
 
                 Model model = dataset.getNamedModel(name);
 
-                if (name != null && model != null) results.put(name, model);
+                if ( model != null) results.put(name, model);
             }
         } catch (Exception e) {
             e.printStackTrace();
