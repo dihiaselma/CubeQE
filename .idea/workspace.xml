@@ -6,13 +6,8 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="40cced35-abb7-4e08-893e-9148dcd3932a" name="Default Changelist" comment="Ajout de l'initialisation de Datatypes et Measure dans la classe Constants2 comme Static (c'est magique :') )">
+    <list default="true" id="40cced35-abb7-4e08-893e-9148dcd3932a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/Controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/Controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/Services/MDPatternDetection/AnnotationClasses/MDGraphAnnotated.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/Services/MDPatternDetection/AnnotationClasses/MDGraphAnnotated.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/Services/MDPatternDetection/ConsolidationClasses/ConsolidationParallel.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/Services/MDPatternDetection/ConsolidationClasses/ConsolidationParallel.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Util/ModelUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Util/ModelUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/Services/Scenarios/Scenario_Analytic.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/Services/Scenarios/Scenario_Analytic.scala" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="web/bower_components/" />
@@ -455,7 +450,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557051203347" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557052720807" />
     <property name="jsx.switch.disabled" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Declarations" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -647,7 +642,7 @@
       <workItem from="1556527980934" duration="14793000" />
       <workItem from="1556547308102" duration="24275000" />
       <workItem from="1556877901710" duration="13623000" />
-      <workItem from="1557046567731" duration="3146000" />
+      <workItem from="1557046567731" duration="3842000" />
     </task>
     <task id="LOCAL-00001" summary=" jrebvuir">
       <created>1556119963959</created>
@@ -789,15 +784,21 @@
       <option name="project" value="LOCAL" />
       <updated>1556893509262</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Ajout de l'initialisation de Datatypes et Measure dans la classe Constants2 comme Static (c'est magique :') )">
+      <created>1557051533733</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1557051533733</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="92946000" />
+    <option name="totallyTimeSpent" value="93642000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="55" y="-7" width="1488" height="878" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49879518" visible="true" weight="0.21288516" />
       <window_info id="Structure" order="1" sideWeight="0.50120485" side_tool="true" weight="0.21008404" />
