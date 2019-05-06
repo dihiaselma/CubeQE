@@ -67,6 +67,8 @@ public class Declarations {
     public static String _toString = root2+"_toString";
     public static String dataSetAnalytic = root2+"dataSetAnalytic";
     public static String dataSetAnalyticAnnotated = root2+"dataSetAnalyticAnnotated";
+    public static String dataSetAlleviated = root2+"dataSetAlleviated";
+    public static String dataSetNonAlleviated = root2+"dataSetNonAlleviated";
 
     public static String propertiesOntology = root+"ontologies_namespaces\\addedOntology.ttl";
     public static String directoryPathCopie = "C:\\Users\\pc\\Desktop\\PFE\\Files\\DataLog\\test - Copie";
