@@ -1,5 +1,6 @@
 package Services.MDPatternDetection.Alleviation;
 
+import Services.MDfromLogQueries.Util.TdbOperation;
 import org.apache.jena.rdf.model.Model;
 
 import java.util.HashMap;
@@ -8,42 +9,43 @@ import java.util.Map;
 
 public class MDGraphsAlleviation {
 
+ public static int numberModelsAlleviated=0;
+ public static int numberModelsRemoved=0;
 
 
    public static HashMap<String, Model> MDGraphsAlleviate (HashMap<String, Model> hashMapModels){
 
        HashMap<String, Model> MDGraphAlleviated = new HashMap<>();
+       HashMap<String, Model> MDGraphLessThen2 = new HashMap<>();
 
-       int n=0;
-       int i=0;
-
-       try {
-
-           Iterator it = hashMapModels.entrySet().iterator();
-           while (it.hasNext()) {
-
-               Map.Entry<String, Model> pair = (Map.Entry) it.next();
-
-               if (pair.getValue()!= null && pair.getValue().size()  > 2) {
-
-                   n++;
-                   //MDGraphAlleviated.put(pair.getKey(), pair.getValue());
-
-               }
-               else {
-                   i++;
-                   // System.out.println(pair.getValue());
-               }
+        try {
 
 
-           }
+            for (Map.Entry<String, Model> pair : hashMapModels.entrySet()) {
 
-           System.out.println( " le nombre de model >2" +n);
-           System.out.println( " le nombre de model <2" +i);
+                if (pair.getValue() != null && pair.getValue().size() > 2) {
+
+                    MDGraphAlleviated.put(pair.getKey(), pair.getValue());
+
+                } else {
+                    MDGraphLessThen2.put(pair.getKey(), pair.getValue());
+                }
+
+            }
 
        }catch (NullPointerException ignoredException){
 
        }
+
+       // TODO à enlever si y a pas besoin de sauvegarder
+       TdbOperation.persistHashMap(MDGraphAlleviated, TdbOperation.dataSetAlleviated);
+       TdbOperation.persistHashMap(MDGraphLessThen2, TdbOperation.dataSetNonAlleviated);
+
+
+
+       numberModelsAlleviated+=MDGraphAlleviated.size();
+       numberModelsRemoved+=MDGraphLessThen2.size();
+
        return MDGraphAlleviated;
    }
 

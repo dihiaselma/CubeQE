@@ -128,7 +128,7 @@ public class QueryExecutor {
                     // persisting
                     System.out.println("\n le persisting 2 \n");
                     stopwatch_persist2 = Stopwatch.createStarted();
-                    // TdbOperation.persistAnnotatedHashMap(modelHashMap);
+                    // TdbOperation.persistHashMap(modelHashMap);
                     stopwatch_persist2.stop();
                 }
                 lines = allLines.subList(0, cpt);

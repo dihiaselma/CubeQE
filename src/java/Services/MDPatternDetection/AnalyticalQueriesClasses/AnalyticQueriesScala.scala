@@ -66,7 +66,7 @@ object AnalyticQueriesScala extends App{
     var modelHashMapAnnotated = new util.HashMap[String, Model]
     if (modelHashMap != null) modelHashMapAnnotated = MDGraphAnnotated.constructMDGraphs(modelHashMap)
     writeInTdb(ConsolidationParallel.convertToScalaMap(modelHashMapAnnotated),TdbOperation.dataSetAnalyticAnnotated)
-   // TdbOperation.persistAnnotatedHashMap(modelHashMapAnnotated, TdbOperation.dataSetAnalyticAnnotated)
+   // TdbOperation.persistHashMap(modelHashMapAnnotated, TdbOperation.dataSetAnalyticAnnotated)
 
   }
 

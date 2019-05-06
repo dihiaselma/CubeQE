@@ -221,7 +221,7 @@ public class AnalyticQueries {
         if (modelHashMap != null) {
             modelHashMapAnnotated  = MDGraphAnnotated.constructMDGraphs(modelHashMap);
         }
-        TdbOperation.persistAnnotatedHashMap(modelHashMapAnnotated,TdbOperation.dataSetAnalyticAnnotated);
+        TdbOperation.persistHashMap(modelHashMapAnnotated,TdbOperation.dataSetAnalyticAnnotated);
     }
 
 

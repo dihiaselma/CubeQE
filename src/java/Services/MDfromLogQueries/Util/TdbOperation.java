@@ -21,6 +21,8 @@ public class TdbOperation {
     public static Dataset dataSetAnnotated = TDBFactory.createDataset(Declarations.dataSetAnnotated);
     public static Dataset dataSetAnalytic = TDBFactory.createDataset(Declarations.dataSetAnalytic);
     public static Dataset dataSetAnalyticAnnotated = TDBFactory.createDataset(Declarations.dataSetAnalyticAnnotated);
+    public static Dataset dataSetAlleviated = TDBFactory.createDataset(Declarations.dataSetAlleviated);
+    public static Dataset dataSetNonAlleviated = TDBFactory.createDataset(Declarations.dataSetNonAlleviated);
 
 
 
@@ -79,7 +81,10 @@ public class TdbOperation {
                 System.out.println(" next model " + nb);
                 Map.Entry<String, Model> pair = (Map.Entry) it.next();
 
-                if (exists(pair.getKey(), originalDataSetStringModel)) {
+               // if (exists(pair.getKey(), originalDataSetStringModel)) {
+                if (
+                        exists(pair.getKey(), originalDataSetStringModel)) {
+
                     originalDataSetStringModel.getNamedModel(pair.getKey()).add(pair.getValue());
 
                 } else {
@@ -109,11 +114,10 @@ public class TdbOperation {
         }
     }
 
-    public static void persistAnnotatedHashMap(HashMap<String, Model> modelHashMap, Dataset dataset) {
+    public static void persistHashMap(HashMap<String, Model> modelHashMap, Dataset dataset) {
 
 
         try {
-
 
             Iterator it = modelHashMap.entrySet().iterator();
             int nb = 0;

@@ -2,6 +2,7 @@ package Services.Scenarios
 
 import java.util
 
+import Services.MDPatternDetection.Alleviation.MDGraphsAlleviation
 import Services.MDPatternDetection.AnnotationClasses.MDGraphAnnotated
 import Services.MDPatternDetection.ConsolidationClasses.ConsolidationParallel
 import Services.MDPatternDetection.ConsolidationClasses.ConsolidationParallel._
@@ -65,11 +66,21 @@ object Scenario_LogOnly extends App{
   FileOperation.writeInYAMLFile(queriesNumberFilePath, "Consolidation_nbModelsNonConsolidated", ConsolidationParallel.originalModelsNumber)
   FileOperation.writeInYAMLFile(queriesNumberFilePath, "Consolidation_nbModels", ConsolidationParallel.modelsNumber)
 
+  //TODO à deplacer la ou il faut
+  /** n. Alleviation **/
+  var t_alleviation: Long = System.currentTimeMillis()
+  val modelsAlleviated: util.HashMap[String, Model]=MDGraphsAlleviation.MDGraphsAlleviate( TdbOperation.unpersistModelsMap(TdbOperation.dataSetConsolidate))
+  writeInTdb(convertToScalaMap(modelsAlleviated), TdbOperation.dataSetAlleviated)
+  FileOperation.writeInYAMLFile(timesFilePath, "Alleviation", (System.currentTimeMillis() - t_alleviation).toInt)
+  FileOperation.writeInYAMLFile(queriesNumberFilePath, "Alleviation_nbModelsRemoved", MDGraphsAlleviation.numberModelsRemoved)
+  FileOperation.writeInYAMLFile(queriesNumberFilePath, "Alleviation_nbModels", MDGraphsAlleviation.numberModelsAlleviated)
+
+
 
   /** 7. Annotation **/
   var t_annotation: Long = System.currentTimeMillis()
-  val modelsConsolidated: util.HashMap[String, Model] = TdbOperation.unpersistModelsMap(TdbOperation.dataSetConsolidate)
-  val modelsAnnotated : util.HashMap[String, Model] = MDGraphAnnotated.constructMDGraphs(modelsConsolidated)
+  val modelsAlleviate: util.HashMap[String, Model] = TdbOperation.unpersistModelsMap(TdbOperation.dataSetAlleviated)
+  val modelsAnnotated : util.HashMap[String, Model] = MDGraphAnnotated.constructMDGraphs(modelsAlleviate)
   writeInTdb(convertToScalaMap(modelsAnnotated), TdbOperation.dataSetAnnotated)
   FileOperation.writeInYAMLFile(timesFilePath, "Annotation", (System.currentTimeMillis() - t_annotation).toInt)
 

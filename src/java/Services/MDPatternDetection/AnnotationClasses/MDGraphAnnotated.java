@@ -180,7 +180,7 @@ public class MDGraphAnnotated {
         stopwatchannotation.stop();
         System.out.println(" time annotation " + stopwatchannotation);
 
-        TdbOperation.persistAnnotatedHashMap(modelsAnnotated, TdbOperation.dataSetAnnotated);
+        TdbOperation.persistHashMap(modelsAnnotated, TdbOperation.dataSetAnnotated);
 
         stopwatch.stop();
         System.out.println("\n Time elapsed for the program is " + stopwatch.elapsed(SECONDS));
