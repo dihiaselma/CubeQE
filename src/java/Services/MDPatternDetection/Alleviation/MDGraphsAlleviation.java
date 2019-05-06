@@ -1,22 +1,31 @@
 package Services.MDPatternDetection.Alleviation;
 
+import Services.MDPatternDetection.ConsolidationClasses.Consolidation;
+import Services.MDfromLogQueries.Util.BasicProperties;
+import Services.MDfromLogQueries.Util.ModelUtil;
+import Services.MDfromLogQueries.Util.TdbOperation;
 import org.apache.jena.rdf.model.Model;
+import org.apache.jena.rdf.model.Statement;
 
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 public class MDGraphsAlleviation {
-    public static void main(String[] args) {
-        HashMap<String,Model> modelHashMap = TdbOperation.unpersistModelsMap(TdbOperation.originalDataSet);
-        System.out.println("moyenne des tailles avant modification : "+ ModelUtil.averageSize(modelHashMap));
-        HashMap<String,Model> modifiedModels = removeUselessProperties(modelHashMap);
-        Consolidation.afficherListInformations(modifiedModels);
-        System.out.println("moyenne des tailles après modification : "+ ModelUtil.averageSize(modifiedModels));
-        TdbOperation.persistNonAnnotated(modifiedModels,TdbOperation.dataSetAlleviated);
 
- public static int numberModelsAlleviated=0;
- public static int numberModelsRemoved=0;
+    public static int numberModelsAlleviated=0;
+    public static int numberModelsRemoved=0;
+
+    public static void main(String[] args) {
+        HashMap<String, Model> modelHashMap = TdbOperation.unpersistModelsMap(TdbOperation.originalDataSet);
+        System.out.println("moyenne des tailles avant modification : " + ModelUtil.averageSize(modelHashMap));
+        HashMap<String, Model> modifiedModels = removeUselessProperties(modelHashMap);
+        Consolidation.afficherListInformations(modifiedModels);
+        System.out.println("moyenne des tailles après modification : " + ModelUtil.averageSize(modifiedModels));
+        TdbOperation.persistNonAnnotated(modifiedModels, TdbOperation.dataSetAlleviated);
+    }
+
 
 
    public static HashMap<String, Model> MDGraphsAlleviate (HashMap<String, Model> hashMapModels){
