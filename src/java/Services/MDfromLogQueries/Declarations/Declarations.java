@@ -2,13 +2,13 @@ package Services.MDfromLogQueries.Declarations;
 
 public class Declarations {
 
-    public static String endpoint="dbPedia";
-   // public static String root = "C:\\Users\\KamilaB\\Desktop\\3CS\\Prototypage\\Step_1\\endpoints\\"+endpoint+"\\Support_Files\\";
-    //public static String root2 = "C:\\Users\\KamilaB\\Desktop\\3CS\\Prototypage\\Step_1\\endpoints\\"+endpoint+"\\Support_Files\\TdbDirectories\\";
+    public static String endpoint="DogFood";
+    public static String root = "C:\\Users\\KamilaB\\Desktop\\3CS\\Prototypage\\Step_1\\endpoints\\"+endpoint+"\\Support_Files\\";
+    public static String root2 = "C:\\Users\\KamilaB\\Desktop\\3CS\\Prototypage\\Step_1\\endpoints\\"+endpoint+"\\Support_Files\\TdbDirectories\\";
 
 
-    public static String root = "C:\\Users\\pc\\Desktop\\PFE\\Files\\" + endpoint+"\\" ;
-    public static String root2 = "E:\\TdbDirectories\\" + endpoint +"\\";
+   // public static String root = "C:\\Users\\pc\\Desktop\\PFE\\Files\\" + endpoint+"\\" ;
+   // public static String root2 = "E:\\TdbDirectories\\" + endpoint +"\\";
 
 
 
@@ -67,6 +67,7 @@ public class Declarations {
     public static String _toString = root2+"_toString";
     public static String dataSetAnalytic = root2+"dataSetAnalytic";
     public static String dataSetAnalyticAnnotated = root2+"dataSetAnalyticAnnotated";
+    public static String dataSetAlleviated = root2+"dataSetAlleviated";
 
     public static String propertiesOntology = root+"ontologies_namespaces\\addedOntology.ttl";
     public static String directoryPathCopie = "C:\\Users\\pc\\Desktop\\PFE\\Files\\DataLog\\test - Copie";

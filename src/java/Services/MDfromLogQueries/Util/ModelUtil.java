@@ -67,4 +67,16 @@ public class ModelUtil {
         }
         return jsonArray.toJSONString();
     }
+
+    public static Double averageSize(HashMap<String,Model> modelHashMap){
+        Double average = 0.0;
+        int nbModels = modelHashMap.size();
+        Set<String> keySet = modelHashMap.keySet();
+        for (String key : keySet)
+        {
+            average += modelHashMap.get(key).size();
+        }
+        average = average/nbModels;
+        return average;
+    }
 }

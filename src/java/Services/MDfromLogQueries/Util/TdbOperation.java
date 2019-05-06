@@ -1,5 +1,6 @@
 package Services.MDfromLogQueries.Util;
 
+import Services.MDPatternDetection.ConsolidationClasses.Consolidation;
 import Services.MDfromLogQueries.Declarations.Declarations;
 import org.apache.jena.query.Dataset;
 import org.apache.jena.rdf.model.Model;
@@ -21,14 +22,17 @@ public class TdbOperation {
     public static Dataset dataSetAnnotated = TDBFactory.createDataset(Declarations.dataSetAnnotated);
     public static Dataset dataSetAnalytic = TDBFactory.createDataset(Declarations.dataSetAnalytic);
     public static Dataset dataSetAnalyticAnnotated = TDBFactory.createDataset(Declarations.dataSetAnalyticAnnotated);
+    public static Dataset dataSetAlleviated = TDBFactory.createDataset(Declarations.dataSetAlleviated);
 
 
 
     public static void main(String... argv) {
         new TdbOperation();
 
-        HashMap<String,Model> modelHashMap = unpersistNumberOfModelsMap(dataSetAnnotated,34);
-        Iterator<String> kies = modelHashMap.keySet().iterator();
+        HashMap<String,Model> modelHashMap =// unpersistNumberOfModelsMap(originalDataSet,34);
+        unpersistModelsMap(dataSetConsolidate);
+        Consolidation.afficherListInformations(modelHashMap);
+       /* Iterator<String> kies = modelHashMap.keySet().iterator();
         while (kies.hasNext())
         {
             String key = kies.next();
@@ -37,7 +41,7 @@ public class TdbOperation {
              //  ModelUtil.modelToJSON(modelHashMap.get(key),key);
             //System.out.println(ModelUtil.modelToJSON(modelHashMap.get(key),key).toJSONString());
 
-        }
+        }*/
 
     }
 
