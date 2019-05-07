@@ -59,7 +59,16 @@ object Scenario_LogOnly extends App{
   FileOperation.writeInYAMLFile(queriesNumberFilePath, "Execution_nbQueriesExecuted", QueryExecutor.queriesNumber)
   FileOperation.writeInYAMLFile(queriesNumberFilePath, "Execution_nbQueriesNonExecuted", QueryExecutor.queriesLogNumber)
 
-  /** 6. Consolidation **/
+
+  /** 6. Alleviation 1 (Useless properties removement) **/
+  var t_alleviation1: Long = System.currentTimeMillis()
+  val modelsAlleviated_UselessProp: util.HashMap[String, Model]=MDGraphsAlleviation.removeUselessProperties( TdbOperation.unpersistModelsMap(TdbOperation.originalDataSet))
+  writeInTdb(convertToScalaMap(modelsAlleviated_UselessProp), TdbOperation.dataSetAlleviatedUselessProperties)
+  FileOperation.writeInYAMLFile(timesFilePath, "Alleviation_UselessProperties", (System.currentTimeMillis() - t_alleviation1).toInt)
+  FileOperation.writeInYAMLFile(queriesNumberFilePath, "Alleviation_nbStatementsRemoved", MDGraphsAlleviation.numberStatementRemoved)
+
+
+  /** 7. Consolidation **/
   var t_consolidation: Long = System.currentTimeMillis()
   writeInTdb(consolidate(), TdbOperation.dataSetConsolidate)
   FileOperation.writeInYAMLFile(timesFilePath, "Consolidation", (System.currentTimeMillis() - t_consolidation).toInt)
@@ -67,7 +76,7 @@ object Scenario_LogOnly extends App{
   FileOperation.writeInYAMLFile(queriesNumberFilePath, "Consolidation_nbModels", ConsolidationParallel.modelsNumber)
 
   //TODO à deplacer la ou il faut
-  /** n. Alleviation **/
+  /** 8. Alleviation 2  (Small graph removement) **/
   var t_alleviation: Long = System.currentTimeMillis()
   val modelsAlleviated: util.HashMap[String, Model]=MDGraphsAlleviation.MDGraphsAlleviate( TdbOperation.unpersistModelsMap(TdbOperation.dataSetConsolidate))
   writeInTdb(convertToScalaMap(modelsAlleviated), TdbOperation.dataSetAlleviated)
@@ -77,7 +86,7 @@ object Scenario_LogOnly extends App{
 
 
 
-  /** 7. Annotation **/
+  /** 9. Annotation **/
   var t_annotation: Long = System.currentTimeMillis()
   val modelsAlleviate: util.HashMap[String, Model] = TdbOperation.unpersistModelsMap(TdbOperation.dataSetAlleviated)
   val modelsAnnotated : util.HashMap[String, Model] = MDGraphAnnotated.constructMDGraphs(modelsAlleviate)
@@ -85,7 +94,7 @@ object Scenario_LogOnly extends App{
   FileOperation.writeInYAMLFile(timesFilePath, "Annotation", (System.currentTimeMillis() - t_annotation).toInt)
 
 
-  /** 8. Statistique **/
+  /** 10. Statistique **/
   var t_statistics: Long = System.currentTimeMillis()
   statisticsBySubjectList(subjects)
   FileOperation.writeInYAMLFile(timesFilePath, "Statistics", (System.currentTimeMillis() - t_statistics).toInt)

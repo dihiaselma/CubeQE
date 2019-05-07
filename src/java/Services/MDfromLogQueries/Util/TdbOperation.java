@@ -22,6 +22,7 @@ public class TdbOperation {
     public static Dataset dataSetAnalytic = TDBFactory.createDataset(Declarations.dataSetAnalytic);
     public static Dataset dataSetAnalyticAnnotated = TDBFactory.createDataset(Declarations.dataSetAnalyticAnnotated);
     public static Dataset dataSetAlleviated = TDBFactory.createDataset(Declarations.dataSetAlleviated);
+    public static Dataset dataSetAlleviatedUselessProperties = TDBFactory.createDataset(Declarations.dataSetAlleviatedUselessProperties);
     public static Dataset dataSetNonAlleviated = TDBFactory.createDataset(Declarations.dataSetNonAlleviated);
 
 
@@ -29,7 +30,8 @@ public class TdbOperation {
     public static void main(String... argv) {
         new TdbOperation();
 
-        HashMap<String,Model> modelHashMap = unpersistNumberOfModelsMap(dataSetAnnotated,34);
+        //HashMap<String,Model> modelHashMap = unpersistNumberOfModelsMap(dataSetAlleviated,34);
+        HashMap<String,Model> modelHashMap = unpersistModelsMap(dataSetAlleviated);
         Iterator<String> kies = modelHashMap.keySet().iterator();
         while (kies.hasNext())
         {
@@ -91,6 +93,7 @@ public class TdbOperation {
                     originalDataSetStringModel.addNamedModel(pair.getKey(), pair.getValue());
                 }
             }
+            TDB.sync(originalDataSetStringModel);
 
         } catch (Exception e) {
             e.printStackTrace();
