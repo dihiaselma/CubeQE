@@ -1,200 +1,97 @@
 package Services.MDfromLogQueries.Declarations;
 
 
+import java.util.HashMap;
+
 public class Declarations {
 
     public static String endpoint;
+    public static HashMap<String,String> paths = new HashMap<>();
     // public static String root = "C:\\Users\\KamilaB\\Desktop\\3CS\\Prototypage\\Step_1\\endpoints\\"+endpoint+"\\Support_Files\\";
     //public static String root2 = "C:\\Users\\KamilaB\\Desktop\\3CS\\Prototypage\\Step_1\\endpoints\\"+endpoint+"\\Support_Files\\TdbDirectories\\";
 
 
     public static String root;
-    public static String root2;
+    public static String rootTdb;
 
 
     public static String rootScenarioAnalytic = "Analytic\\";
     public static String statististicsRoot = "Statistics\\";
 
 
-    /**
-     * Queries log Path
-     **/
-    public static String directoryPath;
-
-    /**
-     * Step 1 : Log Cleaning
-     **/
-    public static String cleanedQueriesFile;
-    public static String cleanedQueriesFileCopie;
-    public static String notCleanedQueries;
-
-
-    /**
-     * Step 2 : Queries deduplication
-     **/
-    public static String writingDedupFilePath;
-
-
-    /**
-     * Step 3 : Syntactical Validation
-     **/
-    public static String syntaxValidFile;
-    public static String syntaxValidFile2;
-    public static String syntaxNonValidFile;
-    public static String syntaxNonValidFile2;
-
-
-    /**
-     * Step 4 : Add rdf:type variables and transform queries to Construct
-     **/
-    public static String logFile;
-    public static String constructQueriesFile;
-    public static String constructQueriesFile2;
-    public static String constructLogFileParallel;
-    public static String constructLogFile;
-
-    /**
-     * Step 5 : Execution of queries
-     **/
-    public static String executionLogFile;
-
-
-    /**
-     * Resulting models statistics
-     **/
-    public static String statisticsFile;
-    public static String minstatisticsFile;
-    public static String maxstatisticsFile;
-    public static String avgstatisticsFile;
-    public static String totalstatisticsFile;
-    public static String statisticsAnalyticFactFile;
-    public static String statisticsAnalyticDimFile;
-
-    /**
-     * Default ontologies directory
-     **/
-    public static String defaultOntologiesDir;
-
-    /**
-     * Triple databases directories
-     **/
-    public static String tdbDirectory;
-    public static String dataSetOriginal;
-    public static String dataSetConsolidated;
-    public static String dataSetAnnotated;
-    public static String _toString;
-    public static String dataSetAnalytic;
-    public static String dataSetAnalyticAnnotated;
-    public static String dataSetAlleviated;
-    public static String dataSetNonAlleviated;
-    public static String dataSetAlleviatedUselessProperties;
-
-    public static String propertiesOntology;
-    public static String directoryPathCopie;
-    public static String writingFilePath;
-    public static String writingFilePathCopie;
-    public static String modelsFilePath;
-    public static String syntaxValidFileTest;
-
-
-    /**
-     * Scénario 2 : Analytic Queries
-     **/
-    public static String AggregQueriesFile;
-    public static String AnalyticQueriesFile;
-    public static String AnalyticSelectQueriesFile;
-    public static String SelectQueriesAndResult;
-
-    /**
-     * Execution time of programs
-     **/
-    public static String timesFilePath;
-    public static String timesFilePathTest;
-    public static String queriesNumberFilePath;
-    public static String queriesNumberFilePathTest;
-    // public static String test = root + "ProgramOutput\\fich.json";
-
-
     public static void setEndpoint(String endpoint) {
         Declarations.endpoint = endpoint;
-
-        root = "C:\\Users\\pc\\Desktop\\PFE\\Files\\" + endpoint + "\\";
-        root2 = "E:\\TdbDirectories\\" + endpoint + "\\";
-
+        root = "C:\\Users\\KamilaB\\Desktop\\3CS\\Prototypage\\Step_1\\endpoints\\"+endpoint+"\\Support_Files\\";
+        rootTdb = "C:\\Users\\KamilaB\\Desktop\\3CS\\Prototypage\\Step_1\\endpoints\\"+endpoint+"\\Support_Files\\TdbDirectories\\";
 
         /* Queries log Path **/
-        directoryPath = root + "Data Log\\logs";
+        paths.put("directoryPath",root+ "Data Log\\logs");
 
         /* Step 1 : Log Cleaning **/
-        cleanedQueriesFile = root + "ProgramOutput\\Fichier_log_Nettoye_Complet_Parallel.txt";
-        cleanedQueriesFileCopie = root + "ProgramOutput\\Fichier_log_Nettoye_Complet_Parallel_Scala_Copie.txt";
-        notCleanedQueries = root + "ProgramOutput\\not_Cleaned_Queries_File.txt";
-
+        paths.put("cleanedQueriesFile",root + "ProgramOutput\\Fichier_log_Nettoye_Complet_Parallel.txt");
+        paths.put("cleanedQueriesFileCopie",root + "ProgramOutput\\Fichier_log_Nettoye_Complet_Parallel_Scala_Copie.txt");
+        paths.put("notCleanedQueries",root + "ProgramOutput\\not_Cleaned_Queries_File.txt");
 
         /* Step 2 : Queries deduplication **/
-        writingDedupFilePath = root + "ProgramOutput\\Fichier_log_dedup_Nettoye_java.txt";
-
+        paths.put("writingDedupFilePath",root + "ProgramOutput\\Fichier_log_dedup_Nettoye_java.txt");
 
         /* Step 3 : Syntactical Validation **/
-        syntaxValidFile = root + "ProgramOutput\\Fichier_Syntaxe_Valide.txt";
-        syntaxValidFile2 = root + "ProgramOutput\\Fichier_Syntaxe_Valide_scala.txt";
-        syntaxNonValidFile = root + "ProgramOutput\\Fichier_Syntaxe_Non_Valide.txt";
-        syntaxNonValidFile2 = root + "ProgramOutput\\Fichier_Syntaxe_Non_Valide_scala.txt";
-
+        paths.put("syntaxValidFile",root + "ProgramOutput\\Fichier_Syntaxe_Valide.txt");
+        paths.put("syntaxValidFile2",root + "ProgramOutput\\Fichier_Syntaxe_Valide_scala.txt");
+        paths.put("syntaxNonValidFile",root + "ProgramOutput\\Fichier_Syntaxe_Non_Valide.txt");
+        paths.put("syntaxNonValidFile2",root + "ProgramOutput\\Fichier_Syntaxe_Non_Valide_scala.txt");
 
         /* Step 4 : Add rdf:type variables and transform queries to Construct **/
-        logFile = root + "ProgramOutput\\Fichier_log.txt";
-        constructQueriesFile = root + "ProgramOutput\\Fichier_Construct_Queries.txt";
-        constructQueriesFile2 = root + "ProgramOutput\\Fichier_Construct_Queries_scala.txt";
-        constructLogFileParallel = root + "ProgramOutput\\Fichier_log_Constuct_scala.txt";
-        constructLogFile = root + "ProgramOutput\\Fichier_log_construct_java.txt";
+        paths.put("logFile",root + "ProgramOutput\\Fichier_log.txt");
+        paths.put("constructQueriesFile",root + "ProgramOutput\\Fichier_Construct_Queries.txt");
+        paths.put("constructQueriesFile2",root + "ProgramOutput\\Fichier_Construct_Queries_scala.txt");
+        paths.put("constructLogFileParallel",root + "ProgramOutput\\Fichier_log_Constuct_scala.txt");
+        paths.put("constructLogFile",root + "ProgramOutput\\Fichier_log_construct_java.txt");
 
         /* Step 5 : Execution of queries **/
-        executionLogFile = root + "ProgramOutput\\Fichier_not_Executed_queries.txt";
+        paths.put("executionLogFile",root + "ProgramOutput\\Fichier_not_Executed_queries.txt");
 
 
         /* Resulting models statistics **/
-        statisticsFile = root + statististicsRoot + "Fichier_statistique.txt";
-        minstatisticsFile = root + statististicsRoot + "Fichier_statistique_min.txt";
-        maxstatisticsFile = root + statististicsRoot + "Fichier_statistique_max.txt";
-        avgstatisticsFile = root + statististicsRoot + "Fichier_statistique_avg.txt";
-        totalstatisticsFile = root + statististicsRoot + "Fichier_statistique_total.txt";
-        statisticsAnalyticFactFile = root + statististicsRoot + "Fichier_statistique_Analytique_Fact.txt";
-        statisticsAnalyticDimFile = root + statististicsRoot + "Fichier_statistique_Analytique_Dimension.txt";
+        paths.put("statisticsFile",root + statististicsRoot + "Fichier_statistique.txt");
+        paths.put("minstatisticsFile",root + statististicsRoot + "Fichier_statistique_min.txt");
+        paths.put("maxstatisticsFile ",root + statististicsRoot + "Fichier_statistique_max.txt");
+        paths.put("avgstatisticsFile",root + statististicsRoot + "Fichier_statistique_avg.txt");
+        paths.put("totalstatisticsFile",root + statististicsRoot + "Fichier_statistique_total.txt");
+        paths.put("statisticsAnalyticFactFile",root + statististicsRoot + "Fichier_statistique_Analytique_Fact.txt");
+        paths.put("statisticsAnalyticDimFile",root + statististicsRoot + "Fichier_statistique_Analytique_Dimension.txt");
 
         /* Default ontologies directory **/
-        defaultOntologiesDir = root + "Ontologies";
+        paths.put("defaultOntologiesDir",root + "Ontologies");
+        paths.put("propertiesOntology",root + "ontologies_namespaces\\addedOntology.ttl");
+
+
 
         /* Triple databases directories **/
-        tdbDirectory = root2 + "tdbDirectory";
-        dataSetOriginal = root2 + "dataSetOriginal";
-        dataSetConsolidated = root2 + "dataSetConsolidated";
-        dataSetAnnotated = root2 + "dataSetAnnotated";
-        _toString = root2 + "_toString";
-        dataSetAnalytic = root2 + "dataSetAnalytic";
-        dataSetAnalyticAnnotated = root2 + "dataSetAnalyticAnnotated";
-        dataSetAlleviated = root2 + "dataSetAlleviated";
-        dataSetNonAlleviated = root2 + "dataSetNonAlleviated";
-        dataSetAlleviatedUselessProperties = root2+"dataSetAlleviatedUselessProperties";
+        paths.put("tdbDirectory", rootTdb + "tdbDirectory");
+        paths.put("dataSetOriginal", rootTdb + "dataSetOriginal");
+        paths.put("dataSetConsolidated", rootTdb + "dataSetConsolidated");
+        paths.put("dataSetAnnotated", rootTdb + "dataSetAnnotated");
+        paths.put("_toString", rootTdb + "_toString");
+        paths.put("dataSetAnalytic", rootTdb + "dataSetAnalytic");
+        paths.put("dataSetAnalyticAnnotated", rootTdb + "dataSetAnalyticAnnotated");
+        paths.put("dataSetAlleviated", rootTdb + "dataSetAlleviated");
+        paths.put("dataSetNonAlleviated", rootTdb + "dataSetNonAlleviated");
+        paths.put("dataSetAlleviatedUselessProperties", rootTdb + "dataSetAlleviatedUselessProperties");
 
-        propertiesOntology = root + "ontologies_namespaces\\addedOntology.ttl";
-        directoryPathCopie = "C:\\Users\\pc\\Desktop\\PFE\\Files\\DataLog\\test - Copie";
-        writingFilePath = root + "ProgramOutput\\Fichier_log_Nettoye_Complet_Parallel_test.txt";
-        writingFilePathCopie = root + "ProgramOutput\\Fichier_log_Nettoye_Complet_Parallel_Java_Copie.txt";
-        modelsFilePath = root + "ProgramOutput\\Fichier_models.rdf";
-        syntaxValidFileTest = root + "ProgramOutput\\Fichier_Syntaxe_Valide_Test.txt";
 
         /* Scénario 2 : Analytic Queries **/
-        AggregQueriesFile = root + rootScenarioAnalytic + "ProgramOutput\\Fichier_Analytic_Queries.txt";
-        AnalyticQueriesFile = root + rootScenarioAnalytic + "ProgramOutput\\Fichier_Analytic_Queries2.txt";
-        AnalyticSelectQueriesFile = root + rootScenarioAnalytic + "ProgramOutput\\Fichier_Analytic_Select_Queries.txt";
-        SelectQueriesAndResult = root + rootScenarioAnalytic + "ProgramOutput\\Fichier_Analytic_Select_Queries_Results.txt";
+        paths.put("AggregQueriesFile",root + rootScenarioAnalytic + "ProgramOutput\\Fichier_Analytic_Queries.txt");
+        paths.put("AnalyticQueriesFile",root + rootScenarioAnalytic + "ProgramOutput\\Fichier_Analytic_Queries2.txt");
+        paths.put("AnalyticSelectQueriesFile",root + rootScenarioAnalytic + "ProgramOutput\\Fichier_Analytic_Select_Queries.txt");
+        paths.put("SelectQueriesAndResult",root + rootScenarioAnalytic + "ProgramOutput\\Fichier_Analytic_Select_Queries_Results.txt");
+
 
         /* Execution time of programs **/
-        timesFilePath = root + "ProgramOutput\\Fichier_Temps.yaml";
-        timesFilePathTest = root + "ProgramOutput\\Fichier_TempsTest.yaml";
-        queriesNumberFilePath = root + "ProgramOutput\\Fichier_queriesNumber.yaml";
-        queriesNumberFilePathTest = root + "ProgramOutput\\Fichier_queriesNumberTest.yaml";
+        paths.put("timesFilePath",root + "ProgramOutput\\Fichier_Temps.yaml");
+        paths.put("timesFilePathTest",root + "ProgramOutput\\Fichier_TempsTest.yaml");
+        paths.put("queriesNumberFilePath",root + "ProgramOutput\\Fichier_queriesNumber.yaml");
+        paths.put("queriesNumberFilePathTest",root + "ProgramOutput\\Fichier_queriesNumberTest.yaml");
 
     }
 

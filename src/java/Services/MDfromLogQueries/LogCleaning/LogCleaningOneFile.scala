@@ -19,10 +19,10 @@ object LogCleaningOneFile extends App {
   print("je suis dans log cleaning")
 
   /* Directory that coontains the log files 's Path */
-  val directoryPath = Declarations.directoryPath
+  val directoryPath = Declarations.paths.get("directoryPath")
 
   /* Result (cleaned queries)'s file path */
-  val destinationfilePath = Declarations.cleanedQueriesFileCopie
+  val destinationfilePath = Declarations.paths.get("cleanedQueriesFileCopie")
   val duration = System.currentTimeMillis() - t1
   val dir = new File(directoryPath)
   /* Regex on wich is based the algorithm to extract the queries */
@@ -61,7 +61,7 @@ object LogCleaningOneFile extends App {
         nb_queries = nb_queries + nb_req
         val (correct, errors) = treatedGroupOfLines.partition(_.isRight)
         writeInFile(destinationfilePath, correct.collect { case Right(Some(x)) => x })
-        writeInFile(Declarations.notCleanedQueries, errors.collect { case Left(line) => line })
+        writeInFile(Declarations.paths.get("notCleanedQueries"), errors.collect { case Left(line) => line })
       }
     }
     println("nombre de requêtes dans le log :" + nb_queries)

@@ -24,7 +24,7 @@ object QueryExecutorParallelFuture extends App {
 
 
 
-  executeQueriesInFile(Declarations.constructQueriesFile2, "http://scholarlydata.org/sparql/")
+  executeQueriesInFile(Declarations.paths.get("constructQueriesFile2"), "http://scholarlydata.org/sparql/")
   val duration = System.currentTimeMillis() - t1
   var numQueryRun = 0
 
@@ -92,7 +92,7 @@ object QueryExecutorParallelFuture extends App {
 
         writeInTdb(correct.collect { case Right(x) => x })
         // writeInTdb(correct.collect { case Right(x) => x })
-        writeInLogFile(Declarations.executionLogFile, errors.collect { case Left(line) => line })
+        writeInLogFile(Declarations.paths.get("executionLogFile"), errors.collect { case Left(line) => line })
 
         val finish = System.currentTimeMillis() - timeFor100000
         println("time for 100 000 req is   " + finish)

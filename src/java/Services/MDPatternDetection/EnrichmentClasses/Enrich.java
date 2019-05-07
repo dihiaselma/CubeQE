@@ -151,8 +151,8 @@ public class Enrich {
 
         enrichMDSchema(modelss);
 
-        writeStatisticsListInFile2(statisticsAnalytics4Fact, Declarations.statisticsAnalyticFactFile);
-        writeStatisticsListInFile2(statisticsAnalytics4Dimension, Declarations.statisticsAnalyticDimFile);
+        writeStatisticsListInFile2(statisticsAnalytics4Fact, Declarations.paths.get("statisticsAnalyticFactFile"));
+        writeStatisticsListInFile2(statisticsAnalytics4Dimension, Declarations.paths.get("statisticsAnalyticDimFile"));
         stopwatch.stop();
         System.out.println(" le temps ecoulé : " + stopwatch);
 

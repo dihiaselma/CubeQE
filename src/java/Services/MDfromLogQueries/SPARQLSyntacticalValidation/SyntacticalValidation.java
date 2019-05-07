@@ -67,7 +67,7 @@ public class SyntacticalValidation {
         queriesNumber += validQueryList.size();
         /* System.out.println("Size of validQueryList : "+validQueryList.size());*/
         FileOperation.WriteInFile(destinationFilePath,validQueryList);
-        FileOperation.WriteInFile(Declarations.syntaxNonValidFile,nonValidQueryList);
+        FileOperation.WriteInFile(Declarations.paths.get("syntaxNonValidFile"),nonValidQueryList);
         System.out.println("\n\n nombre d'erreur \t" + nb);
     }
 

@@ -55,7 +55,7 @@ object QueryExecutorParallel extends App {
         val (correct, errors) = treatedGroupOfLines.partition(_.isRight)
         writeInTdb(correct.collect { case Right(Some(x)) => x })
 
-        writeInLogFile(Declarations.executionLogFile, errors.collect { case Left(line) => line })
+        writeInLogFile(Declarations.paths.get("executionLogFile"), errors.collect { case Left(line) => line })
 
       }
 
@@ -93,7 +93,7 @@ object QueryExecutorParallel extends App {
   }
 
 
-  executeQueriesInFile(Declarations.constructQueriesFile2, "https://dbpedia.org/sparql")
+  executeQueriesInFile(Declarations.paths.get("constructQueriesFile2"), "https://dbpedia.org/sparql")
 
   def writeInTdb(models: Vector[Model]) = {
 

@@ -9,21 +9,19 @@ import org.apache.jena.tdb.TDBFactory;
 
 import java.util.*;
 
-import static Services.MDfromLogQueries.Declarations.Declarations.dataSetOriginal;
-import static Services.MDfromLogQueries.Declarations.Declarations.tdbDirectory;
 
 
 public class TdbOperation {
-    private static Dataset dataset = TDBFactory.createDataset(tdbDirectory);
-    public static Dataset originalDataSet = TDBFactory.createDataset(dataSetOriginal);
-    public static Dataset _toString = TDBFactory.createDataset(Declarations._toString);
-    public static Dataset dataSetConsolidate = TDBFactory.createDataset(Declarations.dataSetConsolidated);
-    public static Dataset dataSetAnnotated = TDBFactory.createDataset(Declarations.dataSetAnnotated);
-    public static Dataset dataSetAnalytic = TDBFactory.createDataset(Declarations.dataSetAnalytic);
-    public static Dataset dataSetAnalyticAnnotated = TDBFactory.createDataset(Declarations.dataSetAnalyticAnnotated);
-    public static Dataset dataSetAlleviated = TDBFactory.createDataset(Declarations.dataSetAlleviated);
-    public static Dataset dataSetAlleviatedUselessProperties = TDBFactory.createDataset(Declarations.dataSetAlleviatedUselessProperties);
-    public static Dataset dataSetNonAlleviated = TDBFactory.createDataset(Declarations.dataSetNonAlleviated);
+    private static Dataset dataset = TDBFactory.createDataset(Declarations.paths.get("tdbDirectory"));
+    public static Dataset originalDataSet = TDBFactory.createDataset(Declarations.paths.get("dataSetOriginal"));
+    public static Dataset _toString = TDBFactory.createDataset(Declarations.paths.get("_toString"));
+    public static Dataset dataSetConsolidate = TDBFactory.createDataset(Declarations.paths.get("dataSetConsolidated"));
+    public static Dataset dataSetAnnotated = TDBFactory.createDataset(Declarations.paths.get("dataSetAnnotated"));
+    public static Dataset dataSetAnalytic = TDBFactory.createDataset(Declarations.paths.get("dataSetAnalytic"));
+    public static Dataset dataSetAnalyticAnnotated = TDBFactory.createDataset(Declarations.paths.get("dataSetAnalyticAnnotated"));
+    public static Dataset dataSetAlleviated = TDBFactory.createDataset(Declarations.paths.get("dataSetAlleviated"));
+    public static Dataset dataSetAlleviatedUselessProperties = TDBFactory.createDataset(Declarations.paths.get("dataSetAlleviatedUselessProperties"));
+    public static Dataset dataSetNonAlleviated = TDBFactory.createDataset(Declarations.paths.get("dataSetNonAlleviated"));
 
 
 

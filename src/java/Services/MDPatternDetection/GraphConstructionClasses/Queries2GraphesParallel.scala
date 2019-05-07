@@ -2,9 +2,10 @@ package Services.MDPatternDetection.GraphConstructionClasses
 
 import java.io.{File, FileOutputStream, PrintWriter}
 
+import Services.MDfromLogQueries.Declarations.Declarations
 import Services.MDfromLogQueries.Util.Constants2
 import org.apache.jena.query.{Query, QueryFactory}
-import Services.MDfromLogQueries.Declarations.Declarations._
+
 import scala.collection.parallel.ParSeq
 import scala.io.Source
 
@@ -48,7 +49,7 @@ object Queries2GraphesParallel extends App {
               case unknown => {
                 println("une erreur\n\n\n\n\n\n\n\n\n")
                 queriesNumberNonConstructed+=1
-                writeInLogFile(constructLogFileParallel, constructedQuery)
+                writeInLogFile(Declarations.paths.get("constructLogFileParallel"), constructedQuery)
                 None
               }
             }
@@ -60,7 +61,7 @@ object Queries2GraphesParallel extends App {
         println("--------------------- un group finished ---------------------------------- ")
 
         val constructedQueries: ParSeq[Query]= treatedGroupOfLines.collect { case Some(x) => x }
-        writeInFile(constructQueriesFile2, constructedQueries )
+        writeInFile(Declarations.paths.get("constructQueriesFile2"), constructedQueries )
         queriesNumber+=constructedQueries.size
 
         //writeInFile(constructQueriesFileTest, treatedGroupOfLines.collect { case Some(x) => x })
@@ -80,7 +81,7 @@ object Queries2GraphesParallel extends App {
     writer.close()
   }
 
-  TransformQueriesInFile(syntaxValidFile2)
+  TransformQueriesInFile(Declarations.paths.get("syntaxValidFile2"))
 
   def writeInLogFile(destinationFilePath: String, query: Query) = {
 
