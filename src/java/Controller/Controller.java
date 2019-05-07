@@ -76,7 +76,7 @@ public class Controller {
         if (!endpoint.isEmpty())
             Declarations.setEndpoint(endpoint);
         String error = "";
-         times = FileOperation.loadYamlFile(timesFilePathTest);
+        times = FileOperation.loadYamlFile(timesFilePathTest);
         queriesNumbers = FileOperation.loadYamlFile(queriesNumberFilePathTest);
 
         System.out.println(times.get("Deduplication"));
@@ -111,9 +111,7 @@ public class Controller {
 
          if (graphModel.size() < 100) jsonArray.add(ModelUtil.modelToJSON(graphModel, uri));
 
-
         String erreur = "";
-
 
         model.addAttribute("models", jsonArray);
         model.addAttribute("erreur", erreur);

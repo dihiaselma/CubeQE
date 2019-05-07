@@ -41,8 +41,6 @@ public class MDGraphsAlleviation {
        TdbOperation.persistHashMap(MDGraphAlleviated, TdbOperation.dataSetAlleviated);
        TdbOperation.persistHashMap(MDGraphLessThen2, TdbOperation.dataSetNonAlleviated);
 
-
-
        numberModelsAlleviated+=MDGraphAlleviated.size();
        numberModelsRemoved+=MDGraphLessThen2.size();
 
