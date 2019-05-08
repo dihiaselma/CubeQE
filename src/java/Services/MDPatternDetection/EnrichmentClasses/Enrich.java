@@ -50,7 +50,7 @@ public class Enrich {
     }
 
 
-    public static void enrichModel(Model model) {
+    public static void enrichModel( Model model) {
 
         ResIterator resIterator = model.listSubjects();
         int numNoeud = 0;
