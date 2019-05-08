@@ -2,6 +2,7 @@ package Services.MDfromLogQueries.Util;
 
 
 import Services.MDPatternDetection.ExecutionClasses.QueryExecutor;
+import Services.MDfromLogQueries.Declarations.Declarations;
 import org.apache.jena.ontology.OntModel;
 import org.apache.jena.ontology.OntProperty;
 import org.apache.jena.query.Query;
@@ -20,7 +21,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static Services.MDfromLogQueries.Declarations.Declarations.defaultOntologiesDir;
 
 
 public class Constants2 {
@@ -34,7 +34,7 @@ public class Constants2 {
     private static HashSet<OntProperty> otherProperties = new HashSet<>();
     private static OntModel addedPropertiesOntology = ModelFactory.createOntologyModel();
     private static String ontologyPath;
-    private static String defaultOntologiesDirectory = defaultOntologiesDir;
+    private static String defaultOntologiesDirectory = Declarations.paths.get("defaultOntologiesDir");
     private static XSDMeasure_Types xsdMeasure_types = new XSDMeasure_Types();
     private static Datatype_Types datatype_types = new Datatype_Types();
 

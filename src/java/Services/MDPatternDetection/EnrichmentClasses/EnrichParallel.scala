@@ -37,8 +37,8 @@ object EnrichParallel extends App {
 
           }
         }
-        writeStatisticsListInFile2(Enrich.statisticsAnalytics4Fact, Declarations.statisticsAnalyticFactFile)
-        writeStatisticsListInFile2(Enrich.statisticsAnalytics4Dimension, Declarations.statisticsAnalyticDimFile)
+        writeStatisticsListInFile2(Enrich.statisticsAnalytics4Fact, Declarations.paths.get("statisticsAnalyticFactFile"))
+        writeStatisticsListInFile2(Enrich.statisticsAnalytics4Dimension, Declarations.paths.get("statisticsAnalyticDimFile"))
 
       }
 

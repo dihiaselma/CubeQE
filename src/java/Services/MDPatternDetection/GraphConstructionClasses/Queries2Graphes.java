@@ -1,6 +1,7 @@
 package Services.MDPatternDetection.GraphConstructionClasses;
 
 
+import Services.MDfromLogQueries.Declarations.Declarations;
 import Services.MDfromLogQueries.Util.Constants2;
 import Services.MDfromLogQueries.Util.FileOperation;
 import com.google.common.base.Stopwatch;
@@ -10,8 +11,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import static Services.MDfromLogQueries.Declarations.Declarations.constructQueriesFile;
-import static Services.MDfromLogQueries.Declarations.Declarations.syntaxValidFile;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
 public class Queries2Graphes {
@@ -65,7 +64,7 @@ public class Queries2Graphes {
                 }
 
             }
-            FileOperation.WriteConstructQueriesInFile(constructQueriesFile, constructQueriesList);
+            FileOperation.WriteConstructQueriesInFile(Declarations.paths.get("constructQueriesFile"), constructQueriesList);
 
 
         } catch (Exception e) {
@@ -106,7 +105,7 @@ public class Queries2Graphes {
                 }
             }
             // save results into file
-            FileOperation.WriteConstructQueriesInFile(constructQueriesFile, constructQueriesList);
+            FileOperation.WriteConstructQueriesInFile(Declarations.paths.get("constructQueriesFile"), constructQueriesList);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -118,7 +117,7 @@ public class Queries2Graphes {
     public static void main(String[] args)  {
         Stopwatch stopwatch = Stopwatch.createStarted();
 
-        Queries2Graphes.TransformQueriesInFile(syntaxValidFile);
+        Queries2Graphes.TransformQueriesInFile(Declarations.paths.get("syntaxValidFile"));
 
         stopwatch.stop();
 

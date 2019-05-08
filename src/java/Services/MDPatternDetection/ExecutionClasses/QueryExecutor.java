@@ -4,6 +4,7 @@ package Services.MDPatternDetection.ExecutionClasses;
 import Services.MDPatternDetection.AnnotationClasses.MDGraphAnnotated;
 import Services.MDPatternDetection.ConsolidationClasses.Consolidation;
 import Services.MDPatternDetection.GraphConstructionClasses.Queries2Graphes;
+import Services.MDfromLogQueries.Declarations.Declarations;
 import Services.MDfromLogQueries.Util.FileOperation;
 import com.google.common.base.Stopwatch;
 import org.apache.jena.query.*;
@@ -14,9 +15,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-
-import static Services.MDfromLogQueries.Declarations.Declarations.constructQueriesFile;
-import static Services.MDfromLogQueries.Declarations.Declarations.executionLogFile;
 import static java.util.concurrent.TimeUnit.MILLISECONDS;
 
 public class QueryExecutor {
@@ -51,7 +49,7 @@ public class QueryExecutor {
     }
     public static void main(String[] args) {
         String endPoint = "https://dbpedia.org/sparql";
-        QueryExecutor.executeQuiersInFile2(constructQueriesFile, endPoint);
+        QueryExecutor.executeQuiersInFile2(Declarations.paths.get("constructQueriesFile"), endPoint);
     }
     public static void executeQuiersInFile2(String filePath, String endPoint) {
         ArrayList<Model> results = new ArrayList<>();
@@ -156,7 +154,7 @@ public class QueryExecutor {
             /*  System.out.println("Result " + results.next());*/
         } catch (Exception e) {
             e.printStackTrace();
-            FileOperation.writeQueryInLog(executionLogFile, "Ask", query);
+            FileOperation.writeQueryInLog(Declarations.paths.get("executionLogFile"), "Ask", query);
         }
         return results;
     }
@@ -176,7 +174,7 @@ public class QueryExecutor {
         catch (Exception e){
             System.out.println("the query " + query + "\n********************");
             e.printStackTrace();
-            FileOperation.writeQueryInLog(executionLogFile, "Select", query);
+            FileOperation.writeQueryInLog(Declarations.paths.get("executionLogFile"), "Select", query);
         }
         return results;
     }

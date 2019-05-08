@@ -21,8 +21,8 @@ import static Services.MDfromLogQueries.Declarations.Declarations.*;
 
 public class Controller {
 
-    private Map<String, Object> times = FileOperation.loadYamlFile(timesFilePathTest);
-    private Map<String, Object> queriesNumbers = FileOperation.loadYamlFile(queriesNumberFilePathTest);
+    private Map<String, Object> times ;
+    private Map<String, Object> queriesNumbers ;
 
     @RequestMapping("/")
     public String redirect(){
@@ -76,8 +76,8 @@ public class Controller {
         if (!endpoint.isEmpty())
             Declarations.setEndpoint(endpoint);
         String error = "";
-        times = FileOperation.loadYamlFile(timesFilePathTest);
-        queriesNumbers = FileOperation.loadYamlFile(queriesNumberFilePathTest);
+         times = FileOperation.loadYamlFile(Declarations.paths.get("timesFilePathTest"));
+        queriesNumbers = FileOperation.loadYamlFile(Declarations.paths.get("queriesNumberFilePathTest"));
 
         System.out.println(times.get("Deduplication"));
         model.addAttribute("timesMap", times);
@@ -111,7 +111,9 @@ public class Controller {
 
          if (graphModel.size() < 100) jsonArray.add(ModelUtil.modelToJSON(graphModel, uri));
 
+
         String erreur = "";
+
 
         model.addAttribute("models", jsonArray);
         model.addAttribute("erreur", erreur);

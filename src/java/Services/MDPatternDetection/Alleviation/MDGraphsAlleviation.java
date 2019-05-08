@@ -8,7 +8,6 @@ import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.Statement;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -16,9 +15,11 @@ public class MDGraphsAlleviation {
 
     public static int numberModelsAlleviated=0;
     public static int numberModelsRemoved=0;
+    public static int numberStatementRemoved = 0;
+
 
     public static void main(String[] args) {
-        HashMap<String, Model> modelHashMap = TdbOperation.unpersistModelsMap(TdbOperation.originalDataSet);
+        HashMap<String, Model> modelHashMap = TdbOperation.unpersistModelsMap(TdbOperation.dataSetAnnotated);
         System.out.println("moyenne des tailles avant modification : " + ModelUtil.averageSize(modelHashMap));
         HashMap<String, Model> modifiedModels = removeUselessProperties(modelHashMap);
         Consolidation.afficherListInformations(modifiedModels);
@@ -78,6 +79,7 @@ public class MDGraphsAlleviation {
                for (Statement statement : stmtList) {
                    if (BasicProperties.properties.contains(statement.getPredicate())) {
                        model.remove(statement);
+                       numberStatementRemoved++;
                    }
                }
                modifiedModels.put(pair.getKey(), model);

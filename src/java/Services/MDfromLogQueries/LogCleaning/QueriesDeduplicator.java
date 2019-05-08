@@ -1,5 +1,6 @@
 package Services.MDfromLogQueries.LogCleaning;
 
+import Services.MDfromLogQueries.Declarations.Declarations;
 import Services.MDfromLogQueries.Util.FileOperation;
 import com.google.common.base.Stopwatch;
 
@@ -9,8 +10,6 @@ import java.io.FileReader;
 import java.util.HashSet;
 import java.util.Set;
 
-import static Services.MDfromLogQueries.Declarations.Declarations.cleanedQueriesFileCopie;
-import static Services.MDfromLogQueries.Declarations.Declarations.writingDedupFilePath;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
 
@@ -26,7 +25,7 @@ public class QueriesDeduplicator {
 
     public static void main(String[] args) {
         Stopwatch stopwatch = Stopwatch.createStarted();
-        DeduplicateQueriesInFile(cleanedQueriesFileCopie);
+        DeduplicateQueriesInFile(Declarations.paths.get("cleanedQueriesFileCopie"));
         stopwatch.stop();
         System.out.println("Time elapsed for the program is " + stopwatch.elapsed(SECONDS));
     }
@@ -53,7 +52,7 @@ public class QueriesDeduplicator {
             //    System.out.println("nombre de ligne dans le set :" + querySet.size() + " " + nb_line);
 
             queriesNumber += querySet.size();
-            FileOperation.WriteInFile(writingDedupFilePath, querySet);
+            FileOperation.WriteInFile(Declarations.paths.get("writingDedupFilePath"), querySet);
 
         } catch (Exception e) {
             e.printStackTrace();

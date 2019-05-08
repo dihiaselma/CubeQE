@@ -202,9 +202,9 @@ public class AnalyticQueries {
         new TdbOperation();
         String endpoint = "https://dbpedia.org/sparql";
         ArrayList<String> queryList;
-        queryList = (ArrayList<String>) FileOperation.ReadFile(Declarations.syntaxValidFile2);
+        queryList = (ArrayList<String>) FileOperation.ReadFile(Declarations.paths.get("syntaxValidFile2"));
         analyticQueriesList = getAnalyticQueries(queryList);
-        FileOperation.WriteInFile(Declarations.AnalyticQueriesFile, analyticQueriesList);
+        FileOperation.WriteInFile(Declarations.paths.get("AnalyticQueriesFile"), analyticQueriesList);
         HashSet<Model> modelHashSet = executeAnalyticQueriesList(queryList,endpoint);
         TdbOperation.persistNonNamedModels(modelHashSet, TdbOperation.dataSetAnalytic);
 

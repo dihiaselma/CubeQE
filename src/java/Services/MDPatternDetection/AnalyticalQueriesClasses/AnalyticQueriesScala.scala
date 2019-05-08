@@ -27,7 +27,7 @@ object AnalyticQueriesScala extends App{
     var nb = 0
     val modelHashSet = new util.HashSet[Model]
 
-    val QueriesList = Source.fromFile(Declarations.AnalyticQueriesFile).getLines
+    val QueriesList = Source.fromFile(Declarations.paths.get("AnalyticQueriesFile")).getLines
 
     QueriesList.grouped(50).foreach {
 

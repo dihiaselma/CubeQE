@@ -2,6 +2,7 @@ package Services.MDfromLogQueries.SPARQLSyntacticalValidation
 
 import java.io.{File, FileOutputStream, PrintWriter}
 
+import Services.MDfromLogQueries.Declarations.Declarations
 import Services.MDfromLogQueries.Declarations.Declarations._
 
 import scala.collection.parallel.ParSeq
@@ -45,12 +46,12 @@ object SyntacticValidationParallel extends App {
         println("--------------------- un group finished ---------------------------------- ")
 
         val (correct, errors) = treatedGroupOfLines.partition(_.isRight)
-        writeInFile(syntaxValidFile2, correct.collect { case Right(Some(x)) => {
+        writeInFile(Declarations.paths.get("syntaxValidFile2"), correct.collect { case Right(Some(x)) => {
           queriesNumber += 1
           x
         }
         })
-        writeInLogFile(syntaxNonValidFile2, errors.collect { case Left(line) => line })
+        writeInLogFile(Declarations.paths.get("syntaxNonValidFile2"), errors.collect { case Left(line) => line })
 
       }
     }
@@ -85,7 +86,7 @@ object SyntacticValidationParallel extends App {
     QueryFixer.toQuery(queryStr2).toString
   }
 
-  valideQueriesInFile(writingDedupFilePath)
+  valideQueriesInFile(Declarations.paths.get("writingDedupFilePath"))
   val duration = System.currentTimeMillis() - t1
   println(duration)
 
