@@ -24,6 +24,8 @@ object ConsolidationParallel extends App {
    val modelsAnnotated = MDGraphAnnotated.constructMDGraphs(modelsConsolidated)
    writeInTdb(convertToScalaMap(modelsAnnotated), TdbOperation.dataSetAnnotated)*/
 
+  //toStringModelsHashmap2(unpersistModelsMap(TdbOperation.dataSetAlleviated))
+
   val modelsConsolidated: util.HashMap[String, Model] = TdbOperation.unpersistModelsMap(TdbOperation.dataSetConsolidate)
   val modelsAnnotated : util.HashMap[String, Model] = MDGraphAnnotated.constructMDGraphs(modelsConsolidated)
   writeInTdb(convertToScalaMap(modelsAnnotated), TdbOperation.dataSetAnnotated)
@@ -35,7 +37,7 @@ object ConsolidationParallel extends App {
   def consolidate(): mutable.HashMap[String, Model] = {
 
     println(" consolidation ")
-    toStringModelsHashmap2(unpersistModelsMap(TdbOperation.originalDataSet))
+    //toStringModelsHashmap2(unpersistModelsMap(TdbOperation.originalDataSet))
 
     val modelHashMap = TdbOperation.unpersistModelsMap(TdbOperation._toString)
 
@@ -127,13 +129,12 @@ object ConsolidationParallel extends App {
   }
 
   def toStringModelsHashmap2(it: Iterator[String]) = {
+    val iterator = it
     val modelHashMap = new mutable.HashMap[String, Model]
     var modelsFromOneModel = new mutable.HashMap[String, Model]
     var nb = 0
-
-    it.grouped(50000).foreach {
-      listOfKies => {
-
+    iterator.grouped(1000).foreach {
+      listOfKies =>
 
         listOfKies.foreach {
           key => {
@@ -158,7 +159,6 @@ object ConsolidationParallel extends App {
         println(s" ------------------------- finish with the group ------------------------------- ")
         writeInTdb(modelHashMap, TdbOperation._toString)
         modelHashMap.clear()
-      }
     }
 
   }
