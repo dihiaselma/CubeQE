@@ -22,7 +22,7 @@ public class ConstantsUtil {
 
     //à changer probablement en créant un nouveau type contenant la datatypeProperty et son ou ses range
     public Node getRangeofProperty(Property property) {
-        if (currentProperty.
+        if (currentProperty != null && currentProperty.
                 getURI()
                 .matches(property
                         .getURI())) {

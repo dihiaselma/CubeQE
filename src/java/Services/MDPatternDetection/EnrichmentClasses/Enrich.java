@@ -9,6 +9,7 @@ import Services.MDfromLogQueries.Util.*;
 import Services.Statistics.StatisticsAnalytic;
 import com.google.common.base.Stopwatch;
 import org.apache.jena.graph.Node;
+import org.apache.jena.graph.NodeFactory;
 import org.apache.jena.query.Query;
 import org.apache.jena.query.QueryFactory;
 import org.apache.jena.query.QuerySolution;
@@ -30,7 +31,6 @@ import static Services.MDfromLogQueries.Util.FileOperation.writeStatisticsListIn
 public class Enrich {
 
     public static String endpoint = "http://scholarlydata.org/sparql/";
-    private static ConstantsUtil constantsUtil = new ConstantsUtil();
     public static Constants2 constants2;
     public static ArrayList<StatisticsAnalytic> statisticsAnalytics4Fact = new ArrayList<>();
     public static ArrayList<StatisticsAnalytic> statisticsAnalytics4Dimension = new ArrayList<>();
@@ -102,14 +102,15 @@ public class Enrich {
     }
 
     public static void countOtherProperties(Resource node, Resource subject, boolean finish) {
-
+        ConstantsUtil constantsUtil = new ConstantsUtil();
         String queryStr = "SELECT DISTINCT ?p ?o WHERE { <" + node.getURI() + "> ?p ?o. Optional { ?o a ?otype.}}";
         QueryExecutor queryExecutor = new QueryExecutor();
         QuerySolution querySolution;
         RDFNode predicate;
         RDFNode object;
         RDFNode objectType;
-         System.out.println("count properties");
+        RDFNode addedObject= null;
+        System.out.println("count properties");
         try {
             Query query = QueryFactory.create(queryStr);
             ResultSet results = queryExecutor.executeQuerySelect(query, endpoint);
@@ -121,10 +122,10 @@ public class Enrich {
                 //System.out.print("*\t");
                 if(!node.hasProperty(new PropertyImpl(predicate.asResource().getURI()),object)) {
                     if (!BasicProperties.properties.contains(predicate)) {
-
                         if (object.isLiteral() || Datatype_Types.types.contains(object.asResource())
                                 || object.asResource().getNameSpace().equals(XSD.getURI())) {
-                            subject.addProperty(new PropertyImpl(predicate.asResource().getURI()), object);
+                            addedObject = datatypePropertyTreatement(subject,predicate,objectType,constantsUtil);
+                            //subject.addProperty(new PropertyImpl(predicate.asResource().getURI()), object);
                             nb_attribute++;
                         } else {
 
@@ -140,27 +141,28 @@ public class Enrich {
 
                             switch (propertyType) {
                                 case ("datatypeProperty"): {
-                                    datatypePropertyTreatement(subject, predicate, objectType);
+                                    addedObject =datatypePropertyTreatement(subject, predicate, objectType,constantsUtil);
                                     nb_attribute++;
                                 }
                                 break;
                                 case ("objectProperty"): {
-                                    objectPropertyTreatement(subject, predicate, object, objectType);
+                                    addedObject =objectPropertyTreatement(subject, predicate, object, objectType,constantsUtil);
                                     nb_objectProperty++;
                                 }
                                 break;
                                 default: {
                                     if (object.isResource()) {
-                                        objectPropertyTreatement(subject, predicate, object, objectType);
+                                        addedObject =objectPropertyTreatement(subject, predicate, object, objectType,constantsUtil);
                                         nb_objectProperty++;
                                     } else if (object.isLiteral()) {
-                                        datatypePropertyTreatement(subject, predicate, objectType);
+                                        addedObject =datatypePropertyTreatement(subject, predicate, objectType,constantsUtil);
                                         nb_attribute++;
                                     }
                                 }
                             }
 
                         }
+                        subject.addProperty(new PropertyImpl(predicate.asResource().getURI()), addedObject);
                     } else if (predicate.equals(RDFS.subClassOf) && !finish) {
                         countOtherProperties(object.asResource(), subject, true);
                     }
@@ -172,30 +174,37 @@ public class Enrich {
 
     }
 
-    private static void datatypePropertyTreatement(Resource subject, RDFNode predicate, RDFNode objectType) {
+    private static RDFNode datatypePropertyTreatement(Resource subject, RDFNode predicate, RDFNode objectType, ConstantsUtil constantsUtil) {
         Node propertyRange;
-        if ((propertyRange = constantsUtil.getRangeofProperty(new PropertyImpl(predicate.asResource().getURI())) )!= null)
-            subject.addProperty(new PropertyImpl(predicate.asResource().getURI()), new ResourceImpl(propertyRange.getURI()));
+        RDFNode object;
+        if ((propertyRange = constantsUtil.getRangeofProperty(new PropertyImpl(predicate.asResource().getURI())) )!= null) {
+
+            object = new ResourceImpl(propertyRange.getURI());
+        }
         else if (objectType != null)
         {
-            subject.addProperty(new PropertyImpl(predicate.asResource().getURI()),objectType);
+            object = objectType;
         }
         else {
-            subject.addProperty(new PropertyImpl(predicate.asResource().getURI()), RDFS.label);
+            object = RDFS.Literal;
         }
+        return object;
     }
 
-    private static void objectPropertyTreatement(Resource subject, RDFNode predicate, RDFNode object, RDFNode objectType) {
+    private static RDFNode objectPropertyTreatement(Resource subject, RDFNode predicate, RDFNode object, RDFNode objectType, ConstantsUtil constantsUtil) {
         Node propertyRange;
+        RDFNode returnObject;
         if (objectType != null)
-            subject.addProperty(new PropertyImpl(predicate.asResource().getURI()), objectType);
+            returnObject = objectType;
         else if ((propertyRange = constantsUtil.getRangeofProperty(new PropertyImpl(predicate.asResource().getURI())) )!= null )
         {
-            subject.addProperty(new PropertyImpl(predicate.asResource().getURI()),new ResourceImpl(propertyRange.getURI()));
+            returnObject = new ResourceImpl(propertyRange.getURI());
         }
         else {
+            returnObject = object;
             subject.addProperty(new PropertyImpl(predicate.asResource().getURI()),object);
         }
+        return returnObject;
     }
 
 
