@@ -2,6 +2,7 @@ package Services.Statistics;
 
 
 import Services.MDPatternDetection.AnnotationClasses.Annotations;
+import Services.MDfromLogQueries.Declarations.Declarations;
 import Services.MDfromLogQueries.Util.TdbOperation;
 import org.apache.jena.query.Dataset;
 import org.apache.jena.rdf.model.*;
@@ -22,7 +23,7 @@ import static java.lang.StrictMath.max;
 
 public class Statistics1 {
 
-    private static Dataset dataset = TDBFactory.createDataset(tdbDirectory);
+    private static Dataset dataset = TDBFactory.createDataset(Declarations.paths.get("dbDirectory"));
 
     private Model model = ModelFactory.createDefaultModel();
 
@@ -77,11 +78,11 @@ public class Statistics1 {
 
     public static void writeAllStats(ArrayList<Statistics1> statistics1ArrayList) {
 
-        writeStatisticsListInFile(statistics1ArrayList, statisticsFile);
-        writeStatisticsInFile2(avgStatistics(statistics1ArrayList), "Average", avgstatisticsFile);
-        writeStatisticsInFile2(minStatistics(statistics1ArrayList), "Minimum", minstatisticsFile);
-        writeStatisticsInFile2(maxStatistics(statistics1ArrayList), "Maximum", maxstatisticsFile);
-        writeStatisticsInFile2(totalStatistics(statistics1ArrayList), "Total", totalstatisticsFile);
+        writeStatisticsListInFile(statistics1ArrayList, Declarations.paths.get("statisticsFile"));
+        writeStatisticsInFile2(avgStatistics(statistics1ArrayList), "Average", Declarations.paths.get("avgstatisticsFile"));
+        writeStatisticsInFile2(minStatistics(statistics1ArrayList), "Minimum", Declarations.paths.get("minstatisticsFile"));
+        writeStatisticsInFile2(maxStatistics(statistics1ArrayList), "Maximum", Declarations.paths.get("maxstatisticsFile"));
+        writeStatisticsInFile2(totalStatistics(statistics1ArrayList), "Total", Declarations.paths.get("totalstatisticsFile"));
 
 
     }
@@ -217,7 +218,7 @@ public class Statistics1 {
         }
         this.setRBC((this.getNBC() / this.getNDC()) * 100);
         this.setRSA((this.getNAFC() / this.getNADC()) * 100);
-        writeStatisticsInFile(statisticsFile, this);
+        writeStatisticsInFile(Declarations.paths.get("statisticsFile"), this);
 
     }
 

@@ -3,7 +3,7 @@ package Services.Scenarios
 import java.util
 
 import Services.MDPatternDetection.AnnotationClasses.MDGraphAnnotated
-import Services.MDPatternDetection.EnrichmentClasses.EnrichParallel.enrichMDScehma
+import Services.MDPatternDetection.EnrichmentClasses.EnrichParallel.enrichMDSchema
 import Services.MDfromLogQueries.Declarations.Declarations
 import Services.MDfromLogQueries.Declarations.Declarations._
 import Services.MDfromLogQueries.Util.{FileOperation, TdbOperation}
@@ -30,7 +30,7 @@ object Scenario_Enrichment extends App{
 
   /** 3. Enrichment of annotated models **/
   var t_enrichment: Long = System.currentTimeMillis()
-  enrichMDScehma(modelsAnnotated)
+  enrichMDSchema(modelsAnnotated)
   FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePath"), "Enrichment", (System.currentTimeMillis() - t_enrichment).toInt)
 
 

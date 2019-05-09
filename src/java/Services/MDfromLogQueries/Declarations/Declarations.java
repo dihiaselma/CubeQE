@@ -1,6 +1,8 @@
 package Services.MDfromLogQueries.Declarations;
 
 
+import Services.MDfromLogQueries.Util.FileOperation;
+
 import java.util.HashMap;
 
 public class Declarations {
@@ -78,6 +80,7 @@ public class Declarations {
         paths.put("dataSetAlleviated", rootTdb + "dataSetAlleviated");
         paths.put("dataSetNonAlleviated", rootTdb + "dataSetNonAlleviated");
         paths.put("dataSetAlleviatedUselessProperties", rootTdb + "dataSetAlleviatedUselessProperties");
+        paths.put("dataSetEnriched", rootTdb + "dataSetEnriched");
 
 
         /* Scénario 2 : Analytic Queries **/
@@ -92,6 +95,11 @@ public class Declarations {
         paths.put("timesFilePathTest",root + "ProgramOutput\\Fichier_TempsTest.yaml");
         paths.put("queriesNumberFilePath",root + "ProgramOutput\\Fichier_queriesNumber.yaml");
         paths.put("queriesNumberFilePathTest",root + "ProgramOutput\\Fichier_queriesNumberTest.yaml");
+
+        /*for (String key : paths.keySet())
+        {
+            FileOperation.createDirectory(paths.get(key));
+        }*/
 
     }
 

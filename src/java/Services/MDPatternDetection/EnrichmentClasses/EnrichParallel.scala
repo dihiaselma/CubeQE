@@ -2,7 +2,7 @@ package Services.MDPatternDetection.EnrichmentClasses
 
 import java.util
 
-import Services.MDPatternDetection.ConsolidationClasses.ConsolidationParallel.convertToScalaMap
+import Services.MDPatternDetection.ConsolidationClasses.ConsolidationParallel.{convertToScalaMap, writeInTdb}
 import Services.MDfromLogQueries.Declarations.Declarations
 import Services.MDfromLogQueries.Util.FileOperation.writeStatisticsListInFile2
 import Services.MDfromLogQueries.Util.{Constants2, ConstantsUtil, TdbOperation}
@@ -17,26 +17,45 @@ object EnrichParallel extends App {
   var constantsUtil = new ConstantsUtil
   var constants2 = new Constants2()
 
-  enrichMDScehma(modelsAnnotated)
+  enrichMDSchema(modelsAnnotated)
 
-  def enrichMDScehma(models: util.HashMap[String, Model]): Unit = {
+  def enrichMDSchema(models: util.HashMap[String, Model]): Unit = {
 
 
     val modelsAnnotatedScala: mutable.HashMap[String, Model] = convertToScalaMap(modelsAnnotated)
-    val itModels = modelsAnnotatedScala.values
+    val itModels = modelsAnnotatedScala.keys
     var numModel = 0
 
-    itModels.grouped(20000).foreach {
+    modelsAnnotatedScala.grouped(20000).foreach{
+      groupOfModels =>{
+        val time = System.currentTimeMillis()
+        val treatedGroupOfLines = groupOfModels.par.map{
+          pair =>{
+            numModel+=1
+            println(s"le model num: $numModel")
+            Enrich.enrichModel(pair._2)
+            pair
+          }
+        }
+
+        writeInTdb(treatedGroupOfLines.seq,TdbOperation.dataSetEnriched)
+        writeStatisticsListInFile2(Enrich.statisticsAnalytics4Fact, Declarations.paths.get("statisticsAnalyticFactFile"))
+        writeStatisticsListInFile2(Enrich.statisticsAnalytics4Dimension, Declarations.paths.get("statisticsAnalyticDimFile"))
+      }
+    }
+    /*itModels.grouped(20000).foreach {
       groupOfmodels => {
         val time = System.currentTimeMillis()
-        groupOfmodels.par.foreach {
-          model => {
+        val treatedGroupOfLines = groupOfmodels.par.foreach {
+          key => {
             numModel += 1
             println(s"le model num: $numModel")
-            Enrich.enrichModel(model)
+            Enrich.enrichModel(modelsAnnotatedScala(key))
+            Left(key, modelsAnnotatedScala(key))
 
           }
         }
+        writeInTdb(convertToScalaMap(),TdbOperation.dataSetEnriched)
         writeStatisticsListInFile2(Enrich.statisticsAnalytics4Fact, Declarations.paths.get("statisticsAnalyticFactFile"))
         writeStatisticsListInFile2(Enrich.statisticsAnalytics4Dimension, Declarations.paths.get("statisticsAnalyticDimFile"))
 
@@ -44,7 +63,7 @@ object EnrichParallel extends App {
 
     }
 
+  }*/
+
   }
-
-
 }
