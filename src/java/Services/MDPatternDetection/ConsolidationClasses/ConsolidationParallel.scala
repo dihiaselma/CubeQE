@@ -3,10 +3,12 @@ package Services.MDPatternDetection.ConsolidationClasses
 import java.util
 
 import Services.MDPatternDetection.AnnotationClasses.MDGraphAnnotated
+import Services.MDfromLogQueries.Declarations.Declarations
 import Services.MDfromLogQueries.Util.TdbOperation
 import org.apache.jena.query.Dataset
 import org.apache.jena.rdf.model._
-import org.apache.jena.tdb.TDB
+import org.apache.jena.tdb.{TDB, TDBFactory}
+import org.apache.jena.tdb2.TDB2Factory
 
 import scala.collection.{JavaConverters, mutable}
 
@@ -28,7 +30,7 @@ object ConsolidationParallel extends App {
 
   val modelsConsolidated: util.HashMap[String, Model] = TdbOperation.unpersistModelsMap(TdbOperation.dataSetConsolidate)
   val modelsAnnotated : util.HashMap[String, Model] = MDGraphAnnotated.constructMDGraphs(modelsConsolidated)
-  writeInTdb(convertToScalaMap(modelsAnnotated), TdbOperation.dataSetAnnotated)
+  //writeInTdb(convertToScalaMap(modelsAnnotated), TdbOperation.dataSetAnnotated)
   //writeInTdb(consolidate(),TdbOperation.dataSetConsolidate)
   val duration = System.currentTimeMillis() - t1
 
@@ -157,9 +159,10 @@ object ConsolidationParallel extends App {
         }
 
         println(s" ------------------------- finish with the group ------------------------------- ")
-        writeInTdb(modelHashMap, TdbOperation._toString)
+        writeInTdb(modelHashMap, Declarations.paths.get("_toString"))
         modelHashMap.clear()
     }
+    TdbOperation._toString.close()
 
   }
 
@@ -199,7 +202,7 @@ object ConsolidationParallel extends App {
           }
         }
 
-        writeInTdb(modelHashMap, TdbOperation._toString)
+        writeInTdb(modelHashMap, Declarations.paths.get("_toString"))
         modelHashMap.clear()
         println(s" ------------------------- finish with the group number: $nb_grp -------------------------------- ")
     }
@@ -213,10 +216,10 @@ object ConsolidationParallel extends App {
     model
   }
 
-  def writeInTdb(models: mutable.HashMap[String, Model], dataset: Dataset) = {
+  def writeInTdb(models: mutable.HashMap[String, Model], datasetName : String) = {
 
     println(" nombres des models pour persisting " + models.size)
-    TDB.sync(dataset)
+    val dataset = TDBFactory.createDataset(datasetName)
     models.foreach(m => {
       try {
         if (m != null) {

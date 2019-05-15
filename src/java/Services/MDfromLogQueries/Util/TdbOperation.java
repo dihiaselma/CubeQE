@@ -13,7 +13,6 @@ import java.util.*;
 
 
 public class TdbOperation {
-    private static Dataset dataset = TDBFactory.createDataset(Declarations.paths.get("tdbDirectory"));
     public static Dataset originalDataSet = TDBFactory.createDataset(Declarations.paths.get("dataSetOriginal"));
     public static Dataset _toString = TDBFactory.createDataset(Declarations.paths.get("_toString"));
     public static Dataset dataSetConsolidate = TDBFactory.createDataset(Declarations.paths.get("dataSetConsolidated"));
@@ -28,7 +27,6 @@ public class TdbOperation {
 
     public static void updatePaths()
     {
-         dataset = TDBFactory.createDataset(Declarations.paths.get("tdbDirectory"));
          originalDataSet = TDBFactory.createDataset(Declarations.paths.get("dataSetOriginal"));
          _toString = TDBFactory.createDataset(Declarations.paths.get("_toString"));
          dataSetConsolidate = TDBFactory.createDataset(Declarations.paths.get("dataSetConsolidated"));
@@ -72,7 +70,6 @@ public class TdbOperation {
 
 
     public static boolean exists(String name, Dataset dt) {
-
         boolean exists = false;
         // if exists a model with subject.toString == name
         if (dt.containsNamedModel(name)) exists = true;
@@ -168,9 +165,7 @@ public class TdbOperation {
         HashMap<String, Model> results = new HashMap<>();
 
         //Dataset dataset = TDBFactory.createDataset(tdbDirectory);
-
-
-        TDB.sync(dataset);
+       //g TDB.sync(dataset);
         if (dataset == null) return null;
 
         Iterator<String> it = dataset.listNames();

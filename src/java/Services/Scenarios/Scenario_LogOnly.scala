@@ -64,25 +64,31 @@ object Scenario_LogOnly extends App{
 
 */
   /** 6. Alleviation 1 (Useless properties removement) **/
+  println("***********************Alleviation 1******************")
   var t_alleviation1: Long = System.currentTimeMillis()
   val modelsAlleviated_UselessProp: util.HashMap[String, Model]=MDGraphsAlleviation.removeUselessProperties( TdbOperation.unpersistModelsMap(TdbOperation.originalDataSet))
-  writeInTdb(convertToScalaMap(modelsAlleviated_UselessProp), TdbOperation.dataSetAlleviatedUselessProperties)
+  //writeInTdb(convertToScalaMap(modelsAlleviated_UselessProp), TdbOperation.dataSetAlleviatedUselessProperties)
+  writeInTdb(convertToScalaMap(modelsAlleviated_UselessProp), Declarations.paths.get("dataSetAlleviatedUselessProperties"))
   FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePath"), "Alleviation_UselessProperties", (System.currentTimeMillis() - t_alleviation1).toInt)
   FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "Alleviation_nbStatementsRemoved", MDGraphsAlleviation.numberStatementRemoved)
 
 
   /** 7. Consolidation **/
+  println("***********************Consolidation******************")
   var t_consolidation: Long = System.currentTimeMillis()
-  writeInTdb(consolidate(), TdbOperation.dataSetConsolidate)
+  //writeInTdb(consolidate(), TdbOperation.dataSetConsolidate)
+  writeInTdb(consolidate(), Declarations.paths.get("dataSetConsolidate"))
   FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePath"), "Consolidation", (System.currentTimeMillis() - t_consolidation).toInt)
   FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "Consolidation_nbModelsNonConsolidated", ConsolidationParallel.originalModelsNumber)
   FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "Consolidation_nbModels", ConsolidationParallel.modelsNumber)
 
   //TODO à deplacer la ou il faut
   /** 8. Alleviation 2  (Small graph removement) **/
+  println("***********************Alleviation 2******************")
   var t_alleviation: Long = System.currentTimeMillis()
   val modelsAlleviated: util.HashMap[String, Model]=MDGraphsAlleviation.MDGraphsAlleviate( TdbOperation.unpersistModelsMap(TdbOperation.dataSetConsolidate))
-  writeInTdb(convertToScalaMap(modelsAlleviated), TdbOperation.dataSetAlleviated)
+ // writeInTdb(convertToScalaMap(modelsAlleviated), TdbOperation.dataSetAlleviated)
+  writeInTdb(convertToScalaMap(modelsAlleviated), Declarations.paths.get("dataSetAlleviated"))
   FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePath"), "Alleviation", (System.currentTimeMillis() - t_alleviation).toInt)
   FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "Alleviation_nbModelsRemoved", MDGraphsAlleviation.numberModelsRemoved)
   FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "Alleviation_nbModels", MDGraphsAlleviation.numberModelsAlleviated)
@@ -90,14 +96,17 @@ object Scenario_LogOnly extends App{
 
 
   /** 9. Annotation **/
+  println("***********************Annotation******************")
   var t_annotation: Long = System.currentTimeMillis()
   val modelsAlleviate: util.HashMap[String, Model] = TdbOperation.unpersistModelsMap(TdbOperation.dataSetAlleviated)
   val modelsAnnotated : util.HashMap[String, Model] = MDGraphAnnotated.constructMDGraphs(modelsAlleviate)
-  writeInTdb(convertToScalaMap(modelsAnnotated), TdbOperation.dataSetAnnotated)
+  //writeInTdb(convertToScalaMap(modelsAnnotated), TdbOperation.dataSetAnnotated)
+  writeInTdb(convertToScalaMap(modelsAnnotated), Declarations.paths.get("dataSetAnnotated"))
   FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePath"), "Annotation", (System.currentTimeMillis() - t_annotation).toInt)
 
 
   /** 10. Statistique **/
+  println("***********************Statistiques******************")
   var t_statistics: Long = System.currentTimeMillis()
   statisticsBySubjectList(subjects)
   FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePath"), "Statistics", (System.currentTimeMillis() - t_statistics).toInt)
