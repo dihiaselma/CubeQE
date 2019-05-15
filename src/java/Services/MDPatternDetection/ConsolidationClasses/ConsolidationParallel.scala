@@ -37,7 +37,7 @@ object ConsolidationParallel extends App {
   def consolidate(): mutable.HashMap[String, Model] = {
 
     println(" consolidation ")
-    //toStringModelsHashmap2(unpersistModelsMap(TdbOperation.originalDataSet))
+    toStringModelsHashmap2(unpersistModelsMap(TdbOperation.originalDataSet))
 
     val modelHashMap = TdbOperation.unpersistModelsMap(TdbOperation._toString)
 
@@ -233,6 +233,7 @@ object ConsolidationParallel extends App {
       }
     })
     TDB.sync(dataset)
+    dataset.close()
   }
 
   def getModelsofModel(model: Model): mutable.HashMap[String, Model] = {

@@ -25,7 +25,7 @@ import org.apache.jena.rdf.model.Model
 object Scenario_LogOnly extends App{
 
   Declarations.setEndpoint("DogFood")
-
+/*
 
   /** 1. Nettoyage du log **/
   var t_cleaning: Long = System.currentTimeMillis()
@@ -62,7 +62,7 @@ object Scenario_LogOnly extends App{
   FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "Execution_nbQueriesExecuted", QueryExecutor.queriesNumber)
   FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "Execution_nbQueriesNonExecuted", QueryExecutor.queriesLogNumber)
 
-
+*/
   /** 6. Alleviation 1 (Useless properties removement) **/
   var t_alleviation1: Long = System.currentTimeMillis()
   val modelsAlleviated_UselessProp: util.HashMap[String, Model]=MDGraphsAlleviation.removeUselessProperties( TdbOperation.unpersistModelsMap(TdbOperation.originalDataSet))

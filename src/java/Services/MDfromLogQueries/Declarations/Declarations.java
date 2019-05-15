@@ -2,6 +2,7 @@ package Services.MDfromLogQueries.Declarations;
 
 
 import Services.MDfromLogQueries.Util.FileOperation;
+import Services.MDfromLogQueries.Util.TdbOperation;
 
 import java.util.HashMap;
 
@@ -100,6 +101,7 @@ public class Declarations {
         {
             FileOperation.createDirectory(paths.get(key));
         }*/
+        TdbOperation.updatePaths();
 
     }
 

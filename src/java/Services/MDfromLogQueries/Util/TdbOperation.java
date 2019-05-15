@@ -1,5 +1,6 @@
 package Services.MDfromLogQueries.Util;
 
+import Services.MDPatternDetection.ConsolidationClasses.Consolidation;
 import Services.MDfromLogQueries.Declarations.Declarations;
 import org.apache.jena.query.Dataset;
 import org.apache.jena.rdf.model.Model;
@@ -22,26 +23,46 @@ public class TdbOperation {
     public static Dataset dataSetAlleviated = TDBFactory.createDataset(Declarations.paths.get("dataSetAlleviated"));
     public static Dataset dataSetAlleviatedUselessProperties = TDBFactory.createDataset(Declarations.paths.get("dataSetAlleviatedUselessProperties"));
     public static Dataset dataSetNonAlleviated = TDBFactory.createDataset(Declarations.paths.get("dataSetNonAlleviated"));
-    //TODO l'ajouter à declarations
     public static Dataset dataSetEnriched = TDBFactory.createDataset(Declarations.paths.get("dataSetEnriched"));
 
+
+    public static void updatePaths()
+    {
+         dataset = TDBFactory.createDataset(Declarations.paths.get("tdbDirectory"));
+         originalDataSet = TDBFactory.createDataset(Declarations.paths.get("dataSetOriginal"));
+         _toString = TDBFactory.createDataset(Declarations.paths.get("_toString"));
+         dataSetConsolidate = TDBFactory.createDataset(Declarations.paths.get("dataSetConsolidated"));
+         dataSetAnnotated = TDBFactory.createDataset(Declarations.paths.get("dataSetAnnotated"));
+         dataSetAnalytic = TDBFactory.createDataset(Declarations.paths.get("dataSetAnalytic"));
+         dataSetAnalyticAnnotated = TDBFactory.createDataset(Declarations.paths.get("dataSetAnalyticAnnotated"));
+         dataSetAlleviated = TDBFactory.createDataset(Declarations.paths.get("dataSetAlleviated"));
+         dataSetAlleviatedUselessProperties = TDBFactory.createDataset(Declarations.paths.get("dataSetAlleviatedUselessProperties"));
+         dataSetNonAlleviated = TDBFactory.createDataset(Declarations.paths.get("dataSetNonAlleviated"));
+         dataSetEnriched = TDBFactory.createDataset(Declarations.paths.get("dataSetEnriched"));
+    }
 
 
     public static void main(String... argv) {
         new TdbOperation();
-
+        Declarations.setEndpoint("DogFood");
         //HashMap<String,Model> modelHashMap = unpersistNumberOfModelsMap(dataSetAlleviated,34);
-        HashMap<String,Model> modelHashMap = unpersistModelsMap(dataSetAlleviated);
+        HashMap<String,Model> modelHashMap = unpersistModelsMap(originalDataSet);
+        System.out.println(Declarations.paths.get("_toString"));
         Iterator<String> kies = modelHashMap.keySet().iterator();
+        System.out.println("to string");
         while (kies.hasNext())
         {
             String key = kies.next();
             System.out.println(key);
-            System.out.println(modelHashMap.get(key));
+            //System.out.println(modelHashMap.get(key));
              //  ModelUtil.modelToJSON(modelHashMap.get(key),key);
             //System.out.println(ModelUtil.modelToJSON(modelHashMap.get(key),key).toJSONString());
 
         }
+
+        /* modelHashMap = unpersistModelsMap(dataSetConsolidate);
+        System.out.println("consolides");
+        Consolidation.afficherListInformations(modelHashMap);*/
 
     }
 
