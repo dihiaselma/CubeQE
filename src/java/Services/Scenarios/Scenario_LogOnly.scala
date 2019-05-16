@@ -103,5 +103,5 @@ object Scenario_LogOnly extends App{
   FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePath"), "Statistics", (System.currentTimeMillis() - t_statistics).toInt)
 
 
-  //TODO ecrire dans un fichier les stat concernant nombre de req ..Etc
+
 }
