@@ -38,7 +38,7 @@ object EnrichParallel extends App {
           }
         }
 
-        writeInTdb(treatedGroupOfLines.seq,TdbOperation.dataSetEnriched)
+        //writeInTdb(treatedGroupOfLines.seq,TdbOperation.dataSetEnriched)
         writeStatisticsListInFile2(Enrich.statisticsAnalytics4Fact, Declarations.paths.get("statisticsAnalyticFactFile"))
         writeStatisticsListInFile2(Enrich.statisticsAnalytics4Dimension, Declarations.paths.get("statisticsAnalyticDimFile"))
       }

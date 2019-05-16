@@ -77,7 +77,7 @@ object Scenario_LogOnly extends App{
   println("***********************Consolidation******************")
   var t_consolidation: Long = System.currentTimeMillis()
   //writeInTdb(consolidate(), TdbOperation.dataSetConsolidate)
-  writeInTdb(consolidate(), Declarations.paths.get("dataSetConsolidate"))
+  writeInTdb(consolidate(), Declarations.paths.get("dataSetConsolidated"))
   FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePath"), "Consolidation", (System.currentTimeMillis() - t_consolidation).toInt)
   FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "Consolidation_nbModelsNonConsolidated", ConsolidationParallel.originalModelsNumber)
   FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "Consolidation_nbModels", ConsolidationParallel.modelsNumber)
@@ -86,7 +86,7 @@ object Scenario_LogOnly extends App{
   /** 8. Alleviation 2  (Small graph removement) **/
   println("***********************Alleviation 2******************")
   var t_alleviation: Long = System.currentTimeMillis()
-  val modelsAlleviated: util.HashMap[String, Model]=MDGraphsAlleviation.MDGraphsAlleviate( TdbOperation.unpersistModelsMap(TdbOperation.dataSetConsolidate))
+  val modelsAlleviated: util.HashMap[String, Model]=MDGraphsAlleviation.MDGraphsAlleviate( TdbOperation.unpersistModelsMap(Declarations.paths.get("dataSetConsolidated")))
  // writeInTdb(convertToScalaMap(modelsAlleviated), TdbOperation.dataSetAlleviated)
   writeInTdb(convertToScalaMap(modelsAlleviated), Declarations.paths.get("dataSetAlleviated"))
   FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePath"), "Alleviation", (System.currentTimeMillis() - t_alleviation).toInt)
@@ -98,7 +98,7 @@ object Scenario_LogOnly extends App{
   /** 9. Annotation **/
   println("***********************Annotation******************")
   var t_annotation: Long = System.currentTimeMillis()
-  val modelsAlleviate: util.HashMap[String, Model] = TdbOperation.unpersistModelsMap(TdbOperation.dataSetAlleviated)
+  val modelsAlleviate: util.HashMap[String, Model] = TdbOperation.unpersistModelsMap(Declarations.paths.get("dataSetAlleviated"))
   val modelsAnnotated : util.HashMap[String, Model] = MDGraphAnnotated.constructMDGraphs(modelsAlleviate)
   //writeInTdb(convertToScalaMap(modelsAnnotated), TdbOperation.dataSetAnnotated)
   writeInTdb(convertToScalaMap(modelsAnnotated), Declarations.paths.get("dataSetAnnotated"))

@@ -41,7 +41,8 @@ object ConsolidationParallel extends App {
     println(" consolidation ")
     toStringModelsHashmap2(unpersistModelsMap(TdbOperation.originalDataSet))
 
-    val modelHashMap = TdbOperation.unpersistModelsMap(TdbOperation._toString)
+   // val modelHashMap = TdbOperation.unpersistModelsMap(TdbOperation._toString)
+    val modelHashMap = TdbOperation.unpersistModelsMap(Declarations.paths.get("_toString"))
 
     if (modelHashMap == null) return null
     var nb = 0

@@ -44,11 +44,12 @@ public class TdbOperation {
         new TdbOperation();
         Declarations.setEndpoint("DogFood");
         //HashMap<String,Model> modelHashMap = unpersistNumberOfModelsMap(dataSetAlleviated,34);
-        HashMap<String,Model> modelHashMap = unpersistModelsMap(originalDataSet);
-        System.out.println(Declarations.paths.get("_toString"));
+        HashMap<String,Model> modelHashMap = unpersistModelsMap(dataSetAnnotated);
+        //System.out.println(Declarations.paths.get("dataSetConsolidated"));
         Iterator<String> kies = modelHashMap.keySet().iterator();
         System.out.println("to string");
-        while (kies.hasNext())
+        Consolidation.afficherListInformations(modelHashMap);
+      /*  while (kies.hasNext())
         {
             String key = kies.next();
             System.out.println(key);
@@ -56,11 +57,15 @@ public class TdbOperation {
              //  ModelUtil.modelToJSON(modelHashMap.get(key),key);
             //System.out.println(ModelUtil.modelToJSON(modelHashMap.get(key),key).toJSONString());
 
-        }
+        }*/
 
-        /* modelHashMap = unpersistModelsMap(dataSetConsolidate);
+         modelHashMap = unpersistModelsMap(dataSetConsolidate);
         System.out.println("consolides");
-        Consolidation.afficherListInformations(modelHashMap);*/
+        Consolidation.afficherListInformations(modelHashMap);
+
+        modelHashMap = unpersistModelsMap(_toString);
+        System.out.println("consolides");
+        Consolidation.afficherListInformations(modelHashMap);
 
     }
 
@@ -165,6 +170,38 @@ public class TdbOperation {
         HashMap<String, Model> results = new HashMap<>();
 
         //Dataset dataset = TDBFactory.createDataset(tdbDirectory);
+       //g TDB.sync(dataset);
+        if (dataset == null) return null;
+
+        Iterator<String> it = dataset.listNames();
+
+        String name;
+
+        try {
+
+            while (it.hasNext()) {
+                name = it.next();
+
+                while (name == null) {
+                    name = it.next();
+                }
+
+                Model model = dataset.getNamedModel(name);
+
+                if ( model != null) results.put(name, model);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+        System.out.println("taille de la liste  " + results.size());
+        return results;
+    }
+    public static HashMap<String, Model> unpersistModelsMap(String datasetName) {
+        HashMap<String, Model> results = new HashMap<>();
+
+        Dataset dataset = TDBFactory.createDataset(datasetName);
        //g TDB.sync(dataset);
         if (dataset == null) return null;
 
