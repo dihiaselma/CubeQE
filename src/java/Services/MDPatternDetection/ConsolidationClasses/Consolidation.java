@@ -226,12 +226,12 @@ public class Consolidation {
         Iterator it = listInfoNodes.entrySet().iterator();
 
         System.out.println(" Afichage des résultats \n");
-
+        int i =0;
 
         while (it.hasNext()) {
             Map.Entry<String, Model> pair = (Map.Entry) it.next();
-
-            System.out.println(" Subject: \t\t " + pair.getKey() + "\n");
+            i++;
+            System.out.println(" Subject "+i+" : \t\t " + pair.getKey() + "\n");
             Iterator<Statement> listStatements = pair.getValue().listStatements();
             while (listStatements.hasNext()) {
                 System.out.println(listStatements.next().toString());

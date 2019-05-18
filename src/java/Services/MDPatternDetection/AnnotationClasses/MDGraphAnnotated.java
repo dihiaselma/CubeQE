@@ -3,19 +3,13 @@ package Services.MDPatternDetection.AnnotationClasses;
 
 import Services.MDfromLogQueries.Util.*;
 import com.google.common.base.Stopwatch;
-import org.apache.jena.rdf.model.Model;
-import org.apache.jena.rdf.model.Property;
-import org.apache.jena.rdf.model.Resource;
-import org.apache.jena.rdf.model.Statement;
+import org.apache.jena.rdf.model.*;
 import org.apache.jena.rdf.model.impl.PropertyImpl;
 import org.apache.jena.rdf.model.impl.ResourceImpl;
 import org.apache.jena.vocabulary.RDFS;
 import org.apache.jena.vocabulary.XSD;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
 
@@ -47,7 +41,7 @@ public class MDGraphAnnotated {
         Property property;
         //Iterator<Resource> subjects = mdModel.listSubjects();
         ConstantsUtil constantsUtil = new ConstantsUtil();
-
+        Set<RDFNode> visitedNodes = new HashSet<>();
         if (model.getResource(modelSubject) != null)
             subject = model.getResource(modelSubject);
         else
@@ -55,6 +49,7 @@ public class MDGraphAnnotated {
 
         if (subject != null) {
             subject.addProperty(annotProperty, Annotations.FACT.toString());
+            visitedNodes.add(subject);
             List<Statement> propertyIterator = subject.listProperties().toList();
 
             int nb_statement = 0;
@@ -81,7 +76,7 @@ public class MDGraphAnnotated {
                             break;
                             case ("objectProperty"): {
                                 statement.getObject().asResource().addProperty(annotProperty, Annotations.DIMENSION.toString());
-                                addDimensionLevels(statement.getObject().asResource(), constantsUtil);
+                                addDimensionLevels(statement.getObject().asResource(), constantsUtil,visitedNodes);
                             }
                             break;
                             default: {
@@ -97,7 +92,7 @@ public class MDGraphAnnotated {
                                     }
                                 } else {
                                     statement.getObject().asResource().addProperty(annotProperty, Annotations.DIMENSION.toString());
-                                    addDimensionLevels(statement.getObject().asResource(), constantsUtil);
+                                    addDimensionLevels(statement.getObject().asResource(), constantsUtil,visitedNodes);
                                 }
                             }
                             break;
@@ -115,7 +110,7 @@ public class MDGraphAnnotated {
         // return model;
     }
 
-    public static void addDimensionLevels(Resource dimension, ConstantsUtil constantsUtil) {
+    public static void addDimensionLevels(Resource dimension, ConstantsUtil constantsUtil, Set<RDFNode> visitedNodes) {
         //Statement statement;
         Property property;
         String propertyType;
@@ -126,7 +121,7 @@ public class MDGraphAnnotated {
 
             try {
 
-                if (!property.equals(annotProperty)) {
+                if (!property.equals(annotProperty) && !visitedNodes.contains(statement.getObject())) {
                     propertyType = constantsUtil.getPropertyType(property);
                     switch (propertyType) {
                         case ("datatypeProperty"): {
@@ -138,8 +133,8 @@ public class MDGraphAnnotated {
 
                             statement.getObject().asResource().addProperty(annotProperty, Annotations.DIMENSIONLEVEL.toString());
                             statement.getObject().asResource().addProperty(new PropertyImpl(Annotations.PARENTLEVEL.toString()), dimension);
-
-                            addDimensionLevels(statement.getObject().asResource(), constantsUtil);
+                            visitedNodes.add(dimension);
+                            addDimensionLevels(statement.getObject().asResource(), constantsUtil, visitedNodes);
                         }
                         break;
                         default: {
@@ -151,6 +146,8 @@ public class MDGraphAnnotated {
                             } else {
                                 statement.getObject().asResource().addProperty(annotProperty, Annotations.DIMENSIONLEVEL.toString());
                                 statement.getObject().asResource().addProperty(new PropertyImpl(Annotations.PARENTLEVEL.toString()), dimension);
+                                visitedNodes.add(dimension);
+                                addDimensionLevels(statement.getObject().asResource(), constantsUtil, visitedNodes);
                             }
                         }
                         break;

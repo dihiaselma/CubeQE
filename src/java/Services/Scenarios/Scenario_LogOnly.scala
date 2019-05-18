@@ -17,7 +17,8 @@ import Services.MDfromLogQueries.SPARQLSyntacticalValidation.SyntacticValidation
 import Services.MDfromLogQueries.Util.{FileOperation, TdbOperation}
 import Services.MDPatternDetection.GraphConstructionClasses.Queries2GraphesParallel.TransformQueriesInFile
 import Services.MDfromLogQueries.Declarations.Declarations
-import Services.Statistics.MDGraphBySubjectScala.{statisticsBySubjectList, subjects}
+import Services.Statistics.{MDGraphBySubject, Statistics1}
+import Services.Statistics.MDGraphBySubjectScala.{convertToJavaMap, statisticsBySubjectList, subjects}
 import org.apache.jena.rdf.model.Model
 
 
@@ -108,7 +109,10 @@ object Scenario_LogOnly extends App{
   /** 10. Statistique **/
   println("***********************Statistiques******************")
   var t_statistics: Long = System.currentTimeMillis()
-  statisticsBySubjectList(subjects)
+  var statistics : Statistics1 = new Statistics1
+  val stat = statistics.stat2(TdbOperation.unpersistModelsMap(Declarations.paths.get("dataSetAnnotated")))
+  MDGraphBySubject.writeAllStats(stat, "DogFood")
+  //statisticsBySubjectList(subjects)
   FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePath"), "Statistics", (System.currentTimeMillis() - t_statistics).toInt)
 
 

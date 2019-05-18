@@ -34,7 +34,6 @@ public class Constants2 {
     private static HashSet<OntProperty> otherProperties = new HashSet<>();
     private static OntModel addedPropertiesOntology = ModelFactory.createOntologyModel();
     private static String ontologyPath;
-    private static String defaultOntologiesDirectory = Declarations.paths.get("defaultOntologiesDir");
     private static XSDMeasure_Types xsdMeasure_types = new XSDMeasure_Types();
     private static Datatype_Types datatype_types = new Datatype_Types();
 
@@ -93,7 +92,7 @@ public class Constants2 {
 
     private static void initDefaultProperties() {
         List<Path> filesInFolder = new ArrayList<>();
-        defaultOntologiesDirectory = Declarations.paths.get("defaultOntologiesDir");
+        String defaultOntologiesDirectory = Declarations.paths.get("defaultOntologiesDir");
         try {
             filesInFolder = Files.walk(Paths.get(defaultOntologiesDirectory))
                     .filter(Files::isRegularFile)

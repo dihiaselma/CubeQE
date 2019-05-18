@@ -44,8 +44,8 @@ public class TdbOperation {
         new TdbOperation();
         Declarations.setEndpoint("DogFood");
         //HashMap<String,Model> modelHashMap = unpersistNumberOfModelsMap(dataSetAlleviated,34);
-        HashMap<String,Model> modelHashMap = unpersistModelsMap(dataSetAnnotated);
-        //System.out.println(Declarations.paths.get("dataSetConsolidated"));
+        HashMap<String,Model> modelHashMap ; //unpersistModelsMap(dataSetAnnotated);
+        /*//System.out.println(Declarations.paths.get("dataSetConsolidated"));
         Iterator<String> kies = modelHashMap.keySet().iterator();
         System.out.println("to string");
         Consolidation.afficherListInformations(modelHashMap);
@@ -59,14 +59,14 @@ public class TdbOperation {
 
         }*/
 
-         modelHashMap = unpersistModelsMap(dataSetConsolidate);
+        modelHashMap = unpersistModelsMap(dataSetConsolidate);
         System.out.println("consolides");
         Consolidation.afficherListInformations(modelHashMap);
 
-        modelHashMap = unpersistModelsMap(_toString);
+         /*modelHashMap = unpersistModelsMap(_toString);
         System.out.println("consolides");
         Consolidation.afficherListInformations(modelHashMap);
-
+*/
     }
 
     public TdbOperation() {
