@@ -5,6 +5,7 @@ import java.nio.charset.StandardCharsets
 import java.util.regex.Pattern
 
 import Services.MDfromLogQueries.Declarations.Declarations
+import LogCleaning.queryFromLogLine
 import Services.MDfromLogQueries.Util.FileOperation
 import org.apache.http.client.utils.URLEncodedUtils
 
