@@ -11,7 +11,7 @@ import Services.MDPatternDetection.ExecutionClasses.QueryExecutor.executeQuiersI
 import Services.MDPatternDetection.GraphConstructionClasses.Queries2GraphesParallel
 import Services.MDfromLogQueries.LogCleaning.QueriesDeduplicator.DeduplicateQueriesInFile
 import Services.MDfromLogQueries.LogCleaning.LogCleaning._
-import Services.MDfromLogQueries.LogCleaning.{LogCleaning, QueriesDeduplicator}
+import Services.MDfromLogQueries.LogCleaning.{LogCleaning, LogCleaningOneFile, QueriesDeduplicator}
 import Services.MDfromLogQueries.SPARQLSyntacticalValidation.SyntacticValidationParallel
 import Services.MDfromLogQueries.SPARQLSyntacticalValidation.SyntacticValidationParallel.valideQueriesInFile
 import Services.MDfromLogQueries.Util.{FileOperation, TdbOperation}
@@ -26,14 +26,14 @@ import org.apache.jena.rdf.model.Model
 object Scenario_LogOnly extends App{
 
   Declarations.setEndpoint("DogFood")
-/*
+
 
   /** 1. Nettoyage du log **/
   var t_cleaning: Long = System.currentTimeMillis()
-  writeFiles(Declarations.paths.get("directoryPath"), Declarations.paths.get("cleanedQueriesFile"))
+  LogCleaningOneFile.writeFiles(Declarations.paths.get("directoryPath"), Declarations.paths.get("cleanedQueriesFile"))
   FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePath"), "Log_Cleaning", (System.currentTimeMillis() - t_cleaning).toInt)
-  FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "Log_Cleaning_nbLines", LogCleaning.nb_queries)
-  FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "Log_Cleaning", LogCleaning.queriesNumber)
+  FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "Log_Cleaning_nbLines", LogCleaningOneFile.nb_queries)
+  FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "Log_Cleaning", LogCleaningOneFile.queriesNumber)
 
   /** 2. Deduplication **/
   var t_dedup: Long = System.currentTimeMillis()
@@ -54,7 +54,7 @@ object Scenario_LogOnly extends App{
   FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "ConstructMSGraphs_nbQueriesConstructed", Queries2GraphesParallel.queriesNumber)
   FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "ConstructMSGraphs_nbQueriesNonConstructed", Queries2GraphesParallel.queriesNumberNonConstructed)
 
-
+/*
   /** 5. Execution **/
   var t_execution: Long = System.currentTimeMillis()
   val endpoint="https://dbpedia.org/sparql"
@@ -63,7 +63,7 @@ object Scenario_LogOnly extends App{
   FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "Execution_nbQueriesExecuted", QueryExecutor.queriesNumber)
   FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "Execution_nbQueriesNonExecuted", QueryExecutor.queriesLogNumber)
 
-*/
+
   /** 6. Alleviation 1 (Useless properties removement) **/
   println("***********************Alleviation 1******************")
   var t_alleviation1: Long = System.currentTimeMillis()
@@ -114,7 +114,7 @@ object Scenario_LogOnly extends App{
   MDGraphBySubject.writeAllStats(stat, "DogFood")
   //statisticsBySubjectList(subjects)
   FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePath"), "Statistics", (System.currentTimeMillis() - t_statistics).toInt)
-
+*/
 
   //TODO ecrire dans un fichier les stat concernant nombre de req ..Etc
 }

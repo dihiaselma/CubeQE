@@ -21,7 +21,7 @@ object ConsolidationParallel extends App {
   var dataset : Dataset = TDBFactory.createDataset()
   val tdbOperation = new TdbOperation()
 
-  Declarations.setEndpoint("DogFood")
+ // Declarations.setEndpoint("DogFood")
   val t1 = System.currentTimeMillis()
 
   //TODO à déplacer vers une classe pour l'annotation

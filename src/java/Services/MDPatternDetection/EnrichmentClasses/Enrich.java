@@ -61,17 +61,22 @@ public class Enrich {
 
 
     public static void enrichModel(Model model) {
+        try {
+            ResIterator resIterator = model.listSubjects();
+            int numNoeud = 0;
 
-        ResIterator resIterator = model.listSubjects();
-        int numNoeud = 0;
-
-        while (resIterator.hasNext()) {
-            Resource node = resIterator.next();
-            nb_attribute = 0;
-            nb_objectProperty = 0;
-            numNoeud++;
-           // System.out.println("le noeud num: "+numNoeud);
-            enrichNode(node);
+            while (resIterator.hasNext()) {
+                Resource node = resIterator.next();
+                nb_attribute = 0;
+                nb_objectProperty = 0;
+                numNoeud++;
+                // System.out.println("le noeud num: "+numNoeud);
+                enrichNode(node);
+            }
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
         }
     }
 
@@ -123,7 +128,10 @@ public class Enrich {
                 if(!node.hasProperty(new PropertyImpl(predicate.asResource().getURI()),object)) {
                     if (!BasicProperties.properties.contains(predicate)) {
                         if (object.isLiteral() || Datatype_Types.types.contains(object.asResource())
-                                || object.asResource().getNameSpace().equals(XSD.getURI())) {
+                                || object.
+                                asResource().
+                                getNameSpace().
+                                equals("http://www.w3.org/2001/XMLSchema")) {
                             addedObject = datatypePropertyTreatement(subject,predicate,objectType,constantsUtil);
                             //subject.addProperty(new PropertyImpl(predicate.asResource().getURI()), object);
                             nb_attribute++;

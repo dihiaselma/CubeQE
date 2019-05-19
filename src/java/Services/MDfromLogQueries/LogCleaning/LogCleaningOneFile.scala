@@ -14,7 +14,7 @@ import scala.io.Source
 
 object LogCleaningOneFile extends App {
   /** This class reads the log files and extract queries **/
-
+  var queriesNumber = 0
   val t1 = System.currentTimeMillis()
   print("je suis dans log cleaning")
 
@@ -24,7 +24,7 @@ object LogCleaningOneFile extends App {
   /* Result (cleaned queries)'s file path */
   val destinationfilePath = Declarations.paths.get("cleanedQueriesFileCopie")
   val duration = System.currentTimeMillis() - t1
-  val dir = new File(directoryPath)
+  var dir = new File(directoryPath)
   /* Regex on wich is based the algorithm to extract the queries */
   private val PATTERN = Pattern.compile("[^\"]*\"(?:GET )?/sparql/?\\?([^\"\\s\\n]*)[^\"]*\".*")
   //private val PATTERN = Pattern.compile("(sparql)(.*)")
@@ -33,7 +33,9 @@ object LogCleaningOneFile extends App {
 
   /** Write the cleaned queries in the destination file path **/
   def writeFiles(filePath: String, destinationfilePath: String) = {
-    var queryList = Source.fromFile(filePath).getLines
+    dir = new File(filePath)
+
+    var queryList = Source.fromFile(dir.listFiles().toIterator.next()).getLines
 
     queryList.grouped(100000).foreach {
       groupOfLines => {
@@ -41,7 +43,7 @@ object LogCleaningOneFile extends App {
         val treatedGroupOfLines = groupOfLines.par.map {
           line => {
             try {
-              val extractedQuery = queryFromLogLine(line)
+            val extractedQuery = queryFromLogLine(line)
               if (extractedQuery != null) {
                 nb_req += 1
                 println("* " + nb_req)
@@ -50,7 +52,7 @@ object LogCleaningOneFile extends App {
 
             } catch {
               case e: Exception => {
-                println("une erreur\n\n\n\n\n\n\n\n\n")
+                println("une erreur")
                 Left(line)
               }
             }
@@ -72,7 +74,7 @@ object LogCleaningOneFile extends App {
 
 
     val writer = new PrintWriter(new FileOutputStream(new File(destinationFilePath), true))
-
+    queriesNumber += 1
     queries.foreach(query => writer.write(query.replaceAll("[\n\r]", "\t") + "\n"))
 
     writer.close()

@@ -74,8 +74,8 @@ public class Controller {
         if (!endpoint.isEmpty())
             Declarations.setEndpoint(endpoint);
         String error = "";
-         times = FileOperation.loadYamlFile(Declarations.paths.get("timesFilePathTest"));
-        queriesNumbers = FileOperation.loadYamlFile(Declarations.paths.get("queriesNumberFilePathTest"));
+         times = FileOperation.loadYamlFile(Declarations.paths.get("timesFilePath"));
+        queriesNumbers = FileOperation.loadYamlFile(Declarations.paths.get("queriesNumberFilePath"));
 
         System.out.println(times.get("Deduplication"));
         model.addAttribute("timesMap", times);
@@ -107,7 +107,7 @@ public class Controller {
 
          org.apache.jena.rdf.model.Model graphModel = TdbOperation.dataSetAnnotated.getNamedModel(uri);
 
-         if (graphModel.size() < 100) jsonArray.add(ModelUtil.modelToJSON(graphModel, uri));
+         if (graphModel.size() < 200) jsonArray.add(ModelUtil.modelToJSON(graphModel, uri));
 
 
         String erreur = "";
@@ -122,7 +122,7 @@ public class Controller {
     @RequestMapping("/subjectsBlocks")
     public String subjectsBlocks(Model model) {
         String error = "Error";
-
+        Declarations.setEndpoint("DogFood");
         JSONArray jsonArray = new JSONArray();
         JSONArray jsonArrayGlobal = new JSONArray();
 
@@ -130,7 +130,7 @@ public class Controller {
 
         int i = 1;
 
-        while (it.hasNext() && i<20){
+        while (it.hasNext() && i<=36){
        // while (it.hasNext() ){
             String key = it.next();
             JSONObject jsonObject = new JSONObject();
