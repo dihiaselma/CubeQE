@@ -572,7 +572,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558272117403" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558272439004" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="jsx.switch.disabled" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Declarations" />
@@ -790,7 +790,7 @@
       <workItem from="1557998006657" duration="18223000" />
       <workItem from="1558098728654" duration="642000" />
       <workItem from="1558177781639" duration="11310000" />
-      <workItem from="1558259089343" duration="8228000" />
+      <workItem from="1558259089343" duration="8907000" />
     </task>
     <task id="LOCAL-00001" summary=" jrebvuir">
       <created>1556119963959</created>
@@ -1058,14 +1058,22 @@
       <option name="project" value="LOCAL" />
       <updated>1558272025969</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="consolidation modifiée">
+      <created>1558272295121</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1558272295121</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="207544000" />
+    <option name="totallyTimeSpent" value="208223000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="55" y="-7" width="1488" height="878" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49879518" visible="true" weight="0.2464986" />
       <window_info id="Structure" order="1" sideWeight="0.50120485" side_tool="true" weight="0.21008404" />
