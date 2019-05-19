@@ -24,16 +24,23 @@ public class Declarations {
 
     public static void setEndpoint(String endpoint) {
         Declarations.endpoint = endpoint;
-        root = "C:\\Users\\KamilaB\\Desktop\\PFE\\Files\\"+endpoint+"\\Support_Files\\";
-        rootTdb = "C:\\Users\\KamilaB\\Desktop\\PFE\\Files\\"+endpoint+"\\Support_Files\\TdbDirectories\\";
+     //   root = "C:\\Users\\KamilaB\\Desktop\\3CS\\Prototypage\\Step_1\\endpoints\\"+endpoint+"\\Support_Files\\";
+     //   rootTdb = "C:\\Users\\KamilaB\\Desktop\\3CS\\Prototypage\\Step_1\\endpoints\\"+endpoint+"\\Support_Files\\TdbDirectories\\";
+
+        root = "C:\\Users\\pc\\Desktop\\PFE\\Files\\"+endpoint+"\\";
+        rootTdb = "E:\\TdbDirectories\\"+endpoint+"\\";
+
 
         /* Queries log Path **/
         paths.put("directoryPath",root+ "Data Log\\logs");
 
         /* Step 1 : Log Cleaning **/
         paths.put("cleanedQueriesFile",root + "ProgramOutput\\Fichier_log_Nettoye_Complet_Parallel.txt");
+
+
         paths.put("cleanedQueriesFileCopie",root + "ProgramOutput\\Fichier_log_Nettoye_Complet_Parallel_Scala_Copie.txt");
         paths.put("notCleanedQueries",root + "ProgramOutput\\not_Cleaned_Queries_File.txt");
+       // paths.put("notCleanedQueries",root + "ProgramOutput\\not_Cleaned_Queries_File");
 
         /* Step 2 : Queries deduplication **/
         paths.put("writingDedupFilePath",root + "ProgramOutput\\Fichier_log_dedup_Nettoye_java.txt");
@@ -81,7 +88,6 @@ public class Declarations {
         paths.put("dataSetAlleviated", rootTdb + "dataSetAlleviated");
         paths.put("dataSetNonAlleviated", rootTdb + "dataSetNonAlleviated");
         paths.put("dataSetAlleviatedUselessProperties", rootTdb + "dataSetAlleviatedUselessProperties");
-        paths.put("dataSetEnriched", rootTdb + "dataSetEnriched");
 
 
         /* Scénario 2 : Analytic Queries **/
@@ -97,12 +103,16 @@ public class Declarations {
         paths.put("queriesNumberFilePath",root + "ProgramOutput\\Fichier_queriesNumber.yaml");
         paths.put("queriesNumberFilePathTest",root + "ProgramOutput\\Fichier_queriesNumberTest.yaml");
 
-        /*for (String key : paths.keySet())
+
+
+      /*   for (String key : paths.keySet())
         {
             FileOperation.createDirectory(paths.get(key));
-        }*/
+        }
         TdbOperation.updatePaths();
 
+
+*/
     }
 
     public static String getEndpoint() {

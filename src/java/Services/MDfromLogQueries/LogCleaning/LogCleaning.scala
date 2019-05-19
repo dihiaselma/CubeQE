@@ -39,10 +39,11 @@ object LogCleaning extends App {
     val logs = dir.listFiles().toList.par.flatMap(x => extractQueries(x))
 
     val writer = new PrintWriter(new File(destinationfilePath))
-    logs.foreach(x => if (x != null) {
+    logs.foreach(query => if (query != null) {
       queriesNumber += 1
-      writer.write(x.replaceAll("[\n\r]", "\t") + "\n")
+      writer.write(query.replaceAll("[\n\r]", "\t") + "\n")
     })
+
     writer.close()
   }
 

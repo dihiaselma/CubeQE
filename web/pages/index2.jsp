@@ -74,7 +74,7 @@
                     <div class="form-group">
                         <form method="post" action="cleaning.j">
                             <label>Choisissez le log sur lequel vous souhaitez tester</label>
-                            <select  class="form-control select2" style="width: 100%;" name="endpoint" id="endpoint">
+                            <select  class="form-control select2"  size="1" style="width: 100%;" name="endpoint" id="endpoint">
                                 <option selected="selected" value="dbPedia">Dbpedia</option>
                                 <option value="Wikidate">Wikidata</option>
                                 <option value="DogFood">Dog food (scholarlyData)</option>

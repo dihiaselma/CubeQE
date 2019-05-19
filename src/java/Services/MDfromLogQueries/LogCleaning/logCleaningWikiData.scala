@@ -1,49 +1,57 @@
 package Services.MDfromLogQueries.LogCleaning
 
 import java.io.{File, FileOutputStream, PrintWriter}
+import java.net.URLDecoder
 import java.nio.charset.StandardCharsets
 import java.util.regex.Pattern
 
 import Services.MDfromLogQueries.Declarations.Declarations
-import Services.MDfromLogQueries.Util.FileOperation
-import org.apache.http.client.utils.URLEncodedUtils
 
-import scala.collection.JavaConverters
 import scala.collection.parallel.ParSeq
 import scala.io.Source
 
-object LogCleaningOneFile extends App {
+object logCleaningWikiData  extends App {
+
   /** This class reads the log files and extract queries **/
-  var queriesNumber = 0
+
   val t1 = System.currentTimeMillis()
   print("je suis dans log cleaning")
-
+  var PATTERN_wikidata : Pattern = null
   /* Directory that coontains the log files 's Path */
   val directoryPath = Declarations.paths.get("directoryPath")
+
 
   /* Result (cleaned queries)'s file path */
   val destinationfilePath = Declarations.paths.get("cleanedQueriesFileCopie")
   val duration = System.currentTimeMillis() - t1
-  var dir = new File(directoryPath)
-  /* Regex on wich is based the algorithm to extract the queries */
-  private val PATTERN = Pattern.compile("[^\"]*\"(?:GET )?/sparql/?\\?([^\"\\s\\n]*)[^\"]*\".*")
-  //private val PATTERN = Pattern.compile("(sparql)(.*)")
+  val dir = new File(directoryPath)
+
+
+
+
+
   /* Statistical variables*/
   var nb_queries = 0
 
   /** Write the cleaned queries in the destination file path **/
-  def writeFiles(filePath: String, destinationfilePath: String) = {
-    dir = new File(filePath)
+  def writeFilesWikidata (filePath: String, destinationfilePath: String) = {
 
-    var queryList = Source.fromFile(dir.listFiles().toIterator.next()).getLines
-
+    PATTERN_wikidata=   Pattern.compile("([^\"\\s\\n]*)[^\"]*")
+    val queryList = Source.fromFile(filePath).getLines
+      var nb_group =0
     queryList.grouped(100000).foreach {
       groupOfLines => {
         var nb_req = 0
+        nb_group+=1
         val treatedGroupOfLines = groupOfLines.par.map {
           line => {
             try {
-              val extractedQuery = queryFromLogLine(line)
+//              println(line)
+
+              val extractedQuery = queryFromLogLineWD(line)
+             // println(queryFromRequest(extractedQuery))
+
+
               if (extractedQuery != null) {
                 nb_req += 1
                 println("* " + nb_req)
@@ -52,7 +60,8 @@ object LogCleaningOneFile extends App {
 
             } catch {
               case e: Exception => {
-                println("une erreur")
+                e.printStackTrace()
+                println("une erreur\n\n\n\n\n\n\n\n\n")
                 Left(line)
               }
             }
@@ -63,7 +72,7 @@ object LogCleaningOneFile extends App {
         nb_queries = nb_queries + nb_req
         val (correct, errors) = treatedGroupOfLines.partition(_.isRight)
         writeInFile(destinationfilePath, correct.collect { case Right(Some(x)) => x })
-        writeInFile(Declarations.paths.get("notCleanedQueries"), errors.collect { case Left(line) => line })
+        writeInFile(Declarations.paths.get("notCleanedQueries")+nb_group+".txt", errors.collect { case Left(line) => line })
       }
     }
     println("nombre de requêtes dans le log :" + nb_queries)
@@ -81,6 +90,31 @@ object LogCleaningOneFile extends App {
   }
 
 
+  /** match the line passed as parameter with the Regex to extract the query and return the query **/
+  def queryFromLogLineWD(line: String  ) = {
+
+
+    val matcher= PATTERN_wikidata.matcher(line)
+
+    if (matcher.find) {
+      val requestStr = matcher.group(1)
+
+      val queryStr = queryFromRequestWD(requestStr)
+
+      if (queryStr != null) queryStr
+      else requestStr
+    }
+    else null
+  }
+
+
+  def queryFromRequestWD(requestStr: String): String = {
+     URLDecoder.decode(requestStr, StandardCharsets.UTF_8)
+  }
+
+
+
+ // dir.listFiles().toList.foreach(filePath => writeFilesWikidata(filePath.toString, destinationfilePath))
 
   println(duration)
 }
