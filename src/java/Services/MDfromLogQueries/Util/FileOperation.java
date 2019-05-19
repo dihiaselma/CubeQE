@@ -12,6 +12,9 @@ import org.yaml.snakeyaml.Yaml;
 
 import javax.naming.event.ObjectChangeListener;
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.logging.Level;
@@ -602,7 +605,24 @@ public class FileOperation {
         }
     }
 
+    public static void createDirectory (String fileName)
+    {
 
+        Path path = Paths.get(fileName);
+        System.out.println(fileName);
+        try {
+            if (!Files.exists(path)) {
+                Files.createDirectories(path);
+                System.out.println("Directory created");
+            } else {
+
+                System.out.println("Directory already exists");
+            }
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
 
 }
 

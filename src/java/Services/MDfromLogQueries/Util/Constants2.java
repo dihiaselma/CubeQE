@@ -93,6 +93,7 @@ public class Constants2 {
 
     private static void initDefaultProperties() {
         List<Path> filesInFolder = new ArrayList<>();
+        defaultOntologiesDirectory = Declarations.paths.get("defaultOntologiesDir");
         try {
             filesInFolder = Files.walk(Paths.get(defaultOntologiesDirectory))
                     .filter(Files::isRegularFile)

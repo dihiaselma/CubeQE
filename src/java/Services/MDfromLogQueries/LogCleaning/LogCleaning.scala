@@ -25,7 +25,7 @@ object LogCleaning extends App {
   val dirPath = Declarations.paths.get("directoryPath")
 
   /* Result (cleaned queries)'s file path */
-  val filePath = Declarations.paths.get("cleanedQueriesFileCopie
+  val filePath = Declarations.paths.get("cleanedQueriesFileCopie")
 
   /* Regex on wich is based the algorithm to extract the queries */
   private val PATTERN = Pattern.compile("[^\"]*\"(?:GET )?/sparql/?\\?([^\"\\s\\n]*)[^\"]*\".*")
