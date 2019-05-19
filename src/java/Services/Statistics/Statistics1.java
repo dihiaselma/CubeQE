@@ -6,6 +6,7 @@ import Services.MDfromLogQueries.Declarations.Declarations;
 import Services.MDfromLogQueries.Util.TdbOperation;
 import org.apache.jena.query.Dataset;
 import org.apache.jena.rdf.model.*;
+import org.apache.jena.rdf.model.impl.PropertyImpl;
 import org.apache.jena.tdb.TDBFactory;
 import org.apache.jena.vocabulary.RDF;
 
@@ -24,6 +25,8 @@ import static java.lang.StrictMath.max;
 public class Statistics1 {
 
     private static Dataset dataset = TDBFactory.createDataset(Declarations.paths.get("dbDirectory"));
+
+    private static Property annotProperty = new PropertyImpl("http://loglinc.dz/annotated");
 
     private Model model = ModelFactory.createDefaultModel();
 
@@ -195,18 +198,18 @@ public class Statistics1 {
                 nbNodes++;
 
 
-                if (node.hasProperty(RDF.type, Annotations.FACT.toString())) this.setNFC(this.getNFC() + 1);
-                if (node.hasProperty(RDF.type, Annotations.DIMENSION.toString()))
+                if (node.hasProperty(annotProperty, Annotations.FACT.toString())) this.setNFC(this.getNFC() + 1);
+                if (node.hasProperty(annotProperty, Annotations.DIMENSION.toString()))
                     this.setNDC(this.getNDC() + 1);
-                if (node.hasProperty(RDF.type, Annotations.DIMENSIONLEVEL.toString())) {
+                if (node.hasProperty(annotProperty, Annotations.DIMENSIONLEVEL.toString())) {
                     this.setNBC(this.getNBC() + 1);
                     levelsDepth++;
                 }
 
 
-                if (node.hasProperty(RDF.type, Annotations.FACTATTRIBUTE.toString()))
+                if (node.hasProperty(annotProperty, Annotations.FACTATTRIBUTE.toString()))
                     this.setNAFC(this.getNAFC() + 1);
-                if (node.hasProperty(RDF.type, Annotations.DIMENSIONATTRIBUTE.toString()))
+                if (node.hasProperty(annotProperty, Annotations.DIMENSIONATTRIBUTE.toString()))
                     this.setNADC(this.getNADC() + 1);
 
 
@@ -244,7 +247,7 @@ public class Statistics1 {
 
             if (subject != null) {
                 /** NFC **/
-                if (subject.hasProperty(RDF.type, Annotations.FACT.toString()))
+                if (subject.hasProperty(annotProperty, Annotations.FACT.toString()))
                     statistics1.setNFC(statistics1.getNFC() + 1);
 
                 visitedNodes.add(subject);
@@ -252,10 +255,10 @@ public class Statistics1 {
 
                 for (Statement statement : propertyIterator) {
 
-                    if (!statement.getPredicate().equals(RDF.type) && !visitedNodes.contains(statement.getObject())) {
+                    if (!statement.getPredicate().equals(annotProperty) && !visitedNodes.contains(statement.getObject())) {
                         object = statement.getObject();
                         /** NDC **/
-                        if (object.asResource().hasProperty(RDF.type, Annotations.NONFUNCTIONALDIMENSION.toString())) {
+                        if (object.asResource().hasProperty(annotProperty, Annotations.DIMENSION.toString())) {
                             visitedNodes.add(object);
                             statistics1.setNDC(statistics1.getNDC() + 1);
                             statistics1.setNH(0);
@@ -269,7 +272,7 @@ public class Statistics1 {
                         }
 
                         /** NAFC **/
-                        if (object.asResource().hasProperty(RDF.type, Annotations.FACTATTRIBUTE.toString()))
+                        if (object.asResource().hasProperty(annotProperty, Annotations.FACTATTRIBUTE.toString()))
                             statistics1.setNAFC(statistics1.getNAFC() + 1);
                     }
                 }
@@ -303,10 +306,10 @@ public class Statistics1 {
         int nbH = 0;
         nbLevels++;
         for (Statement statement : propertyList) {
-            if (!statement.getPredicate().equals(RDF.type) && !visitedNodes.contains(statement.getObject())) {
+            if (!statement.getPredicate().equals(annotProperty) && !visitedNodes.contains(statement.getObject())) {
                 object = statement.getObject();
 
-                if (object.asResource().hasProperty(RDF.type, Annotations.NONFUNCTIONALDIMENSIONLEVEL.toString())) {
+                if (object.asResource().hasProperty(annotProperty, Annotations.DIMENSIONLEVEL.toString())) {
                     visitedNodes.add(object);
                     nbH++;
 
@@ -320,14 +323,14 @@ public class Statistics1 {
                     statistics1 = countLevels(object.asResource(), statistics1, nbLevels, visitedNodes);
 
                 }
-                if (object.asResource().hasProperty(RDF.type, Annotations.DIMENSIONATTRIBUTE.toString())) {
+                if (object.asResource().hasProperty(annotProperty, Annotations.DIMENSIONATTRIBUTE.toString())) {
                     /** NABC **/
-                    if (resource.hasProperty(RDF.type, Annotations.NONFUNCTIONALDIMENSIONLEVEL.toString())
-                            || resource.hasProperty(RDF.type, Annotations.DIMENSIONLEVEL.toString()))
+                    if (resource.hasProperty(annotProperty, Annotations.NONFUNCTIONALDIMENSIONLEVEL.toString())
+                            || resource.hasProperty(annotProperty, Annotations.DIMENSIONLEVEL.toString()))
                         statistics1.setNABC(statistics1.getNABC() + 1);
                     /** NADC **/
-                    else if (resource.hasProperty(RDF.type, Annotations.NONFUNCTIONALDIMENSION.toString()) ||
-                            resource.hasProperty(RDF.type, Annotations.DIMENSION.toString()))
+                    else if (resource.hasProperty(annotProperty, Annotations.NONFUNCTIONALDIMENSION.toString()) ||
+                            resource.hasProperty(annotProperty, Annotations.DIMENSION.toString()))
                         statistics1.setNADC(statistics1.getNADC() + 1);
                 }
             }

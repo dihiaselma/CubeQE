@@ -21,13 +21,13 @@
 
 // Themes begin
         am4core.useTheme(am4themes_animated);
-        //am4core.useTheme(am4themes_frozen)
+        am4core.useTheme(am4themes_frozen)
 // Themes end
 
 
 
         var chart = am4core.create("chartdiv", am4plugins_forceDirected.ForceDirectedTree);
-        chart.legend = new am4charts.Legend(); // legends of the graph
+        //chart.legend = new am4charts.Legend(); // legends of the graph
 
         var networkSeries = chart.series.push(new am4plugins_forceDirected.ForceDirectedSeries());
 

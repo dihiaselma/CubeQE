@@ -9,6 +9,7 @@ import org.apache.jena.query.Dataset
 import org.apache.jena.rdf.model._
 import org.apache.jena.tdb.{TDB, TDBFactory}
 import org.apache.jena.tdb2.TDB2Factory
+import org.checkerframework.checker.units.qual.m
 
 import scala.collection.{JavaConverters, mutable}
 
@@ -17,8 +18,10 @@ object ConsolidationParallel extends App {
   var modelsNumber=0
   var originalModelsNumber=0
 
+  var dataset : Dataset = TDBFactory.createDataset()
   val tdbOperation = new TdbOperation()
 
+ // Declarations.setEndpoint("DogFood")
   val t1 = System.currentTimeMillis()
 
   //TODO à déplacer vers une classe pour l'annotation
@@ -28,18 +31,19 @@ object ConsolidationParallel extends App {
 
   //toStringModelsHashmap2(unpersistModelsMap(TdbOperation.dataSetAlleviated))
 
-  val modelsConsolidated: util.HashMap[String, Model] = TdbOperation.unpersistModelsMap(TdbOperation.dataSetConsolidate)
-  val modelsAnnotated : util.HashMap[String, Model] = MDGraphAnnotated.constructMDGraphs(modelsConsolidated)
+ // val modelsConsolidated: util.HashMap[String, Model] = TdbOperation.unpersistModelsMap(TdbOperation.dataSetConsolidate)
+  //val modelsAnnotated : util.HashMap[String, Model] = MDGraphAnnotated.constructMDGraphs(modelsConsolidated)
   //writeInTdb(convertToScalaMap(modelsAnnotated), TdbOperation.dataSetAnnotated)
-  //writeInTdb(consolidate(),TdbOperation.dataSetConsolidate)
+  writeInTdb(consolidate(),Declarations.paths.get("dataSetConsolidated"))
   val duration = System.currentTimeMillis() - t1
 
+  //toStringModelsHashmap2(unpersistModelsMap(TdbOperation.dataSetAlleviatedUselessProperties))
   /** *************************************************** Functions ***********************************************************************/
 
-  def consolidate(): mutable.HashMap[String, Model] = {
+  def consolidate2(): mutable.HashMap[String, Model] = {
 
     println(" consolidation ")
-    toStringModelsHashmap2(unpersistModelsMap(TdbOperation.originalDataSet))
+    //toStringModelsHashmap2(unpersistModelsMap(TdbOperation.dataSetAlleviatedUselessProperties))
 
    // val modelHashMap = TdbOperation.unpersistModelsMap(TdbOperation._toString)
     val modelHashMap = TdbOperation.unpersistModelsMap(Declarations.paths.get("_toString"))
@@ -64,15 +68,15 @@ object ConsolidationParallel extends App {
       kies.foreach {
         key => {
           nb_model += 1
-          println(s" model n°  $nb_model ")
+          println(s" model n°  $nb_model "+key)
           nodeIterator = modelsHashMap(key).listObjects
 
           // for all nodes in modelsHashMap
           while (nodeIterator.hasNext) {
 
-            println(" je suis dans le while ")
             val node: RDFNode = nodeIterator.next
             // if node already exists as key (subject) in the map, and its model is not empty
+            println(" je suis dans le while "+node.toString)
 
             if (modelsHashMap.contains(node.toString) && !modelsHashMap(node.toString).isEmpty) {
 
@@ -89,6 +93,61 @@ object ConsolidationParallel extends App {
       sizeOfNewResults = modelsHashMap.size
     }
 
+    modelsNumber+= modelsHashMap.size
+   // println(" taille de la hashmap apres consolidation : " + modelsHashMap.size)
+    modelsHashMap
+  }
+ def consolidate(): mutable.HashMap[String, Model] = {
+
+    println(" consolidation ")
+    toStringModelsHashmap2(unpersistModelsMap(Declarations.paths.get("dataSetAlleviatedUselessProperties")))
+
+   // val modelHashMap = TdbOperation.unpersistModelsMap(TdbOperation._toString)
+    val modelHashMap = TdbOperation.unpersistModelsMap(Declarations.paths.get("_toString"))
+
+    if (modelHashMap == null) return null
+    var nb = 0
+    var modelsHashMap: mutable.HashMap[String, Model] = convertToScalaMap(modelHashMap)
+
+    var nodeIterator: NodeIterator = null
+   var consolidatedNodes : mutable.HashSet[String] = new mutable.HashSet[String]()
+   modelsHashMap.foreach{
+     pair =>{
+       val model = pair._2
+       nodeIterator = model.listObjects
+       var newSizeOfObjects = 0
+       var sizeofObjects = nodeIterator.toList.size()
+       // for all nodes in modelsHashMap
+       while (sizeofObjects != newSizeOfObjects){
+         sizeofObjects = newSizeOfObjects
+         nodeIterator = model.listObjects()
+         println("je rentre ici")
+         while (nodeIterator.hasNext) {
+         val node: RDFNode = nodeIterator.next
+         // if node already exists as key (subject) in the map, and its model is not empty
+         println(" je suis dans le while "+node.toString)
+         if (modelsHashMap.contains(node.toString) && !model.containsAll(modelHashMap.get(node.toString)) && !modelsHashMap(node.toString).isEmpty && modelHashMap.get(node.toString).size()<10) {
+           // then consolidate it with the model in question
+           model.add(modelsHashMap(node.toString))
+           consolidatedNodes.add(node.toString)
+         }
+       }
+         newSizeOfObjects = model.listObjects().toList.size()
+       }
+
+     }
+   }
+   consolidatedNodes.foreach{
+     nodeName =>{
+       println(nodeName)
+       if (modelHashMap.get(nodeName).size()<10)
+         {
+           println("je rentre")
+           modelsHashMap -= nodeName
+          // modelsHashMap.remove(nodeName)
+         }
+     }
+   }
     modelsNumber+= modelsHashMap.size
    // println(" taille de la hashmap apres consolidation : " + modelsHashMap.size)
     modelsHashMap
@@ -125,6 +184,7 @@ object ConsolidationParallel extends App {
         if (!pair._2.isEmpty) {
           newResults.put(pair._1, pair._2)
         }
+        else println("vide "+ pair._1)
       }
 
     }
@@ -142,7 +202,7 @@ object ConsolidationParallel extends App {
         listOfKies.foreach {
           key => {
 
-            val model = getModelFromTDB(key, TdbOperation.originalDataSet)
+            val model = getModelFromTDB(key, dataset)
             nb += 1
             System.out.println("model num " + nb)
             modelsFromOneModel = getModelsofModel(model)
@@ -154,9 +214,9 @@ object ConsolidationParallel extends App {
               }
               else modelHashMap.put(key2, modelsFromOneModel(key2))
             }
-
-          }
             originalModelsNumber+=nb
+          }
+
         }
 
         println(s" ------------------------- finish with the group ------------------------------- ")
@@ -275,8 +335,9 @@ object ConsolidationParallel extends App {
   }
 
 
-  def unpersistModelsMap(dataset: Dataset): Iterator[String] = {
+  def unpersistModelsMap(datasetName : String): Iterator[String] = {
 
+   dataset = TDBFactory.createDataset(datasetName)
     val results = new mutable.HashMap[String, Model]
 
     TDB.sync(dataset)
