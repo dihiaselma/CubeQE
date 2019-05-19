@@ -8,14 +8,6 @@
   <component name="ChangeListManager">
     <list default="true" id="40cced35-abb7-4e08-893e-9148dcd3932a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/Controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/Controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/Services/MDPatternDetection/ConsolidationClasses/ConsolidationParallel.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/Services/MDPatternDetection/ConsolidationClasses/ConsolidationParallel.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/Services/MDPatternDetection/EnrichmentClasses/Enrich.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/Services/MDPatternDetection/EnrichmentClasses/Enrich.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/Services/MDPatternDetection/EnrichmentClasses/EnrichParallel.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/Services/MDPatternDetection/EnrichmentClasses/EnrichParallel.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/Services/MDfromLogQueries/LogCleaning/LogCleaningOneFile.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/Services/MDfromLogQueries/LogCleaning/LogCleaningOneFile.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Util/TdbOperation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Util/TdbOperation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/Services/Scenarios/Scenario_LogOnly.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/Services/Scenarios/Scenario_LogOnly.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/pages/treeView.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/pages/treeView.jsp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="web/bower_components/" />
@@ -177,7 +169,7 @@
         <entry file="file://$PROJECT_DIR$/src/java/Services/MDPatternDetection/EnrichmentClasses/EnrichParallel.scala">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="254">
-              <caret line="41" column="137" selection-start-line="41" selection-start-column="137" selection-end-line="41" selection-end-column="137" />
+              <caret line="40" column="85" selection-start-line="40" selection-start-column="85" selection-end-line="40" selection-end-column="85" />
               <folding>
                 <element signature="e#55#71#0" expanded="true" />
               </folding>
@@ -189,7 +181,7 @@
         <entry file="file://$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Util/TdbOperation.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="264">
-              <caret line="61" column="147" selection-start-line="61" selection-start-column="147" selection-end-line="61" selection-end-column="147" />
+              <caret line="61" column="62" selection-start-line="61" selection-start-column="62" selection-end-line="61" selection-end-column="62" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -580,7 +572,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558271640373" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558272117403" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="jsx.switch.disabled" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Declarations" />
@@ -798,7 +790,7 @@
       <workItem from="1557998006657" duration="18223000" />
       <workItem from="1558098728654" duration="642000" />
       <workItem from="1558177781639" duration="11310000" />
-      <workItem from="1558259089343" duration="7752000" />
+      <workItem from="1558259089343" duration="8228000" />
     </task>
     <task id="LOCAL-00001" summary=" jrebvuir">
       <created>1556119963959</created>
@@ -1059,11 +1051,18 @@
       <option name="project" value="LOCAL" />
       <updated>1558216636764</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="consolidation modifiée">
+      <created>1558272025968</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1558272025969</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="207068000" />
+    <option name="totallyTimeSpent" value="207544000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="55" y="-7" width="1488" height="878" extended-state="6" />
@@ -1076,7 +1075,7 @@
       <window_info id="Favorites" order="5" side_tool="true" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="Web" order="7" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Run" order="0" visible="true" weight="0.38389263" />
+      <window_info active="true" anchor="bottom" id="Run" order="0" visible="true" weight="0.5288591" />
       <window_info anchor="bottom" id="Application Servers" order="1" weight="0.32885906" />
       <window_info anchor="bottom" id="SBT Console" order="2" />
       <window_info anchor="bottom" id="Spring" order="3" weight="0.32885906" />
@@ -1477,7 +1476,7 @@
     <entry file="file://$PROJECT_DIR$/src/java/Services/MDPatternDetection/EnrichmentClasses/EnrichParallel.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="254">
-          <caret line="41" column="137" selection-start-line="41" selection-start-column="137" selection-end-line="41" selection-end-column="137" />
+          <caret line="40" column="85" selection-start-line="40" selection-start-column="85" selection-end-line="40" selection-end-column="85" />
           <folding>
             <element signature="e#55#71#0" expanded="true" />
           </folding>
@@ -1521,7 +1520,7 @@
     <entry file="file://$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Util/TdbOperation.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
-          <caret line="61" column="147" selection-start-line="61" selection-start-column="147" selection-end-line="61" selection-end-column="147" />
+          <caret line="61" column="62" selection-start-line="61" selection-start-column="62" selection-end-line="61" selection-end-column="62" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
