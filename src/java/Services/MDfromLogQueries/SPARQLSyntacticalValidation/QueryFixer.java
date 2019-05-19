@@ -35,6 +35,8 @@ public class QueryFixer {
     public static QueryFixer get() {
         return INSTANCE;
     }
+
+
 //TODO Faire en sorte de ne garder que les requêtes SELECT et convertir les construct en select
 
     private final static String TEST_QUERY_STR1 = "PREFIX a: <http://a/>\n" +

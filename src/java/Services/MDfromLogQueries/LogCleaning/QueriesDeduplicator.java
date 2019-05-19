@@ -3,6 +3,7 @@ package Services.MDfromLogQueries.LogCleaning;
 import Services.MDfromLogQueries.Declarations.Declarations;
 import Services.MDfromLogQueries.Util.FileOperation;
 import com.google.common.base.Stopwatch;
+import scala.io.Source;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -47,7 +48,7 @@ public class QueriesDeduplicator {
             while ((line = br.readLine()) != null) {
                 nb_line++;
                 querySet.add(line);
-                /* System.out.println( "ligne \t"+nb_line);*/
+                 System.out.println( "ligne \t"+nb_line);
             }
             //    System.out.println("nombre de ligne dans le set :" + querySet.size() + " " + nb_line);
 

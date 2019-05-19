@@ -1,25 +1,24 @@
 package Services.MDfromLogQueries.LogCleaning
 
-import Services.MDfromLogQueries.Declarations.Declarations
-import Services.MDfromLogQueries.LogCleaning.logCleaningWikiData.{nb_queries, queryFromLogLineWD, writeInFile}
+import java.io.{File, FileOutputStream, PrintWriter}
 
 import scala.collection.mutable
 import scala.io.Source
 
-object QueriesDeduplicatorScala extends App {
+object QueriesDeduplicatorParallel extends App {
 
   var queriesNumber = 0
 
-  def DeduplicateQueriesInFile (filePath: String): Unit = {
+  def DeduplicateQueriesInFile2   (filePath: String, destinationfilePath: String): Unit = {
 
 
-    var queriesDeduplicatedSet : mutable.HashSet[String]=null
+    //var queriesDeduplicatedSet : mutable.HashSet[String]=null
 
     val queryList = Source.fromFile(filePath).getLines
     var nb_group =0
 
     queryList.grouped(100000).foreach {
-
+      val queriesDeduplicatedSet : mutable.HashSet[String] = new mutable.HashSet[String]()
       groupOfLines => {
         var nb_req = 0
         nb_group+=1
@@ -31,26 +30,32 @@ object QueriesDeduplicatorScala extends App {
               nb_req += 1
 
             println("* " + nb_req)
-
-
           }
         }
 
         println("--------------------- un group finished ---------------------------------- ")
-        nb_queries = nb_queries + nb_req
 
+        queriesNumber+=queriesDeduplicatedSet.size
 
-        val (correct, errors) = treatedGroupOfLines.partition(_.isRight)
-        writeInFile(destinationfilePath, correct.collect { case Right(Some(x)) => x })
-        writeInFile(Declarations.paths.get("notCleanedQueries")+nb_group+".txt", errors.collect { case Left(line) => line })
+        writeInFile(destinationfilePath, queriesDeduplicatedSet)
+
       }
     }
 
-    println("nombre de requêtes dans le log :" + nb_queries)
-    null
+    println("nombre de requêtes dans le log :" +queriesNumber)
+
 
   }
 
+  def writeInFile(destinationFilePath: String, queriesSet: mutable.HashSet[String]) = {
+
+
+    val writer = new PrintWriter(new FileOutputStream(new File(destinationFilePath), true))
+
+    queriesSet.foreach(query => writer.write(query.replaceAll("[\n\r]", "\t") + "\n"))
+
+    writer.close()
+  }
 
 
 

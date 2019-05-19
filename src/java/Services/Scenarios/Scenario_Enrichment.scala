@@ -5,7 +5,6 @@ import java.util
 import Services.MDPatternDetection.AnnotationClasses.MDGraphAnnotated
 import Services.MDPatternDetection.EnrichmentClasses.EnrichParallel.enrichMDSchema
 import Services.MDfromLogQueries.Declarations.Declarations
-import Services.MDfromLogQueries.Declarations.Declarations._
 import Services.MDfromLogQueries.Util.{FileOperation, TdbOperation}
 import org.apache.jena.rdf.model.Model
 

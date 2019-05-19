@@ -1,38 +1,31 @@
 package Services.Scenarios
 
-import java.util
-
-import Services.MDPatternDetection.Alleviation.MDGraphsAlleviation
-import Services.MDPatternDetection.AnnotationClasses.MDGraphAnnotated
-import Services.MDPatternDetection.ConsolidationClasses.ConsolidationParallel
-import Services.MDPatternDetection.ConsolidationClasses.ConsolidationParallel._
-import Services.MDPatternDetection.ExecutionClasses.QueryExecutor
-import Services.MDPatternDetection.ExecutionClasses.QueryExecutor.executeQuiersInFile
-import Services.MDPatternDetection.GraphConstructionClasses.Queries2GraphesParallel
-import Services.MDfromLogQueries.LogCleaning.QueriesDeduplicator.DeduplicateQueriesInFile
-import Services.MDfromLogQueries.LogCleaning.LogCleaning._
-import Services.MDfromLogQueries.LogCleaning.{LogCleaning, QueriesDeduplicator}
-import Services.MDfromLogQueries.SPARQLSyntacticalValidation.SyntacticValidationParallel
-import Services.MDfromLogQueries.SPARQLSyntacticalValidation.SyntacticValidationParallel.valideQueriesInFile
-import Services.MDfromLogQueries.Util.{FileOperation, TdbOperation}
-import Services.MDPatternDetection.GraphConstructionClasses.Queries2GraphesParallel.TransformQueriesInFile
 import Services.MDfromLogQueries.Declarations.Declarations
-import Services.Statistics.MDGraphBySubjectScala.{statisticsBySubjectList, subjects}
-import org.apache.jena.rdf.model.Model
-
+import Services.MDfromLogQueries.LogCleaning.QueriesDeduplicator
+import Services.MDfromLogQueries.LogCleaning.QueriesDeduplicator.DeduplicateQueriesInFile
+import Services.MDfromLogQueries.Util.FileOperation
 
 
 object Scenario_LogOnly extends App{
 
-  Declarations.setEndpoint("DogFood")
-/*
+  Declarations.setEndpoint("wikidata")
+
 
   /** 1. Nettoyage du log **/
   var t_cleaning: Long = System.currentTimeMillis()
-  writeFiles(Declarations.paths.get("directoryPath"), Declarations.paths.get("cleanedQueriesFile"))
+  println(Declarations.paths.get("directoryPath"))
+
+  // writeFiles(Declarations.paths.get("directoryPath"), Declarations.paths.get("cleanedQueriesFile"))
+
+ /* writeFilesWikidata ("C:\\Users\\pc\\Desktop\\PFE\\Files\\wikidata\\Data Log\\logs\\I7_status2xx_Joined.tsv", Declarations.paths.get("cleanedQueriesFile"))
+
   FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePath"), "Log_Cleaning", (System.currentTimeMillis() - t_cleaning).toInt)
   FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "Log_Cleaning_nbLines", LogCleaning.nb_queries)
   FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "Log_Cleaning", LogCleaning.queriesNumber)
+
+*/
+
+
 
   /** 2. Deduplication **/
   var t_dedup: Long = System.currentTimeMillis()
@@ -41,7 +34,7 @@ object Scenario_LogOnly extends App{
   FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "Deduplication", QueriesDeduplicator.queriesNumber)
 
   /** 3. Validaion syntaxique **/
-  var t_syntacticValidation: Long = System.currentTimeMillis()
+ /* var t_syntacticValidation: Long = System.currentTimeMillis()
   valideQueriesInFile(Declarations.paths.get("writingDedupFilePath"))
   FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePath"), "Syntactical_Validation", (System.currentTimeMillis() - t_syntacticValidation).toInt)
   FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "Syntactical_Validation", SyntacticValidationParallel.queriesNumber )
@@ -56,13 +49,15 @@ object Scenario_LogOnly extends App{
 
   /** 5. Execution **/
   var t_execution: Long = System.currentTimeMillis()
-  val endpoint="https://dbpedia.org/sparql"
+  //val endpoint="https://dbpedia.org/sparql"
+  val endpoint="https://query.wikidata.org/"
+
   executeQuiersInFile(Declarations.paths.get("constructQueriesFile2"), endpoint)
   FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePath"), "Execution", (System.currentTimeMillis() - t_execution).toInt)
   FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "Execution_nbQueriesExecuted", QueryExecutor.queriesNumber)
   FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "Execution_nbQueriesNonExecuted", QueryExecutor.queriesLogNumber)
 
-*/
+
   /** 6. Alleviation 1 (Useless properties removement) **/
   println("***********************Alleviation 1******************")
   var t_alleviation1: Long = System.currentTimeMillis()
@@ -111,6 +106,6 @@ object Scenario_LogOnly extends App{
   statisticsBySubjectList(subjects)
   FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePath"), "Statistics", (System.currentTimeMillis() - t_statistics).toInt)
 
-
+*/
 
 }
