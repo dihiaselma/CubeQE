@@ -5,10 +5,19 @@
   Time: 16:43
   To change this template use File | Settings | File Templates.
 --%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="tg" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+
 <!DOCTYPE html>
 <html>
 <head>
+
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>AdminLTE 2 | Dashboard</title>
@@ -44,67 +53,8 @@
     <!-- contains the header -->
     <%@ include file="header.jsp" %>
 
-    <aside class="main-sidebar">
-        <!-- sidebar: style can be found in sidebar.less -->
-        <section class="sidebar-collapse">
+    <%@ include file="menu.jsp" %>
 
-
-            <!-- /.search form -->
-            <!-- sidebar menu: : style can be found in sidebar.less -->
-            <ul class="sidebar-menu" data-widget="tree">
-                <li class="header">MAIN NAVIGATION</li>
-                <!-- search form -->
-                <form action="#" method="get" class="sidebar-form">
-                    <div class="input-group">
-                        <input type="text" name="q" class="form-control" placeholder="Search the theme...">
-                        <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat">
-                  <i class="fa fa-search"></i>
-                </button>
-              </span>
-                    </div>
-                </form>
-
-
-
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-share"></i> <span>Themes</span>
-                        <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="#"><i class="fa fa-circle-o"></i> Game </a></li>
-                        <li class="treeview">
-                            <a href="#"><i class="fa fa-circle-o"></i> University
-                                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="#"><i class="fa fa-circle-o"></i> Teacher</a></li>
-                                <li class="treeview">
-                                    <a href="#"><i class="fa fa-circle-o"></i> Book
-                                        <span class="pull-right-container">
-                      <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                                    </a>
-                                    <ul class="treeview-menu">
-                                        <li><a href="#"><i class="fa fa-circle-o"></i> Scientific article</a></li>
-                                        <li><a href="#"><i class="fa fa-circle-o"></i> Publication </a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li><a href="#"><i class="fa fa-circle-o"></i> Hotel </a></li>
-                    </ul>
-                </li>
-
-            </ul>
-        </section>
-        <!-- /.sidebar -->
-    </aside>
     <!-- Left side column. contains the logo and sidebar -->
 
     <!-- Content Wrapper. Contains page content -->
@@ -112,12 +62,12 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Accueil
+                Home
                 <small>Version 1.0</small>
             </h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
-                <li class="active">Accueil</li>
+                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li class="active">Home</li>
             </ol>
         </section>
 
@@ -130,22 +80,61 @@
                 <div class="col-md-12">
                     <!-- TABLE: LATEST ORDERS -->
 
-                    <div class="form-group">
-                        <form method="post" action="cleaning.j">
-                            <label>Choisissez le log sur lequel vous souhaitez tester</label>
-                            <select  class="form-control select2"  size="1" style="width: 100%;" name="endpoint" id="endpoint">
-                                <option selected="selected" value="dbPedia">Dbpedia</option>
-                                <option value="wikidata">Wikidata</option>
-                                <option value="DogFood">Dog food (scholarlyData)</option>
-                                <option value="BritishMuseum">British museum</option>
-                                <option value="LinkedGeoData">Linked Geo Data</option>
-                            </select>
-                            <input type="submit" value="Choose" style="width: 100px" class="btn btn-block btn-default"/>
-                        </form>
-                    </div>
+                    <div class="box box-info">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Statistics</h3>
 
-                    <div class="col-md-12 text-center box" style="text-align: center">
-                        <%@include file="scenarioGraph.jsp" %>
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                        class="fa fa-minus"></i>
+                                </button>
+
+                            </div>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <div class="table-responsive">
+
+
+                                <table class="table no-margin">
+                                    <thead>
+                                    <tr>
+                                        <th>Stat</th>
+                                        <th>Description</th>
+
+                                        <tg:forEach var="entryNames" items="${statistics.entrySet()}" >
+
+                                            <th><c:out value ="${entryNames.key}"/></th>
+
+                                        </tg:forEach>
+
+                                    </tr>
+
+                                    </thead>
+
+                                    <tbody>
+
+                                    <tg:forEach var="entry" items="${statistics.get('Total').entrySet()}">
+                                    <tr>
+      <!-- nom du type de la stat  -->   <td><c:out value ="${entry.key}"/></td>
+      <!-- description  -->              <td><c:out value ="${statisticsDescription.get(entry.key)}"/></td>
+                                         <td><fmt:formatNumber value ="${statistics.get('Average').get(entry.key)}" maxFractionDigits="2"/></td>
+                                         <td><fmt:formatNumber value ="${statistics.get('Minimum').get(entry.key)}" maxFractionDigits="2"/></td>
+                                         <td><fmt:formatNumber value ="${statistics.get('Maximum').get(entry.key)}" maxFractionDigits="2"/></td>
+                                         <td><fmt:formatNumber value ="${statistics.get('Total').get(entry.key)}" maxFractionDigits="2"/></td>
+
+                                    </tr>
+                                    </tg:forEach>
+
+                                    </tbody>
+                                </table>
+
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.box-body -->
+
+                        <!-- /.box-footer -->
                     </div>
                     <!-- /.box -->
                 </div>
@@ -198,3 +187,4 @@
 <script src="../dist/js/demo.js"></script>
 </body>
 </html>
+

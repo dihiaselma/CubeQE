@@ -36,6 +36,17 @@
                 </div>
             </form>
 
+
+
+            <li>
+                <a href="statistics.j">
+                <i class="fa fa-pie-chart"></i> <span>Statistics</span>
+                </a>
+            </li>
+
+
+
+
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-share"></i> <span>Themes</span>
