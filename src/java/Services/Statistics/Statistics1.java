@@ -294,13 +294,13 @@ public class Statistics1 {
         writeStatisticsInFile2(totalStatistics(statistics1ArrayList), "Total", Declarations.paths.get("totalstatisticsFile"));
 
     }
-    public static void writeAllStatsInYAML(ArrayList<Statistics1> statistics1ArrayList) {
+    public static void writeAllStatsInYAML(ArrayList<Statistics1> statistics1ArrayList, String allStatsFilePath, String typedStatsFilePath ) {
 
-        writeStatisticsListInYAMLFile(statistics1ArrayList, Declarations.paths.get("statisticsFileYAML"));
-        writeStatisticsInFileInYAMLbyType(avgStatistics(statistics1ArrayList), "Average", Declarations.paths.get("statisticsByTypeFile"));
-        writeStatisticsInFileInYAMLbyType(minStatistics(statistics1ArrayList), "Minimum", Declarations.paths.get("statisticsByTypeFile"));
-        writeStatisticsInFileInYAMLbyType(maxStatistics(statistics1ArrayList), "Maximum", Declarations.paths.get("statisticsByTypeFile"));
-        writeStatisticsInFileInYAMLbyType(totalStatistics(statistics1ArrayList), "Total", Declarations.paths.get("statisticsByTypeFile"));
+        writeStatisticsListInYAMLFile(statistics1ArrayList, Declarations.paths.get(allStatsFilePath));
+        writeStatisticsInFileInYAMLbyType(avgStatistics(statistics1ArrayList), "Average", typedStatsFilePath);
+        writeStatisticsInFileInYAMLbyType(minStatistics(statistics1ArrayList), "Minimum", typedStatsFilePath);
+        writeStatisticsInFileInYAMLbyType(maxStatistics(statistics1ArrayList), "Maximum", typedStatsFilePath);
+        writeStatisticsInFileInYAMLbyType(totalStatistics(statistics1ArrayList), "Total", typedStatsFilePath);
 
     }
 

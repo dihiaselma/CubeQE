@@ -1,14 +1,18 @@
 package Services.MDfromLogQueries.Util;
 
+import Services.MDPatternDetection.AnnotationClasses.Annotations;
 import org.apache.jena.rdf.model.Model;
+import org.apache.jena.rdf.model.Property;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.rdf.model.Statement;
+import org.apache.jena.rdf.model.impl.PropertyImpl;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import java.util.*;
 
 public class ModelUtil {
+    private static Property annotProperty = new PropertyImpl("http://loglinc.dz/annotated");
 
     public static JSONObject modelToJSON(Model model, String e_subject)
     {
@@ -16,7 +20,9 @@ public class ModelUtil {
         JSONObject jsonObject = new JSONObject();
         Resource subject  = model.getResource(e_subject);
         visitedNodes.add(subject);
-        jsonObject.put("id",subject.getURI());
+        jsonObject.put("id",subject.getLocalName());
+        jsonObject.put("color", "#713E8D");
+        jsonObject.put("value",4);
         jsonObject.put("children",propertyIterate(subject,visitedNodes));
 
         return jsonObject;
@@ -24,7 +30,7 @@ public class ModelUtil {
 
     public static JSONObject subjectToJSON( String e_subject)
     {
-         JSONObject jsonObject = new JSONObject();
+        JSONObject jsonObject = new JSONObject();
 
 
         jsonObject.put("name", e_subject);
@@ -40,11 +46,27 @@ public class ModelUtil {
         JSONObject jsonObject;
         for (Statement stat : propertyIterator) {
             jsonObject = new JSONObject();
-            jsonObject.put("id",stat.getObject().toString());
-            jsonObject.put("name",stat.getPredicate().getURI());
-            jsonObject.put("value",5);
+            if (stat.getPredicate().equals(annotProperty))
+            {
+                jsonObject.put("id",stat.getObject().toString());
+                jsonObject.put("color","#A5ABEE");
+                jsonObject.put("value",1);
+            }
+            jsonObject.put("name",stat.getPredicate().getLocalName());
             if (stat.getObject().isResource() && stat.getObject().asResource().listProperties().hasNext() && !visitedNodes.contains(stat.getObject().asResource())) {
-                visitedNodes.add(subject);
+                if (stat.getObject().asResource().hasProperty(annotProperty, Annotations.DIMENSION.toString()) ||
+                        stat.getObject().asResource().hasProperty(annotProperty, Annotations.DIMENSIONLEVEL.toString()))
+                {
+                    jsonObject.put("id",stat.getObject().asResource().getLocalName());
+                    visitedNodes.add(subject);
+                    jsonObject.put("color","#6A6DDE");
+                    jsonObject.put("value",3);
+                }
+                else {
+                    jsonObject.put("id",stat.getObject().asResource().getLocalName());
+                    jsonObject.put("color","#EB6EB0");
+                    jsonObject.put("value",2);
+                }
                 jsonObject.put("children", propertyIterate(stat.getObject().asResource(), visitedNodes));
             }
             jsonArray.add(jsonObject);

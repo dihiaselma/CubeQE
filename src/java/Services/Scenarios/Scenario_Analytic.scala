@@ -12,8 +12,7 @@ object Scenario_Analytic extends App{
 
   val endpoint = "https://dbpedia.org/sparql"
 
-  /**
-    * 1. Extraction des requêtes analytiques du fichier SyntaxValid et execution */
+  /** 1. Extraction des requêtes analytiques du fichier SyntaxValid*/
   var t_extraction: Long = System.currentTimeMillis()
   val queryList = FileOperation.ReadFile(Declarations.paths.get("syntaxValidFile2")).asInstanceOf[util.ArrayList[String]]
   val analyticQueriesList = AnalyticQueries.getAnalyticQueries(queryList)

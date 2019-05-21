@@ -4,7 +4,7 @@ import java.util
 
 import Services.MDPatternDetection.ConsolidationClasses.ConsolidationParallel.{convertToScalaMap, writeInTdb}
 import Services.MDfromLogQueries.Declarations.Declarations
-import Services.MDfromLogQueries.Util.FileOperation.writeStatisticsListInFile2
+import Services.MDfromLogQueries.Util.FileOperation.writeEnrichStatisticsListInYAMLFile
 import Services.MDfromLogQueries.Util.{Constants2, ConstantsUtil, TdbOperation}
 import org.apache.jena.rdf.model.Model
 
@@ -39,8 +39,8 @@ object EnrichParallel extends App {
         }
 
         writeInTdb(treatedGroupOfLines.seq,Declarations.paths.get("dataSetEnriched"))
-        writeStatisticsListInFile2(Enrich.statisticsAnalytics4Fact, Declarations.paths.get("statisticsAnalyticFactFile"))
-        writeStatisticsListInFile2(Enrich.statisticsAnalytics4Dimension, Declarations.paths.get("statisticsAnalyticDimFile"))
+        writeEnrichStatisticsListInYAMLFile(Enrich.statisticsAnalytics4Fact, Declarations.paths.get("statisticsAnalyticFactFile"))
+        writeEnrichStatisticsListInYAMLFile(Enrich.statisticsAnalytics4Dimension, Declarations.paths.get("statisticsAnalyticDimFile"))
       }
     }
     /*itModels.grouped(20000).foreach {

@@ -53,7 +53,7 @@ public class QueriesDeduplicator {
             //    System.out.println("nombre de ligne dans le set :" + querySet.size() + " " + nb_line);
 
             queriesNumber += querySet.size();
-            FileOperation.WriteInFile(Declarations.paths.get("writingDedupFilePath"), querySet);
+            FileOperation.WriteInFile(Declarations.paths.get("deduplicatedQueriesFile"), querySet);
 
         } catch (Exception e) {
             e.printStackTrace();

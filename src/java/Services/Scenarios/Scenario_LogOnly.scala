@@ -44,7 +44,7 @@ object Scenario_LogOnly extends App{
 
   /** 3. Validaion syntaxique **/
   var t_syntacticValidation: Long = System.currentTimeMillis()
-  valideQueriesInFile(Declarations.paths.get("writingDedupFilePath"))
+  valideQueriesInFile(Declarations.paths.get("deduplicatedQueriesFile"))
   FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePath"), "Syntactical_Validation", (System.currentTimeMillis() - t_syntacticValidation).toInt)
   FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "Syntactical_Validation", SyntacticValidationParallel.queriesNumber )
 
@@ -111,7 +111,7 @@ object Scenario_LogOnly extends App{
   var statistics : Statistics1 = new Statistics1
   val stat = statistics.stat2(TdbOperation.unpersistModelsMap(Declarations.paths.get("dataSetAnnotated")))
 
-  Statistics1.writeAllStatsInYAML(stat)
+  Statistics1.writeAllStatsInYAML(stat, Declarations.paths.get("statisticsFileYAML"), Declarations.paths.get("statisticsByTypeFile"))
 
   //statisticsBySubjectList(subjects)
 

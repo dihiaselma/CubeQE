@@ -50,7 +50,6 @@ public class AnalyticQueries {
     public static ArrayList<String> getAnalyticQueries(ArrayList<String> queryList) {
         ArrayList<String> analyticQueriesList = new ArrayList<>();
         int nb_line = 0; //for statistical needs
-        int nb = 0;
         String queryStr;
         Query query;
         int size = queryList.size();
@@ -67,7 +66,6 @@ public class AnalyticQueries {
             } catch (Exception e) {
                 // e.printStackTrace();
                 System.out.println("erreur");
-                nb++;
             }
         }
         return analyticQueriesList;

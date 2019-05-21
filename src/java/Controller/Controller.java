@@ -158,7 +158,7 @@ public class Controller {
 
          if (graphModel.size() < 200) jsonArray.add(ModelUtil.modelToJSON(graphModel, uri));
 
-
+        System.out.println(jsonArray.toJSONString());
         String erreur = "";
 
 
