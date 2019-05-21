@@ -36,6 +36,7 @@ object QueryExecutorParallel extends App {
             try {
               val query = QueryFactory.create(line)
               model = queryExecutor.executeQueryConstruct(query, endPoint)
+
               if (model != null) {
                 Right(Some(model))
               } else Right(None)

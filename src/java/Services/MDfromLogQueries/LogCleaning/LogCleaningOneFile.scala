@@ -1,15 +1,11 @@
 package Services.MDfromLogQueries.LogCleaning
 
 import java.io.{File, FileOutputStream, PrintWriter}
-import java.nio.charset.StandardCharsets
 import java.util.regex.Pattern
 
 import Services.MDfromLogQueries.Declarations.Declarations
-import LogCleaning.queryFromLogLine
-import Services.MDfromLogQueries.Util.FileOperation
-import org.apache.http.client.utils.URLEncodedUtils
+import Services.MDfromLogQueries.LogCleaning.LogCleaning.queryFromLogLine
 
-import scala.collection.JavaConverters
 import scala.collection.parallel.ParSeq
 import scala.io.Source
 

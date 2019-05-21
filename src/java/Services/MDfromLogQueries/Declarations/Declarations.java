@@ -64,10 +64,12 @@ public class Declarations {
 
         /* Resulting models statistics **/
         paths.put("statisticsFile",root + statististicsRoot + "Fichier_statistique.txt");
+        paths.put("statisticsFileYAML",root + statististicsRoot + "Fichier_statistique.yaml");
         paths.put("minstatisticsFile",root + statististicsRoot + "Fichier_statistique_min.txt");
         paths.put("maxstatisticsFile ",root + statististicsRoot + "Fichier_statistique_max.txt");
         paths.put("avgstatisticsFile",root + statististicsRoot + "Fichier_statistique_avg.txt");
         paths.put("totalstatisticsFile",root + statististicsRoot + "Fichier_statistique_total.txt");
+        paths.put("statisticsByTypeFile",root + statististicsRoot + "Fichier_statistique_parType.yaml");
         paths.put("statisticsAnalyticFactFile",root + statististicsRoot + "Fichier_statistique_Analytique_Fact.txt");
         paths.put("statisticsAnalyticDimFile",root + statististicsRoot + "Fichier_statistique_Analytique_Dimension.txt");
 
@@ -99,21 +101,23 @@ public class Declarations {
 
 
         /* Execution time of programs **/
-        paths.put("timesFilePath",root + "ProgramOutput\\Fichier_Temps.yaml");
-        paths.put("timesFilePathTest",root + "ProgramOutput\\Fichier_TempsTest.yaml");
-        paths.put("queriesNumberFilePath",root + "ProgramOutput\\Fichier_queriesNumber.yaml");
-        paths.put("queriesNumberFilePathTest",root + "ProgramOutput\\Fichier_queriesNumberTest.yaml");
+        paths.put("timesFilePath",root + statististicsRoot + "Fichier_Temps.yaml");
+        paths.put("timesFilePathTest",root + statististicsRoot + "Fichier_TempsTest.yaml");
+        paths.put("queriesNumberFilePath",root + statististicsRoot +"Fichier_queriesNumber.yaml");
+        paths.put("queriesNumberFilePathTest",root + statististicsRoot +"Fichier_queriesNumberTest.yaml");
 
 
 
       /*   for (String key : paths.keySet())
         {
             FileOperation.createDirectory(paths.get(key));
-        }
-        TdbOperation.updatePaths();
+        }*/
 
 
-*/
+      TdbOperation.updatePaths();
+
+
+
     }
 
     public static String getEndpoint() {

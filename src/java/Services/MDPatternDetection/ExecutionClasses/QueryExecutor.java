@@ -154,7 +154,7 @@ public class QueryExecutor {
             /*  System.out.println("Result " + results.next());*/
         } catch (Exception e) {
             e.printStackTrace();
-            FileOperation.writeQueryInLog(Declarations.paths.get("executionLogFile"), "Ask", query);
+            FileOperation.writeQueryInLog(Declarations.paths.get("executionLogFile"), query.toString());
         }
         return results;
     }
@@ -174,7 +174,7 @@ public class QueryExecutor {
         catch (Exception e){
             System.out.println("the query " + query + "\n********************");
             e.printStackTrace();
-            FileOperation.writeQueryInLog(Declarations.paths.get("executionLogFile"), "Select", query);
+            FileOperation.writeQueryInLog(Declarations.paths.get("executionLogFile"), query.toString());
         }
         return results;
     }

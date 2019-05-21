@@ -7781,7 +7781,7 @@ $.ui.plugin.add( "resizable", "containment", {
 			that.containerOffset = element.offset();
 			that.containerPosition = element.position();
 			that.containerSize = {
-				height: ( element.innerHeight() - p[ 3 ] ),
+				height: ( element.innerHeight()  ),
 				width: ( element.innerWidth() - p[ 1 ] )
 			};
 

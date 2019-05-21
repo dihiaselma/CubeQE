@@ -26,7 +26,7 @@ public class MDGraphBySubject {
         //
         // resultsbySubject.putAll(getModelsOfSubject("http://wikidata.dbpedia.org/resource/Q482994",results));
 
-        FileOperation.writeModelsInFile(resultsbySubject, Declarations.root + "//Resulting_Files//airport_models.txt");
+       // FileOperation.writeModelsInFile(resultsbySubject, Declarations.root + "//Resulting_Files//airport_models.txt");
 
     }
 

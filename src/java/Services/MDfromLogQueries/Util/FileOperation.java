@@ -1,24 +1,16 @@
 package Services.MDfromLogQueries.Util;
 
-
-import Services.MDfromLogQueries.SPARQLSyntacticalValidation.Resources;
 import Services.Statistics.Statistics1;
 import Services.Statistics.StatisticsAnalytic;
 import org.apache.jena.query.Query;
-import org.apache.jena.rdf.model.Model;
-import org.apache.jena.rdf.model.Statement;
-import org.apache.jena.rdf.model.StmtIterator;
 import org.yaml.snakeyaml.Yaml;
+import scala.Int;
 
-import javax.naming.event.ObjectChangeListener;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
-import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 
 public class FileOperation {
@@ -27,7 +19,6 @@ public class FileOperation {
      * This class implements some recurrent file operations
      **/
 
-    public static int nbTotalLines = 0;
 
     public static Collection<String> ReadFile(String readingFilePath) {
 
@@ -53,109 +44,8 @@ public class FileOperation {
                 e.printStackTrace();
             }
         }
-        nbTotalLines += linesNumbers;
-        /*System.out.println("number of lines in the file  :   "+linesNumbers );*/
 
         return collection;
-    }
-
-
-
-
-
-    public static void writeModelInFile(String writingFilePath,Model model) {
-        System.out.println("RAni sdakhel Write\n");
-
-        File file = new File(writingFilePath);
-        FileOutputStream outputFile = null;
-        OutputStream out = null;
-
-        Statement statement;
-
-        try {
-            if (!file.isFile()) file.createNewFile();
-
-            outputFile = new FileOutputStream(file);
-
-
-            BufferedWriter bw = new BufferedWriter(new FileWriter(file, true));
-            out = new FileOutputStream(file);
-
-            model.write(out, "RDF/JSON");
-
-            //bw.flush();
-            System.out.println("kamalt write\n");
-        } catch (IOException e) {
-            System.out.println("Impossible file creation");
-        } finally {
-
-            try {
-                out.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-        }
-    }
-
-
-    public static ArrayList<ArrayList<String>> ReadFile4Transform(String readingFilePath) {
-
-        File file = new File(readingFilePath);
-        String line;
-
-
-        ArrayList<ArrayList<String>> collections = new ArrayList<ArrayList<String>>();
-
-
-        ArrayList<String> collection = new ArrayList<String>();
-
-        BufferedReader br = null;
-        int linesNumbers = 0; // for statistical matters
-        try {
-            if (!file.isFile()) file.createNewFile();
-            boolean finish = false;
-            br = new BufferedReader(new FileReader(file));
-
-            while (!finish) {
-
-
-                while ((line = br.readLine()) != null && linesNumbers < 100000) {
-
-                    collection.add(line);
-
-                    linesNumbers++;
-                }
-
-                System.out.println("la taille avant le if " + collection.size());
-                if (linesNumbers >= 100000) {
-                    linesNumbers = 0;
-                    collections.add(collection);
-
-                    collection.clear();
-                } else {
-                    collections.add(collection);
-                    finish = true;
-                }
-            }
-
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                br.close();
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-
-        //nbTotalLines+=linesNumbers;
-        /*System.out.println("number of lines in the file  :   "+linesNumbers );*/
-
-        return collections;
     }
 
 
@@ -185,6 +75,31 @@ public class FileOperation {
         }
     }
 
+    public static void writeQueryInLog (String writingFilePath, String query) {
+        File file = new File(writingFilePath);
+        BufferedWriter bw = null;
+        try {
+            if (!file.isFile()) file.createNewFile();
+            bw = new BufferedWriter(new FileWriter(file, true));
+
+                bw.write(query.replaceAll("[\n\r]", "\t") + "\n");
+
+                bw.flush();
+
+        } catch (IOException e) {
+            System.out.println("Impossible file creation");
+        } finally {
+
+            try {
+                bw.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
+    }
+
+
 
     public static void WriteConstructQueriesInFile(String writingFilePath, ArrayList<Query> constructQueries) {
         File file = new File(writingFilePath);
@@ -212,79 +127,14 @@ public class FileOperation {
         }
     }
 
-    public static void writeQueryInLog(String writingFilePath, String queryType, Query query) {
 
-        File file = new File(writingFilePath);
-        BufferedWriter bw = null;
-        try {
-            if (!file.isFile()) file.createNewFile();
-            bw = new BufferedWriter(new FileWriter(file, true));
-            bw.write(queryType + query.toString().replaceAll("[\n\r]", "\t") + "\n");
-            bw.flush();
-        } catch (IOException e) {
-            System.out.println("Impossible file creation");
-        } finally {
-
-            try {
-                bw.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-        }
-    }
-
-    public static void writeTimesInFile(String writingFilePath, String operation, Long time) {
-
-        File file = new File(writingFilePath);
-        BufferedWriter bw = null;
-        try {
-            if (!file.isFile()) file.createNewFile();
-
-            bw = new BufferedWriter(new FileWriter(file, true));
-
-            bw.write("\n" + operation);
-            bw.write("\n Time : \t " + time.toString());
-
-            bw.flush();
-
-        } catch (IOException e) {
-            System.out.println("Impossible file creation");
-        } finally {
-
-            try {
-                bw.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-        }
-    }
-
-
-    public HashMap<String, String> toStringStringMap ( Map<String, Object> map){
-
-
-        HashMap<String, String> hashmap = new  HashMap<>();
-
-
-        Set<String> kies = map.keySet();
-
-        for (String key: kies){
-            hashmap.put(key, map.get(key).toString());
-        }
-       return hashmap;
-    }
-
-    /**
-     * Read from file for front end
-     **/
-
+    /** Read from file for front end */
     public static Map<String, Object> loadYamlFile(String filePath) {
         try {
 
             File file = new File(filePath);
             if (!file.isFile()) {
+
                 file.createNewFile();
             }
 
@@ -299,10 +149,16 @@ public class FileOperation {
             return (loaded instanceof Map) ? (Map<String, Object>) loaded : new HashMap<>();
            // return  loaded ;
 
-        } catch (Exception ex) {
+        } catch ( FileNotFoundException ex) {
 
-            //ex = new FileNotFoundException("Failed to load yaml object");
+            createDirectory(filePath);
+
+            return null;
+
+        }catch (Exception ex) {
+
             ex.printStackTrace();
+
             return null;
         }
 
@@ -326,7 +182,12 @@ public class FileOperation {
 
                 yaml.dump(data, writer);
 
-            } catch (IOException ex) {
+            } catch (FileNotFoundException ex) {
+
+
+                createDirectory(writingFilePath);
+
+            }catch (IOException ex) {
 
               //  ex = new IOException("Failed to load yaml object");
                 ex.printStackTrace();
@@ -336,61 +197,7 @@ public class FileOperation {
 
     }
 
-    public static void writeQueriesNumberInFile(String writingFilePath, String operation, int number) {
-
-        File file = new File(writingFilePath);
-        BufferedWriter bw = null;
-        try {
-            if (!file.isFile()) file.createNewFile();
-
-            bw = new BufferedWriter(new FileWriter(file, true));
-
-            bw.write("\n" + operation);
-            bw.write("\n Time : \t " + number);
-
-            bw.flush();
-
-        } catch (IOException e) {
-            System.out.println("Impossible file creation");
-        } finally {
-
-            try {
-                bw.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-        }
-    }
-
-
-    public static void WriteInFileParallel(String writingFilePath, CopyOnWriteArrayList synchronizedList) {
-        File file = new File(writingFilePath);
-        BufferedWriter bw = null;
-        try {
-            if (!file.isFile()) file.createNewFile();
-            bw = new BufferedWriter(new FileWriter(file, true));
-
-            for (int i = 0; i < synchronizedList.size(); i++) {
-
-                bw.write(synchronizedList.get(i) + "\n");
-
-                bw.flush();
-            }
-        } catch (IOException e) {
-            System.out.println("Imposible file creation");
-        } finally {
-
-            try {
-                bw.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-        }
-    }
-
-
+    /** Stats type : avrg, min,max ..Etc */
     public static void writeStatisticsInFile2(Statistics1 statistics1, String typeStat, String writingFilePath) {
         File file = new File(writingFilePath);
         BufferedWriter bw = null;
@@ -428,6 +235,48 @@ public class FileOperation {
         }
     }
 
+    public static void writeStatisticsInFileInYAMLbyType(Statistics1 statistics1, String typeStat, String writingFilePath) {
+
+        Map<String, Object> data = loadYamlFile(writingFilePath);
+        Map<String, Object> modelStat= new HashMap<>();
+
+
+        if (data == null) {
+            data = new HashMap<String, Object>();
+        }
+        
+                modelStat.put ("NC" ,  statistics1.getNC());
+                modelStat.put("NFC" , statistics1.getNFC() );
+                modelStat.put("NDC" , statistics1.getNDC() );
+                modelStat.put("NBC" , statistics1.getNBC() );
+                modelStat.put("RBC" , statistics1.getRBC() );
+                modelStat.put("NAFC" , statistics1.getNAFC() );
+                modelStat.put("NADC" , statistics1.getNADC() );
+                modelStat.put("NABC" , statistics1.getNABC() );
+                modelStat.put("NA" , statistics1.getNA() );
+                modelStat.put("NH" , statistics1.getNH() );
+                modelStat.put("DHP" , statistics1.getDHP() );
+                modelStat.put("RSA" , statistics1.getRSA() );
+
+                data.put(typeStat, modelStat);
+            
+
+            Yaml yaml = new Yaml();
+
+            try {
+                FileWriter writer = new FileWriter(writingFilePath);
+
+                yaml.dump(data, writer);
+            } catch (IOException ex) {
+
+                //  ex = new IOException("Failed to load yaml object");
+                ex.printStackTrace();
+
+            }
+            
+        }
+
+    /** Stats of all models */
     public static void writeStatisticsListInFile(ArrayList<Statistics1> statistisArrayList, String writingFilePath) {
         File file = new File(writingFilePath);
         BufferedWriter bw = null;
@@ -470,6 +319,7 @@ public class FileOperation {
         }
     }
 
+    /** Enrichment */
     public static void writeStatisticsListInFile2(ArrayList<StatisticsAnalytic> statistisAnalyticsArrayList, String writingFilePath) {
 
         File file = new File(writingFilePath);
@@ -519,6 +369,7 @@ public class FileOperation {
 
     }
 
+    /** Non used */
     public static void writeStatisticsInFile(String writingFilePath, Statistics1 statistics1) {
         File file = new File(writingFilePath);
         BufferedWriter bw = null;
@@ -568,42 +419,6 @@ public class FileOperation {
         }
     }
 
-    public static void writeModelsInFile(HashMap<String, Model> models, String writingFilePath) {
-        File file = new File(writingFilePath);
-        BufferedWriter bw = null;
-        try {
-            if (!file.isFile()) file.createNewFile();
-            bw = new BufferedWriter(new FileWriter(file, true));
-            int i = 0;
-            Set<String> keys = models.keySet();
-            for (String key : keys) {
-                i++;
-                bw.write("*********************************Graph number " + i + " " + key + " ************************************************\n");
-
-                StmtIterator stmtIterator = models.get(key).listStatements();
-                int j = 0;
-                while (stmtIterator.hasNext()) {
-                    j++;
-                    bw.write(j + ". " + stmtIterator.nextStatement() + "\n");
-                }
-
-                bw.write("*********************************************************************************\n");
-
-            }
-            bw.flush();
-        } catch (
-                IOException e) {
-            System.out.println("Impossible file creation");
-        } finally {
-
-            try {
-                bw.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-        }
-    }
 
     public static void createDirectory (String fileName)
     {
@@ -623,6 +438,56 @@ public class FileOperation {
             e.printStackTrace();
         }
     }
+
+
+    /** Statistics of all models */
+    public static void writeStatisticsListInYAMLFile(ArrayList<Statistics1> statistisArrayList, String writingFilePath) {
+
+        //Map<String, Integer> data = loadYamlFile(writingFilePath);
+
+        Map<String, Object> data = loadYamlFile(writingFilePath);
+
+
+        if (data == null) {
+            data= new HashMap<String, Object>();
+
+        }
+        for (Statistics1 stat: statistisArrayList){
+
+            Map<String, Object> modelStat= new HashMap<>();
+
+            modelStat.put ("NC" ,  stat.getNC());
+            modelStat.put("NFC" , stat.getNFC() );
+            modelStat.put("NDC" , stat.getNDC() );
+            modelStat.put("NBC" , stat.getNBC() );
+            modelStat.put("RBC" , stat.getRBC() );
+            modelStat.put("NAFC" , stat.getNAFC() );
+            modelStat.put("NADC" , stat.getNADC() );
+            modelStat.put("NABC" , stat.getNABC() );
+            modelStat.put("NA" , stat.getNA() );
+            modelStat.put("NH" , stat.getNH() );
+            modelStat.put("DHP" , stat.getDHP() );
+            modelStat.put("RSA" , stat.getRSA() );
+
+            data.put(stat.getModelSubject(), modelStat);
+        }
+
+        Yaml yaml = new Yaml();
+
+        try {
+            FileWriter writer = new FileWriter(writingFilePath);
+
+            yaml.dump(data, writer);
+        } catch (IOException ex) {
+
+            //  ex = new IOException("Failed to load yaml object");
+            ex.printStackTrace();
+
+        }
+
+
+    }
+
 
 }
 

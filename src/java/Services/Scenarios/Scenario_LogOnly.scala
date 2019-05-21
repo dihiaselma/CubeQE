@@ -1,25 +1,8 @@
 package Services.Scenarios
 
-import java.util
-
-import Services.MDPatternDetection.Alleviation.MDGraphsAlleviation
-import Services.MDPatternDetection.AnnotationClasses.MDGraphAnnotated
-import Services.MDPatternDetection.ConsolidationClasses.ConsolidationParallel
-import Services.MDPatternDetection.ConsolidationClasses.ConsolidationParallel._
-import Services.MDPatternDetection.ExecutionClasses.QueryExecutor
-import Services.MDPatternDetection.ExecutionClasses.QueryExecutor.executeQuiersInFile
-import Services.MDPatternDetection.GraphConstructionClasses.Queries2GraphesParallel
-import Services.MDfromLogQueries.LogCleaning.QueriesDeduplicator.DeduplicateQueriesInFile
-import Services.MDfromLogQueries.LogCleaning.LogCleaning._
-import Services.MDfromLogQueries.LogCleaning.{LogCleaning, LogCleaningOneFile, QueriesDeduplicator}
-import Services.MDfromLogQueries.SPARQLSyntacticalValidation.SyntacticValidationParallel
-import Services.MDfromLogQueries.SPARQLSyntacticalValidation.SyntacticValidationParallel.valideQueriesInFile
-import Services.MDfromLogQueries.Util.{FileOperation, TdbOperation}
-import Services.MDPatternDetection.GraphConstructionClasses.Queries2GraphesParallel.TransformQueriesInFile
 import Services.MDfromLogQueries.Declarations.Declarations
-import Services.Statistics.{MDGraphBySubject, Statistics1}
-import Services.Statistics.MDGraphBySubjectScala.{convertToJavaMap, statisticsBySubjectList, subjects}
-import org.apache.jena.rdf.model.Model
+import Services.MDfromLogQueries.Util.{FileOperation, TdbOperation}
+import Services.Statistics.Statistics1
 
 
 
@@ -27,7 +10,7 @@ object Scenario_LogOnly extends App{
 
   Declarations.setEndpoint("DogFood")
 
-
+/*
   /** 1. Nettoyage du log **/
   var t_cleaning: Long = System.currentTimeMillis()
   LogCleaningOneFile.writeFiles(Declarations.paths.get("directoryPath"), Declarations.paths.get("cleanedQueriesFile"))
@@ -54,7 +37,7 @@ object Scenario_LogOnly extends App{
   FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "ConstructMSGraphs_nbQueriesConstructed", Queries2GraphesParallel.queriesNumber)
   FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "ConstructMSGraphs_nbQueriesNonConstructed", Queries2GraphesParallel.queriesNumberNonConstructed)
 
-/*
+
   /** 5. Execution **/
   var t_execution: Long = System.currentTimeMillis()
   val endpoint="https://dbpedia.org/sparql"
@@ -105,16 +88,18 @@ object Scenario_LogOnly extends App{
   writeInTdb(convertToScalaMap(modelsAnnotated), Declarations.paths.get("dataSetAnnotated"))
   FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePath"), "Annotation", (System.currentTimeMillis() - t_annotation).toInt)
 
-
+*/
   /** 10. Statistique **/
   println("***********************Statistiques******************")
   var t_statistics: Long = System.currentTimeMillis()
   var statistics : Statistics1 = new Statistics1
   val stat = statistics.stat2(TdbOperation.unpersistModelsMap(Declarations.paths.get("dataSetAnnotated")))
-  MDGraphBySubject.writeAllStats(stat, "DogFood")
+
+  Statistics1.writeAllStatsInYAML(stat)
+
   //statisticsBySubjectList(subjects)
+
   FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePath"), "Statistics", (System.currentTimeMillis() - t_statistics).toInt)
-*/
 
   //TODO ecrire dans un fichier les stat concernant nombre de req ..Etc
 }
