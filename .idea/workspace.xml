@@ -39,7 +39,7 @@
     <session id="1471410666">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="32" />
+          <entry key="project.closed" value="33" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.10" value="1" />
@@ -128,7 +128,11 @@
       </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="224">
+              <caret line="14" column="12" lean-forward="true" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -419,6 +423,34 @@
               <item name="web" type="462c0819:PsiDirectoryNode" />
               <item name="plugins" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="logLinc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="logLinc2" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="plugins" type="462c0819:PsiDirectoryNode" />
+              <item name="amcharts4" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="logLinc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="logLinc2" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="plugins" type="462c0819:PsiDirectoryNode" />
+              <item name="bootstrap-slider" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="logLinc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="logLinc2" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="plugins" type="462c0819:PsiDirectoryNode" />
+              <item name="bootstrap-wysihtml5" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="logLinc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="logLinc2" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="plugins" type="462c0819:PsiDirectoryNode" />
+              <item name="iCheck" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -429,7 +461,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558449810247" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558450091692" />
     <property name="jsx.switch.disabled" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/.idea/workspace.xml" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -437,7 +469,7 @@
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.26564673" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
+    <property name="settings.editor.selected.configurable" value="settings.github" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -648,7 +680,7 @@
       <workItem from="1558273988176" duration="5590000" />
       <workItem from="1558343639667" duration="19316000" />
       <workItem from="1558369701429" duration="1545000" />
-      <workItem from="1558430428701" duration="17162000" />
+      <workItem from="1558430428701" duration="17569000" />
     </task>
     <task id="LOCAL-00001" summary=" jrebvuir">
       <created>1556119963959</created>
@@ -881,11 +913,39 @@
       <option name="project" value="LOCAL" />
       <updated>1558449561186</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Merge branch 'master' of https://github.com/SaidouneRouaya/logLinc2&#10;&#10;# Conflicts:&#10;#&#9;src/java/Services/MDfromLogQueries/LogCleaning/LogCleaningOneFile.scala">
+      <created>1558449719318</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1558449719318</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Merge branch 'master' of https://github.com/SaidouneRouaya/logLinc2&#10;&#10;# Conflicts:&#10;#&#9;src/java/Services/MDfromLogQueries/LogCleaning/LogCleaningOneFile.scala">
+      <created>1558449742325</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1558449742325</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Merge branch 'master' of https://github.com/SaidouneRouaya/logLinc2&#10;&#10;# Conflicts:&#10;#&#9;src/java/Services/MDfromLogQueries/LogCleaning/LogCleaningOneFile.scala">
+      <created>1558449807421</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1558449807421</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Merge branch 'master' of https://github.com/SaidouneRouaya/logLinc2&#10;&#10;# Conflicts:&#10;#&#9;src/java/Services/MDfromLogQueries/LogCleaning/LogCleaningOneFile.scala">
+      <created>1558449861959</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1558449861959</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="176555000" />
+    <option name="totallyTimeSpent" value="176962000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -1332,7 +1392,11 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml">
-      <provider selected="true" editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="14" column="12" lean-forward="true" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
+        </state>
+      </provider>
     </entry>
   </component>
   <component name="masterDetails">
