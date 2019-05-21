@@ -48,7 +48,8 @@ public class MDGraphAnnotated {
             subject = model.listSubjects().next();
 
         if (subject != null) {
-            subject.addProperty(annotProperty, Annotations.FACT.toString());
+            if (!subject.hasProperty(annotProperty))
+                subject.addProperty(annotProperty, Annotations.FACT.toString());
             visitedNodes.add(subject);
             List<Statement> propertyIterator = subject.listProperties().toList();
 
@@ -60,7 +61,7 @@ public class MDGraphAnnotated {
                 statement = stat;
                 property = statement.getPredicate();
                 try {
-                    if (!property.equals(annotProperty)) {
+                    if (!property.equals(annotProperty) && !statement.getObject().asResource().hasProperty(annotProperty)) {
                         propertyType = constantsUtil.getPropertyType(property);
                         //  System.out.println(" predicat :"+property+ "type dialha : "+propertyType);
                         switch (propertyType) {
@@ -121,7 +122,7 @@ public class MDGraphAnnotated {
 
             try {
 
-                if (!property.equals(annotProperty) && !visitedNodes.contains(statement.getObject())) {
+                if (!property.equals(annotProperty) && !visitedNodes.contains(statement.getObject()) && !statement.getObject().asResource().hasProperty(annotProperty)) {
                     propertyType = constantsUtil.getPropertyType(property);
                     switch (propertyType) {
                         case ("datatypeProperty"): {

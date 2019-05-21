@@ -365,9 +365,56 @@ public class FileOperation {
             }
 
         }
+    }
 
+    /** Enrichment */
+    public static void writeEnrichStatisticsListInYAMLFile(ArrayList<StatisticsAnalytic> statistisAnalyticsArrayList, String writingFilePath) {
+
+        File file = new File(writingFilePath);
+        BufferedWriter bw = null;
+        Map<String, Object> data = loadYamlFile(writingFilePath);
+        Map<String, Object> modelStat;
+
+
+        if (data == null) {
+            data = new HashMap<String, Object>();
+        }
+        for (StatisticsAnalytic statisticsAnalytic : statistisAnalyticsArrayList) {
+            modelStat= new HashMap<>();
+            switch (statisticsAnalytic.type) {
+
+                case ("Fact"): {
+                    modelStat.put("NbDim", statisticsAnalytic.nbDim);
+                    modelStat.put("NbFactAtt", statisticsAnalytic.nbFactAtt);
+                }
+                break;
+                case ("Dimension"): {
+                    modelStat.put("NbDim", statisticsAnalytic.nbLevel);
+                    modelStat.put("NbFactAtt", statisticsAnalytic.nbDimAtt);
+                }
+                break;
+            }
+
+            data.put(statisticsAnalytic.URI, modelStat);
+
+        }
+        Yaml yaml = new Yaml();
+
+        try {
+            FileWriter writer = new FileWriter(writingFilePath);
+
+            yaml.dump(data, writer);
+        } catch (IOException ex) {
+
+            //  ex = new IOException("Failed to load yaml object");
+            ex.printStackTrace();
+
+        }
 
     }
+
+
+
 
     /** Non used */
     public static void writeStatisticsInFile(String writingFilePath, Statistics1 statistics1) {

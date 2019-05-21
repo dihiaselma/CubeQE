@@ -72,6 +72,7 @@ public class Declarations {
         paths.put("statisticsByTypeFile",root + statististicsRoot + "Fichier_statistique_parType.yaml");
         paths.put("statisticsAnalyticFactFile",root + statististicsRoot + "Fichier_statistique_Analytique_Fact.txt");
         paths.put("statisticsAnalyticDimFile",root + statististicsRoot + "Fichier_statistique_Analytique_Dimension.txt");
+        paths.put("enrichedStatisticsFileYAML", root + statististicsRoot + "Fichier_statistique_enrichi.yaml");
 
         /* Default ontologies directory **/
         paths.put("defaultOntologiesDir",root + "Ontologies");
@@ -91,6 +92,7 @@ public class Declarations {
         paths.put("dataSetNonAlleviated", rootTdb + "dataSetNonAlleviated");
         paths.put("dataSetAlleviatedUselessProperties", rootTdb + "dataSetAlleviatedUselessProperties");
         paths.put("dataSetEnriched",rootTdb + "dataSetEnriched");
+        paths.put("dataSetEnrichedAnnotated", rootTdb + "dataSetEnrichedAnnotated");
 
 
         /* Scénario 2 : Analytic Queries **/

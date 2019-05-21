@@ -95,7 +95,7 @@ object Scenario_LogOnly extends App{
   var statistics : Statistics1 = new Statistics1
   val stat = statistics.stat2(TdbOperation.unpersistModelsMap(Declarations.paths.get("dataSetAnnotated")))
 
-  Statistics1.writeAllStatsInYAML(stat)
+  Statistics1.writeAllStatsInYAML(stat, Declarations.paths.get("statisticsFileYAML"))
 
   //statisticsBySubjectList(subjects)
 
