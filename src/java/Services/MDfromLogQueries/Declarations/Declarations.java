@@ -24,11 +24,11 @@ public class Declarations {
 
     public static void setEndpoint(String endpoint) {
         Declarations.endpoint = endpoint;
-     //   root = "C:\\Users\\KamilaB\\Desktop\\3CS\\Prototypage\\Step_1\\endpoints\\"+endpoint+"\\Support_Files\\";
-     //   rootTdb = "C:\\Users\\KamilaB\\Desktop\\3CS\\Prototypage\\Step_1\\endpoints\\"+endpoint+"\\Support_Files\\TdbDirectories\\";
+        root = "C:\\Users\\KamilaB\\Desktop\\PFE\\Files\\"+endpoint+"\\Support_Files\\";
+        rootTdb = "C:\\Users\\KamilaB\\Desktop\\PFE\\Files\\"+endpoint+"\\Support_Files\\TdbDirectories\\";
 
-        root = "C:\\Users\\pc\\Desktop\\PFE\\Files\\"+endpoint+"\\";
-        rootTdb = "E:\\TdbDirectories\\"+endpoint+"\\";
+       // root = "C:\\Users\\pc\\Desktop\\PFE\\Files\\"+endpoint+"\\";
+       // rootTdb = "E:\\TdbDirectories\\"+endpoint+"\\";
 
 
         /* Queries log Path **/
@@ -88,6 +88,7 @@ public class Declarations {
         paths.put("dataSetAlleviated", rootTdb + "dataSetAlleviated");
         paths.put("dataSetNonAlleviated", rootTdb + "dataSetNonAlleviated");
         paths.put("dataSetAlleviatedUselessProperties", rootTdb + "dataSetAlleviatedUselessProperties");
+        paths.put("dataSetEnriched",rootTdb + "dataSetEnriched");
 
 
         /* Scénario 2 : Analytic Queries **/

@@ -77,7 +77,7 @@
 
                 <div class="col-md-12">
                     <!-- TABLE: LATEST ORDERS -->
-                    <%@ include file="treeView.jsp"%>
+                    <%@ include file="mdGraphView.jsp"%>
 
 
                 </div>
