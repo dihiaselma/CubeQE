@@ -126,38 +126,42 @@
                                             <!-- Average -->
                                             <td><fmt:formatNumber value ="${statistics.get('Average').get(entry.key)}" maxFractionDigits="2"/></td>
                                             <td><fmt:formatNumber value ="${statisticsEnrichment.get('Average').get(entry.key)}" maxFractionDigits="2"/></td>
-                                            <span class="badge bg-light-blue">
+                                           <td>
+                                               <span class="badge bg-light-blue">
                                                  <fmt:formatNumber
                                                          value="${(statistics.get('Average').get(entry.key) / statisticsEnrichment.get('Average').get(entry.key))*100}"
                                                          maxFractionDigits="2"/>
                                             %</span>
+                                           </td>
 
                                             <!-- Miinmum -->
                                             <td><fmt:formatNumber value ="${statistics.get('Minimum').get(entry.key)}" maxFractionDigits="2"/></td>
                                             <td><fmt:formatNumber value ="${statisticsEnrichment.get('Minimum').get(entry.key)}" maxFractionDigits="2"/></td>
-                                            <span class="badge bg-light-red">
+                                           <td><span class="badge bg-red">
                                                  <fmt:formatNumber
                                                          value="${(statistics.get('Minimum').get(entry.key) / statisticsEnrichment.get('Minimum').get(entry.key))*100}"
                                                          maxFractionDigits="2"/>
                                             %</span>
-
+                                           </td>
                                             <!-- Maximum -->
                                             <td><fmt:formatNumber value ="${statistics.get('Maximum').get(entry.key)}" maxFractionDigits="2"/></td>
                                             <td><fmt:formatNumber value ="${statisticsEnrichment.get('Maximum').get(entry.key)}" maxFractionDigits="2"/></td>
-                                            <span class="badge bg-light-yellow">
+                                        <td><span class="badge bg-yellow">
                                                  <fmt:formatNumber
                                                          value="${(statistics.get('Maximum').get(entry.key) / statisticsEnrichment.get('Maximum').get(entry.key))*100}"
                                                          maxFractionDigits="2"/>
                                             %</span>
+                                        </td>
 
                                             <!-- Total -->
                                             <td><fmt:formatNumber value ="${statistics.get('Total').get(entry.key)}" maxFractionDigits="2"/></td>
                                             <td><fmt:formatNumber value ="${statisticsEnrichment.get('Total').get(entry.key)}" maxFractionDigits="2"/></td>
-                                            <span class="badge bg-light-green">
+                                            <td> <span class="badge bg-green">
                                                  <fmt:formatNumber
                                                          value="${(statistics.get('Total').get(entry.key)/ statisticsEnrichment.get('Total').get(entry.key))*100}"
                                                          maxFractionDigits="2"/>
                                             %</span>
+                                            </td>
 
                                         </tr>
                                     </tg:forEach>

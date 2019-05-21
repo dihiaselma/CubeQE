@@ -239,7 +239,7 @@ public class Controller {
         String error = "";
 
         statisticsTotal= (HashMap<String, Object>) FileOperation.loadYamlFile(Declarations.paths.get("statisticsByTypeFile"));
-        statisticsTotalEnrichment= (HashMap<String, Object>) FileOperation.loadYamlFile(Declarations.paths.get("statisticsByTypeFile"));
+        statisticsTotalEnrichment= (HashMap<String, Object>) FileOperation.loadYamlFile(Declarations.paths.get("enrichedStatisticsByTypeFile"));
         model.addAttribute("statistics", statisticsTotal);
        model.addAttribute("statisticsEnrichment", statisticsTotalEnrichment);
         model.addAttribute("statisticsEnrichmentDescription", statDescriptions);

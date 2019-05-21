@@ -2,6 +2,7 @@ package Services.MDPatternDetection.Alleviation;
 
 import Services.MDPatternDetection.ConsolidationClasses.Consolidation;
 import Services.MDfromLogQueries.Util.BasicProperties;
+import Services.MDfromLogQueries.Util.GenericClasses;
 import Services.MDfromLogQueries.Util.ModelUtil;
 import Services.MDfromLogQueries.Util.TdbOperation;
 import org.apache.jena.rdf.model.Model;
@@ -77,10 +78,13 @@ public class MDGraphsAlleviation {
                model = pair.getValue();
                List<Statement> stmtList = model.listStatements().toList();
                for (Statement statement : stmtList) {
-                   if (BasicProperties.properties.contains(statement.getPredicate())) {
+                   if (BasicProperties.properties.contains(statement.getPredicate())
+                   || GenericClasses.resources.contains(statement.getObject().asResource())
+                   || GenericClasses.resources.contains(statement.getSubject())) {
                        model.remove(statement);
                        numberStatementRemoved++;
                    }
+
                }
                modifiedModels.put(pair.getKey(), model);
 
