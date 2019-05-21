@@ -48,7 +48,7 @@ public class QueriesDeduplicator {
             while ((line = br.readLine()) != null) {
                 nb_line++;
                 querySet.add(line);
-                 System.out.println( "ligne \t"+nb_line);
+                System.out.println( "ligne \t"+nb_line);
             }
             //    System.out.println("nombre de ligne dans le set :" + querySet.size() + " " + nb_line);
 

@@ -107,20 +107,20 @@
                                     <tr>
                                         <td>Cleaning</td>
                                         <td>${queriesNumbersMap.get("Log_Cleaning_nbLines")}</td>
-                                        <td>${queriesNumbersMap.get("Log_Cleaning")}</td>
+                                        <td>${queriesNumbersMap.get("Log_Cleaning_nbQueries")}</td>
                                         <td>
                                             <div class="text-muted"><i
                                                     class="fa fa-clock-o"></i>   ${timesMap.get("Log_Cleaning")} seconds</div>
                                         </td>
                                         <td><span class="badge bg-red">
                                                 <fmt:formatNumber
-                                                        value=" ${(queriesNumbersMap.get('Log_Cleaning')/queriesNumbersMap.get('Log_Cleaning_nbLines'))*100}"
+                                                        value=" ${(queriesNumbersMap.get('Log_Cleaning_nbQueries')/queriesNumbersMap.get('Log_Cleaning_nbLines'))*100}"
                                                         maxFractionDigits="2"/>
                                             %</span></td>
                                     </tr>
                                     <tr>
                                         <td>Deduplication</td>
-                                        <td>${queriesNumbersMap.get("Log_Cleaning")}</td>
+                                        <td>${queriesNumbersMap.get("Log_Cleaning_nbQueries")}</td>
                                         <td>${queriesNumbersMap.get("Deduplication")}</td>
                                         <td>
                                             <div class="text-muted"><i
@@ -129,7 +129,7 @@
                                         <td><span class="badge bg-yellow">
 
                                                    <fmt:formatNumber
-                                                           value="${(queriesNumbersMap.get('Deduplication')/queriesNumbersMap.get('Log_Cleaning'))*100}"
+                                                           value="${(queriesNumbersMap.get('Deduplication')/queriesNumbersMap.get('Log_Cleaning_nbQueries'))*100}"
                                                            maxFractionDigits="2"/>
 
                                             %</span></td>

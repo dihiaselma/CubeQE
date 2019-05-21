@@ -12,7 +12,6 @@ import scala.io.Source
 object Queries2GraphesParallel extends App {
 
   var queriesNumber=0
-  var queriesNumberNonConstructed=0
 
   val t1 = System.currentTimeMillis()
 
@@ -34,6 +33,7 @@ object Queries2GraphesParallel extends App {
           line => {
             nb_req = nb_req + 1
             println("* " + nb_req)
+
             var constructedQuery = QueryFactory.create()
             try {
               val query = QueryFactory.create(line)
@@ -47,8 +47,7 @@ object Queries2GraphesParallel extends App {
 
             } catch {
               case unknown => {
-                println("une erreur\n\n\n\n\n\n\n\n\n")
-                queriesNumberNonConstructed+=1
+                println("une erreur\n")
                 writeInLogFile(Declarations.paths.get("constructLogFileParallel"), constructedQuery)
                 None
               }
@@ -62,10 +61,8 @@ object Queries2GraphesParallel extends App {
 
         val constructedQueries: ParSeq[Query]= treatedGroupOfLines.collect { case Some(x) => x }
         writeInFile(Declarations.paths.get("constructQueriesFile2"), constructedQueries )
-        queriesNumber+=constructedQueries.size
 
-        //writeInFile(constructQueriesFileTest, treatedGroupOfLines.collect { case Some(x) => x })
-      }
+        }
     }
 
   }
@@ -76,7 +73,10 @@ object Queries2GraphesParallel extends App {
 
     val writer = new PrintWriter(new FileOutputStream(new File(destinationFilePath), true))
 
-    queries.foreach(query => writer.write(query.toString().replaceAll("[\n\r]", "\t") + "\n"))
+    queries.foreach(query => {
+      queriesNumber+=1
+      writer.write(query.toString().replaceAll("[\n\r]", "\t") + "\n")
+    })
 
     writer.close()
   }

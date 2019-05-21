@@ -3,7 +3,6 @@ package Services.MDfromLogQueries.SPARQLSyntacticalValidation
 import java.io.{File, FileOutputStream, PrintWriter}
 
 import Services.MDfromLogQueries.Declarations.Declarations
-import Services.MDfromLogQueries.Declarations.Declarations._
 
 import scala.collection.parallel.ParSeq
 import scala.io.Source
@@ -37,7 +36,7 @@ object SyntacticValidationParallel extends App {
 
             } catch {
               case e : Exception => {
-                println("une erreur\n\n\n\n\n\n\n\n\n")
+                println("une erreur\n")
                 Left(line)
               }
             }
@@ -46,11 +45,7 @@ object SyntacticValidationParallel extends App {
         println("--------------------- un group finished ---------------------------------- ")
 
         val (correct, errors) = treatedGroupOfLines.partition(_.isRight)
-        writeInFile(Declarations.paths.get("syntaxValidFile2"), correct.collect { case Right(Some(x)) => {
-          queriesNumber += 1
-          x
-        }
-        })
+        writeInFile(Declarations.paths.get("syntaxValidFile2"), correct.collect { case Right(Some(x)) => x })
         writeInLogFile(Declarations.paths.get("syntaxNonValidFile2"), errors.collect { case Left(line) => line })
 
       }
@@ -63,7 +58,10 @@ object SyntacticValidationParallel extends App {
 
     val writer = new PrintWriter(new FileOutputStream(new File(destinationFilePath), true))
 
-    queries.foreach(query => writer.write(query.replaceAll("[\n\r]", "\t") + "\n"))
+    queries.foreach{
+      queriesNumber += 1
+      query => writer.write(query.replaceAll("[\n\r]", "\t") + "\n")
+    }
 
     writer.close()
   }

@@ -12,8 +12,9 @@ import scala.io.Source
 object LogCleaningOneFile extends App {
   /** This class reads the log files and extract queries **/
   var queriesNumber = 0
+  var nbLines = 0
   val t1 = System.currentTimeMillis()
-  print("je suis dans log cleaning")
+
 
   /* Directory that coontains the log files 's Path */
   val directoryPath = Declarations.paths.get("directoryPath")
@@ -26,7 +27,7 @@ object LogCleaningOneFile extends App {
   private val PATTERN = Pattern.compile("[^\"]*\"(?:GET )?/sparql/?\\?([^\"\\s\\n]*)[^\"]*\".*")
   //private val PATTERN = Pattern.compile("(sparql)(.*)")
   /* Statistical variables*/
-  var nb_queries = 0
+
 
   /** Write the cleaned queries in the destination file path **/
   def writeFiles(filePath: String, destinationfilePath: String) = {
@@ -36,14 +37,14 @@ object LogCleaningOneFile extends App {
 
     queryList.grouped(100000).foreach {
       groupOfLines => {
-        var nb_req = 0
+        var nb_line = 0
         val treatedGroupOfLines = groupOfLines.par.map {
           line => {
             try {
               val extractedQuery = queryFromLogLine(line)
               if (extractedQuery != null) {
-                nb_req += 1
-                println("* " + nb_req)
+                nb_line += 1
+                println("* " + nb_line)
                 Right(Some(extractedQuery))
               } else Left(line)
 
@@ -57,13 +58,15 @@ object LogCleaningOneFile extends App {
         }
 
         println("--------------------- un group finished ---------------------------------- ")
-        nb_queries = nb_queries + nb_req
+        nbLines = nbLines + nb_line
         val (correct, errors) = treatedGroupOfLines.partition(_.isRight)
         writeInFile(destinationfilePath, correct.collect { case Right(Some(x)) => x })
         writeInFile(Declarations.paths.get("notCleanedQueries"), errors.collect { case Left(line) => line })
       }
     }
-    println("nombre de requêtes dans le log :" + nb_queries)
+    println(" Lines number inside the log  :" + nbLines)
+    println(" Queries number inside the log  :" + queriesNumber)
+
     null
   }
 
@@ -72,12 +75,13 @@ object LogCleaningOneFile extends App {
 
     val writer = new PrintWriter(new FileOutputStream(new File(destinationFilePath), true))
 
-    queries.foreach(query => writer.write(query.replaceAll("[\n\r]", "\t") + "\n"))
 
+    queries.foreach(query => {
+      queriesNumber+=1
+      writer.write(query.toString().replaceAll("[\n\r]", "\t") + "\n")
+    })
     writer.close()
   }
-
-
 
   println(duration)
 }

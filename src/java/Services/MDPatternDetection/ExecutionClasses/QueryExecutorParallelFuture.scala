@@ -2,10 +2,10 @@ package Services.MDPatternDetection.ExecutionClasses
 
 import java.util.concurrent.TimeUnit
 
+import Services.MDPatternDetection.ExecutionClasses.QueryExecutorParallel.{writeInLogFile, writeInTdb}
 import Services.MDfromLogQueries.Declarations.Declarations
 import Services.MDfromLogQueries.Util.TdbOperation
-import QueryExecutorParallel.{writeInLogFile, writeInTdb}
-import org.apache.jena.query.{Query, QueryExecutionFactory, QueryFactory}
+import org.apache.jena.query.{Query, QueryFactory}
 import org.apache.jena.rdf.model.{Model, ModelFactory}
 import org.apache.jena.sparql.engine.http.QueryEngineHTTP
 
@@ -22,11 +22,10 @@ object QueryExecutorParallelFuture extends App {
 
   val tdb = new TdbOperation()
 
+  var queriesNumberwithModels = 0
+  var queriesNumber = 0
+  var queriesLogNumber = 0
 
-
-  executeQueriesInFile(Declarations.paths.get("constructQueriesFile2"), "http://scholarlydata.org/sparql/")
-  val duration = System.currentTimeMillis() - t1
-  var numQueryRun = 0
 
   def executeQueriesInFile(filePath: String, endPoint: String) = {
 
@@ -34,7 +33,7 @@ object QueryExecutorParallelFuture extends App {
     val queryExecutor = new QueryExecutor
 
 
-    val constructQueriesList =Source.fromFile(filePath).getLines
+    val constructQueriesList = Source.fromFile(filePath).getLines
     var nb_req = 0
     var nb_model_notnull = 0
     var nb_model_null = 0
@@ -44,7 +43,6 @@ object QueryExecutorParallelFuture extends App {
       groupOfLines => {
         val timeFor100000 = System.currentTimeMillis()
 
-
         val treatedGroupOfLines = groupOfLines.par.map {
 
           line => {
@@ -52,24 +50,26 @@ object QueryExecutorParallelFuture extends App {
               nb_req += 1
               println("Requete\t" + nb_req)
 
-
               val query = QueryFactory.create(line)
 
               runQuery(endPoint, queryExecutor, query).map {
                 case model => {
                   nb_model_notnull += 1
+                  queriesNumberwithModels+=1
                   Right(model)
                 }
                 case null => {
                   nb_model_null += 1
+                  queriesNumber+=1
                   Left(line)
                 }
 
               }.recover { case e: Exception => {
+                queriesLogNumber+=1
                 Left(line)
               }
               }
-            }catch {
+            } catch {
               case ex: Exception => {
                 Future.successful(Left(line))
               }
@@ -77,12 +77,11 @@ object QueryExecutorParallelFuture extends App {
 
           }
 
-
         }.toVector
 
         println("--------------------- un group finished ---------------------------------- ")
 
-        val seq = Await.result(Future.sequence(treatedGroupOfLines), Duration.Inf)
+        val seq = Await.result (Future.sequence(treatedGroupOfLines), Duration.Inf)
         val (correct, errors) = seq.partition(_.isRight)
 
 
@@ -91,11 +90,11 @@ object QueryExecutorParallelFuture extends App {
 
 
         writeInTdb(correct.collect { case Right(x) => x })
-        // writeInTdb(correct.collect { case Right(x) => x })
+
         writeInLogFile(Declarations.paths.get("executionLogFile"), errors.collect { case Left(line) => line })
 
         val finish = System.currentTimeMillis() - timeFor100000
-        println("time for 100 000 req is   " + finish)
+        println("time for 10 000 req is   " + finish)
 
 
       }
@@ -104,19 +103,19 @@ object QueryExecutorParallelFuture extends App {
   }
 
   def runQuery(endPoint: String, queryExecutor: QueryExecutor, query: Query): Future[Model] = future {
-    //def runQuery(endPoint: String, queryExecutor: QueryExecutor, query: Query): Future[ResultSet] = future {
-    numQueryRun += 1
+
+
+
     var model = ModelFactory.createDefaultModel()
-    println("run query n: " + numQueryRun)
+
     try {
-     // println(query.toString().replace("\n"," "))
-      // model = queryExecutor.executeQueryConstruct(query, endPoint)
+
       model = executeQueryConstruct(query,endPoint)
     }
     catch {
       case e : Exception => throw e
     }
-    // val model = queryExecutor.executeQuerySelect(query, endPoint)
+
 
     model
   }
@@ -125,8 +124,8 @@ object QueryExecutorParallelFuture extends App {
   def executeQueryConstruct(query: Query, endpoint: String) = {
     var results = ModelFactory.createDefaultModel()
     try {
-      val qexec = new QueryEngineHTTP(endpoint,query)
-      qexec.setTimeout(60,TimeUnit.SECONDS, 60, TimeUnit.SECONDS)
+      val qexec = new QueryEngineHTTP(endpoint, query)
+      qexec.setTimeout(60, TimeUnit.SECONDS, 60, TimeUnit.SECONDS)
       results = qexec.execConstruct
       qexec.close()
     } catch {
@@ -136,6 +135,13 @@ object QueryExecutorParallelFuture extends App {
     }
     results
   }
+
+
+
+
+
+  executeQueriesInFile(Declarations.paths.get("constructQueriesFile2"), "http://scholarlydata.org/sparql/")
+  val duration = System.currentTimeMillis() - t1
 
   println(duration)
 

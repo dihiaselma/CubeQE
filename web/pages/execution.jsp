@@ -112,7 +112,7 @@
 
                                         <td>${queriesNumbersMap.get("Syntactical_Validation")}</td>
                                         <td>${queriesNumbersMap.get("ConstructMSGraphs_nbQueriesConstructed")}</td>
-                                        <td>${queriesNumbersMap.get("ConstructMSGraphs_nbQueriesNonConstructed")}</td>
+                                        <td>${queriesNumbersMap.get("Syntactical_Validation")-queriesNumbersMap.get("ConstructMSGraphs_nbQueriesConstructed")}</td>
                                         <td>
                                             <div class="text-muted">
                                                 <i class="fa fa-clock-o"></i>   ${timesMap.get("ConstructMSGraphs")} seconds
@@ -160,8 +160,9 @@
                                     <thead>
                                     <tr>
 
-                                        <th>Number of queries</th>
                                         <th>Number of queries executed</th>
+                                        <th>Nb queries with non null models returned</th>
+                                        <th>Nb queries with null models returned</th>
                                         <th>Number of queries non executed</th>
                                         <th>Execution time</th>
                                         <th>Percentage of executed queries</th>
@@ -170,17 +171,20 @@
                                     <tbody>
                                     <tr>
 
-                                        <td>${queriesNumbersMap.get("Syntactical_Validation")}</td>
-                                        <td>${queriesNumbersMap.get("Execution_nbQueriesExecuted")}</td>
+                                        <td>${queriesNumbersMap.get("ConstructMSGraphs_nbQueriesConstructed")}</td>
+                                        <td>${queriesNumbersMap.get("Execution_nbQueriesExecutedWithModels")}</td>
+                                        <td>${queriesNumbersMap.get("Execution_nbQueriesExecutedWithNullModels")}</td>
                                         <td>${queriesNumbersMap.get("Execution_nbQueriesNonExecuted")}</td>
                                         <td>
                                             <div class="text-muted">
-                                                <i class="fa fa-clock-o"></i>   ${timesMap.get("Execution")} seconds
+                                                <i class="fa fa-clock-o"></i>  ${timesMap.get("Execution")} seconds
                                             </div>
                                         </td>
                                         <td><span class="badge bg-yellow">
                                                 <fmt:formatNumber
-                                                        value=" ${(queriesNumbersMap.get('Execution_nbQueriesExecuted') / queriesNumbersMap.get('Syntactical_Validation'))*100} "
+                                                        value=" ${((queriesNumbersMap.get('Execution_nbQueriesExecutedWithModels')
+                                                        + queriesNumbersMap.get('Execution_nbQueriesExecutedWithNullModels'))
+                                                        / queriesNumbersMap.get('ConstructMSGraphs_nbQueriesConstructed'))*100} "
                                                         maxFractionDigits="2"/>
 
                                                 %</span></td>
@@ -193,7 +197,7 @@
                         <!-- /.box-body -->
                         <div class="box-footer clearfix">
                             <a href="javascript:void(0)" class="btn  bg-red-gradient pull-left">Cancel</a>
-                            <a href="javascript:void(0)" class="btn  btn-default bg-purple-gradient pull-right">Construct
+                            <a href="javascript:void(0)" class="btn  btn-default bg-purple-gradient pull-right">Consolidate
                                 MD graphs</a>
                         </div>
                         <!-- /.box-footer -->
@@ -221,24 +225,25 @@
                                     <tr>
 
                                         <th>Number of models</th>
-                                        <th>Number of consolidated models</th>
+                                        <th>Number of models after consolidation</th>
                                         <th>Execution time</th>
                                         <th>Percentage decrease</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <tr>
-                                        <td>${queriesNumbersMap.get("Consolidation_nbModelsNonConsolidated")}</td>
-                                        <td>${queriesNumbersMap.get("Consolidation_nbModels")}</td>
+                                        <td>${queriesNumbersMap.get("Consolidation_nbModelsB4Consolidation")}</td>
+                                        <td>${queriesNumbersMap.get("Alleviation_nbModels")}</td>
                                         <td>
                                             <div class="text-muted">
-                                                <i class="fa fa-clock-o"></i>    ${timesMap.get("Consolidation")} seconds
+                                                <i class="fa fa-clock-o"></i>    ${timesMap.get("Consolidation")
+                                                +timesMap.get("Alleviation_UselessProperties")+timesMap.get("Alleviation")} seconds
                                             </div>
                                         </td>
                                         <td>
                                             <span class="badge bg-light-blue">
                                                  <fmt:formatNumber
-                                                         value="${(queriesNumbersMap.get('Consolidation_nbModels') / queriesNumbersMap.get('Consolidation_nbModelsNonConsolidated'))*100}"
+                                                         value="${(queriesNumbersMap.get('Alleviation_nbModels') / queriesNumbersMap.get('Consolidation_nbModelsB4Consolidation'))*100}"
                                                          maxFractionDigits="2"/>
                                             %</span></td>
 
