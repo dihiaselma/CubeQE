@@ -821,7 +821,7 @@
       <workItem from="1558302666327" duration="3370000" />
       <workItem from="1558344252484" duration="15597000" />
       <workItem from="1558363066159" duration="13744000" />
-      <workItem from="1558429962701" duration="530000" />
+      <workItem from="1558429962701" duration="2305000" />
     </task>
     <task id="LOCAL-00001" summary=" jrebvuir">
       <created>1556119963959</created>
@@ -1110,11 +1110,18 @@
       <option name="project" value="LOCAL" />
       <updated>1558430453764</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="Couleurs du graphe modifiées">
+      <created>1558431729107</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1558431729107</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="243618000" />
+    <option name="totallyTimeSpent" value="245393000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="55" y="-7" width="1488" height="878" extended-state="6" />
