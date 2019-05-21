@@ -6,7 +6,731 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="40cced35-abb7-4e08-893e-9148dcd3932a" name="Default Changelist" comment="">
+    <list default="true" id="40cced35-abb7-4e08-893e-9148dcd3932a" name="Default Changelist" comment="Couleurs du graphe modifiées">
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/CHANGELOG.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/charts.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/charts.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/core.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/core.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/deps/canvg.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/deps/canvg.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/deps/pdfmake.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/deps/pdfmake.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/deps/xlsx.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/deps/xlsx.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/100%-stacked-column-chart/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/100%-stacked-column-chart/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/100%-stacked-column-chart/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/100%-stacked-column-chart/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/adding-live-data/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/adding-live-data/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/adding-live-data/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/adding-live-data/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/amcharts3/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/amcharts3/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/amcharts3/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/amcharts3/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/amcharts3/v3.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/animating-along-the-line-series/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/animating-along-the-line-series/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/animating-along-the-line-series/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/animating-along-the-line-series/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/bubble-chart/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/bubble-chart/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/bubble-chart/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/bubble-chart/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/candlestick-chart/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/candlestick-chart/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/candlestick-chart/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/candlestick-chart/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/changing-series-apppearance/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/changing-series-apppearance/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/changing-series-apppearance/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/changing-series-apppearance/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/changing-tree-map-data/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/changing-tree-map-data/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/changing-tree-map-data/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/changing-tree-map-data/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/chord-diagram-non-ribbon/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/chord-diagram-non-ribbon/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/chord-diagram-non-ribbon/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/chord-diagram-non-ribbon/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/chord-diagram/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/chord-diagram/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/chord-diagram/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/chord-diagram/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/chord-friends-kisses/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/chord-friends-kisses/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/chord-friends-kisses/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/chord-friends-kisses/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/chord-friends-kisses/whokissed.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/clock/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/clock/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/clock/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/clock/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/column-chart-with-axis-break/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/column-chart-with-axis-break/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/column-chart-with-axis-break/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/column-chart-with-axis-break/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/column-chart-with-images-as-bullets/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/column-chart-with-images-as-bullets/chandler.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/column-chart-with-images-as-bullets/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/column-chart-with-images-as-bullets/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/column-chart-with-images-as-bullets/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/column-chart-with-images-as-bullets/joey.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/column-chart-with-images-as-bullets/monica.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/column-chart-with-images-as-bullets/phoebe.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/column-chart-with-images-as-bullets/rachel.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/column-chart-with-images-as-bullets/ross.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/columns-with-pies-inside/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/columns-with-pies-inside/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/columns-with-pies-inside/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/columns-with-pies-inside/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/countries-morphing-to-pie-chart/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/countries-morphing-to-pie-chart/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/countries-morphing-to-pie-chart/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/countries-morphing-to-pie-chart/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/curved-column-chart/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/curved-column-chart/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/curved-column-chart/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/curved-column-chart/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/cylinder-chart/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/cylinder-chart/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/cylinder-chart/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/cylinder-chart/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/date-based-radar/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/date-based-radar/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/date-based-radar/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/date-based-radar/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/day-night-map/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/day-night-map/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/day-night-map/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/day-night-map/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/donut-chart/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/donut-chart/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/donut-chart/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/donut-chart/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/drag-and-change-values/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/drag-and-change-values/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/drag-and-change-values/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/drag-and-change-values/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/dragging-pie-slices/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/dragging-pie-slices/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/dragging-pie-slices/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/dragging-pie-slices/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/drill-down-map/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/drill-down-map/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/drill-down-map/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/drill-down-map/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/drill-down-tree-map/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/drill-down-tree-map/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/drill-down-tree-map/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/drill-down-tree-map/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/drill-down-tree-map/logos/acura.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/drill-down-tree-map/logos/audi.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/drill-down-tree-map/logos/bmw.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/drill-down-tree-map/logos/buick.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/drill-down-tree-map/logos/cadillac.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/drill-down-tree-map/logos/chevrolet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/drill-down-tree-map/logos/chrysler.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/drill-down-tree-map/logos/dodge.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/drill-down-tree-map/logos/ford.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/drill-down-tree-map/logos/gmc.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/drill-down-tree-map/logos/honda.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/drill-down-tree-map/logos/hyundai.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/drill-down-tree-map/logos/infiniti.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/drill-down-tree-map/logos/jeep.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/drill-down-tree-map/logos/kia.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/drill-down-tree-map/logos/lexus.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/drill-down-tree-map/logos/lincoln.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/drill-down-tree-map/logos/mazda.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/drill-down-tree-map/logos/mercedes-benz.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/drill-down-tree-map/logos/mitsubishi.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/drill-down-tree-map/logos/nissan.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/drill-down-tree-map/logos/other.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/drill-down-tree-map/logos/subaru.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/drill-down-tree-map/logos/toyota.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/drill-down-tree-map/logos/volkswagen.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/dumbbell-plot-horizontal/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/dumbbell-plot-horizontal/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/dumbbell-plot-horizontal/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/dumbbell-plot-horizontal/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/dumbbell-plot/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/dumbbell-plot/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/dumbbell-plot/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/dumbbell-plot/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/duration-axis/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/duration-axis/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/duration-axis/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/duration-axis/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/error-chart/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/error-chart/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/error-chart/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/error-chart/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/fill-between-lines-chart/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/fill-between-lines-chart/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/fill-between-lines-chart/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/fill-between-lines-chart/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/force-directed-network/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/force-directed-network/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/force-directed-network/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/force-directed-network/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/force-directed-tree-expandable/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/force-directed-tree-expandable/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/force-directed-tree-expandable/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/force-directed-tree-expandable/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/force-directed-tree/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/force-directed-tree/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/force-directed-tree/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/force-directed-tree/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/funnel-chart-horizontal/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/funnel-chart-horizontal/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/funnel-chart-horizontal/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/funnel-chart-horizontal/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/funnel-chart/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/funnel-chart/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/funnel-chart/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/funnel-chart/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/gantt-chart/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/gantt-chart/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/gantt-chart/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/gantt-chart/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/geo-heat-map/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/geo-heat-map/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/geo-heat-map/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/geo-heat-map/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/heat-map-circles/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/heat-map-circles/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/heat-map-circles/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/heat-map-circles/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/heat-map/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/heat-map/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/heat-map/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/heat-map/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/horizontally-stacked-axes/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/horizontally-stacked-axes/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/horizontally-stacked-axes/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/horizontally-stacked-axes/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/line-different-ups-downs/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/line-different-ups-downs/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/line-different-ups-downs/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/line-different-ups-downs/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/map-line-gauge-mix/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/map-line-gauge-mix/bang.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/map-line-gauge-mix/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/map-line-gauge-mix/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/map-line-gauge-mix/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/map-line-gauge-mix/rocket.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/morphing-countries/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/morphing-countries/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/morphing-countries/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/morphing-countries/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/multiple-axes-date-based-chart/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/multiple-axes-date-based-chart/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/multiple-axes-date-based-chart/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/multiple-axes-date-based-chart/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/multiple-series-map-chart/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/multiple-series-map-chart/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/multiple-series-map-chart/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/multiple-series-map-chart/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/non-chart-usage/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/non-chart-usage/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/non-chart-usage/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/non-chart-usage/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/ohlc-chart/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/ohlc-chart/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/ohlc-chart/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/ohlc-chart/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/packed-circles/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/packed-circles/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/packed-circles/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/packed-circles/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/pictorial-bar-chart/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/pictorial-bar-chart/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/pictorial-bar-chart/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/pictorial-bar-chart/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/pictorial-chart/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/pictorial-chart/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/pictorial-chart/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/pictorial-chart/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/pictorial-stacked-chart-horizontal/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/pictorial-stacked-chart-horizontal/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/pictorial-stacked-chart-horizontal/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/pictorial-stacked-chart-horizontal/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/pictorial-stacked-chart/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/pictorial-stacked-chart/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/pictorial-stacked-chart/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/pictorial-stacked-chart/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/polar-area-chart/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/polar-area-chart/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/polar-area-chart/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/polar-area-chart/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/population-pyramid/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/population-pyramid/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/population-pyramid/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/population-pyramid/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/pyramid-chart/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/pyramid-chart/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/pyramid-chart/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/pyramid-chart/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/radar-chart-with-axis-break/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/radar-chart-with-axis-break/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/radar-chart-with-axis-break/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/radar-chart-with-axis-break/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/radar-timeline-chart/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/radar-timeline-chart/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/radar-timeline-chart/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/radar-timeline-chart/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/radial-bar-chart/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/radial-bar-chart/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/radial-bar-chart/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/radial-bar-chart/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/rotating-globe-with-circles/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/rotating-globe-with-circles/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/rotating-globe-with-circles/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/rotating-globe-with-circles/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/rotating-globe/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/rotating-globe/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/rotating-globe/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/rotating-globe/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/sankey-diagram-with-animated-bullets/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/sankey-diagram-with-animated-bullets/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/sankey-diagram-with-animated-bullets/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/sankey-diagram-with-animated-bullets/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/semi-circle-donut-chart/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/semi-circle-donut-chart/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/semi-circle-donut-chart/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/semi-circle-donut-chart/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/simple-3D-pie-chart/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/simple-3D-pie-chart/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/simple-3D-pie-chart/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/simple-3D-pie-chart/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/simple-bar-chart/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/simple-bar-chart/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/simple-bar-chart/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/simple-bar-chart/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/simple-column-chart/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/simple-column-chart/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/simple-column-chart/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/simple-column-chart/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/simple-gauge/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/simple-gauge/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/simple-gauge/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/simple-gauge/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/simple-line-chart/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/simple-line-chart/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/simple-line-chart/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/simple-line-chart/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/simple-map-chart/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/simple-map-chart/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/simple-map-chart/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/simple-map-chart/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/simple-pie-chart/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/simple-pie-chart/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/simple-pie-chart/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/simple-pie-chart/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/simple-radar-chart/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/simple-radar-chart/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/simple-radar-chart/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/simple-radar-chart/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/simple-sankey-diagram/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/simple-sankey-diagram/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/simple-sankey-diagram/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/simple-sankey-diagram/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/simple-tree-map/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/simple-tree-map/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/simple-tree-map/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/simple-tree-map/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/stacked-3D-column-chart/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/stacked-3D-column-chart/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/stacked-3D-column-chart/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/stacked-3D-column-chart/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/stacked-area-radar-chart/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/stacked-area-radar-chart/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/stacked-area-radar-chart/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/stacked-area-radar-chart/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/stacked-column-chart/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/stacked-column-chart/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/stacked-column-chart/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/stacked-column-chart/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/step-count-chart/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/step-count-chart/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/step-count-chart/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/step-count-chart/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/step-line-chart/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/step-line-chart/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/step-line-chart/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/step-line-chart/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/step-line-no-risers-chart/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/step-line-no-risers-chart/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/step-line-no-risers-chart/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/step-line-no-risers-chart/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/sunburst/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/sunburst/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/sunburst/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/sunburst/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/syncing-cursors-and-zoom/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/syncing-cursors-and-zoom/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/syncing-cursors-and-zoom/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/syncing-cursors-and-zoom/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/triangle-column-chart/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/triangle-column-chart/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/triangle-column-chart/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/triangle-column-chart/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/variable-angle-radar-chart/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/variable-angle-radar-chart/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/variable-angle-radar-chart/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/variable-angle-radar-chart/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/variable-height-3D-pie-chart/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/variable-height-3D-pie-chart/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/variable-height-3D-pie-chart/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/variable-height-3D-pie-chart/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/variable-radius-pie-chart/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/variable-radius-pie-chart/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/variable-radius-pie-chart/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/variable-radius-pie-chart/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/vertical-sankey-diagram/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/vertical-sankey-diagram/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/vertical-sankey-diagram/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/vertical-sankey-diagram/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/vertically-stacked-axes/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/vertically-stacked-axes/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/vertically-stacked-axes/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/vertically-stacked-axes/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/waterfall-chart/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/waterfall-chart/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/waterfall-chart/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/waterfall-chart/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/word-cloud-changing-data/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/word-cloud-changing-data/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/word-cloud-changing-data/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/word-cloud-changing-data/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/word-cloud/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/word-cloud/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/word-cloud/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/word-cloud/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/xy-error-chart/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/xy-error-chart/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/xy-error-chart/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/javascript/xy-error-chart/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/json/candlestick-series/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/json/candlestick-series/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/json/candlestick-series/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/json/candlestick-series/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/json/changing-series-apppearance/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/json/changing-series-apppearance/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/json/changing-series-apppearance/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/json/changing-series-apppearance/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/json/columns-with-pies-inside/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/json/columns-with-pies-inside/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/json/columns-with-pies-inside/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/json/columns-with-pies-inside/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/json/multiple-series-map-chart/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/json/multiple-series-map-chart/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/json/multiple-series-map-chart/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/json/multiple-series-map-chart/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/json/simple-3D-pie-chart/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/json/simple-3D-pie-chart/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/json/simple-3D-pie-chart/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/json/simple-3D-pie-chart/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/json/simple-bar-chart/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/json/simple-bar-chart/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/json/simple-bar-chart/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/json/simple-bar-chart/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/json/simple-column-chart/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/json/simple-column-chart/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/json/simple-column-chart/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/json/simple-column-chart/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/json/simple-gauge/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/json/simple-gauge/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/json/simple-gauge/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/json/simple-gauge/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/json/simple-line-chart/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/json/simple-line-chart/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/json/simple-line-chart/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/json/simple-line-chart/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/json/simple-map-chart/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/json/simple-map-chart/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/json/simple-map-chart/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/json/simple-map-chart/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/json/simple-pie-chart-rounded-corners/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/json/simple-pie-chart-rounded-corners/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/json/simple-pie-chart-rounded-corners/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/json/simple-pie-chart-rounded-corners/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/json/simple-pie-chart/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/json/simple-pie-chart/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/json/simple-pie-chart/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/json/simple-pie-chart/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/json/simple-radar-chart/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/json/simple-radar-chart/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/json/simple-radar-chart/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/json/simple-radar-chart/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/json/simple-sankey-diagram/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/json/simple-sankey-diagram/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/json/simple-sankey-diagram/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/json/simple-sankey-diagram/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/json/simple-tree-map/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/json/simple-tree-map/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/json/simple-tree-map/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/examples/json/simple-tree-map/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/ar.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/ar.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/bs_BA.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/bs_BA.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/ca_ES.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/ca_ES.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/cs_CZ.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/cs_CZ.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/da_DK.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/da_DK.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/de_CH.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/de_CH.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/de_DE.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/de_DE.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/el_GR.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/el_GR.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/en.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/en.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/en_CA.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/en_CA.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/en_US.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/en_US.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/es_ES.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/es_ES.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/et_EE.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/et_EE.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/fi_FI.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/fi_FI.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/fr_FR.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/fr_FR.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/he_IL.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/he_IL.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/hi_IN.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/hi_IN.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/hr_HR.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/hr_HR.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/hu_HU.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/hu_HU.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/id_ID.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/id_ID.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/it_IT.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/it_IT.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/ja_JP.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/ja_JP.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/ko_KR.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/ko_KR.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/lt_LT.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/lt_LT.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/lv_LV.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/lv_LV.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/nb_NO.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/nb_NO.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/nl_NL.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/nl_NL.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/pl_PL.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/pl_PL.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/pt_BR.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/pt_BR.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/pt_PT.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/pt_PT.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/ro_RO.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/ro_RO.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/ru_RU.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/ru_RU.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/sl_SL.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/sl_SL.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/sr_RS.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/sr_RS.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/sv_SE.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/sv_SE.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/th_TH.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/th_TH.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/tr_TR.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/tr_TR.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/vi_VN.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/vi_VN.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/zh_Hans.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/zh_Hans.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/zh_Hant.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/lang/zh_Hant.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/maps.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/maps.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/plugins/forceDirected.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/plugins/forceDirected.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/plugins/regression.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/plugins/regression.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/plugins/sliceGrouper.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/plugins/sliceGrouper.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/plugins/sunburst.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/plugins/sunburst.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/plugins/wordCloud.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/plugins/wordCloud.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/themes/amcharts.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/themes/amcharts.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/themes/amchartsdark.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/themes/amchartsdark.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/themes/animated.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/themes/animated.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/themes/dark.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/themes/dark.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/themes/dataviz.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/themes/dataviz.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/themes/frozen.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/themes/frozen.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/themes/kelly.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/themes/kelly.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/themes/material.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/themes/material.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/themes/moonrisekingdom.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/themes/moonrisekingdom.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/themes/spiritedaway.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/themes/spiritedaway.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/bootstrap-slider/bootstrap-slider.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/bootstrap-slider/slider.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/all.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/flat/_all.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/flat/aero.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/flat/aero.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/flat/aero@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/flat/blue.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/flat/blue.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/flat/blue@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/flat/flat.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/flat/flat.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/flat/flat@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/flat/green.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/flat/green.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/flat/green@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/flat/grey.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/flat/grey.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/flat/grey@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/flat/orange.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/flat/orange.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/flat/orange@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/flat/pink.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/flat/pink.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/flat/pink@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/flat/purple.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/flat/purple.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/flat/purple@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/flat/red.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/flat/red.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/flat/red@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/flat/yellow.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/flat/yellow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/flat/yellow@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/futurico/futurico.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/futurico/futurico.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/futurico/futurico@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/icheck.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/icheck.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/line/_all.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/line/aero.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/line/blue.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/line/green.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/line/grey.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/line/line.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/line/line.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/line/line@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/line/orange.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/line/pink.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/line/purple.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/line/red.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/line/yellow.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/minimal/_all.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/minimal/aero.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/minimal/aero.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/minimal/aero@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/minimal/blue.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/minimal/blue.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/minimal/blue@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/minimal/green.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/minimal/green.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/minimal/green@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/minimal/grey.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/minimal/grey.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/minimal/grey@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/minimal/minimal.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/minimal/minimal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/minimal/minimal@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/minimal/orange.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/minimal/orange.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/minimal/orange@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/minimal/pink.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/minimal/pink.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/minimal/pink@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/minimal/purple.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/minimal/purple.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/minimal/purple@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/minimal/red.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/minimal/red.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/minimal/red@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/minimal/yellow.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/minimal/yellow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/minimal/yellow@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/polaris/polaris.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/polaris/polaris.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/polaris/polaris@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/square/_all.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/square/aero.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/square/aero.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/square/aero@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/square/blue.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/square/blue.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/square/blue@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/square/green.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/square/green.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/square/green@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/square/grey.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/square/grey.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/square/grey@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/square/orange.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/square/orange.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/square/orange@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/square/pink.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/square/pink.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/square/pink@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/square/purple.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/square/purple.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/square/purple@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/square/red.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/square/red.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/square/red@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/square/square.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/square/square.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/square/square@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/square/yellow.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/square/yellow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/iCheck/square/yellow@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/input-mask/jquery.inputmask.date.extensions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/input-mask/jquery.inputmask.extensions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/input-mask/jquery.inputmask.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/input-mask/jquery.inputmask.numeric.extensions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/input-mask/jquery.inputmask.phone.extensions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/input-mask/jquery.inputmask.regex.extensions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/input-mask/phone-codes/phone-be.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/input-mask/phone-codes/phone-codes.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/input-mask/phone-codes/readme.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/jQueryUI/jquery-ui.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/jQueryUI/jquery-ui.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/jvectormap/jquery-jvectormap-1.2.2.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/jvectormap/jquery-jvectormap-usa-en.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/jvectormap/jquery-jvectormap-world-mill-en.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/pace/pace.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/pace/pace.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/pace/pace.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/pace/pace.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/timepicker/bootstrap-timepicker.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/timepicker/bootstrap-timepicker.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/timepicker/bootstrap-timepicker.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/plugins/timepicker/bootstrap-timepicker.min.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
@@ -54,7 +778,7 @@
     <session id="1585415248">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="18" />
+          <entry key="project.closed" value="19" />
           <entry key="project.open.time.100" value="1" />
           <entry key="project.open.time.102" value="1" />
           <entry key="project.open.time.104" value="1" />
@@ -65,6 +789,7 @@
           <entry key="project.open.time.130" value="1" />
           <entry key="project.open.time.131" value="1" />
           <entry key="project.open.time.139" value="1" />
+          <entry key="project.open.time.36" value="1" />
           <entry key="project.open.time.5" value="1" />
           <entry key="project.open.time.75" value="1" />
           <entry key="project.open.time.77" value="1" />
@@ -75,7 +800,7 @@
           <entry key="project.open.time.91" value="1" />
           <entry key="project.open.time.93" value="1" />
           <entry key="project.open.time.98" value="1" />
-          <entry key="project.opened" value="20" />
+          <entry key="project.opened" value="21" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -129,7 +854,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Util/ModelUtil.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1029">
+            <state relative-caret-position="48">
               <caret line="3" column="39" selection-start-line="3" selection-start-column="39" selection-end-line="3" selection-end-column="39" />
             </state>
           </provider>
@@ -138,8 +863,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.idea/dictionaries/KamilaB.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="48">
-              <caret line="3" column="11" selection-start-line="3" selection-start-column="11" selection-end-line="3" selection-end-column="11" />
+            <state relative-caret-position="96">
+              <caret line="6" column="12" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -159,7 +884,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/pages/treeView.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
+            <state relative-caret-position="784">
               <caret line="49" column="36" selection-start-line="49" selection-start-column="36" selection-end-line="49" selection-end-column="36" />
             </state>
           </provider>
@@ -168,7 +893,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/pages/mdGraphView.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="656">
+            <state relative-caret-position="800">
               <caret line="50" column="35" selection-start-line="50" selection-start-column="35" selection-end-line="50" selection-end-column="35" />
             </state>
           </provider>
@@ -177,7 +902,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Declarations/Declarations.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
+            <state relative-caret-position="384">
               <caret line="27" column="60" selection-start-line="27" selection-start-column="60" selection-end-line="27" selection-end-column="60" />
             </state>
           </provider>
@@ -374,8 +1099,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -574,12 +1297,6 @@
               <item name="logLinc" type="b2602c69:ProjectViewProjectNode" />
               <item name="logLinc" type="462c0819:PsiDirectoryNode" />
               <item name="web" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="logLinc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="logLinc" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
               <item name="plugins" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -593,12 +1310,14 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558388682802" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558434274820" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="jsx.switch.disabled" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Declarations" />
@@ -821,7 +1540,8 @@
       <workItem from="1558302666327" duration="3370000" />
       <workItem from="1558344252484" duration="15597000" />
       <workItem from="1558363066159" duration="13744000" />
-      <workItem from="1558429962701" duration="2305000" />
+      <workItem from="1558429962701" duration="4099000" />
+      <workItem from="1558434505405" duration="591000" />
     </task>
     <task id="LOCAL-00001" summary=" jrebvuir">
       <created>1556119963959</created>
@@ -1117,11 +1837,18 @@
       <option name="project" value="LOCAL" />
       <updated>1558431729107</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="Couleurs du graphe modifiées">
+      <created>1558432612814</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1558432612814</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="245393000" />
+    <option name="totallyTimeSpent" value="247778000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="55" y="-7" width="1488" height="878" extended-state="6" />
@@ -1134,7 +1861,7 @@
       <window_info id="Favorites" order="4" side_tool="true" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Web" order="6" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="7" sideWeight="0.4958159" visible="true" weight="0.26050422" />
+      <window_info active="true" content_ui="combo" id="Project" order="7" sideWeight="0.4958159" visible="true" weight="0.2640056" />
       <window_info anchor="bottom" id="Run" order="0" weight="0.43355703" />
       <window_info anchor="bottom" id="Application Servers" order="1" weight="0.32885906" />
       <window_info anchor="bottom" id="SBT Console" order="2" />
@@ -1361,9 +2088,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="201">
           <caret line="69" column="39" selection-start-line="69" selection-start-column="39" selection-end-line="69" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1489,9 +2213,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
           <caret line="24" column="93" lean-forward="true" selection-start-line="24" selection-start-column="93" selection-end-line="24" selection-end-column="108" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1516,6 +2237,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Util/ModelUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="3" column="39" selection-start-line="3" selection-start-column="39" selection-end-line="3" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/java/Controller/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1568">
@@ -1523,6 +2251,27 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/pages/treeView.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="784">
+          <caret line="49" column="36" selection-start-line="49" selection-start-column="36" selection-end-line="49" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/pages/mdGraphView.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="800">
+          <caret line="50" column="35" selection-start-line="50" selection-start-column="35" selection-end-line="50" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Declarations/Declarations.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="384">
+          <caret line="27" column="60" selection-start-line="27" selection-start-column="60" selection-end-line="27" selection-end-column="60" />
         </state>
       </provider>
     </entry>
@@ -1540,38 +2289,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Declarations/Declarations.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="27" column="60" selection-start-line="27" selection-start-column="60" selection-end-line="27" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/pages/treeView.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="49" column="36" selection-start-line="49" selection-start-column="36" selection-end-line="49" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/pages/mdGraphView.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="656">
-          <caret line="50" column="35" selection-start-line="50" selection-start-column="35" selection-end-line="50" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Util/ModelUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1029">
-          <caret line="3" column="39" selection-start-line="3" selection-start-column="39" selection-end-line="3" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.idea/dictionaries/KamilaB.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="3" column="11" selection-start-line="3" selection-start-column="11" selection-end-line="3" selection-end-column="11" />
+        <state relative-caret-position="96">
+          <caret line="6" column="12" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
         </state>
       </provider>
     </entry>
