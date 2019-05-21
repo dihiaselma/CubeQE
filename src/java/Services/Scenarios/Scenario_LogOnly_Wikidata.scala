@@ -24,14 +24,14 @@ object Scenario_LogOnly_Wikidata  extends  App {
 
   /** 2. Deduplication **/
   var t_dedup: Long = System.currentTimeMillis()
-  DeduplicateQueriesInFile2(Declarations.paths.get("cleanedQueriesFile"), Declarations.paths.get("writingDedupFilePath"))
+  DeduplicateQueriesInFile2(Declarations.paths.get("cleanedQueriesFile"), Declarations.paths.get("deduplicatedQueriesFile"))
   FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePath"), "Deduplication", (System.currentTimeMillis() - t_dedup).toInt)
   FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "Deduplication", QueriesDeduplicatorParallel.queriesNumber)
 */
 
   /** 3. Validaion syntaxique **/
    var t_syntacticValidation: Long = System.currentTimeMillis()
-   valideQueriesInFile(Declarations.paths.get("writingDedupFilePath"))
+   valideQueriesInFile(Declarations.paths.get("deduplicatedQueriesFile"))
    FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePath"), "Syntactical_Validation", (System.currentTimeMillis() - t_syntacticValidation).toInt)
    FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "Syntactical_Validation", SyntacticValidationParallel.queriesNumber )
 
@@ -40,7 +40,7 @@ object Scenario_LogOnly_Wikidata  extends  App {
   /*
    /** 4. Construct MD graphs **/
    var t_connstructMDgraphs: Long = System.currentTimeMillis()
-   TransformQueriesInFile(Declarations.paths.get("writingDedupFilePath"))
+   TransformQueriesInFile(Declarations.paths.get("deduplicatedQueriesFile"))
    FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePath"), "ConstructMSGraphs", (System.currentTimeMillis() -  t_connstructMDgraphs).toInt)
    FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "ConstructMSGraphs_nbQueriesConstructed", Queries2GraphesParallel.queriesNumber)
    FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "ConstructMSGraphs_nbQueriesNonConstructed", Queries2GraphesParallel.queriesNumberNonConstructed)

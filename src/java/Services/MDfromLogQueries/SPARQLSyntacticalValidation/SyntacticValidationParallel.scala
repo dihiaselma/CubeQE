@@ -84,7 +84,7 @@ object SyntacticValidationParallel extends App {
     QueryFixer.toQuery(queryStr2).toString
   }
 
-  valideQueriesInFile(Declarations.paths.get("writingDedupFilePath"))
+  valideQueriesInFile(Declarations.paths.get("deduplicatedQueriesFile"))
   val duration = System.currentTimeMillis() - t1
   println(duration)
 

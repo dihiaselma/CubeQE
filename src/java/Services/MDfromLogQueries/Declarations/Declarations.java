@@ -43,7 +43,7 @@ public class Declarations {
        // paths.put("notCleanedQueries",root + "ProgramOutput\\not_Cleaned_Queries_File");
 
         /* Step 2 : Queries deduplication **/
-        paths.put("writingDedupFilePath",root + "ProgramOutput\\Fichier_log_dedup_Nettoye_java.txt");
+        paths.put("deduplicatedQueriesFile",root + "ProgramOutput\\Fichier_log_dedup_Nettoye_java.txt");
 
         /* Step 3 : Syntactical Validation **/
         paths.put("syntaxValidFile",root + "ProgramOutput\\Fichier_Syntaxe_Valide.txt");
@@ -96,8 +96,8 @@ public class Declarations {
 
 
         /* Scénario 2 : Analytic Queries **/
-        paths.put("AggregQueriesFile",root + rootScenarioAnalytic + "ProgramOutput\\Fichier_Analytic_Queries.txt");
-        paths.put("AnalyticQueriesFile",root + rootScenarioAnalytic + "ProgramOutput\\Fichier_Analytic_Queries2.txt");
+        paths.put("AggregQueriesFile",root + rootScenarioAnalytic + "ProgramOutput\\Fichier_Aggreg_Queries.txt");
+        paths.put("AnalyticQueriesFile",root + rootScenarioAnalytic + "ProgramOutput\\Fichier_Analytic_Queries.txt");
         paths.put("AnalyticSelectQueriesFile",root + rootScenarioAnalytic + "ProgramOutput\\Fichier_Analytic_Select_Queries.txt");
         paths.put("SelectQueriesAndResult",root + rootScenarioAnalytic + "ProgramOutput\\Fichier_Analytic_Select_Queries_Results.txt");
 
