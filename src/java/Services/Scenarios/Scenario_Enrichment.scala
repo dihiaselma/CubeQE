@@ -48,7 +48,7 @@ object Scenario_Enrichment extends App{
   var t_statistics: Long = System.currentTimeMillis()
   var statistics : Statistics1 = new Statistics1
   val stat = statistics.stat2(TdbOperation.unpersistModelsMap(Declarations.paths.get("dataSetEnrichedAnnotated")))
-  Statistics1.writeAllStatsInYAML(stat,Declarations.paths.get("enrichedStatisticsFileYAML"))
+  Statistics1.writeAllStatsInYAML(stat,Declarations.paths.get("enrichedStatisticsFileYAML"),Declarations.paths.get("enrichedStatisticsByTypeFile"))
   //statisticsBySubjectList(subjects)
   FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePath"), "StatisticsEnriched", (System.currentTimeMillis() - t_statistics).toInt)
 

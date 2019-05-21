@@ -73,6 +73,7 @@ public class Declarations {
         paths.put("statisticsAnalyticFactFile",root + statististicsRoot + "Fichier_statistique_Analytique_Fact.txt");
         paths.put("statisticsAnalyticDimFile",root + statististicsRoot + "Fichier_statistique_Analytique_Dimension.txt");
         paths.put("enrichedStatisticsFileYAML", root + statististicsRoot + "Fichier_statistique_enrichi.yaml");
+        paths.put("enrichedStatisticsByTypeFile", root + statististicsRoot + "Fichier_statistique_enrichi_parType.yaml");
 
         /* Default ontologies directory **/
         paths.put("defaultOntologiesDir",root + "Ontologies");
