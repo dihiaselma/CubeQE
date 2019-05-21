@@ -96,7 +96,7 @@
                             <div class="table-responsive">
 
 
-                                <table class="table no-margin">
+                                <table class="table no-margin table-bordered table-striped">
                                     <thead>
                                     <tr>
                                         <th>Stat</th>
@@ -105,6 +105,8 @@
                                         <tg:forEach var="entryNames" items="${statisticsEnrichment.entrySet()}" >
 
                                             <th><c:out value ="${entryNames.key}"/></th>
+                                            <th><c:out value ="Enrichment ${entryNames.key}"/></th>
+                                            <th><c:out value ="Percentage"/></th>
 
                                         </tg:forEach>
 
@@ -116,14 +118,46 @@
 
                                     <tg:forEach var="entry" items="${statisticsEnrichment.get('Total').entrySet()}">
                                         <tr>
-                                            <!-- nom du type de la stat  -->   <td><c:out value ="${entry.key}"/></td>
-                                            <!-- description  -->              <td><c:out value ="${statisticsEnrichmentDescription.get(entry.key)}"/></td>
-                                            <td>
+                                            <!-- nom du type de la stat  -->
+                                            <td><c:out value ="${entry.key}"/></td>
+                                            <!-- description  -->
+                                            <td><c:out value ="${statisticsEnrichmentDescription.get(entry.key)}"/></td>
 
-                                                <fmt:formatNumber value ="${statisticsEnrichment.get('Average').get(entry.key)}" maxFractionDigits="2"/></td>
+                                            <!-- Average -->
+                                            <td><fmt:formatNumber value ="${statistics.get('Average').get(entry.key)}" maxFractionDigits="2"/></td>
+                                            <td><fmt:formatNumber value ="${statisticsEnrichment.get('Average').get(entry.key)}" maxFractionDigits="2"/></td>
+                                            <span class="badge bg-light-blue">
+                                                 <fmt:formatNumber
+                                                         value="${(statistics.get('Average').get(entry.key) / statisticsEnrichment.get('Average').get(entry.key))*100}"
+                                                         maxFractionDigits="2"/>
+                                            %</span>
+
+                                            <!-- Miinmum -->
+                                            <td><fmt:formatNumber value ="${statistics.get('Minimum').get(entry.key)}" maxFractionDigits="2"/></td>
                                             <td><fmt:formatNumber value ="${statisticsEnrichment.get('Minimum').get(entry.key)}" maxFractionDigits="2"/></td>
+                                            <span class="badge bg-light-red">
+                                                 <fmt:formatNumber
+                                                         value="${(statistics.get('Minimum').get(entry.key) / statisticsEnrichment.get('Minimum').get(entry.key))*100}"
+                                                         maxFractionDigits="2"/>
+                                            %</span>
+
+                                            <!-- Maximum -->
+                                            <td><fmt:formatNumber value ="${statistics.get('Maximum').get(entry.key)}" maxFractionDigits="2"/></td>
                                             <td><fmt:formatNumber value ="${statisticsEnrichment.get('Maximum').get(entry.key)}" maxFractionDigits="2"/></td>
+                                            <span class="badge bg-light-yellow">
+                                                 <fmt:formatNumber
+                                                         value="${(statistics.get('Maximum').get(entry.key) / statisticsEnrichment.get('Maximum').get(entry.key))*100}"
+                                                         maxFractionDigits="2"/>
+                                            %</span>
+
+                                            <!-- Total -->
+                                            <td><fmt:formatNumber value ="${statistics.get('Total').get(entry.key)}" maxFractionDigits="2"/></td>
                                             <td><fmt:formatNumber value ="${statisticsEnrichment.get('Total').get(entry.key)}" maxFractionDigits="2"/></td>
+                                            <span class="badge bg-light-green">
+                                                 <fmt:formatNumber
+                                                         value="${(statistics.get('Total').get(entry.key)/ statisticsEnrichment.get('Total').get(entry.key))*100}"
+                                                         maxFractionDigits="2"/>
+                                            %</span>
 
                                         </tr>
                                     </tg:forEach>
