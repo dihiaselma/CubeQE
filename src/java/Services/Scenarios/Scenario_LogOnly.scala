@@ -1,22 +1,40 @@
 package Services.Scenarios
 
+import java.util
+
+import Services.MDPatternDetection.Alleviation.MDGraphsAlleviation
+import Services.MDPatternDetection.AnnotationClasses.MDGraphAnnotated
+import Services.MDPatternDetection.ConsolidationClasses.ConsolidationParallel
+import Services.MDPatternDetection.ConsolidationClasses.ConsolidationParallel._
+import Services.MDPatternDetection.ExecutionClasses.QueryExecutorParallelFuture
+import Services.MDPatternDetection.ExecutionClasses.QueryExecutorParallelFuture.executeQueriesInFile
+import Services.MDPatternDetection.GraphConstructionClasses.Queries2GraphesParallel
+import Services.MDPatternDetection.GraphConstructionClasses.Queries2GraphesParallel.TransformQueriesInFile
 import Services.MDfromLogQueries.Declarations.Declarations
+import Services.MDfromLogQueries.LogCleaning.QueriesDeduplicator.DeduplicateQueriesInFile
+import Services.MDfromLogQueries.LogCleaning.{LogCleaningOneFile, QueriesDeduplicator}
+import Services.MDfromLogQueries.SPARQLSyntacticalValidation.SyntacticValidationParallel
+import Services.MDfromLogQueries.SPARQLSyntacticalValidation.SyntacticValidationParallel.valideQueriesInFile
 import Services.MDfromLogQueries.Util.{FileOperation, TdbOperation}
 import Services.Statistics.Statistics1
+import org.apache.jena.rdf.model.Model
+
 
 
 
 object Scenario_LogOnly extends App{
 
-  Declarations.setEndpoint("DogFood")
+  val endpoint="DogFood"
+  val endpointUrl="http://www.scholarlydata.org/sparql/"
+  Declarations.setEndpoint(endpoint)
 
-/*
+
   /** 1. Nettoyage du log **/
   var t_cleaning: Long = System.currentTimeMillis()
   LogCleaningOneFile.writeFiles(Declarations.paths.get("directoryPath"), Declarations.paths.get("cleanedQueriesFile"))
   FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePath"), "Log_Cleaning", (System.currentTimeMillis() - t_cleaning).toInt)
-  FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "Log_Cleaning_nbLines", LogCleaningOneFile.nb_queries)
-  FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "Log_Cleaning", LogCleaningOneFile.queriesNumber)
+  FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "Log_Cleaning_nbLines", LogCleaningOneFile.nbLines)
+  FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "Log_Cleaning_nbQueries", LogCleaningOneFile.queriesNumber)
 
   /** 2. Deduplication **/
   var t_dedup: Long = System.currentTimeMillis()
@@ -32,26 +50,24 @@ object Scenario_LogOnly extends App{
 
   /** 4. Construct MD graphs **/
   var t_connstructMDgraphs: Long = System.currentTimeMillis()
-  TransformQueriesInFile(Declarations.paths.get("writingDedupFilePath"))
+  TransformQueriesInFile(Declarations.paths.get("syntaxValidFile2"))
   FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePath"), "ConstructMSGraphs", (System.currentTimeMillis() -  t_connstructMDgraphs).toInt)
   FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "ConstructMSGraphs_nbQueriesConstructed", Queries2GraphesParallel.queriesNumber)
-  FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "ConstructMSGraphs_nbQueriesNonConstructed", Queries2GraphesParallel.queriesNumberNonConstructed)
 
 
   /** 5. Execution **/
   var t_execution: Long = System.currentTimeMillis()
-  val endpoint="https://dbpedia.org/sparql"
-  executeQuiersInFile(Declarations.paths.get("constructQueriesFile2"), endpoint)
+  executeQueriesInFile(Declarations.paths.get("constructQueriesFile2"), endpointUrl)
   FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePath"), "Execution", (System.currentTimeMillis() - t_execution).toInt)
-  FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "Execution_nbQueriesExecuted", QueryExecutor.queriesNumber)
-  FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "Execution_nbQueriesNonExecuted", QueryExecutor.queriesLogNumber)
+  FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "Execution_nbQueriesExecutedWithNullModels", QueryExecutorParallelFuture.queriesNumber)
+  FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "Execution_nbQueriesExecutedWithModels", QueryExecutorParallelFuture.queriesNumberwithModels)
+  FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "Execution_nbQueriesNonExecuted", QueryExecutorParallelFuture.queriesLogNumber)
 
 
   /** 6. Alleviation 1 (Useless properties removement) **/
   println("***********************Alleviation 1******************")
   var t_alleviation1: Long = System.currentTimeMillis()
   val modelsAlleviated_UselessProp: util.HashMap[String, Model]=MDGraphsAlleviation.removeUselessProperties( TdbOperation.unpersistModelsMap(TdbOperation.originalDataSet))
-  //writeInTdb(convertToScalaMap(modelsAlleviated_UselessProp), TdbOperation.dataSetAlleviatedUselessProperties)
   writeInTdb(convertToScalaMap(modelsAlleviated_UselessProp), Declarations.paths.get("dataSetAlleviatedUselessProperties"))
   FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePath"), "Alleviation_UselessProperties", (System.currentTimeMillis() - t_alleviation1).toInt)
   FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "Alleviation_nbStatementsRemoved", MDGraphsAlleviation.numberStatementRemoved)
@@ -63,10 +79,10 @@ object Scenario_LogOnly extends App{
   //writeInTdb(consolidate(), TdbOperation.dataSetConsolidate)
   writeInTdb(consolidate(), Declarations.paths.get("dataSetConsolidated"))
   FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePath"), "Consolidation", (System.currentTimeMillis() - t_consolidation).toInt)
-  FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "Consolidation_nbModelsNonConsolidated", ConsolidationParallel.originalModelsNumber)
-  FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "Consolidation_nbModels", ConsolidationParallel.modelsNumber)
+  FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "Consolidation_nbModelsB4Consolidation", ConsolidationParallel.originalModelsNumber)
+  FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "Consolidation_nbModels", ConsolidationParallel.modelsNumber) // after consolidation
 
-  //TODO à deplacer la ou il faut
+
   /** 8. Alleviation 2  (Small graph removement) **/
   println("***********************Alleviation 2******************")
   var t_alleviation: Long = System.currentTimeMillis()
@@ -88,7 +104,7 @@ object Scenario_LogOnly extends App{
   writeInTdb(convertToScalaMap(modelsAnnotated), Declarations.paths.get("dataSetAnnotated"))
   FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePath"), "Annotation", (System.currentTimeMillis() - t_annotation).toInt)
 
-*/
+
   /** 10. Statistique **/
   println("***********************Statistiques******************")
   var t_statistics: Long = System.currentTimeMillis()

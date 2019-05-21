@@ -2,14 +2,11 @@ package Services.MDPatternDetection.ConsolidationClasses
 
 import java.util
 
-import Services.MDPatternDetection.AnnotationClasses.MDGraphAnnotated
 import Services.MDfromLogQueries.Declarations.Declarations
 import Services.MDfromLogQueries.Util.TdbOperation
 import org.apache.jena.query.Dataset
 import org.apache.jena.rdf.model._
 import org.apache.jena.tdb.{TDB, TDBFactory}
-import org.apache.jena.tdb2.TDB2Factory
-import org.checkerframework.checker.units.qual.m
 
 import scala.collection.{JavaConverters, mutable}
 
@@ -196,14 +193,14 @@ object ConsolidationParallel extends App {
     val modelHashMap = new mutable.HashMap[String, Model]
     var modelsFromOneModel = new mutable.HashMap[String, Model]
     var nb = 0
-    iterator.grouped(1000).foreach {
-      listOfKies =>
-
-        listOfKies.foreach {
+    iterator.grouped(100000).foreach {
+      listOfKies => listOfKies.foreach {
           key => {
 
             val model = getModelFromTDB(key, dataset)
             nb += 1
+            originalModelsNumber += 1
+
             System.out.println("model num " + nb)
             modelsFromOneModel = getModelsofModel(model)
             import scala.collection.JavaConversions._
@@ -214,11 +211,10 @@ object ConsolidationParallel extends App {
               }
               else modelHashMap.put(key2, modelsFromOneModel(key2))
             }
-            originalModelsNumber+=nb
+
           }
 
         }
-
         println(s" ------------------------- finish with the group ------------------------------- ")
         writeInTdb(modelHashMap, Declarations.paths.get("_toString"))
         modelHashMap.clear()

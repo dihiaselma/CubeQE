@@ -14,8 +14,10 @@ object logCleaningWikiData  extends App {
 
   /** This class reads the log files and extract queries **/
 
+
   val t1 = System.currentTimeMillis()
-  print("je suis dans log cleaning")
+
+  var queriesNumber=0
   var PATTERN_wikidata : Pattern = null
   /* Directory that coontains the log files 's Path */
   val directoryPath = Declarations.paths.get("directoryPath")
@@ -84,8 +86,11 @@ object logCleaningWikiData  extends App {
 
     val writer = new PrintWriter(new FileOutputStream(new File(destinationFilePath), true))
 
-    queries.foreach(query => writer.write(query.replaceAll("[\n\r]", "\t") + "\n"))
 
+    queries.foreach(query => {
+      queriesNumber+=1
+      writer.write(query.toString().replaceAll("[\n\r]", "\t") + "\n")
+    })
     writer.close()
   }
 

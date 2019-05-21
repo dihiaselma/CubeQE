@@ -7,6 +7,7 @@ import Services.MDfromLogQueries.Util.TdbOperation
 import org.apache.jena.query.QueryFactory
 import org.apache.jena.rdf.model.{Model, ModelFactory}
 import org.apache.jena.tdb.TDB
+import QueryExecutorParallelFuture.queriesLogNumber
 
 import scala.collection.parallel.ParSeq
 import scala.io.Source
@@ -88,7 +89,10 @@ object QueryExecutorParallel extends App {
 
     val writer = new PrintWriter(new FileOutputStream(new File(destinationFilePath), true))
 
-    queries.foreach(query => writer.write(query.replaceAll("[\n\r]", "\t") + "\n"))
+    queries.foreach(query => {
+      queriesLogNumber+=1
+      writer.write(query.replaceAll("[\n\r]", "\t") + "\n")
+    })
 
     writer.close()
   }
@@ -103,11 +107,7 @@ object QueryExecutorParallel extends App {
       if (m != null) {
         nb_model += 1
         println("write " + nb_model)
-        TdbOperation
-          .originalDataSet
-          //.originalDataSetTest
-          .addNamedModel("model_" + nb_model,
-          m)
+        TdbOperation.originalDataSet.addNamedModel("model_" + nb_model, m)
       }
     })
     TDB.sync(TdbOperation.originalDataSet)

@@ -96,13 +96,13 @@
                             <div class="table-responsive">
 
 
-                                <table class="table no-margin table-bordered">
+                                <table class="table no-margin">
                                     <thead>
                                     <tr>
                                         <th>Stat</th>
                                         <th>Description</th>
 
-                                        <tg:forEach var="entryNames" items="${statistics.entrySet()}" >
+                                        <tg:forEach var="entryNames" items="${statisticsEnrichment.entrySet()}" >
 
                                             <th><c:out value ="${entryNames.key}"/></th>
 
@@ -114,21 +114,18 @@
 
                                     <tbody>
 
-                                    <tg:forEach var="entry" items="${statistics.get('Total').entrySet()}">
-                                    <tr>
-      <!-- nom du type de la stat  -->   <td><c:out value ="${entry.key}"/></td>
-      <!-- description  -->              <td><c:out value ="${statisticsDescription.get(entry.key)}"/></td>
-                                        <td>
+                                    <tg:forEach var="entry" items="${statisticsEnrichment.get('Total').entrySet()}">
+                                        <tr>
+                                            <!-- nom du type de la stat  -->   <td><c:out value ="${entry.key}"/></td>
+                                            <!-- description  -->              <td><c:out value ="${statisticsEnrichmentDescription.get(entry.key)}"/></td>
+                                            <td>
 
-                                            <td>23</td>
-                                            <td><fmt:formatNumber value="${statistics.get('Average').get(entry.key)}"
-                                                                  maxFractionDigits="2"/></td>
-                                        </td>
-                                         <td><fmt:formatNumber value ="${statistics.get('Minimum').get(entry.key)}" maxFractionDigits="2"/></td>
-                                         <td><fmt:formatNumber value ="${statistics.get('Maximum').get(entry.key)}" maxFractionDigits="2"/></td>
-                                         <td><fmt:formatNumber value ="${statistics.get('Total').get(entry.key)}" maxFractionDigits="2"/></td>
+                                                <fmt:formatNumber value ="${statisticsEnrichment.get('Average').get(entry.key)}" maxFractionDigits="2"/></td>
+                                            <td><fmt:formatNumber value ="${statisticsEnrichment.get('Minimum').get(entry.key)}" maxFractionDigits="2"/></td>
+                                            <td><fmt:formatNumber value ="${statisticsEnrichment.get('Maximum').get(entry.key)}" maxFractionDigits="2"/></td>
+                                            <td><fmt:formatNumber value ="${statisticsEnrichment.get('Total').get(entry.key)}" maxFractionDigits="2"/></td>
 
-                                    </tr>
+                                        </tr>
                                     </tg:forEach>
 
                                     </tbody>
