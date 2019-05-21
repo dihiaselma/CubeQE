@@ -7,11 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9bdd3b16-d3d6-484b-8c74-df8863588ec0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/Controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/Controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/pages/scenarioEnrichment.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/pages/scenarioEnrichment.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/pages/statistics.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/pages/statistics.jsp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="web/bower_components/" />
@@ -72,7 +68,7 @@
           <entry key="Scala" value="79" />
           <entry key="SourceMap" value="3" />
           <entry key="TypeScript" value="1" />
-          <entry key="XML" value="15" />
+          <entry key="XML" value="16" />
           <entry key="YAML" value="2" />
         </counts>
       </usages-collector>
@@ -110,10 +106,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/java/Services/Statistics/Statistics1.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="424">
+            <state relative-caret-position="952">
               <caret line="297" lean-forward="true" selection-start-line="297" selection-end-line="297" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -128,6 +124,11 @@
               </folding>
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -326,6 +327,12 @@
             <path>
               <item name="logLinc" type="b2602c69:ProjectViewProjectNode" />
               <item name="logLinc2" type="462c0819:PsiDirectoryNode" />
+              <item name=".idea" type="462c0819:PsiDirectoryNode" />
+              <item name="inspectionProfiles" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="logLinc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="logLinc2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -406,6 +413,12 @@
               <item name="web" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="logLinc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="logLinc2" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="plugins" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -416,7 +429,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558449467151" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558449555587" />
     <property name="jsx.switch.disabled" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/.idea/workspace.xml" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -635,7 +648,7 @@
       <workItem from="1558273988176" duration="5590000" />
       <workItem from="1558343639667" duration="19316000" />
       <workItem from="1558369701429" duration="1545000" />
-      <workItem from="1558430428701" duration="16915000" />
+      <workItem from="1558430428701" duration="17162000" />
     </task>
     <task id="LOCAL-00001" summary=" jrebvuir">
       <created>1556119963959</created>
@@ -854,15 +867,28 @@
       <option name="project" value="LOCAL" />
       <updated>1558445234312</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Merge branch 'master' of https://github.com/SaidouneRouaya/logLinc2&#10;&#10;# Conflicts:&#10;#&#9;src/java/Services/MDfromLogQueries/LogCleaning/LogCleaningOneFile.scala">
+      <created>1558449486970</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1558449486970</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Merge branch 'master' of https://github.com/SaidouneRouaya/logLinc2&#10;&#10;# Conflicts:&#10;#&#9;src/java/Services/MDfromLogQueries/LogCleaning/LogCleaningOneFile.scala">
+      <created>1558449561186</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1558449561186</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="176308000" />
+    <option name="totallyTimeSpent" value="176555000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23020135" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -922,13 +948,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'master' of https://github.com/SaidouneRouaya/logLinc2&#10;&#10;# Conflicts:&#10;#&#9;src/java/Services/MDfromLogQueries/LogCleaning/LogCleaningOneFile.scala" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/java/Services/Scenarios/Scenario_LogOnly_Wikidata.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="512">
-          <caret line="32" column="63" selection-start-line="32" selection-start-column="63" selection-end-line="32" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/java/Services/MDPatternDetection/ConsolidationClasses/Consolidation.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2175">
@@ -1296,7 +1315,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/java/Services/Statistics/Statistics1.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="424">
+        <state relative-caret-position="952">
           <caret line="297" lean-forward="true" selection-start-line="297" selection-end-line="297" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1311,6 +1330,9 @@
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
   <component name="masterDetails">
