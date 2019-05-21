@@ -6,7 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="40cced35-abb7-4e08-893e-9148dcd3932a" name="Default Changelist" comment="Couleurs du graphe modifiées">
+    <list default="true" id="40cced35-abb7-4e08-893e-9148dcd3932a" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/CHANGELOG.md" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/LICENSE" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/web/plugins/amcharts4/README.md" afterDir="false" />
@@ -1541,7 +1541,7 @@
       <workItem from="1558344252484" duration="15597000" />
       <workItem from="1558363066159" duration="13744000" />
       <workItem from="1558429962701" duration="4099000" />
-      <workItem from="1558434505405" duration="591000" />
+      <workItem from="1558434505405" duration="1771000" />
     </task>
     <task id="LOCAL-00001" summary=" jrebvuir">
       <created>1556119963959</created>
@@ -1848,7 +1848,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="247778000" />
+    <option name="totallyTimeSpent" value="248958000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="55" y="-7" width="1488" height="878" extended-state="6" />
@@ -1933,6 +1933,8 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value=" jrebvuir" />
     <MESSAGE value="Merge branch 'master' of https://github.com/SaidouneRouaya/logLinc2&#10;&#10;# Conflicts:&#10;#&#9;.idea/hydra.xml&#10;#&#9;src/java/Controller/Controller.java" />
     <MESSAGE value="Ajout de la page de choix des scenarios et du treeView" />
