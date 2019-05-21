@@ -6,15 +6,12 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9bdd3b16-d3d6-484b-8c74-df8863588ec0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="9bdd3b16-d3d6-484b-8c74-df8863588ec0" name="Default Changelist" comment="Merge branch 'master' of https://github.com/SaidouneRouaya/logLinc2&#10;&#10;# Conflicts:&#10;#&#9;src/java/Services/MDfromLogQueries/LogCleaning/LogCleaningOneFile.scala" />
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="web/bower_components/" />
     <ignored path="web/build/" />
     <ignored path="web/dist/" />
     <ignored path="src/java/Services/MDfromLogQueries/Declarations/" />
-    <ignored path="/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +42,7 @@
           <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.11" value="9" />
           <entry key="project.open.time.12" value="2" />
-          <entry key="project.open.time.13" value="3" />
+          <entry key="project.open.time.13" value="4" />
           <entry key="project.open.time.14" value="2" />
           <entry key="project.open.time.15" value="2" />
           <entry key="project.open.time.16" value="4" />
@@ -55,7 +52,7 @@
           <entry key="project.open.time.3" value="1" />
           <entry key="project.open.time.4" value="2" />
           <entry key="project.open.time.9" value="4" />
-          <entry key="project.opened" value="36" />
+          <entry key="project.opened" value="37" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -65,10 +62,10 @@
           <entry key="JSP" value="60" />
           <entry key="JavaScript" value="13" />
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Scala" value="79" />
+          <entry key="Scala" value="80" />
           <entry key="SourceMap" value="3" />
           <entry key="TypeScript" value="1" />
-          <entry key="XML" value="16" />
+          <entry key="XML" value="17" />
           <entry key="YAML" value="2" />
         </counts>
       </usages-collector>
@@ -79,9 +76,9 @@
           <entry key="JavaScript" value="110" />
           <entry key="PLAIN_TEXT" value="251" />
           <entry key="RegExp" value="1" />
-          <entry key="Scala" value="2067" />
+          <entry key="Scala" value="2068" />
           <entry key="SpEL" value="19" />
-          <entry key="XML" value="30" />
+          <entry key="XML" value="32" />
         </counts>
       </usages-collector>
     </session>
@@ -91,7 +88,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/pages/statistics.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="400">
+            <state relative-caret-position="2048">
               <caret line="128" column="35" selection-start-line="128" selection-start-column="35" selection-end-line="128" selection-end-column="35" />
             </state>
           </provider>
@@ -100,7 +97,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/pages/scenarioEnrichment.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="449">
+            <state relative-caret-position="2080">
               <caret line="130" column="47" selection-start-line="130" selection-start-column="47" selection-end-line="130" selection-end-column="47" />
             </state>
           </provider>
@@ -109,8 +106,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/java/Services/Statistics/Statistics1.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="952">
-              <caret line="297" lean-forward="true" selection-start-line="297" selection-end-line="297" />
+            <state relative-caret-position="2848">
+              <caret line="297" selection-start-line="297" selection-end-line="297" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#3688#3689#0" expanded="true" />
@@ -126,7 +123,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="224">
@@ -135,11 +132,39 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="224">
+              <caret line="14" selection-start-line="14" selection-end-line="14" />
+              <folding>
+                <element signature="e#9808#9814#0" expanded="true" />
+                <element signature="e#9816#9822#0" expanded="true" />
+                <element signature="e#9912#9918#0" expanded="true" />
+                <element signature="e#10167#10173#0" expanded="true" />
+                <element signature="e#10319#10325#0" expanded="true" />
+                <element signature="e#10351#10357#0" expanded="true" />
+                <element signature="e#10360#10366#0" expanded="true" />
+                <element signature="e#10393#10399#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/java/Services/Scenarios/Scenario_Analytic.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="160">
+              <caret line="15" column="6" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/pages/execution.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="243" column="44" lean-forward="true" selection-start-line="243" selection-start-column="44" selection-end-line="247" selection-end-column="52" />
+            <state relative-caret-position="3888">
+              <caret line="243" column="44" selection-start-line="243" selection-start-column="44" selection-end-line="247" selection-end-column="52" />
             </state>
           </provider>
         </entry>
@@ -147,7 +172,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/java/Controller/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="369">
+            <state relative-caret-position="3056">
               <caret line="241" column="112" selection-start-line="241" selection-start-column="112" selection-end-line="241" selection-end-column="112" />
               <folding>
                 <element signature="method#initialiseStatisticsList#0;class#Controller#0" />
@@ -242,7 +267,6 @@
         <option value="$PROJECT_DIR$/src/java/Services/test.java" />
         <option value="$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Declarations/Declarations.java" />
         <option value="$PROJECT_DIR$/web/pages/index2.jsp" />
-        <option value="$PROJECT_DIR$/.idea/workspace.xml" />
         <option value="$PROJECT_DIR$/src/java/Services/MDfromLogQueries/LogCleaning/LogCleaning.scala" />
         <option value="$PROJECT_DIR$/src/java/Services/MDfromLogQueries/LogCleaning/QueriesDeduplicator.java" />
         <option value="$PROJECT_DIR$/src/java/Services/MDfromLogQueries/SPARQLSyntacticalValidation/SyntacticValidationParallel.scala" />
@@ -258,6 +282,8 @@
         <option value="$PROJECT_DIR$/web/pages/statistics.jsp" />
         <option value="$PROJECT_DIR$/web/pages/scenarioEnrichment.jsp" />
         <option value="$PROJECT_DIR$/src/java/Controller/Controller.java" />
+        <option value="$PROJECT_DIR$/src/java/Services/Scenarios/Scenario_Analytic.scala" />
+        <option value="$PROJECT_DIR$/.idea/workspace.xml" />
       </list>
     </option>
   </component>
@@ -315,6 +341,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -415,12 +442,6 @@
               <item name="logLinc" type="b2602c69:ProjectViewProjectNode" />
               <item name="logLinc2" type="462c0819:PsiDirectoryNode" />
               <item name="web" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="logLinc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="logLinc2" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
               <item name="plugins" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -455,13 +476,12 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558450091692" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558450683834" />
     <property name="jsx.switch.disabled" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/.idea/workspace.xml" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -681,6 +701,7 @@
       <workItem from="1558343639667" duration="19316000" />
       <workItem from="1558369701429" duration="1545000" />
       <workItem from="1558430428701" duration="17569000" />
+      <workItem from="1558450151640" duration="527000" />
     </task>
     <task id="LOCAL-00001" summary=" jrebvuir">
       <created>1556119963959</created>
@@ -941,16 +962,38 @@
       <option name="project" value="LOCAL" />
       <updated>1558449861959</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="Merge branch 'master' of https://github.com/SaidouneRouaya/logLinc2&#10;&#10;# Conflicts:&#10;#&#9;src/java/Services/MDfromLogQueries/LogCleaning/LogCleaningOneFile.scala">
+      <created>1558450175707</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1558450175707</updated>
+    </task>
+    <task id="LOCAL-00039" summary="Merge branch 'master' of https://github.com/SaidouneRouaya/logLinc2&#10;&#10;# Conflicts:&#10;#&#9;src/java/Services/MDfromLogQueries/LogCleaning/LogCleaningOneFile.scala">
+      <created>1558450261324</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1558450261324</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Merge branch 'master' of https://github.com/SaidouneRouaya/logLinc2&#10;&#10;# Conflicts:&#10;#&#9;src/java/Services/MDfromLogQueries/LogCleaning/LogCleaningOneFile.scala">
+      <created>1558450377993</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1558450377993</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="176962000" />
+    <option name="totallyTimeSpent" value="177489000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23020135" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23355705" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -993,6 +1036,8 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value=" jrebvuir" />
     <MESSAGE value="Merge branch 'master' of https://github.com/SaidouneRouaya/logLinc2&#10;&#10;# Conflicts:&#10;#&#9;.idea/hydra.xml&#10;#&#9;src/java/Controller/Controller.java" />
     <MESSAGE value="from blocks to graphs marche bien" />
@@ -1082,13 +1127,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2896">
-          <caret line="310" column="22" lean-forward="true" selection-start-line="310" selection-start-column="22" selection-end-line="310" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/java/Services/MDfromLogQueries/LogCleaning/QueriesDeduplicatorParallel.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="64">
@@ -1163,9 +1201,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="32">
           <caret line="18" column="7" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="7" />
-          <folding>
-            <element signature="e#62#78#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1173,9 +1208,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="208">
           <caret line="13" column="6" selection-start-line="13" selection-start-column="6" selection-end-line="13" selection-end-column="6" />
-          <folding>
-            <element signature="e#47#99#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1204,9 +1236,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="256">
           <caret line="34" column="5" lean-forward="true" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
-          <folding>
-            <element signature="e#63#115#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1221,9 +1250,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="92" column="25" lean-forward="true" selection-start-line="92" selection-start-column="25" selection-end-line="92" selection-end-column="25" />
-          <folding>
-            <element signature="e#54#106#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1259,9 +1285,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="352">
           <caret line="63" column="28" lean-forward="true" selection-start-line="63" selection-start-column="28" selection-end-line="63" selection-end-column="28" />
-          <folding>
-            <element signature="e#54#90#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1269,9 +1292,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="15" column="6" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
-          <folding>
-            <element signature="e#58#74#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1296,13 +1316,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/Services/Scenarios/Scenario_Analytic.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Declarations/Declarations.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
@@ -1319,9 +1332,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="481">
           <caret line="113" column="28" lean-forward="true" selection-start-line="113" selection-start-column="28" selection-end-line="113" selection-end-column="28" />
-          <folding>
-            <element signature="e#28#44#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1329,54 +1339,27 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="32">
           <caret line="134" selection-start-line="134" selection-end-line="134" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#ReadFile#0;class#FileOperation#0" />
-            <element signature="method#WriteConstructQueriesInFile#0;class#FileOperation#0" />
-            <element signature="method#writeStatisticsInFileInYAMLbyType#0;class#FileOperation#0" />
-            <element signature="method#writeStatisticsListInFile#0;class#FileOperation#0" />
-            <element signature="method#writeStatisticsListInFile2#0;class#FileOperation#0" />
-            <element signature="method#writeStatisticsInFile#0;class#FileOperation#0" />
-            <element signature="method#createDirectory#0;class#FileOperation#0" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/pages/statistics.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
+        <state relative-caret-position="2048">
           <caret line="128" column="35" selection-start-line="128" selection-start-column="35" selection-end-line="128" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/pages/execution.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="243" column="44" lean-forward="true" selection-start-line="243" selection-start-column="44" selection-end-line="247" selection-end-column="52" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/pages/scenarioEnrichment.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="449">
+        <state relative-caret-position="2080">
           <caret line="130" column="47" selection-start-line="130" selection-start-column="47" selection-end-line="130" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/Controller/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="369">
-          <caret line="241" column="112" selection-start-line="241" selection-start-column="112" selection-end-line="241" selection-end-column="112" />
-          <folding>
-            <element signature="method#initialiseStatisticsList#0;class#Controller#0" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/java/Services/Statistics/Statistics1.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="952">
-          <caret line="297" lean-forward="true" selection-start-line="297" selection-end-line="297" />
+        <state relative-caret-position="2848">
+          <caret line="297" selection-start-line="297" selection-end-line="297" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#3688#3689#0" expanded="true" />
@@ -1391,10 +1374,51 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/web/pages/execution.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3888">
+          <caret line="243" column="44" selection-start-line="243" selection-start-column="44" selection-end-line="247" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/Controller/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3056">
+          <caret line="241" column="112" selection-start-line="241" selection-start-column="112" selection-end-line="241" selection-end-column="112" />
+          <folding>
+            <element signature="method#initialiseStatisticsList#0;class#Controller#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="224">
           <caret line="14" column="12" lean-forward="true" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/Services/Scenarios/Scenario_Analytic.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="15" column="6" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+          <folding>
+            <element signature="e#9808#9814#0" expanded="true" />
+            <element signature="e#9816#9822#0" expanded="true" />
+            <element signature="e#9912#9918#0" expanded="true" />
+            <element signature="e#10167#10173#0" expanded="true" />
+            <element signature="e#10319#10325#0" expanded="true" />
+            <element signature="e#10351#10357#0" expanded="true" />
+            <element signature="e#10360#10366#0" expanded="true" />
+            <element signature="e#10393#10399#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
