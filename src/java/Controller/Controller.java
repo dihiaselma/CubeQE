@@ -24,7 +24,7 @@ public class Controller {
     private Map<String, Object> queriesNumbers ;
     private HashMap<String, Object> statisticsTotal ;
     // ToDo change the file name
-   // private HashMap<String, Object> statisticsTotalEnrichment = (HashMap<String, Object>) FileOperation.loadYamlFile(Declarations.paths.get("statisticsByTypeFile"));
+    private HashMap<String, Object> statisticsTotalEnrichment;
 
     private HashMap<String, String> statDescriptions=new HashMap<>();
 
@@ -239,9 +239,9 @@ public class Controller {
         String error = "";
 
         statisticsTotal= (HashMap<String, Object>) FileOperation.loadYamlFile(Declarations.paths.get("statisticsByTypeFile"));
-
+        statisticsTotalEnrichment= (HashMap<String, Object>) FileOperation.loadYamlFile(Declarations.paths.get("enrichedStatisticsByTypeFile"));
         model.addAttribute("statistics", statisticsTotal);
-     //   model.addAttribute("statisticsEnrichment", statisticsTotalEnrichment);
+       model.addAttribute("statisticsEnrichment", statisticsTotalEnrichment);
         model.addAttribute("statisticsEnrichmentDescription", statDescriptions);
 
         model.addAttribute("error", error);

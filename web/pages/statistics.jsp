@@ -96,9 +96,9 @@
                             <div class="table-responsive">
 
 
-                                <table class="table no-margin table-bordered">
+                                <table class="table no-margin table-bordered table-striped">
                                     <thead>
-                                    <tr>
+                                    <tr >
                                         <th>Stat</th>
                                         <th>Description</th>
 
@@ -118,15 +118,16 @@
                                     <tr>
       <!-- nom du type de la stat  -->   <td><c:out value ="${entry.key}"/></td>
       <!-- description  -->              <td><c:out value ="${statisticsDescription.get(entry.key)}"/></td>
-                                        <td>
 
-                                            <td>23</td>
-                                            <td><fmt:formatNumber value="${statistics.get('Average').get(entry.key)}"
-                                                                  maxFractionDigits="2"/></td>
-                                        </td>
-                                         <td><fmt:formatNumber value ="${statistics.get('Minimum').get(entry.key)}" maxFractionDigits="2"/></td>
-                                         <td><fmt:formatNumber value ="${statistics.get('Maximum').get(entry.key)}" maxFractionDigits="2"/></td>
-                                         <td><fmt:formatNumber value ="${statistics.get('Total').get(entry.key)}" maxFractionDigits="2"/></td>
+                                        <!-- Average -->
+                                        <td><fmt:formatNumber value="${statistics.get('Average').get(entry.key)}" maxFractionDigits="2"/></td>
+                                        <!-- Miinmum -->
+                                        <td><fmt:formatNumber value ="${statistics.get('Minimum').get(entry.key)}" maxFractionDigits="2"/></td>
+
+                                        <!-- Maximum -->
+                                        <td><fmt:formatNumber value ="${statistics.get('Maximum').get(entry.key)}" maxFractionDigits="2"/></td>
+                                        <!-- Total -->
+                                        <td><fmt:formatNumber value ="${statistics.get('Total').get(entry.key)}" maxFractionDigits="2"/></td>
 
                                     </tr>
                                     </tg:forEach>
