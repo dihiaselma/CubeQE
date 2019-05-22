@@ -5,7 +5,7 @@ import java.util.concurrent.TimeUnit
 import Services.MDPatternDetection.ExecutionClasses.QueryExecutorParallel.{writeInLogFile, writeInTdb}
 import Services.MDfromLogQueries.Declarations.Declarations
 import Services.MDfromLogQueries.Util.TdbOperation
-import org.apache.jena.query.{Query, QueryFactory}
+import org.apache.jena.query.{Query, QueryExecution, QueryExecutionFactory, QueryFactory}
 import org.apache.jena.rdf.model.{Model, ModelFactory}
 import org.apache.jena.sparql.engine.http.QueryEngineHTTP
 
@@ -16,9 +16,8 @@ import scala.io.Source
 
 
 
-object QueryExecutorParallelFuture extends App {
+object QueryExecutorParallelFuture   {
 
-  val t1 = System.currentTimeMillis()
 
   val tdb = new TdbOperation()
 
@@ -26,6 +25,7 @@ object QueryExecutorParallelFuture extends App {
   var queriesNumber = 0
   var queriesLogNumber = 0
 
+  var number = 0
 
   def executeQueriesInFile(filePath: String, endPoint: String) = {
 
@@ -109,7 +109,8 @@ object QueryExecutorParallelFuture extends App {
     var model = ModelFactory.createDefaultModel()
 
     try {
-
+      number+=1
+      println(s"run query num : $number")
       model = executeQueryConstruct(query,endPoint)
     }
     catch {
@@ -124,8 +125,8 @@ object QueryExecutorParallelFuture extends App {
   def executeQueryConstruct(query: Query, endpoint: String) = {
     var results = ModelFactory.createDefaultModel()
     try {
-      val qexec = new QueryEngineHTTP(endpoint, query)
-      qexec.setTimeout(60, TimeUnit.SECONDS, 60, TimeUnit.SECONDS)
+      val qexec = QueryExecutionFactory.sparqlService(endpoint, query)
+      qexec.setTimeout(50, TimeUnit.SECONDS, 50, TimeUnit.SECONDS)
       results = qexec.execConstruct
       qexec.close()
     } catch {
@@ -137,12 +138,5 @@ object QueryExecutorParallelFuture extends App {
   }
 
 
-
-
-
-  executeQueriesInFile(Declarations.paths.get("constructQueriesFile2"), "http://scholarlydata.org/sparql/")
-  val duration = System.currentTimeMillis() - t1
-
-  println(duration)
 
 }

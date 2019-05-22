@@ -9,20 +9,12 @@ import Services.MDfromLogQueries.LogCleaning.LogCleaning.queryFromLogLine
 import scala.collection.parallel.ParSeq
 import scala.io.Source
 
-object LogCleaningOneFile extends App {
+object LogCleaningOneFile {
   /** This class reads the log files and extract queries **/
   var queriesNumber = 0
   var nbLines = 0
-  val t1 = System.currentTimeMillis()
 
 
-  /* Directory that coontains the log files 's Path */
-  val directoryPath = Declarations.paths.get("directoryPath")
-
-  /* Result (cleaned queries)'s file path */
-  val destinationfilePath = Declarations.paths.get("cleanedQueriesFileCopie")
-  val duration = System.currentTimeMillis() - t1
-  var dir = new File(directoryPath)
   /* Regex on wich is based the algorithm to extract the queries */
   private val PATTERN = Pattern.compile("[^\"]*\"(?:GET )?/sparql/?\\?([^\"\\s\\n]*)[^\"]*\".*")
   //private val PATTERN = Pattern.compile("(sparql)(.*)")
@@ -31,7 +23,7 @@ object LogCleaningOneFile extends App {
 
   /** Write the cleaned queries in the destination file path **/
   def writeFiles(filePath: String, destinationfilePath: String) = {
-    dir = new File(filePath)
+    var dir = new File(filePath)
 
     var queryList = Source.fromFile(dir.listFiles().toIterator.next()).getLines
 
@@ -41,7 +33,7 @@ object LogCleaningOneFile extends App {
         val treatedGroupOfLines = groupOfLines.par.map {
           line => {
             try {
-              val extractedQuery = queryFromLogLine(line)
+              val extractedQuery = queryFromLogLine(line, PATTERN)
               if (extractedQuery != null) {
                 nb_line += 1
                 println("* " + nb_line)
@@ -50,6 +42,7 @@ object LogCleaningOneFile extends App {
 
             } catch {
               case e: Exception => {
+                e.printStackTrace()
                 println("une erreur")
                 Left(line)
               }
@@ -83,5 +76,4 @@ object LogCleaningOneFile extends App {
     writer.close()
   }
 
-  println(duration)
 }

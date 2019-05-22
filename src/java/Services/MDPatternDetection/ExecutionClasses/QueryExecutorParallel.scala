@@ -13,10 +13,8 @@ import scala.collection.parallel.ParSeq
 import scala.io.Source
 
 
-object QueryExecutorParallel extends App {
+object QueryExecutorParallel   {
 
-  val t1 = System.currentTimeMillis()
-  val duration = System.currentTimeMillis() - t1
   var nb_model = 0
 
   def executeQueriesInFile(filePath: String, endPoint: String) = {
@@ -98,7 +96,6 @@ object QueryExecutorParallel extends App {
   }
 
 
-  executeQueriesInFile(Declarations.paths.get("constructQueriesFile2"), "https://dbpedia.org/sparql")
 
   def writeInTdb(models: Vector[Model]) = {
 
@@ -114,5 +111,4 @@ object QueryExecutorParallel extends App {
 
   }
 
-  println(duration)
 }

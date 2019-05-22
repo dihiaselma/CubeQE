@@ -27,7 +27,7 @@ object Scenario_LogOnly extends App{
   val endpoint="DogFood"
   val endpointUrl="http://www.scholarlydata.org/sparql/"
   Declarations.setEndpoint(endpoint)
-
+/*
 
   /** 1. Nettoyage du log **/
   var t_cleaning: Long = System.currentTimeMillis()
@@ -53,7 +53,7 @@ object Scenario_LogOnly extends App{
   TransformQueriesInFile(Declarations.paths.get("syntaxValidFile2"))
   FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePath"), "ConstructMSGraphs", (System.currentTimeMillis() -  t_connstructMDgraphs).toInt)
   FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "ConstructMSGraphs_nbQueriesConstructed", Queries2GraphesParallel.queriesNumber)
-
+*/
 
   /** 5. Execution **/
   var t_execution: Long = System.currentTimeMillis()

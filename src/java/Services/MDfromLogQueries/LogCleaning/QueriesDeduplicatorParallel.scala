@@ -5,7 +5,7 @@ import java.io.{File, FileOutputStream, PrintWriter}
 import scala.collection.mutable
 import scala.io.Source
 
-object QueriesDeduplicatorParallel extends App {
+object QueriesDeduplicatorParallel   {
 
   var queriesNumber = 0
 

@@ -10,16 +10,15 @@ import org.apache.jena.rdf.model.Model
 
 import scala.collection.mutable
 
-object EnrichParallel extends App {
+object EnrichParallel   {
 
   val modelsAnnotated: util.HashMap[String, Model] = TdbOperation.unpersistModelsMap(TdbOperation.dataSetAnnotated)
-  var endpoint = "https://dbpedia.org/sparql"
   var constantsUtil = new ConstantsUtil
   var constants2 = new Constants2()
 
-  enrichMDSchema(modelsAnnotated)
 
-  def enrichMDSchema(models: util.HashMap[String, Model]): Unit = {
+
+  def enrichMDSchema(models: util.HashMap[String, Model], endpoint : String): Unit = {
 
 
     val modelsAnnotatedScala: mutable.HashMap[String, Model] = convertToScalaMap(modelsAnnotated)

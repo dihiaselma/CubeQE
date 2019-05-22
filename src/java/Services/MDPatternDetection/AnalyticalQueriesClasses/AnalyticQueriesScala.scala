@@ -16,7 +16,7 @@ import scala.collection.{JavaConverters, mutable}
 import scala.io.Source
 
 
-object AnalyticQueriesScala extends App{
+object AnalyticQueriesScala  {
 
   var nb_model = 0
 

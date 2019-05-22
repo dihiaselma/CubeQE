@@ -11,24 +11,15 @@ import org.apache.http.client.utils.URLEncodedUtils
 import scala.collection.JavaConverters
 
 
-object LogCleaning extends App {
+object LogCleaning   {
 
   /** This class reads the log files and extract queries **/
 
   var nb_queries = 0
   var queriesNumber = 0
 
-  val t1 = System.currentTimeMillis()
-  print("je suis dans log cleaning")
-
-  /* Directory that coontains the log files 's Path */
-  val dirPath = Declarations.paths.get("directoryPath")
-
-  /* Result (cleaned queries)'s file path */
-  val filePath = Declarations.paths.get("cleanedQueriesFileCopie")
-
   /* Regex on wich is based the algorithm to extract the queries */
-  private val PATTERN = Pattern.compile("[^\"]*\"(?:GET )?/sparql/?\\?([^\"\\s\\n]*)[^\"]*\".*")
+  val PATTERN = Pattern.compile("[^\"]*\"(?:GET )?/sparql/?\\?([^\"\\s\\n]*)[^\"]*\".*")
   //private val PATTERN = Pattern.compile("(sparql)(.*)")
   /* Statistical variables*/
 
@@ -55,14 +46,14 @@ object LogCleaning extends App {
     iterable.par.map {
       line => {
         nb_queries += 1
-        queryFromLogLine(line)
+        queryFromLogLine(line, PATTERN)
       }
     }
   }
 
   /** match the line passed as parameter with the Regex to extract the query and return the query **/
-  def queryFromLogLine(line: String) = {
-    val matcher = PATTERN.matcher(line)
+  def queryFromLogLine(line: String, pattern : Pattern) = {
+    val matcher = pattern.matcher(line)
 
     if (matcher.find) {
       val requestStr = matcher.group(1) //celui de dbpedia
@@ -73,8 +64,6 @@ object LogCleaning extends App {
     }
     else null
   }
-
-  writeFiles(dirPath, filePath)
 
   def queryFromRequest(requestStr: String): String = {
     val pairs = URLEncodedUtils.parse(requestStr, StandardCharsets.UTF_8)
@@ -89,9 +78,6 @@ object LogCleaning extends App {
     null
 
   }
-
-  val duration = System.currentTimeMillis() - t1
-  println(duration)
 
 }
 

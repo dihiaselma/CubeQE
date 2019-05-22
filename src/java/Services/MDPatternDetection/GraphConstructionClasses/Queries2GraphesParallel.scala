@@ -9,11 +9,10 @@ import org.apache.jena.query.{Query, QueryFactory}
 import scala.collection.parallel.ParSeq
 import scala.io.Source
 
-object Queries2GraphesParallel extends App {
+object Queries2GraphesParallel   {
 
   var queriesNumber=0
 
-  val t1 = System.currentTimeMillis()
 
   //: util.ArrayList[Query]
   def TransformQueriesInFile(filePath: String) = {
@@ -81,7 +80,6 @@ object Queries2GraphesParallel extends App {
     writer.close()
   }
 
-  TransformQueriesInFile(Declarations.paths.get("syntaxValidFile2"))
 
   def writeInLogFile(destinationFilePath: String, query: Query) = {
 
@@ -92,8 +90,5 @@ object Queries2GraphesParallel extends App {
     writer.close()
   }
 
-  val duration = System.currentTimeMillis() - t1
-
-  println(duration)
 
 }

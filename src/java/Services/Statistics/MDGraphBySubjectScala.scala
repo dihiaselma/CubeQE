@@ -9,7 +9,7 @@ import org.apache.jena.rdf.model.impl.ResourceImpl
 
 import scala.collection.mutable
 
-object MDGraphBySubjectScala extends App {
+object MDGraphBySubjectScala   {
 
 
   val t1 = System.currentTimeMillis()
@@ -96,7 +96,6 @@ object MDGraphBySubjectScala extends App {
   }
 
 
-  statisticsBySubjectList(subjects)
 
   def getModelsOfSubject(subject: String, models: mutable.HashMap[String, Model]): mutable.HashMap[String, Model] = {
     println(" im in get models of subject ")
