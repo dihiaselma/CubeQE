@@ -120,8 +120,8 @@ public class Controller {
 //        times = FileOperation.loadYamlFile(Declarations.paths.get("timesFilePath"));
         //      queriesNumbers = FileOperation.loadYamlFile(Declarations.paths.get("queriesNumberFilePath"));
 
-        times = FileOperation.loadYamlFile(Declarations.paths.get("timesFilePathTest"));
-        queriesNumbers = FileOperation.loadYamlFile(Declarations.paths.get("queriesNumberFilePathTest"));
+        times = FileOperation.loadYamlFile(Declarations.paths.get("timesFilePath"));
+        queriesNumbers = FileOperation.loadYamlFile(Declarations.paths.get("queriesNumberFilePath"));
 
         model.addAttribute("timesMap", times);
 
@@ -248,8 +248,8 @@ public class Controller {
         String error = "";
 
 
-        times = FileOperation.loadYamlFile(Declarations.paths.get("timesFilePathTest"));
-        queriesNumbers = FileOperation.loadYamlFile(Declarations.paths.get("queriesNumberFilePathTest"));
+        times = FileOperation.loadYamlFile(Declarations.paths.get("timesFilePath"));
+        queriesNumbers = FileOperation.loadYamlFile(Declarations.paths.get("queriesNumberFilePath"));
         model.addAttribute("timesMap", times);
         model.addAttribute("queriesNumbersMap", queriesNumbers);
 

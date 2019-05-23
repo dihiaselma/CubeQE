@@ -296,7 +296,7 @@ public class Statistics1 {
     }
     public static void writeAllStatsInYAML(ArrayList<Statistics1> statistics1ArrayList, String allStatsFilePath, String typedStatsFilePath ) {
 
-        writeStatisticsListInYAMLFile(statistics1ArrayList, Declarations.paths.get(allStatsFilePath));
+        writeStatisticsListInYAMLFile(statistics1ArrayList, allStatsFilePath);
         writeStatisticsInFileInYAMLbyType(avgStatistics(statistics1ArrayList), "Average", typedStatsFilePath);
         writeStatisticsInFileInYAMLbyType(minStatistics(statistics1ArrayList), "Minimum", typedStatsFilePath);
         writeStatisticsInFileInYAMLbyType(maxStatistics(statistics1ArrayList), "Maximum", typedStatsFilePath);

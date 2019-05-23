@@ -53,7 +53,7 @@ object Scenario_LogOnly extends App{
   TransformQueriesInFile(Declarations.paths.get("syntaxValidFile2"))
   FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePath"), "ConstructMSGraphs", (System.currentTimeMillis() -  t_connstructMDgraphs).toInt)
   FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "ConstructMSGraphs_nbQueriesConstructed", Queries2GraphesParallel.queriesNumber)
-*/
+
 
   /** 5. Execution **/
   var t_execution: Long = System.currentTimeMillis()
@@ -62,7 +62,7 @@ object Scenario_LogOnly extends App{
   FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "Execution_nbQueriesExecutedWithNullModels", QueryExecutorParallelFuture.queriesNumber)
   FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "Execution_nbQueriesExecutedWithModels", QueryExecutorParallelFuture.queriesNumberwithModels)
   FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "Execution_nbQueriesNonExecuted", QueryExecutorParallelFuture.queriesLogNumber)
-
+*/
 
   /** 6. Alleviation 1 (Useless properties removement) **/
   println("***********************Alleviation 1******************")
@@ -110,7 +110,7 @@ object Scenario_LogOnly extends App{
   var t_statistics: Long = System.currentTimeMillis()
   var statistics : Statistics1 = new Statistics1
   val stat = statistics.stat2(TdbOperation.unpersistModelsMap(Declarations.paths.get("dataSetAnnotated")))
-
+  println( Declarations.paths.get("statisticsFileYAML"))
   Statistics1.writeAllStatsInYAML(stat, Declarations.paths.get("statisticsFileYAML"), Declarations.paths.get("statisticsByTypeFile"))
 
   //statisticsBySubjectList(subjects)

@@ -59,7 +59,7 @@ public class TdbOperation {
 
         }*/
 
-        modelHashMap = unpersistModelsMap(dataSetConsolidate);
+        modelHashMap = unpersistModelsMap(dataSetAnnotated);
         System.out.println("consolides");
         Consolidation.afficherListInformations(modelHashMap);
 

@@ -15,6 +15,8 @@ public class GenericClasses {
     public GenericClasses() {
         resources.add(OWL.Class);
         resources.add(OWL.Thing);
+        resources.add(RDFS.Resource);
+        resources.add(RDFS.Class);
     }
 
 }

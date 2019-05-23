@@ -69,6 +69,7 @@ public class MDGraphsAlleviation {
    public static HashMap<String,Model> removeUselessProperties(HashMap<String,Model> modelHashMap)
    {
        new BasicProperties();
+       new GenericClasses();
        HashMap<String,Model> modifiedModels = new HashMap<>();
        Model model;
        try {
