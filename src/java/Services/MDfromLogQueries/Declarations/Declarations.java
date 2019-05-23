@@ -24,11 +24,11 @@ public class Declarations {
 
     public static void setEndpoint(String endpoint) {
         Declarations.endpoint = endpoint;
-        root = "C:\\Users\\KamilaB\\Desktop\\PFE\\Files\\"+endpoint+"\\Support_Files\\";
-        rootTdb = "C:\\Users\\KamilaB\\Desktop\\PFE\\Files\\"+endpoint+"\\Support_Files\\TdbDirectories\\";
+        //root = "C:\\Users\\KamilaB\\Desktop\\PFE\\Files\\"+endpoint+"\\Support_Files\\";
+       // rootTdb = "C:\\Users\\KamilaB\\Desktop\\PFE\\Files\\"+endpoint+"\\Support_Files\\TdbDirectories\\";
 
-       // root = "C:\\Users\\pc\\Desktop\\PFE\\Files\\"+endpoint+"\\";
-        //rootTdb = "E:\\TdbDirectories\\"+endpoint+"\\";
+        root = "C:\\Users\\pc\\Desktop\\PFE\\Files\\"+endpoint+"\\";
+       rootTdb = "E:\\TdbDirectories\\"+endpoint+"\\";
 
 
         /* Queries log Path **/

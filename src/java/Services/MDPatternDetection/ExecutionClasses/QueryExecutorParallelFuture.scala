@@ -1,16 +1,15 @@
 package Services.MDPatternDetection.ExecutionClasses
 
-import java.util.concurrent.TimeUnit
+import java.util.concurrent.{TimeUnit, TimeoutException}
 
 import Services.MDPatternDetection.ExecutionClasses.QueryExecutorParallel.{writeInLogFile, writeInTdb}
 import Services.MDfromLogQueries.Declarations.Declarations
 import Services.MDfromLogQueries.Util.TdbOperation
-import org.apache.jena.query.{Query, QueryExecution, QueryExecutionFactory, QueryFactory}
+import org.apache.jena.query.{Query, QueryExecutionFactory, QueryFactory}
 import org.apache.jena.rdf.model.{Model, ModelFactory}
-import org.apache.jena.sparql.engine.http.QueryEngineHTTP
 
 import scala.concurrent.ExecutionContext.Implicits.global
-import scala.concurrent.duration.Duration
+import scala.concurrent.duration._
 import scala.concurrent.{Await, Future, future}
 import scala.io.Source
 
@@ -41,6 +40,7 @@ object QueryExecutorParallelFuture   {
     constructQueriesList.grouped(10000).foreach {
 
       groupOfLines => {
+
         val timeFor100000 = System.currentTimeMillis()
 
         val treatedGroupOfLines = groupOfLines.par.map {
@@ -64,7 +64,9 @@ object QueryExecutorParallelFuture   {
                   Left(line)
                 }
 
-              }.recover { case e: Exception => {
+              }.recover {
+
+                case e: Exception => {
                 queriesLogNumber+=1
                 Left(line)
               }
@@ -81,7 +83,26 @@ object QueryExecutorParallelFuture   {
 
         println("--------------------- un group finished ---------------------------------- ")
 
-        val seq = Await.result (Future.sequence(treatedGroupOfLines), Duration.Inf)
+        //val seq = Await.result (Future.sequence(treatedGroupOfLines), Duration.Inf)
+
+        var seq: Vector[Either[String,Model]] = null
+       /* seq = Await.result (Future.sequence(treatedGroupOfLines), Duration.Inf)
+
+        */
+
+
+        seq = for(line <- treatedGroupOfLines)yield{
+          try{
+            //Await.result(line, Duration.create(50,"seconds"))
+            Await.result(line, 50.seconds )
+          }catch {
+            case ex: TimeoutException => {
+              println("timeout")
+              Left("")
+            }
+          }
+        }
+
         val (correct, errors) = seq.partition(_.isRight)
 
 

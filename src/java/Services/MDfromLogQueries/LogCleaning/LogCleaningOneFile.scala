@@ -23,11 +23,14 @@ object LogCleaningOneFile {
 
   /** Write the cleaned queries in the destination file path **/
   def writeFiles(filePath: String, destinationfilePath: String) = {
+    println(filePath)
+    println(destinationfilePath)
     var dir = new File(filePath)
+
 
     var queryList = Source.fromFile(dir.listFiles().toIterator.next()).getLines
 
-    queryList.grouped(100000).foreach {
+    queryList.grouped(10000).foreach {
       groupOfLines => {
         var nb_line = 0
         val treatedGroupOfLines = groupOfLines.par.map {
