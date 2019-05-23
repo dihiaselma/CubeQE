@@ -2,6 +2,7 @@ package Services.MDfromLogQueries.Util;
 
 import Services.MDPatternDetection.ConsolidationClasses.Consolidation;
 import Services.MDfromLogQueries.Declarations.Declarations;
+import Services.Statistics.Statistics1;
 import org.apache.jena.query.Dataset;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ResourceFactory;
@@ -61,7 +62,11 @@ public class TdbOperation {
 
         modelHashMap = unpersistModelsMap(dataSetAnnotated);
         System.out.println("consolides");
-        Consolidation.afficherListInformations(modelHashMap);
+        //Consolidation.afficherListInformations(modelHashMap);
+        Statistics1 statistics1 = new Statistics1();
+        HashMap<String,Model > newMap = new HashMap<>();
+        newMap.put("http://purl.org/spar/fabio/ProceedingsPaper",modelHashMap.get("http://purl.org/spar/fabio/ProceedingsPaper"));
+        statistics1.stat2(newMap);
 
          /*modelHashMap = unpersistModelsMap(_toString);
         System.out.println("consolides");

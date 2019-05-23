@@ -62,7 +62,7 @@ object Scenario_LogOnly extends App{
   FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "Execution_nbQueriesExecutedWithNullModels", QueryExecutorParallelFuture.queriesNumber)
   FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "Execution_nbQueriesExecutedWithModels", QueryExecutorParallelFuture.queriesNumberwithModels)
   FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "Execution_nbQueriesNonExecuted", QueryExecutorParallelFuture.queriesLogNumber)
-*/
+
 
   /** 6. Alleviation 1 (Useless properties removement) **/
   println("***********************Alleviation 1******************")
@@ -104,7 +104,7 @@ object Scenario_LogOnly extends App{
   writeInTdb(convertToScalaMap(modelsAnnotated), Declarations.paths.get("dataSetAnnotated"))
   FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePath"), "Annotation", (System.currentTimeMillis() - t_annotation).toInt)
 
-
+  */
   /** 10. Statistique **/
   println("***********************Statistiques******************")
   var t_statistics: Long = System.currentTimeMillis()
