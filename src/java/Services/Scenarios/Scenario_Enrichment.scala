@@ -17,6 +17,7 @@ object Scenario_Enrichment extends App{
  
   /** 1. Unpersisting of annotated models **/
   var t_total: Long = System.currentTimeMillis()
+  var endpoint = "http://www.scholarlydata.org/sparql/"
   val modelsAnnotated: util.HashMap[String, Model] = TdbOperation.unpersistModelsMap(TdbOperation.dataSetAnnotated)
 
 
@@ -31,7 +32,7 @@ object Scenario_Enrichment extends App{
 
   /** 3. Enrichment of annotated models **/
   var t_enrichment: Long = System.currentTimeMillis()
-  enrichMDSchema(modelsAnnotated)
+  enrichMDSchema(modelsAnnotated,endpoint)
   FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePath"), "Enrichment", (System.currentTimeMillis() - t_enrichment).toInt)
   FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"),"Average_size_after_enrichment",ModelUtil.averageSize(modelsAnnotated).toInt)
 

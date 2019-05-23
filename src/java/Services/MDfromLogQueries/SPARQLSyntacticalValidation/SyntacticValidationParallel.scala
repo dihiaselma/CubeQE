@@ -7,10 +7,8 @@ import Services.MDfromLogQueries.Declarations.Declarations
 import scala.collection.parallel.ParSeq
 import scala.io.Source
 
-object SyntacticValidationParallel extends App {
+object SyntacticValidationParallel   {
 
-
-  val t1 = System.currentTimeMillis()
   var queriesNumber = 0
 
 
@@ -84,9 +82,7 @@ object SyntacticValidationParallel extends App {
     QueryFixer.toQuery(queryStr2).toString
   }
 
-  valideQueriesInFile(Declarations.paths.get("deduplicatedQueriesFile"))
-  val duration = System.currentTimeMillis() - t1
-  println(duration)
+
 
 
 }

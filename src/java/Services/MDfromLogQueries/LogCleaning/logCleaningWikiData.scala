@@ -10,7 +10,7 @@ import Services.MDfromLogQueries.Declarations.Declarations
 import scala.collection.parallel.ParSeq
 import scala.io.Source
 
-object logCleaningWikiData  extends App {
+object logCleaningWikiData    {
 
   /** This class reads the log files and extract queries **/
 
