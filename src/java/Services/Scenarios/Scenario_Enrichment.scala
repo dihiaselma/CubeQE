@@ -14,7 +14,8 @@ import org.apache.jena.rdf.model.Model
 object Scenario_Enrichment extends App{
 
 
- 
+
+  Declarations.setEndpoint("DogFood")
   /** 1. Unpersisting of annotated models **/
   var t_total: Long = System.currentTimeMillis()
   var endpoint = "http://www.scholarlydata.org/sparql/"

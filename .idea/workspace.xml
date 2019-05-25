@@ -5,12 +5,23 @@
       <artifact name="logLinc:war exploded" />
     </artifacts-to-build>
   </component>
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/src/java/Services/MDPatternDetection/AnalyticalQueriesClasses/AnalyticQueries.java" line="30" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="40cced35-abb7-4e08-893e-9148dcd3932a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/Services/MDPatternDetection/Alleviation/MDGraphsAlleviation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/Services/MDPatternDetection/Alleviation/MDGraphsAlleviation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/Services/MDPatternDetection/AnalyticalQueriesClasses/AnalyticQueries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/Services/MDPatternDetection/AnalyticalQueriesClasses/AnalyticQueries.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/Services/MDPatternDetection/AnalyticalQueriesClasses/AnalyticQueriesScala.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/Services/MDPatternDetection/AnalyticalQueriesClasses/AnalyticQueriesScala.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/Services/MDPatternDetection/EnrichmentClasses/Enrich.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/Services/MDPatternDetection/EnrichmentClasses/Enrich.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/Services/MDPatternDetection/EnrichmentClasses/EnrichParallel.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/Services/MDPatternDetection/EnrichmentClasses/EnrichParallel.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/Services/MDPatternDetection/ExecutionClasses/QueryExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/Services/MDPatternDetection/ExecutionClasses/QueryExecutor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/Services/MDfromLogQueries/LogCleaning/LogCleaningOneFile.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/Services/MDfromLogQueries/LogCleaning/LogCleaningOneFile.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Util/TdbOperation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Util/TdbOperation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/Services/Scenarios/Scenario_Analytic.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/Services/Scenarios/Scenario_Analytic.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/Services/Scenarios/Scenario_Enrichment.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/Services/Scenarios/Scenario_Enrichment.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/java/Services/Scenarios/Scenario_LogOnly.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/Services/Scenarios/Scenario_LogOnly.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/Services/Statistics/Statistics1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/Services/Statistics/Statistics1.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="web/bower_components/" />
@@ -57,7 +68,7 @@
     <session id="1585415248">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="22" />
+          <entry key="project.closed" value="23" />
           <entry key="project.open.time.100" value="1" />
           <entry key="project.open.time.102" value="1" />
           <entry key="project.open.time.104" value="1" />
@@ -78,29 +89,29 @@
           <entry key="project.open.time.87" value="1" />
           <entry key="project.open.time.88" value="1" />
           <entry key="project.open.time.89" value="1" />
-          <entry key="project.open.time.91" value="1" />
+          <entry key="project.open.time.91" value="2" />
           <entry key="project.open.time.93" value="1" />
           <entry key="project.open.time.98" value="1" />
-          <entry key="project.opened" value="24" />
+          <entry key="project.opened" value="25" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="7527" />
+          <entry key="java" value="7838" />
           <entry key="js" value="7" />
           <entry key="jsp" value="2047" />
-          <entry key="scala" value="3935" />
-          <entry key="txt" value="556" />
+          <entry key="scala" value="4138" />
+          <entry key="txt" value="592" />
           <entry key="xml" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="7527" />
+          <entry key="JAVA" value="7838" />
           <entry key="JSP" value="2047" />
           <entry key="JavaScript" value="7" />
-          <entry key="PLAIN_TEXT" value="556" />
-          <entry key="Scala" value="3935" />
+          <entry key="PLAIN_TEXT" value="592" />
+          <entry key="Scala" value="4138" />
           <entry key="XML" value="3" />
         </counts>
       </usages-collector>
@@ -109,10 +120,10 @@
           <entry key="class" value="1" />
           <entry key="html" value="1" />
           <entry key="iml" value="2" />
-          <entry key="java" value="172" />
+          <entry key="java" value="193" />
           <entry key="js" value="8" />
           <entry key="jsp" value="33" />
-          <entry key="scala" value="93" />
+          <entry key="scala" value="102" />
           <entry key="xml" value="8" />
         </counts>
       </usages-collector>
@@ -121,10 +132,10 @@
           <entry key="CLASS" value="1" />
           <entry key="HTML" value="1" />
           <entry key="IDEA_MODULE" value="2" />
-          <entry key="JAVA" value="172" />
+          <entry key="JAVA" value="193" />
           <entry key="JSP" value="33" />
           <entry key="JavaScript" value="8" />
-          <entry key="Scala" value="93" />
+          <entry key="Scala" value="102" />
           <entry key="XML" value="8" />
         </counts>
       </usages-collector>
@@ -133,51 +144,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/java/Services/MDfromLogQueries/SPARQLSyntacticalValidation/SyntacticValidationParallel.scala">
+        <entry file="file://$PROJECT_DIR$/src/java/Services/Scenarios/Scenario_Enrichment.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="111">
-              <caret line="60" column="26" selection-start-line="60" selection-start-column="26" selection-end-line="60" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/java/Controller/Controller.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="123" column="97" lean-forward="true" selection-start-line="123" selection-start-column="97" selection-end-line="123" selection-end-column="97" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#3807#3808#0" expanded="true" />
-                <element signature="e#3849#3850#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/java/Services/MDPatternDetection/Alleviation/MDGraphsAlleviation.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="71" column="28" selection-start-line="71" selection-start-column="28" selection-end-line="71" selection-end-column="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Util/TdbOperation.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="496">
-              <caret line="68" column="23" lean-forward="true" selection-start-line="68" selection-start-column="23" selection-end-line="68" selection-end-column="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/java/Services/Scenarios/Scenario_LogOnly.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="57">
-              <caret line="107" column="10" selection-start-line="107" selection-start-column="10" selection-end-line="107" selection-end-column="10" />
+            <state relative-caret-position="176">
+              <caret line="35" column="14" selection-start-line="35" selection-start-column="14" selection-end-line="35" selection-end-column="14" />
               <folding>
                 <element signature="e#28#44#0" expanded="true" />
               </folding>
@@ -186,19 +156,70 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Util/ModelUtil.java">
+        <entry file="file://$PROJECT_DIR$/src/java/Services/MDPatternDetection/EnrichmentClasses/EnrichParallel.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="205">
-              <caret line="63" column="17" lean-forward="true" selection-start-line="63" selection-start-column="17" selection-end-line="63" selection-end-column="17" />
+            <state relative-caret-position="89">
+              <caret line="30" column="26" selection-start-line="30" selection-start-column="26" selection-end-line="30" selection-end-column="26" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/java/Services/Statistics/Statistics1.java">
+        <entry file="file://$PROJECT_DIR$/src/java/Services/Scenarios/Scenario_Analytic.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="96">
-              <caret line="351" column="62" selection-start-line="351" selection-start-column="62" selection-end-line="351" selection-end-column="62" />
+            <state relative-caret-position="-23">
+              <caret line="35" column="44" lean-forward="true" selection-start-line="35" selection-start-column="44" selection-end-line="35" selection-end-column="44" />
+              <folding>
+                <element signature="e#28#44#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/java/Services/MDPatternDetection/AnalyticalQueriesClasses/AnalyticQueriesScala.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-3">
+              <caret line="52" column="28" selection-start-line="52" selection-start-column="28" selection-end-line="52" selection-end-column="28" />
+              <folding>
+                <element signature="e#62#78#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Declarations/Declarations.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1184">
+              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Util/TdbOperation.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2160">
+              <caret line="28" column="32" selection-start-line="28" selection-end-line="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/java/Services/MDPatternDetection/ExecutionClasses/QueryExecutor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="205">
+              <caret line="176" column="41" lean-forward="true" selection-start-line="176" selection-start-column="41" selection-end-line="176" selection-end-column="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/java/Services/MDPatternDetection/EnrichmentClasses/Enrich.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-3">
+              <caret line="129" column="71" selection-start-line="129" selection-start-column="71" selection-end-line="129" selection-end-column="71" />
             </state>
           </provider>
         </entry>
@@ -216,10 +237,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>afficher</find>
-      <find>hasaff</find>
-      <find>DimensionAttr</find>
-      <find>system.out</find>
       <find>conference</find>
       <find>C</find>
       <find>#conference</find>
@@ -246,6 +263,10 @@
       <find>statisticsByTypeFile</find>
       <find>statisticsFileYAML</find>
       <find>le file p</find>
+      <find>taille de la liste</find>
+      <find>write</find>
+      <find>not a variable</find>
+      <find>time</find>
     </findStrings>
     <replaceStrings>
       <replace>5</replace>
@@ -277,8 +298,6 @@
         <option value="$PROJECT_DIR$/src/java/Services/MDfromLogQueries/LogCleaning/LogCleaningTemp.scala" />
         <option value="$PROJECT_DIR$/src/java/Services/MDfromLogQueries/SPARQLSyntacticalValidation/QueryFixer.java" />
         <option value="$PROJECT_DIR$/src/java/Services/MDfromLogQueries/SPARQLSyntacticalValidation/SyntacticalValidation.java" />
-        <option value="$PROJECT_DIR$/src/java/Services/MDPatternDetection/AnalyticalQueriesClasses/AnalyticQueriesScala.scala" />
-        <option value="$PROJECT_DIR$/src/java/Services/MDPatternDetection/ExecutionClasses/QueryExecutor.java" />
         <option value="$PROJECT_DIR$/src/java/Services/MDPatternDetection/GraphConstructionClasses/Queries2Graphes.java" />
         <option value="$PROJECT_DIR$/src/java/Services/test.java" />
         <option value="$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Util/Datatype_Types.java" />
@@ -290,10 +309,7 @@
         <option value="$PROJECT_DIR$/web/pages/MDGraph.jsp" />
         <option value="$PROJECT_DIR$/.idea/dictionaries/KamilaB.xml" />
         <option value="$PROJECT_DIR$/src/java/Services/MDPatternDetection/AnnotationClasses/MDGraphAnnotated.java" />
-        <option value="$PROJECT_DIR$/src/java/Services/MDPatternDetection/EnrichmentClasses/Enrich.java" />
         <option value="$PROJECT_DIR$/src/java/Services/Statistics/StatisticsAnalytic.java" />
-        <option value="$PROJECT_DIR$/src/java/Services/MDPatternDetection/AnalyticalQueriesClasses/AnalyticQueries.java" />
-        <option value="$PROJECT_DIR$/src/java/Services/Scenarios/Scenario_Analytic.scala" />
         <option value="$PROJECT_DIR$/web/pages/subjectBlocksAnalytic.jsp" />
         <option value="$PROJECT_DIR$/web/pages/analyticScenario.jsp" />
         <option value="$PROJECT_DIR$/web/pages/beforeGraphs.jsp" />
@@ -301,24 +317,29 @@
         <option value="$PROJECT_DIR$/web/pages/mdGraphAnalytic.jsp" />
         <option value="$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Declarations/Declarations.java" />
         <option value="$PROJECT_DIR$/src/java/Services/MDfromLogQueries/LogCleaning/LogCleaning.scala" />
-        <option value="$PROJECT_DIR$/src/java/Services/MDfromLogQueries/LogCleaning/LogCleaningOneFile.scala" />
         <option value="$PROJECT_DIR$/src/java/Services/MDPatternDetection/ConsolidationClasses/ConsolidationParallel.scala" />
-        <option value="$PROJECT_DIR$/src/java/Services/MDPatternDetection/EnrichmentClasses/EnrichParallel.scala" />
         <option value="$PROJECT_DIR$/src/java/Services/MDPatternDetection/ExecutionClasses/QueryExecutorParallel.scala" />
         <option value="$PROJECT_DIR$/src/java/Services/MDPatternDetection/GraphConstructionClasses/Queries2GraphesParallel.scala" />
         <option value="$PROJECT_DIR$/src/java/Services/Statistics/MDGraphBySubjectScala.scala" />
-        <option value="$PROJECT_DIR$/src/java/Services/Scenarios/Scenario_Enrichment.scala" />
-        <option value="$PROJECT_DIR$/src/java/Services/MDPatternDetection/ExecutionClasses/QueryExecutorParallelFuture.scala" />
         <option value="$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Util/FileOperation.java" />
         <option value="$PROJECT_DIR$/src/java/Services/MDfromLogQueries/SPARQLSyntacticalValidation/SyntacticValidationParallel.scala" />
         <option value="$PROJECT_DIR$/src/java/Controller/Controller.java" />
         <option value="$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Util/GenericClasses.java" />
-        <option value="$PROJECT_DIR$/src/java/Services/MDPatternDetection/Alleviation/MDGraphsAlleviation.java" />
         <option value="$PROJECT_DIR$/web/pages/mdGraphView.jsp" />
         <option value="$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Util/ModelUtil.java" />
-        <option value="$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Util/TdbOperation.java" />
-        <option value="$PROJECT_DIR$/src/java/Services/Scenarios/Scenario_LogOnly.scala" />
         <option value="$PROJECT_DIR$/src/java/Services/Statistics/Statistics1.java" />
+        <option value="$PROJECT_DIR$/src/java/Services/Scenarios/Scenario_LogOnly.scala" />
+        <option value="$PROJECT_DIR$/src/java/Services/MDfromLogQueries/LogCleaning/LogCleaningOneFile.scala" />
+        <option value="$PROJECT_DIR$/src/java/Services/Scenarios/Scenario_Enrichment.scala" />
+        <option value="$PROJECT_DIR$/src/java/Services/MDPatternDetection/ExecutionClasses/QueryExecutorParallelFuture.scala" />
+        <option value="$PROJECT_DIR$/src/java/Services/MDPatternDetection/Alleviation/MDGraphsAlleviation.java" />
+        <option value="$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Util/TdbOperation.java" />
+        <option value="$PROJECT_DIR$/src/java/Services/MDPatternDetection/EnrichmentClasses/EnrichParallel.scala" />
+        <option value="$PROJECT_DIR$/src/java/Services/MDPatternDetection/AnalyticalQueriesClasses/AnalyticQueries.java" />
+        <option value="$PROJECT_DIR$/src/java/Services/MDPatternDetection/ExecutionClasses/QueryExecutor.java" />
+        <option value="$PROJECT_DIR$/src/java/Services/MDPatternDetection/AnalyticalQueriesClasses/AnalyticQueriesScala.scala" />
+        <option value="$PROJECT_DIR$/src/java/Services/Scenarios/Scenario_Analytic.scala" />
+        <option value="$PROJECT_DIR$/src/java/Services/MDPatternDetection/EnrichmentClasses/Enrich.java" />
       </list>
     </option>
   </component>
@@ -378,8 +399,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -458,6 +477,15 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="Services" type="462c0819:PsiDirectoryNode" />
               <item name="MDPatternDetection" type="462c0819:PsiDirectoryNode" />
+              <item name="ExecutionClasses" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="logLinc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="logLinc" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Services" type="462c0819:PsiDirectoryNode" />
+              <item name="MDPatternDetection" type="462c0819:PsiDirectoryNode" />
               <item name="GraphConstructionClasses" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -491,12 +519,14 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558653842788" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558800452528" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="jsx.switch.disabled" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Declarations" />
@@ -528,39 +558,39 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Tomcat Server.logLinc">
-    <configuration name="ConsolidationParallel" type="Application" factoryName="Application" temporary="true">
-      <option name="MAIN_CLASS_NAME" value="Services.MDPatternDetection.ConsolidationClasses.ConsolidationParallel" />
-      <module name="logLinc" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Services.MDPatternDetection.ConsolidationClasses.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Enrich" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Services.MDPatternDetection.EnrichmentClasses.Enrich" />
-      <module name="logLinc" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Services.MDPatternDetection.EnrichmentClasses.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Application.Scenario_Analytic">
     <configuration name="EnrichParallel" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="Services.MDPatternDetection.EnrichmentClasses.EnrichParallel" />
       <module name="logLinc" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="Services.MDPatternDetection.EnrichmentClasses.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Scenario_Analytic" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="Services.Scenarios.Scenario_Analytic" />
+      <module name="logLinc" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Services.Scenarios.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Scenario_Enrichment" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="Services.Scenarios.Scenario_Enrichment" />
+      <module name="logLinc" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Services.Scenarios.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -670,19 +700,19 @@
     </configuration>
     <list>
       <item itemvalue="Tomcat Server.logLinc" />
-      <item itemvalue="Application.ConsolidationParallel" />
       <item itemvalue="Application.TdbOperation" />
-      <item itemvalue="Application.Enrich" />
       <item itemvalue="Application.Scenario_LogOnly" />
       <item itemvalue="Application.EnrichParallel" />
+      <item itemvalue="Application.Scenario_Enrichment" />
+      <item itemvalue="Application.Scenario_Analytic" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Scenario_Analytic" />
+        <item itemvalue="Application.Scenario_Enrichment" />
         <item itemvalue="Application.Scenario_LogOnly" />
         <item itemvalue="Application.TdbOperation" />
         <item itemvalue="Application.EnrichParallel" />
-        <item itemvalue="Application.ConsolidationParallel" />
-        <item itemvalue="Application.Enrich" />
       </list>
     </recent_temporary>
   </component>
@@ -723,14 +753,8 @@
       <workItem from="1558434505405" duration="1771000" />
       <workItem from="1558535009891" duration="9179000" />
       <workItem from="1558603190472" duration="7489000" />
-      <workItem from="1558622278808" duration="9817000" />
-    </task>
-    <task id="LOCAL-00002" summary=" jrebvuir">
-      <created>1556120227651</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1556120227651</updated>
+      <workItem from="1558622278808" duration="10437000" />
+      <workItem from="1558734138351" duration="12329000" />
     </task>
     <task id="LOCAL-00003" summary=" jrebvuir">
       <created>1556398292507</created>
@@ -1068,11 +1092,18 @@
       <option name="project" value="LOCAL" />
       <updated>1558631324840</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="arrangement de setNABC et min stats">
+      <created>1558654001229</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1558654001229</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="290443000" />
+    <option name="totallyTimeSpent" value="303392000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="55" y="-7" width="1488" height="878" extended-state="6" />
@@ -1085,7 +1116,7 @@
       <window_info id="Favorites" order="4" side_tool="true" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Web" order="6" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="7" sideWeight="0.49289098" visible="true" weight="0.27661064" />
+      <window_info content_ui="combo" id="Project" order="7" sideWeight="0.49289098" visible="true" weight="0.2219888" />
       <window_info active="true" anchor="bottom" id="Run" order="0" visible="true" weight="0.4295302" />
       <window_info anchor="bottom" id="Application Servers" order="1" weight="0.32885906" />
       <window_info anchor="bottom" id="SBT Console" order="2" />
@@ -1176,33 +1207,10 @@
     <MESSAGE value="Couleurs du graphe modifiées" />
     <MESSAGE value="ajout affichage analytic" />
     <MESSAGE value="des trucs" />
-    <option name="LAST_COMMIT_MESSAGE" value="des trucs" />
+    <MESSAGE value="arrangement de setNABC et min stats" />
+    <option name="LAST_COMMIT_MESSAGE" value="arrangement de setNABC et min stats" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/web/plugins/amcharts4/themes/kelly.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/plugins/amcharts4/themes/frozen.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="7" column="58" lean-forward="true" selection-end-line="20" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/plugins/amcharts4/plugins/forceDirected.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4187">
-          <caret line="806" column="49" lean-forward="true" selection-start-line="806" selection-start-column="49" selection-end-line="806" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/dictionaries/KamilaB.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="6" column="12" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Util/Datatype_Types.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
@@ -1217,13 +1225,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/Services/MDPatternDetection/EnrichmentClasses/Enrich.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="89" column="45" lean-forward="true" selection-start-line="89" selection-start-column="45" selection-end-line="89" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/java/Services/Statistics/StatisticsAnalytic.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
@@ -1235,13 +1236,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="384">
           <caret line="24" column="27" lean-forward="true" selection-start-line="24" selection-start-column="27" selection-end-line="24" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/Services/MDPatternDetection/AnalyticalQueriesClasses/AnalyticQueries.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="52" selection-start-line="52" selection-end-line="52" />
         </state>
       </provider>
     </entry>
@@ -1315,20 +1309,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/Services/MDPatternDetection/AnalyticalQueriesClasses/AnalyticQueriesScala.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="60" column="42" selection-start-line="60" selection-start-column="42" selection-end-line="60" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/Services/MDPatternDetection/EnrichmentClasses/EnrichParallel.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/java/Services/MDPatternDetection/ExecutionClasses/QueryExecutorParallel.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="336">
@@ -1348,68 +1328,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/Services/Scenarios/Scenario_Enrichment.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="19" column="54" selection-start-line="19" selection-start-column="54" selection-end-line="19" selection-end-column="54" />
-          <folding>
-            <element signature="e#28#44#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/Services/Scenarios/Scenario_Analytic.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="576">
-          <caret line="41" column="144" selection-start-line="41" selection-start-column="116" selection-end-line="41" selection-end-column="144" />
-          <folding>
-            <element signature="e#28#44#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/java/Services/Scenarios/Scenario_LogOnly_Wikidata.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1061">
           <caret line="7" column="7" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/Services/MDPatternDetection/ExecutionClasses/QueryExecutor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="151" column="48" selection-start-line="151" selection-end-line="152" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/Services/MDPatternDetection/ExecutionClasses/QueryExecutorParallelFuture.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1856">
-          <caret line="128" column="46" selection-start-line="128" selection-start-column="46" selection-end-line="128" selection-end-column="46" />
-          <folding>
-            <element signature="e#54#90#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Util/FileOperation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="116">
-          <caret line="133" lean-forward="true" selection-start-line="133" selection-end-line="133" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Declarations/Declarations.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="82" column="53" selection-start-line="82" selection-start-column="53" selection-end-line="82" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/Services/MDfromLogQueries/LogCleaning/LogCleaningOneFile.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="35" column="46" selection-start-line="35" selection-start-column="46" selection-end-line="35" selection-end-column="46" />
         </state>
       </provider>
     </entry>
@@ -1434,13 +1356,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/Services/MDPatternDetection/GraphConstructionClasses/QueryUpdate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1104">
-          <caret line="77" column="63" selection-start-line="77" selection-start-column="63" selection-end-line="77" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/java/Services/MDPatternDetection/GraphConstructionClasses/QueryModifyElementVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="400">
@@ -1455,18 +1370,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/Controller/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="123" column="97" lean-forward="true" selection-start-line="123" selection-start-column="97" selection-end-line="123" selection-end-column="97" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3807#3808#0" expanded="true" />
-            <element signature="e#3849#3850#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Util/BasicProperties.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
@@ -1478,13 +1381,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="208">
           <caret line="19" selection-start-line="19" selection-end-line="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/Services/MDfromLogQueries/SPARQLSyntacticalValidation/SyntacticValidationParallel.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="111">
-          <caret line="60" column="26" selection-start-line="60" selection-start-column="26" selection-end-line="60" selection-end-column="26" />
         </state>
       </provider>
     </entry>
@@ -1516,41 +1412,184 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Util/ModelUtil.java">
+    <entry file="file://$PROJECT_DIR$/src/java/Services/MDfromLogQueries/SPARQLSyntacticalValidation/SyntacticValidationParallel.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="63" column="17" lean-forward="true" selection-start-line="63" selection-start-column="17" selection-end-line="63" selection-end-column="17" />
+        <state relative-caret-position="880">
+          <caret line="60" column="26" selection-start-line="60" selection-start-column="26" selection-end-line="60" selection-end-column="26" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/Services/MDPatternDetection/Alleviation/MDGraphsAlleviation.java">
+    <entry file="file://$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Util/ModelUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="71" column="28" selection-start-line="71" selection-start-column="28" selection-end-line="71" selection-end-column="28" />
+        <state relative-caret-position="864">
+          <caret line="63" column="17" selection-start-line="63" selection-start-column="17" selection-end-line="63" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/java/Services/Statistics/Statistics1.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
+        <state relative-caret-position="3712">
           <caret line="351" column="62" selection-start-line="351" selection-start-column="62" selection-end-line="351" selection-end-column="62" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Util/TdbOperation.java">
+    <entry file="file://$PROJECT_DIR$/src/java/Controller/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="496">
-          <caret line="68" column="23" lean-forward="true" selection-start-line="68" selection-start-column="23" selection-end-line="68" selection-end-column="23" />
+        <state relative-caret-position="-300">
+          <caret line="123" column="97" selection-start-line="123" selection-start-column="97" selection-end-line="123" selection-end-column="97" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3807#3808#0" expanded="true" />
+            <element signature="e#3849#3850#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Util/Constants2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="96" selection-start-line="96" selection-end-line="96" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/Services/MDfromLogQueries/LogCleaning/LogCleaningOneFile.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="448">
+          <caret line="35" column="19" selection-start-line="35" selection-start-column="19" selection-end-line="35" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/Services/MDPatternDetection/ExecutionClasses/QueryExecutorParallelFuture.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="133" column="40" lean-forward="true" selection-start-line="133" selection-start-column="40" selection-end-line="133" selection-end-column="40" />
+          <folding>
+            <element signature="e#54#90#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/java/Services/Scenarios/Scenario_LogOnly.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="107" column="10" selection-start-line="107" selection-start-column="10" selection-end-line="107" selection-end-column="10" />
+        <state relative-caret-position="368">
+          <caret line="99" column="53" lean-forward="true" selection-start-line="99" selection-start-column="53" selection-end-line="99" selection-end-column="53" />
           <folding>
             <element signature="e#28#44#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Util/FileOperation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="116">
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/jena/jena-arq/3.9.0/jena-arq-3.9.0-sources.jar!/org/apache/jena/sparql/engine/http/QueryEngineHTTP.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="343" selection-start-line="343" selection-end-line="343" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/jena/jena-arq/3.9.0/jena-arq-3.9.0-sources.jar!/org/apache/jena/query/Query.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="398" column="16" selection-start-line="398" selection-start-column="16" selection-end-line="398" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/Services/MDPatternDetection/GraphConstructionClasses/QueryUpdate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="70" column="36" selection-start-line="70" selection-start-column="36" selection-end-line="70" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/Services/MDPatternDetection/AnalyticalQueriesClasses/AnalyticQueries.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-302">
+          <caret line="107" column="14" lean-forward="true" selection-start-line="107" selection-start-column="14" selection-end-line="107" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/jena/jena-arq/3.9.0/jena-arq-3.9.0-sources.jar!/org/apache/jena/query/QueryExecution.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="71" column="89" lean-forward="true" selection-start-line="71" selection-start-column="89" selection-end-line="71" selection-end-column="89" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/Services/MDPatternDetection/Alleviation/MDGraphsAlleviation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="61" column="56" lean-forward="true" selection-start-line="61" selection-start-column="56" selection-end-line="61" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Util/TdbOperation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2160">
+          <caret line="28" column="32" selection-start-line="28" selection-end-line="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/Services/MDfromLogQueries/Declarations/Declarations.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1184">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/Services/MDPatternDetection/ExecutionClasses/QueryExecutor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="205">
+          <caret line="176" column="41" lean-forward="true" selection-start-line="176" selection-start-column="41" selection-end-line="176" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/Services/MDPatternDetection/AnalyticalQueriesClasses/AnalyticQueriesScala.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3">
+          <caret line="52" column="28" selection-start-line="52" selection-start-column="28" selection-end-line="52" selection-end-column="28" />
+          <folding>
+            <element signature="e#62#78#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/Services/Scenarios/Scenario_Analytic.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-23">
+          <caret line="35" column="44" lean-forward="true" selection-start-line="35" selection-start-column="44" selection-end-line="35" selection-end-column="44" />
+          <folding>
+            <element signature="e#28#44#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/Services/Scenarios/Scenario_Enrichment.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="35" column="14" selection-start-line="35" selection-start-column="14" selection-end-line="35" selection-end-column="14" />
+          <folding>
+            <element signature="e#28#44#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/Services/MDPatternDetection/EnrichmentClasses/EnrichParallel.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="89">
+          <caret line="30" column="26" selection-start-line="30" selection-start-column="26" selection-end-line="30" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/Services/MDPatternDetection/EnrichmentClasses/Enrich.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3">
+          <caret line="129" column="71" selection-start-line="129" selection-start-column="71" selection-end-line="129" selection-end-column="71" />
         </state>
       </provider>
     </entry>

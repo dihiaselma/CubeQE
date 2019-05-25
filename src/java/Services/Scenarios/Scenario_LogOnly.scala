@@ -27,7 +27,7 @@ object Scenario_LogOnly extends App{
   val endpoint="DogFood"
   val endpointUrl="http://www.scholarlydata.org/sparql/"
   Declarations.setEndpoint(endpoint)
-/*
+
 
   /** 1. Nettoyage du log **/
   var t_cleaning: Long = System.currentTimeMillis()
@@ -35,7 +35,7 @@ object Scenario_LogOnly extends App{
   FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePath"), "Log_Cleaning", (System.currentTimeMillis() - t_cleaning).toInt)
   FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "Log_Cleaning_nbLines", LogCleaningOneFile.nbLines)
   FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "Log_Cleaning_nbQueries", LogCleaningOneFile.queriesNumber)
-
+/*
   /** 2. Deduplication **/
   var t_dedup: Long = System.currentTimeMillis()
   DeduplicateQueriesInFile(Declarations.paths.get("cleanedQueriesFile"))

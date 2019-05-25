@@ -119,20 +119,21 @@ public class Enrich {
         try {
             Query query = QueryFactory.create(queryStr);
             ResultSet results = queryExecutor.executeQuerySelect(query, endpoint);
+            if (results != null) {
             while (results.hasNext()) {
                 querySolution = results.nextSolution();
                 predicate = querySolution.get("p");
                 object = querySolution.get("o");
                 objectType = querySolution.get("otype");
                 //System.out.print("*\t");
-                if(!node.hasProperty(new PropertyImpl(predicate.asResource().getURI()),object)) {
+                if (!node.hasProperty(new PropertyImpl(predicate.asResource().getURI()), object)) {
                     if (!BasicProperties.properties.contains(predicate)) {
                         if (object.isLiteral() || Datatype_Types.types.contains(object.asResource())
                                 || object.
                                 asResource().
                                 getNameSpace().
                                 equals("http://www.w3.org/2001/XMLSchema")) {
-                            addedObject = datatypePropertyTreatement(subject,predicate,objectType,constantsUtil);
+                            addedObject = datatypePropertyTreatement(subject, predicate, objectType, constantsUtil);
                             //subject.addProperty(new PropertyImpl(predicate.asResource().getURI()), object);
                             nb_attribute++;
                         } else {
@@ -149,21 +150,21 @@ public class Enrich {
 
                             switch (propertyType) {
                                 case ("datatypeProperty"): {
-                                    addedObject =datatypePropertyTreatement(subject, predicate, objectType,constantsUtil);
+                                    addedObject = datatypePropertyTreatement(subject, predicate, objectType, constantsUtil);
                                     nb_attribute++;
                                 }
                                 break;
                                 case ("objectProperty"): {
-                                    addedObject =objectPropertyTreatement(subject, predicate, object, objectType,constantsUtil);
+                                    addedObject = objectPropertyTreatement(subject, predicate, object, objectType, constantsUtil);
                                     nb_objectProperty++;
                                 }
                                 break;
                                 default: {
                                     if (object.isResource()) {
-                                        addedObject =objectPropertyTreatement(subject, predicate, object, objectType,constantsUtil);
+                                        addedObject = objectPropertyTreatement(subject, predicate, object, objectType, constantsUtil);
                                         nb_objectProperty++;
                                     } else if (object.isLiteral()) {
-                                        addedObject =datatypePropertyTreatement(subject, predicate, objectType,constantsUtil);
+                                        addedObject = datatypePropertyTreatement(subject, predicate, objectType, constantsUtil);
                                         nb_attribute++;
                                     }
                                 }
@@ -176,6 +177,7 @@ public class Enrich {
                     }
                 }
             }
+        }
         } catch (Exception e) {
             e.printStackTrace();
         }

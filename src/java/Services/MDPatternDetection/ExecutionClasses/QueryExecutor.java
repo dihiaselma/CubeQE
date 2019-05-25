@@ -15,6 +15,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
+
 import static java.util.concurrent.TimeUnit.MILLISECONDS;
 
 public class QueryExecutor {
@@ -167,13 +169,17 @@ public class QueryExecutor {
         ResultSet results = null;
         try{
             //  query = QueryFactory.create(queryStr);
-            QueryExecution qexec = QueryExecutionFactory.sparqlService(endpoint, query);
+           QueryExecution qexec = QueryExecutionFactory.sparqlService(endpoint, query);
+            //QueryExecution qexec = QueryExecutionFactory.createServiceRequest(endpoint, query);
+            qexec.setTimeout(30, TimeUnit.SECONDS,60, TimeUnit.SECONDS);
+            System.out.println("execution");
+            System.out.println(query.toString().replace("\n"," "));
             results = qexec.execSelect();
-            /*  System.out.println("Result " + results.next());*/
         }
         catch (Exception e){
-            System.out.println("the query " + query + "\n********************");
-            e.printStackTrace();
+            //System.out.println("the query " + query + "\n********************");
+            System.out.println(e.getMessage());
+          //  e.printStackTrace();
             FileOperation.writeQueryInLog(Declarations.paths.get("executionLogFile"), query.toString());
         }
         return results;
