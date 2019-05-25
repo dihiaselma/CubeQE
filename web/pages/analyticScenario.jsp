@@ -7,6 +7,7 @@
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="tg" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -189,7 +190,7 @@
                         <!-- /.box-body -->
                         <div class="box-footer clearfix">
                             <a href="javascript:void(0)" class="btn  bg-red-gradient pull-left">Cancel</a>
-                            <a href="subjectBlocksAnalytic.j" class="btn  btn-default bg-purple-gradient pull-right">Construct MD
+                            <a href="subjectsBlocksAnalytic.j" class="btn  btn-default bg-purple-gradient pull-right">Construct MD
                                 graphs</a>
                         </div>
                         <!-- /.box-footer -->

@@ -274,9 +274,10 @@ public class Controller {
 
         while (it.hasNext()) {
             String key = it.next();
+            org.apache.jena.rdf.model.Model modelRDF = TdbOperation.dataSetAnalyticAnnotated.getNamedModel(key);
             JSONObject jsonObject = new JSONObject();
 
-            Resource subject = new ResourceImpl(key);
+            Resource subject = modelRDF.listSubjects().next();
 
             jsonObject.put("name", subject.getLocalName());
 
@@ -299,7 +300,7 @@ public class Controller {
 
         model.addAttribute("subjects", jsonArrayGlobal.toJSONString());
         model.addAttribute("error", error);
-        return "subjectsBlocksAnalytic";
+        return "subjectBlocksAnalytic";
     }
 
 
@@ -311,7 +312,7 @@ public class Controller {
 
         org.apache.jena.rdf.model.Model graphModel = TdbOperation.dataSetAnalyticAnnotated.getNamedModel(uri);
 
-        if (graphModel.size() < 200) jsonArray.add(ModelUtil.modelToJSON(graphModel, uri));
+        if (graphModel.size() < 200) jsonArray.add(ModelUtil.modelToJSON(graphModel, graphModel.listSubjects().next().getURI()));
 
         System.out.println(jsonArray.toJSONString());
         String erreur = "";

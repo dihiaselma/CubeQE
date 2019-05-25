@@ -131,7 +131,6 @@
                         </div>
                         <!-- /.box-body -->
                         <div class="box-footer clearfix">
-                            <a href="javascript:void(0)" class="btn  bg-red-gradient pull-left">Cancel</a>
                             <a href="javascript:void(0)" class="btn  btn-default bg-purple-gradient pull-right">Construct
                                 MD graphs</a>
                         </div>
@@ -196,7 +195,6 @@
                         </div>
                         <!-- /.box-body -->
                         <div class="box-footer clearfix">
-                            <a href="javascript:void(0)" class="btn  bg-red-gradient pull-left">Cancel</a>
                             <a href="javascript:void(0)" class="btn  btn-default bg-purple-gradient pull-right">Consolidate
                                 MD graphs</a>
                         </div>
@@ -255,7 +253,6 @@
                         </div>
                         <!-- /.box-body -->
                         <div class="box-footer clearfix">
-                            <a href="javascript:void(0)" class="btn  bg-red-gradient pull-left">Cancel</a>
                             <a href="subjectsBlocks.j" class="btn  btn-default bg-purple-gradient pull-right">Annotation</a>
                         </div>
                         <!-- /.box-footer -->

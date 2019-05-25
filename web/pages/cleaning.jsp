@@ -158,8 +158,10 @@
                         <!-- /.box-body -->
                         <div class="box-footer clearfix">
                             <a href="javascript:void(0)" class="btn  bg-red-gradient pull-left">Cancel</a>
-                            <a href="execution.j" class="btn  btn-default bg-purple-gradient pull-right">Construct MD
-                                graphs</a>
+                            <a href="analyticScenario.j" class="btn  btn-default bg-aqua-gradient fa-align-center">Scenario 1 :
+                                Explore Analytic queries</a>
+                            <a href="execution.j" class="btn  btn-default bg-purple-gradient pull-right">Scneario 2 :
+                                Construct MD graphs</a>
                         </div>
                         <!-- /.box-footer -->
                     </div>
