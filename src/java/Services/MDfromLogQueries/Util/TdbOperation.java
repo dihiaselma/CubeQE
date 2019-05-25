@@ -23,6 +23,7 @@ public class TdbOperation {
     public static Dataset dataSetAlleviatedUselessProperties = TDBFactory.createDataset(Declarations.paths.get("dataSetAlleviatedUselessProperties"));
     public static Dataset dataSetNonAlleviated = TDBFactory.createDataset(Declarations.paths.get("dataSetNonAlleviated"));
     public static Dataset dataSetEnriched = TDBFactory.createDataset(Declarations.paths.get("dataSetEnriched"));
+    public static Dataset dataSetEnrichedAnnotated = TDBFactory.createDataset(Declarations.paths.get("dataSetEnrichedAnnotated"));
 
 
     public static void updatePaths() {

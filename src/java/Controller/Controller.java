@@ -24,6 +24,8 @@ public class Controller {
     private Map<String, Object> times;
     private Map<String, Object> queriesNumbers;
     private HashMap<String, Object> statisticsTotal;
+    private HashMap<String, Object> statisticsByModel = new HashMap<>();
+    private HashMap<String, Object> enrichedStatisticsByModel = new HashMap<>();
     // ToDo change the file name
     private HashMap<String, Object> statisticsTotalEnrichment;
 
@@ -152,6 +154,11 @@ public class Controller {
         uri = uri.replace("__", "#");
 
         org.apache.jena.rdf.model.Model graphModel = TdbOperation.dataSetAnnotated.getNamedModel(uri);
+        if (statisticsByModel.size()==0)
+            statisticsByModel = (HashMap<String, Object>) FileOperation.loadYamlFile(Declarations.paths.get("statisticsFileYAML"));
+        model.addAttribute("statistics", (HashMap<String,Object>) statisticsByModel.get(uri));
+        model.addAttribute("statisticsDescription", statDescriptions);
+        model.addAttribute("uri",uri);
 
         if (graphModel.size() < 200) jsonArray.add(ModelUtil.modelToJSON(graphModel, uri));
 
@@ -162,6 +169,28 @@ public class Controller {
         model.addAttribute("models", jsonArray);
         model.addAttribute("erreur", erreur);
         return "MDGraph";
+    }
+    @RequestMapping("/mdGraphEnriched")
+    public String pageTreeEnriched(Model model, @RequestParam String uri) {
+
+        JSONArray jsonArray = new JSONArray();
+        uri = uri.replace("__", "#");
+
+        org.apache.jena.rdf.model.Model graphModel = TdbOperation.dataSetEnrichedAnnotated.getNamedModel(uri);
+        if (enrichedStatisticsByModel.size()==0)
+            enrichedStatisticsByModel = (HashMap<String, Object>) FileOperation.loadYamlFile(Declarations.paths.get("enrichedStatisticsFileYAML"));
+        model.addAttribute("statistics", (HashMap<String,Object>) enrichedStatisticsByModel.get(uri));
+        model.addAttribute("statisticsDescription", statDescriptions);
+
+        if (graphModel.size() < 200) jsonArray.add(ModelUtil.modelToJSON(graphModel, uri));
+
+        System.out.println(jsonArray.toJSONString());
+        String erreur = "";
+
+
+        model.addAttribute("models", jsonArray);
+        model.addAttribute("erreur", erreur);
+        return "MDGraphEnriched";
     }
 
 
