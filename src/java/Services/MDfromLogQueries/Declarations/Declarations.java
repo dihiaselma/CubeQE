@@ -100,10 +100,12 @@ public class Declarations {
 
 
         /* Scénario 2 : Analytic Queries **/
-        paths.put("AggregQueriesFile",root + rootScenarioAnalytic + "ProgramOutput\\Fichier_Aggreg_Queries.txt");
-        paths.put("AnalyticQueriesFile",root + rootScenarioAnalytic + "ProgramOutput\\Fichier_Analytic_Queries.txt");
-        paths.put("AnalyticSelectQueriesFile",root + rootScenarioAnalytic + "ProgramOutput\\Fichier_Analytic_Select_Queries.txt");
-        paths.put("SelectQueriesAndResult",root + rootScenarioAnalytic + "ProgramOutput\\Fichier_Analytic_Select_Queries_Results.txt");
+        //paths.put("AggregQueriesFile",root + rootScenarioAnalytic + "ProgramOutput\\Fichier_Aggreg_Queries.txt");
+        paths.put("AggregQueriesFile",root + rootScenarioAnalytic + "ProgramOutput\\Fichier_Aggreg_Queries_test.txt");
+       // paths.put("AnalyticQueriesFile",root + rootScenarioAnalytic + "ProgramOutput\\Fichier_Analytic_Queries.txt");
+        paths.put("AnalyticQueriesFile",root + rootScenarioAnalytic + "ProgramOutput\\Fichier_Analytic_Queries_test.txt");
+        //paths.put("AnalyticSelectQueriesFile",root + rootScenarioAnalytic + "ProgramOutput\\Fichier_Analytic_Select_Queries.txt");
+        //paths.put("SelectQueriesAndResult",root + rootScenarioAnalytic + "ProgramOutput\\Fichier_Analytic_Select_Queries_Results.txt");
 
 
         /* Execution time of programs **/

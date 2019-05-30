@@ -10,15 +10,17 @@ import Services.Statistics.Statistics1
 
 object Scenario_Analytic extends App{
 
-  val endpoint = "https://dbpedia.org/sparql"
+  var endpoint = "http://www.scholarlydata.org/sparql/"
   var t_analytic: Long = System.currentTimeMillis()
-
+  Declarations.setEndpoint("DogFood")
+/*
   /** 1. Extraction des requêtes analytiques du fichier SyntaxValid*/
   var t_extraction: Long = System.currentTimeMillis()
   val queryList = FileOperation.ReadFile(Declarations.paths.get("syntaxValidFile2")).asInstanceOf[util.ArrayList[String]]
   val analyticQueriesList = AnalyticQueries.getAnalyticQueries(queryList)
   FileOperation.WriteInFile(Declarations.paths.get("AnalyticQueriesFile"), analyticQueriesList)
   FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "Analytic_Queries", AnalyticQueries.queriesNumber)
+  println("analytic queries number : "+AnalyticQueries.queriesNumber)
   FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePath"), "Analytic_extraction", (System.currentTimeMillis() - t_extraction).toInt)
 
 
@@ -28,7 +30,7 @@ object Scenario_Analytic extends App{
   AnalyticQueriesScala.executeAnalyticQueriesList(endpoint)
   FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePath"), "Analytic_execution", (System.currentTimeMillis() - t_executing).toInt)
 
-
+  */
   /** 3. Annotation des requêtes analytiques */
   var t_annotation : Long = System.currentTimeMillis()
   AnalyticQueriesScala.AnalyticQueriesAnnotation()

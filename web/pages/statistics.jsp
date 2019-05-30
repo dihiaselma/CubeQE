@@ -139,7 +139,10 @@
                             <!-- /.table-responsive -->
                         </div>
                         <!-- /.box-body -->
-
+                        <div class="box-footer clearfix">
+                            <!--<a href="javascript:void(0)" class="btn  bg-red-gradient pull-left">Cancel</a>-->
+                            <a href="statisticsEnrichment.j" class="btn  btn-default bg-purple-gradient pull-right">Enriched statistics</a>
+                        </div>
                         <!-- /.box-footer -->
                     </div>
                     <!-- /.box -->

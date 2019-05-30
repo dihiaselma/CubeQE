@@ -54,20 +54,10 @@
             <ul class="sidebar-menu" data-widget="tree">
                 <li class="header">MAIN NAVIGATION</li>
                 <!-- search form -->
-                <form action="#" method="get" class="sidebar-form">
-                    <div class="input-group">
-                        <input type="text" name="q" class="form-control" placeholder="Search the theme...">
-                        <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat">
-                  <i class="fa fa-search"></i>
-                </button>
-              </span>
-                    </div>
-                </form>
 
 
 
-                <li class="treeview">
+                <!--<li class="treeview">
                     <a href="#">
                         <i class="fa fa-share"></i> <span>Themes</span>
                         <span class="pull-right-container">
@@ -99,7 +89,7 @@
                         </li>
                         <li><a href="#"><i class="fa fa-circle-o"></i> Hotel </a></li>
                     </ul>
-                </li>
+                </li>-->
 
             </ul>
         </section>

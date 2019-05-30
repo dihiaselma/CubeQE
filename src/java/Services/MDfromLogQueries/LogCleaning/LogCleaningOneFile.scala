@@ -36,9 +36,10 @@ object LogCleaningOneFile {
         val treatedGroupOfLines = groupOfLines.par.map {
           line => {
             try {
+              nb_line+=1
               val extractedQuery = queryFromLogLine(line, PATTERN)
               if (extractedQuery != null) {
-                nb_line += 1
+                queriesNumber += 1
                 println("* " + nb_line)
                 Right(Some(extractedQuery))
               } else Left(line)
@@ -73,7 +74,6 @@ object LogCleaningOneFile {
 
 
     queries.foreach(query => {
-      queriesNumber+=1
       writer.write(query.toString().replaceAll("[\n\r]", "\t") + "\n")
     })
     writer.close()

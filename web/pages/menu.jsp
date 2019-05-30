@@ -25,16 +25,6 @@
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">MAIN NAVIGATION</li>
             <!-- search form -->
-            <form action="#" method="get" class="sidebar-form">
-                <div class="input-group">
-                    <input type="text" name="q" class="form-control" placeholder="Search the theme...">
-                    <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat">
-                  <i class="fa fa-search"></i>
-                </button>
-              </span>
-                </div>
-            </form>
 
 
 
@@ -42,43 +32,6 @@
                 <a href="statistics.j">
                 <i class="fa fa-pie-chart"></i> <span>Statistics</span>
                 </a>
-            </li>
-
-
-
-
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-share"></i> <span>Themes</span>
-                    <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Game </a></li>
-                    <li class="treeview">
-                        <a href="#"><i class="fa fa-circle-o"></i> University
-                            <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Teacher</a></li>
-                            <li class="treeview">
-                                <a href="#"><i class="fa fa-circle-o"></i> Book
-                                    <span class="pull-right-container">
-                      <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                                </a>
-                                <ul class="treeview-menu">
-                                    <li><a href="#"><i class="fa fa-circle-o"></i> Scientific article</a></li>
-                                    <li><a href="#"><i class="fa fa-circle-o"></i> Publication </a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Hotel </a></li>
-                </ul>
             </li>
 
         </ul>

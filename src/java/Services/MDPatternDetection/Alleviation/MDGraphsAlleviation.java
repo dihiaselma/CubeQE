@@ -1,6 +1,7 @@
 package Services.MDPatternDetection.Alleviation;
 
 import Services.MDPatternDetection.ConsolidationClasses.Consolidation;
+import Services.MDfromLogQueries.Declarations.Declarations;
 import Services.MDfromLogQueries.Util.BasicProperties;
 import Services.MDfromLogQueries.Util.GenericClasses;
 import Services.MDfromLogQueries.Util.ModelUtil;
@@ -56,7 +57,7 @@ public class MDGraphsAlleviation {
 
        // TODO à enlever si y a pas besoin de sauvegarder
        TdbOperation.persistHashMap(MDGraphAlleviated, TdbOperation.dataSetAlleviated);
-       TdbOperation.persistHashMap(MDGraphLessThen2, TdbOperation.dataSetNonAlleviated);
+       TdbOperation.persistHashMap(MDGraphLessThen2, Declarations.paths.get("dataSetNonAlleviated"));
 
        numberModelsAlleviated+=MDGraphAlleviated.size();
        numberModelsRemoved+=MDGraphLessThen2.size();
@@ -69,6 +70,7 @@ public class MDGraphsAlleviation {
    public static HashMap<String,Model> removeUselessProperties(HashMap<String,Model> modelHashMap)
    {
        new BasicProperties();
+       new GenericClasses();
        HashMap<String,Model> modifiedModels = new HashMap<>();
        Model model;
        try {

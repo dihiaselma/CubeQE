@@ -2,6 +2,7 @@ package Services.MDfromLogQueries.Util;
 
 import Services.MDPatternDetection.ConsolidationClasses.Consolidation;
 import Services.MDfromLogQueries.Declarations.Declarations;
+import Services.Statistics.Statistics1;
 import org.apache.jena.query.Dataset;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ResourceFactory;
@@ -9,7 +10,6 @@ import org.apache.jena.tdb.TDB;
 import org.apache.jena.tdb.TDBFactory;
 
 import java.util.*;
-
 
 
 public class TdbOperation {
@@ -23,20 +23,20 @@ public class TdbOperation {
     public static Dataset dataSetAlleviatedUselessProperties = TDBFactory.createDataset(Declarations.paths.get("dataSetAlleviatedUselessProperties"));
     public static Dataset dataSetNonAlleviated = TDBFactory.createDataset(Declarations.paths.get("dataSetNonAlleviated"));
     public static Dataset dataSetEnriched = TDBFactory.createDataset(Declarations.paths.get("dataSetEnriched"));
+    public static Dataset dataSetEnrichedAnnotated = TDBFactory.createDataset(Declarations.paths.get("dataSetEnrichedAnnotated"));
 
 
-    public static void updatePaths()
-    {
-         originalDataSet = TDBFactory.createDataset(Declarations.paths.get("dataSetOriginal"));
-         _toString = TDBFactory.createDataset(Declarations.paths.get("_toString"));
-         dataSetConsolidate = TDBFactory.createDataset(Declarations.paths.get("dataSetConsolidated"));
-         dataSetAnnotated = TDBFactory.createDataset(Declarations.paths.get("dataSetAnnotated"));
-         dataSetAnalytic = TDBFactory.createDataset(Declarations.paths.get("dataSetAnalytic"));
-         dataSetAnalyticAnnotated = TDBFactory.createDataset(Declarations.paths.get("dataSetAnalyticAnnotated"));
-         dataSetAlleviated = TDBFactory.createDataset(Declarations.paths.get("dataSetAlleviated"));
-         dataSetAlleviatedUselessProperties = TDBFactory.createDataset(Declarations.paths.get("dataSetAlleviatedUselessProperties"));
-         dataSetNonAlleviated = TDBFactory.createDataset(Declarations.paths.get("dataSetNonAlleviated"));
-         dataSetEnriched = TDBFactory.createDataset(Declarations.paths.get("dataSetEnriched"));
+    public static void updatePaths() {
+        originalDataSet = TDBFactory.createDataset(Declarations.paths.get("dataSetOriginal"));
+        _toString = TDBFactory.createDataset(Declarations.paths.get("_toString"));
+        dataSetConsolidate = TDBFactory.createDataset(Declarations.paths.get("dataSetConsolidated"));
+        dataSetAnnotated = TDBFactory.createDataset(Declarations.paths.get("dataSetAnnotated"));
+        dataSetAnalytic = TDBFactory.createDataset(Declarations.paths.get("dataSetAnalytic"));
+        dataSetAnalyticAnnotated = TDBFactory.createDataset(Declarations.paths.get("dataSetAnalyticAnnotated"));
+        dataSetAlleviated = TDBFactory.createDataset(Declarations.paths.get("dataSetAlleviated"));
+        dataSetAlleviatedUselessProperties = TDBFactory.createDataset(Declarations.paths.get("dataSetAlleviatedUselessProperties"));
+        dataSetNonAlleviated = TDBFactory.createDataset(Declarations.paths.get("dataSetNonAlleviated"));
+        dataSetEnriched = TDBFactory.createDataset(Declarations.paths.get("dataSetEnriched"));
     }
 
 
@@ -44,7 +44,7 @@ public class TdbOperation {
         new TdbOperation();
         Declarations.setEndpoint("DogFood");
         //HashMap<String,Model> modelHashMap = unpersistNumberOfModelsMap(dataSetAlleviated,34);
-        HashMap<String,Model> modelHashMap ; //unpersistModelsMap(dataSetAnnotated);
+        HashMap<String, Model> modelHashMap; //unpersistModelsMap(dataSetAnnotated);
         /*//System.out.println(Declarations.paths.get("dataSetConsolidated"));
         Iterator<String> kies = modelHashMap.keySet().iterator();
         System.out.println("to string");
@@ -59,9 +59,13 @@ public class TdbOperation {
 
         }*/
 
-        modelHashMap = unpersistModelsMap(dataSetConsolidate);
+        modelHashMap = unpersistModelsMap(dataSetAnnotated);
         System.out.println("consolides");
-        Consolidation.afficherListInformations(modelHashMap);
+        //Consolidation.afficherListInformations(modelHashMap);
+        Statistics1 statistics1 = new Statistics1();
+        HashMap<String, Model> newMap = new HashMap<>();
+        newMap.put("http://purl.org/spar/fabio/ProceedingsPaper", modelHashMap.get("http://purl.org/spar/fabio/ProceedingsPaper"));
+        statistics1.stat2(newMap);
 
          /*modelHashMap = unpersistModelsMap(_toString);
         System.out.println("consolides");
@@ -71,7 +75,6 @@ public class TdbOperation {
 
     public TdbOperation() {
     }
-
 
 
     public static boolean exists(String name, Dataset dt) {
@@ -106,7 +109,7 @@ public class TdbOperation {
                 System.out.println(" next model " + nb);
                 Map.Entry<String, Model> pair = (Map.Entry) it.next();
 
-               // if (exists(pair.getKey(), originalDataSetStringModel)) {
+                // if (exists(pair.getKey(), originalDataSetStringModel)) {
                 if (
                         exists(pair.getKey(), originalDataSetStringModel)) {
 
@@ -165,12 +168,23 @@ public class TdbOperation {
         }
     }
 
+    public static void persistHashMap(HashMap<String, Model> modelHashMap, String datasetName) {
+        try {
+            Dataset dataset = TDBFactory.createDataset(datasetName);
+            persistHashMap(modelHashMap, dataset);
+            TDB.sync(dataset);
+            dataset.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
     public static HashMap<String, Model> unpersistModelsMap(Dataset dataset) {
         HashMap<String, Model> results = new HashMap<>();
 
         //Dataset dataset = TDBFactory.createDataset(tdbDirectory);
-       //g TDB.sync(dataset);
+        //g TDB.sync(dataset);
         if (dataset == null) return null;
 
         Iterator<String> it = dataset.listNames();
@@ -188,7 +202,7 @@ public class TdbOperation {
 
                 Model model = dataset.getNamedModel(name);
 
-                if ( model != null) results.put(name, model);
+                if (model != null) results.put(name, model);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -198,38 +212,17 @@ public class TdbOperation {
         System.out.println("taille de la liste  " + results.size());
         return results;
     }
+
     public static HashMap<String, Model> unpersistModelsMap(String datasetName) {
-        HashMap<String, Model> results = new HashMap<>();
-
+        HashMap<String, Model> results;
         Dataset dataset = TDBFactory.createDataset(datasetName);
-       //g TDB.sync(dataset);
+        //g TDB.sync(dataset);
         if (dataset == null) return null;
-
-        Iterator<String> it = dataset.listNames();
-
-        String name;
-
-        try {
-
-            while (it.hasNext()) {
-                name = it.next();
-
-                while (name == null) {
-                    name = it.next();
-                }
-
-                Model model = dataset.getNamedModel(name);
-
-                if ( model != null) results.put(name, model);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-
+        results = unpersistModelsMap(dataset);
         System.out.println("taille de la liste  " + results.size());
         return results;
     }
+
     public static HashMap<String, Model> unpersistNumberOfModelsMap(Dataset dataset, int number) {
         HashMap<String, Model> results = new HashMap<>();
 
@@ -245,7 +238,7 @@ public class TdbOperation {
         int nb = 0;
         try {
 
-            while (it.hasNext() && nb<number) {
+            while (it.hasNext() && nb < number) {
                 name = it.next();
 
                 while (name == null) {

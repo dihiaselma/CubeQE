@@ -7,6 +7,8 @@
 --%>
 
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="tg" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
@@ -78,7 +80,54 @@
                 <div class="col-md-12">
                     <!-- TABLE: LATEST ORDERS -->
                     <%@ include file="mdGraphView.jsp"%>
+                    <div class="box box-info">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Statistics</h3>
 
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                        class="fa fa-minus"></i>
+                                </button>
+
+                            </div>
+                        </div>
+                    <div class="box-body">
+                    <div class="table-responsive">
+                        <table class="table no-margin table-bordered table-striped">
+                            <thead>
+                            <tr >
+                                <th>Stat</th>
+                                <th>Description</th>
+                                <th>Values</th>
+
+                            </tr>
+
+                            </thead>
+
+                            <tbody>
+
+                            <tg:forEach var="entry" items="${statistics.entrySet()}">
+                                <tr>
+                                    <!-- nom du type de la stat  -->   <td><c:out value ="${entry.key}"/></td>
+                                    <!-- description  -->              <td><c:out value ="${statisticsDescription.get(entry.key)}"/></td>
+
+                                    <!-- Average -->
+                                    <td><fmt:formatNumber value="${statistics.get(entry.key)}" maxFractionDigits="2"/></td>
+
+
+                                </tr>
+                            </tg:forEach>
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                    </div>
+                        <div class="box-footer clearfix">
+                            <!--<a href="javascript:void(0)" class="btn  bg-red-gradient pull-left">Cancel</a>-->
+                            <a href="http://localhost:8080/mdGraphEnriched.j?uri=${uri.replace("#","__")}" class="btn  btn-default bg-purple-gradient pull-right">Enriched graph</a>
+                        </div>
+                    </div>
 
                 </div>
                 <!-- /.col -->

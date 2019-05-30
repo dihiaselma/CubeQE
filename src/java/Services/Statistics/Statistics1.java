@@ -296,7 +296,7 @@ public class Statistics1 {
     }
     public static void writeAllStatsInYAML(ArrayList<Statistics1> statistics1ArrayList, String allStatsFilePath, String typedStatsFilePath ) {
 
-        writeStatisticsListInYAMLFile(statistics1ArrayList, Declarations.paths.get(allStatsFilePath));
+        writeStatisticsListInYAMLFile(statistics1ArrayList, allStatsFilePath);
         writeStatisticsInFileInYAMLbyType(avgStatistics(statistics1ArrayList), "Average", typedStatsFilePath);
         writeStatisticsInFileInYAMLbyType(minStatistics(statistics1ArrayList), "Minimum", typedStatsFilePath);
         writeStatisticsInFileInYAMLbyType(maxStatistics(statistics1ArrayList), "Maximum", typedStatsFilePath);
@@ -315,6 +315,7 @@ public class Statistics1 {
         statistics1.setRBC(statistics1.getRBC() / size);
         statistics1.setNAFC(statistics1.getNAFC() / size);
         statistics1.setNADC(statistics1.getNADC() / size);
+        statistics1.setNABC(statistics1.getNABC() / size);
         statistics1.setNA(statistics1.getNA() / size);
         statistics1.setNH(statistics1.getNH() / size);
         statistics1.setDHP(statistics1.getDHP() / size);
@@ -335,6 +336,7 @@ public class Statistics1 {
             statistics1.setRBC(stat.getRBC() + statistics1.getRBC());
             statistics1.setNAFC(stat.getNAFC() + statistics1.getNAFC());
             statistics1.setNADC(stat.getNADC() + statistics1.getNADC());
+            statistics1.setNABC(stat.getNABC() + statistics1.getNABC());
             statistics1.setNA(stat.getNA() + statistics1.getNA());
             statistics1.setNH(stat.getNH() + statistics1.getNH());
             statistics1.setDHP(stat.getDHP() + statistics1.getDHP());
@@ -347,7 +349,7 @@ public class Statistics1 {
 
     public static Statistics1 minStatistics(ArrayList<Statistics1> statistics1ArrayList) {
         int size = statistics1ArrayList.size();
-        Statistics1 statistics1 = new Statistics1();
+        Statistics1 statistics1 = statistics1ArrayList.get(0);
         for (Statistics1 stat : statistics1ArrayList) {
             statistics1.setNFC(min(stat.getNFC(), statistics1.getNFC()));
             statistics1.setNDC(min(stat.getNDC(), statistics1.getNDC()));
@@ -356,6 +358,7 @@ public class Statistics1 {
             statistics1.setRBC(min(stat.getRBC(), statistics1.getRBC()));
             statistics1.setNAFC(min(stat.getNAFC(), statistics1.getNAFC()));
             statistics1.setNADC(min(stat.getNADC(), statistics1.getNADC()));
+            statistics1.setNABC(min(stat.getNABC(), statistics1.getNABC()));
             statistics1.setNA(min(stat.getNA(), statistics1.getNA()));
             statistics1.setNH(min(stat.getNH(), statistics1.getNH()));
             statistics1.setDHP(min(stat.getDHP(), statistics1.getDHP()));
@@ -376,6 +379,7 @@ public class Statistics1 {
             statistics1.setRBC(max(stat.getRBC(), statistics1.getRBC()));
             statistics1.setNAFC(max(stat.getNAFC(), statistics1.getNAFC()));
             statistics1.setNADC(max(stat.getNADC(), statistics1.getNADC()));
+            statistics1.setNABC(max(stat.getNABC(), statistics1.getNABC()));
             statistics1.setNA(max(stat.getNA(), statistics1.getNA()));
             statistics1.setNH(max(stat.getNH(), statistics1.getNH()));
             statistics1.setDHP(max(stat.getDHP(), statistics1.getDHP()));
@@ -456,17 +460,17 @@ public class Statistics1 {
                 statistics1.setNC(statistics1.getNDC() + statistics1.getNFC() + statistics1.getNBC());
 
                 /** RBC **/
-                if (statistics1.getNDC() > 0) statistics1.setRBC(statistics1.getNBC() / statistics1.getNDC());
+                if (statistics1.getNDC() > 0) statistics1.setRBC((float) statistics1.getNBC() / statistics1.getNDC());
 
                 /** NA **/
                 statistics1.setNA(statistics1.getNAFC() + statistics1.getNADC() + statistics1.getNABC());
 
                 /** RSA **/
-                if (statistics1.getNADC() + statistics1.getNABC() > 0)
-                    statistics1.setRSA(statistics1.getNAFC() / (statistics1.getNADC() + statistics1.getNABC()));
+                if ((statistics1.getNADC() + statistics1.getNABC()) > 0) {
+                    statistics1.setRSA((float) statistics1.getNAFC() / (statistics1.getNADC() + statistics1.getNABC()));
+                }
 
                 statistics1.setModelSubject(key);
-
                 statistics1ArrayList.add(statistics1);
             }catch (UnsupportedOperationException ignored){
 
@@ -503,8 +507,9 @@ public class Statistics1 {
                 if (object.asResource().hasProperty(annotProperty, Annotations.DIMENSIONATTRIBUTE.toString())) {
                     /** NABC **/
                     if (resource.hasProperty(annotProperty, Annotations.NONFUNCTIONALDIMENSIONLEVEL.toString())
-                            || resource.hasProperty(annotProperty, Annotations.DIMENSIONLEVEL.toString()))
+                            || resource.hasProperty(annotProperty, Annotations.DIMENSIONLEVEL.toString())) {
                         statistics1.setNABC(statistics1.getNABC() + 1);
+                    }
                     /** NADC **/
                     else if (resource.hasProperty(annotProperty, Annotations.NONFUNCTIONALDIMENSION.toString()) ||
                             resource.hasProperty(annotProperty, Annotations.DIMENSION.toString()))

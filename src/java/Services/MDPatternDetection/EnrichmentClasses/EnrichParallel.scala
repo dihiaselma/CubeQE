@@ -12,16 +12,12 @@ import scala.collection.mutable
 
 object EnrichParallel   {
 
-  val modelsAnnotated: util.HashMap[String, Model] = TdbOperation.unpersistModelsMap(TdbOperation.dataSetAnnotated)
   var constantsUtil = new ConstantsUtil
   var constants2 = new Constants2()
-
-
-
   def enrichMDSchema(models: util.HashMap[String, Model], endpoint : String): Unit = {
 
 
-    val modelsAnnotatedScala: mutable.HashMap[String, Model] = convertToScalaMap(modelsAnnotated)
+    val modelsAnnotatedScala: mutable.HashMap[String, Model] = convertToScalaMap(models)
     val itModels = modelsAnnotatedScala.keys
     var numModel = 0
 
@@ -42,27 +38,5 @@ object EnrichParallel   {
         writeEnrichStatisticsListInYAMLFile(Enrich.statisticsAnalytics4Dimension, Declarations.paths.get("statisticsAnalyticDimFile"))
       }
     }
-    /*itModels.grouped(20000).foreach {
-      groupOfmodels => {
-        val time = System.currentTimeMillis()
-        val treatedGroupOfLines = groupOfmodels.par.foreach {
-          key => {
-            numModel += 1
-            println(s"le model num: $numModel")
-            Enrich.enrichModel(modelsAnnotatedScala(key))
-            Left(key, modelsAnnotatedScala(key))
-
-          }
-        }
-        writeInTdb(convertToScalaMap(),TdbOperation.dataSetEnriched)
-        writeStatisticsListInFile2(Enrich.statisticsAnalytics4Fact, Declarations.paths.get("statisticsAnalyticFactFile"))
-        writeStatisticsListInFile2(Enrich.statisticsAnalytics4Dimension, Declarations.paths.get("statisticsAnalyticDimFile"))
-
-      }
-
-    }
-
-  }*/
-
   }
 }

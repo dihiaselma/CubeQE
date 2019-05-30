@@ -57,8 +57,10 @@ object SyntacticValidationParallel   {
     val writer = new PrintWriter(new FileOutputStream(new File(destinationFilePath), true))
 
     queries.foreach{
-      queriesNumber += 1
-      query => writer.write(query.replaceAll("[\n\r]", "\t") + "\n")
+      query => {
+        queriesNumber += 1
+        writer.write(query.replaceAll("[\n\r]", "\t") + "\n")
+      }
     }
 
     writer.close()

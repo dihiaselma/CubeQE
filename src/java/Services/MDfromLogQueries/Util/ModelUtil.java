@@ -63,7 +63,8 @@ public class ModelUtil {
                     jsonObject.put("value",3);
                 }
                 else {
-                    jsonObject.put("id",stat.getObject().asResource().getLocalName());
+                    jsonObject.put("name",stat.getObject().asResource().getLocalName());
+                    jsonObject.put("id",stat.getPredicate().getLocalName());
                     jsonObject.put("color","#EB6EB0");
                     jsonObject.put("value",2);
                 }

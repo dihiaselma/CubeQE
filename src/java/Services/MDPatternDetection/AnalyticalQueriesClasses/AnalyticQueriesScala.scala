@@ -8,7 +8,7 @@ import Services.MDfromLogQueries.Declarations.Declarations
 import Services.MDfromLogQueries.Util.{Constants2, TdbOperation}
 import org.apache.jena.query.Dataset
 import org.apache.jena.rdf.model.Model
-import org.apache.jena.tdb.TDB
+import org.apache.jena.tdb.{TDB, TDBFactory}
 
 import scala.collection.{JavaConverters, mutable}
 import scala.io.Source
@@ -27,7 +27,7 @@ object AnalyticQueriesScala  {
 
     val QueriesList = Source.fromFile(Declarations.paths.get("AnalyticQueriesFile")).getLines
 
-    QueriesList.grouped(50).foreach {
+    QueriesList.grouped(20).foreach {
 
       groupOfLines => {
 
@@ -48,7 +48,7 @@ object AnalyticQueriesScala  {
           }
         }
         println("--------------------- un group finished ---------------------------------- ")
-        writeInTdb(JavaConverters.asScalaSet(modelHashSet),TdbOperation.dataSetAnalytic)
+        writeInTdb(JavaConverters.asScalaSet(modelHashSet),Declarations.paths.get("dataSetAnalytic"))
         modelHashSet.clear()
 
       }
@@ -68,7 +68,9 @@ object AnalyticQueriesScala  {
 
   }
 
-  def writeInTdb(models: mutable.Set[Model], dataset: Dataset) = {
+  def writeInTdb(models: mutable.Set[Model], datasetName: String) = {
+    val dataset = TDBFactory.createDataset(datasetName)
+
 
     models.foreach(m => {
 
@@ -82,6 +84,7 @@ object AnalyticQueriesScala  {
       }
     })
     TDB.sync(dataset)
+    dataset.close()
 
   }
   def writeInTdb(models: mutable.Map[String,Model], dataset: Dataset) = {

@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="tg" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
@@ -51,9 +51,9 @@
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
     <!-- contains the header -->
-    <%@ include file="header.jsp" %>
+    <%@ include file="header.jsp"%>
 
-    <%@ include file="menu.jsp" %>
+    <%@ include file="menu.jsp"%>
 
     <!-- Left side column. contains the logo and sidebar -->
 
@@ -79,56 +79,7 @@
 
                 <div class="col-md-12">
                     <!-- TABLE: LATEST ORDERS -->
-
-                    <div class="box box-info">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">Results</h3>
-
-                            <div class="box-tools pull-right">
-                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
-                                        class="fa fa-minus"></i>
-                                </button>
-
-                            </div>
-                        </div>
-                        <!-- /.box-header -->
-                        <div class="box-body">
-                            <div class="table-responsive">
-                                <table class="table no-margin">
-                                    <thead>
-                                    <tr>
-                                        <th>Phase</th>
-                                        <th>Number of queries</th>
-                                        <th>Number of analytic queries</th>
-                                        <th>Execution time</th>
-                                        <th>Percentage of analytic queries</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>Analytic Queries Extraction</td>
-                                        <td>${queriesNumbersMap.get("Syntactical_Validation")}</td>
-                                        <td>${queriesNumbersMap.get("Analytic_Queries")}</td>
-                                        <td>
-                                            <div class="text-muted"><i
-                                                    class="fa fa-clock-o"></i>   ${timesMap.get("Analytic_process")} seconds</div>
-                                        </td>
-                                        <td><span class="badge bg-red">
-                                                <fmt:formatNumber
-                                                        value=" ${(queriesNumbersMap.get('Analytic_Queries')/queriesNumbersMap.get('Syntactical_Validation'))*100}"
-                                                        maxFractionDigits="2"/>
-                                            %</span></td>
-                                    </tr>
-
-                                    </tbody>
-                                </table>
-                            </div>
-                            <!-- /.table-responsive -->
-                        </div>
-                        <!-- /.box-body -->
-
-                    </div>
-
+                    <%@ include file="mdGraphView.jsp"%>
                     <div class="box box-info">
                         <div class="box-header with-border">
                             <h3 class="box-title">Statistics</h3>
@@ -140,22 +91,14 @@
 
                             </div>
                         </div>
-                        <!-- /.box-header -->
                         <div class="box-body">
                             <div class="table-responsive">
-
-
                                 <table class="table no-margin table-bordered table-striped">
                                     <thead>
                                     <tr >
                                         <th>Stat</th>
                                         <th>Description</th>
-
-                                        <tg:forEach var="entryNames" items="${statistics.entrySet()}" >
-
-                                            <th><c:out value ="${entryNames.key}"/></th>
-
-                                        </tg:forEach>
+                                        <th>Values</th>
 
                                     </tr>
 
@@ -163,20 +106,14 @@
 
                                     <tbody>
 
-                                    <tg:forEach var="entry" items="${statistics.get('Total').entrySet()}">
+                                    <tg:forEach var="entry" items="${statistics.entrySet()}">
                                         <tr>
                                             <!-- nom du type de la stat  -->   <td><c:out value ="${entry.key}"/></td>
                                             <!-- description  -->              <td><c:out value ="${statisticsDescription.get(entry.key)}"/></td>
 
                                             <!-- Average -->
-                                            <td><fmt:formatNumber value="${statistics.get('Average').get(entry.key)}" maxFractionDigits="2"/></td>
-                                            <!-- Miinmum -->
-                                            <td><fmt:formatNumber value ="${statistics.get('Minimum').get(entry.key)}" maxFractionDigits="2"/></td>
+                                            <td><fmt:formatNumber value="${statistics.get(entry.key)}" maxFractionDigits="2"/></td>
 
-                                            <!-- Maximum -->
-                                            <td><fmt:formatNumber value ="${statistics.get('Maximum').get(entry.key)}" maxFractionDigits="2"/></td>
-                                            <!-- Total -->
-                                            <td><fmt:formatNumber value ="${statistics.get('Total').get(entry.key)}" maxFractionDigits="2"/></td>
 
                                         </tr>
                                     </tg:forEach>
@@ -185,17 +122,10 @@
                                 </table>
 
                             </div>
-                            <!-- /.table-responsive -->
                         </div>
-                        <!-- /.box-body -->
-                        <div class="box-footer clearfix">
-                            <a href="javascript:void(0)" class="btn  bg-red-gradient pull-left">Cancel</a>
-                            <a href="subjectsBlocksAnalytic.j" class="btn  btn-default bg-purple-gradient pull-right">Construct MD
-                                graphs</a>
-                        </div>
-                        <!-- /.box-footer -->
+
                     </div>
-                    <!-- /.box -->
+
                 </div>
                 <!-- /.col -->
 
@@ -210,10 +140,10 @@
     <!-- /.content-wrapper -->
 
 
-    <%@ include file="footer.jsp" %>
+    <%@ include file="footer.jsp"%>
 
 
-    <%@ include file="menu-side.jsp" %>
+    <%@ include file="menu-side.jsp"%>
 
 
     <!-- Add the sidebar's background. This div must be placed

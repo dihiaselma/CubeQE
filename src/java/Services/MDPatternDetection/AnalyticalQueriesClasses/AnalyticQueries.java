@@ -133,49 +133,51 @@ public class AnalyticQueries {
         Resource subject;
         Property property;
         RDFNode object;
-        while (resultSet.hasNext()) {
-            model = ModelFactory.createDefaultModel();
-            querySolution = resultSet.next();
-            tripleList = bpConstruct.getList();
-            for (Triple triple : tripleList) {
-                node = triple.getSubject();
-                if (node.isVariable()) {
-                    subject = querySolution.get(node.getName()).asResource();
-                } else {
-                    subject = new ResourceImpl(node.getURI());
+        if (resultSet!= null) {
+            while (resultSet.hasNext()) {
+                model = ModelFactory.createDefaultModel();
+                querySolution = resultSet.next();
+                tripleList = bpConstruct.getList();
+                for (Triple triple : tripleList) {
+                    node = triple.getSubject();
+                    if (node.isVariable()) {
+                        subject = querySolution.get(node.getName()).asResource();
+                    } else {
+                        subject = new ResourceImpl(node.getURI());
 
-                }
-                node = triple.getPredicate();
-                if (node.isVariable()) {
-                    property = new PropertyImpl(querySolution.get(node.getName()).asNode().getURI());
-                } else {
-                    property = new PropertyImpl(node.getURI());
+                    }
+                    node = triple.getPredicate();
+                    if (node.isVariable()) {
+                        property = new PropertyImpl(querySolution.get(node.getName()).asNode().getURI());
+                    } else {
+                        property = new PropertyImpl(node.getURI());
 
-                }
-                node = triple.getObject();
-                if (node.isVariable()) {
-                    object = new ResourceImpl(querySolution.get(node.getName()).asNode().getURI());
-                } else {
-                    object = new ResourceImpl(node.getURI());
+                    }
+                    node = triple.getObject();
+                    if (node.isVariable()) {
+                        object = new ResourceImpl(querySolution.get(node.getName()).asNode().getURI());
+                    } else {
+                        object = new ResourceImpl(node.getURI());
 
+                    }
+                    statement = new StatementImpl(subject, property, object);
+                    if (!model.contains(statement))
+                        model.add(statement);
                 }
-                statement = new StatementImpl(subject, property, object);
-                if (!model.contains(statement))
+                if (querySolution.get(analyticQuery.aggregVariables).isResource()) {
+                    Node rdfNode = getRdfTypeVariable(bpWhereTriples, analyticQuery.aggregVariables);
+                    if (!rdfNode.isBlank())
+                        subject = new ResourceImpl(rdfNode.getName());
+                    else
+                        subject = querySolution.get(analyticQuery.aggregVariables).asResource();
+
+                    property = new PropertyImpl("http://0.0.0.0/lodlinc/countMeasure");
+                    object = new ResourceImpl("http://www.w3.org/2001/XMLSchema#integer");
+                    statement = new StatementImpl(subject, property, object);
                     model.add(statement);
+                }
+                modelHashSet.add(model);
             }
-            if (querySolution.get(analyticQuery.aggregVariables).isResource()) {
-                Node rdfNode = getRdfTypeVariable(bpWhereTriples, analyticQuery.aggregVariables);
-                if (!rdfNode.isBlank())
-                    subject = new ResourceImpl(rdfNode.getName());
-                else
-                    subject = querySolution.get(analyticQuery.aggregVariables).asResource();
-
-                property = new PropertyImpl("http://0.0.0.0/lodlinc/countMeasure");
-                object = new ResourceImpl("http://www.w3.org/2001/XMLSchema#integer");
-                statement = new StatementImpl(subject, property, object);
-                model.add(statement);
-            }
-            modelHashSet.add(model);
         }
         return modelHashSet;
     }

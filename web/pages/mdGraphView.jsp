@@ -50,7 +50,7 @@
         networkSeries.fontSize = 12;
         networkSeries.maxLevels = 2;
         networkSeries.maxRadius = am4core.percent(6);
-        networkSeries.manyBodyStrength = -10;
+        networkSeries.manyBodyStrength = -16;
 
         networkSeries.nodes.template.draggable=true
         networkSeries.nodes.template.label.hideOversized = true
