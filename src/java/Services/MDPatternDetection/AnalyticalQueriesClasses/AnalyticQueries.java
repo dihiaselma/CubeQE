@@ -1,12 +1,14 @@
 package Services.MDPatternDetection.AnalyticalQueriesClasses;
 
 import Services.MDPatternDetection.AnnotationClasses.MDGraphAnnotated;
+import Services.MDPatternDetection.ConsolidationClasses.Consolidation;
 import Services.MDPatternDetection.ExecutionClasses.QueryExecutor;
 import Services.MDPatternDetection.GraphConstructionClasses.QueryUpdate;
 import Services.MDfromLogQueries.Declarations.Declarations;
 import Services.MDfromLogQueries.Util.Constants2;
 import Services.MDfromLogQueries.Util.FileOperation;
 import Services.MDfromLogQueries.Util.TdbOperation;
+import org.apache.commons.math3.analysis.function.Exp;
 import org.apache.jena.graph.Node;
 import org.apache.jena.graph.NodeFactory;
 import org.apache.jena.graph.Node_Variable;
@@ -22,8 +24,11 @@ import org.apache.jena.rdf.model.impl.StatementImpl;
 import org.apache.jena.sparql.core.BasicPattern;
 import org.apache.jena.sparql.expr.ExprAggregator;
 import org.apache.jena.vocabulary.RDF;
+import org.rdfhdt.hdt.iterator.utils.Iter;
 
+import java.lang.reflect.Array;
 import java.util.*;
+import java.util.regex.Pattern;
 
 public class AnalyticQueries {
 
@@ -36,7 +41,7 @@ public class AnalyticQueries {
         if (query.hasAggregators()) {
             exprAggregatorList = query.getAggregators();
             for (ExprAggregator exprAggregator : exprAggregatorList) {
-                System.out.println("la var :" + exprAggregator.getAggregator().getExprList());
+              //  System.out.println("la var :" + exprAggregator.getAggregator().getExprList());
                 // the exprList is null in case it's a count(*)
                 if (exprAggregator.getAggregator().getExprList() != null) {
                     i++;
@@ -46,7 +51,7 @@ public class AnalyticQueries {
         return (i > 0);
     }
 
-    /* Returns a list of analytic Queries from an input list of queries */
+    /** Returns a list of analytic Queries from an input list of queries */
     public static ArrayList<String> getAnalyticQueries(ArrayList<String> queryList) {
         ArrayList<String> analyticQueriesList = new ArrayList<>();
         int nb_line = 0; //for statistical needs
@@ -77,10 +82,9 @@ public class AnalyticQueries {
         int nb = 0;
         String queryStr;
         HashSet<Model> modelHashSet = new HashSet<>();
-        Query query;
+
         int size = queryList.size();
-        QueryExecutor queryExecutor = new QueryExecutor();
-        AnalyticQuery analyticQuery = new AnalyticQuery();
+
         while (nb_line < size) {
             try {
                 nb_line++;
@@ -106,14 +110,24 @@ public class AnalyticQueries {
         Query query = QueryFactory.create(queryStr);
         QueryUpdate queryUpdate = new QueryUpdate(query);// Adding missing rdf:type statements to the query
         query = queryUpdate.addAddedVariablesToResultVars(query); // Adding new variables to the resulting vars
-        BasicPattern bpConstruct = queryUpdate.getQueryConstruction().getBpConstruct(); // Getting construct BasicPattern to use it to construct the Graph Pattern
+
+        // Getting construct BasicPattern to use it to construct the Graph Pattern
+        BasicPattern bpConstruct = queryUpdate.getQueryConstruction().getBpConstruct();
+
         List<Triple> bpWhereTriples = queryUpdate.getQueryConstruction().getBpWhere().getList();
 
         analyticQuery.selectQuery = query;
-        analyticQuery.selectQuery.addResultVar(analyticQuery.getAggregVariable());
+
+        for (String var : analyticQuery.getAggregVariable().values()){
+            analyticQuery.selectQuery.addResultVar(var);
+        }
+
 
         ResultSet resultSet;
+
+        System.out.println(" je suis avant l'execution ");
         resultSet = queryExecutor.executeQuerySelect(query, endpoint);
+        if (resultSet==null) System.out.println("null ");
 
         modelHashSet.addAll(constructModels(resultSet, bpConstruct, analyticQuery, bpWhereTriples));
         return modelHashSet;
@@ -133,11 +147,17 @@ public class AnalyticQueries {
         Resource subject;
         Property property;
         RDFNode object;
+        System.out.println("je suis da le debut de la fct construct models");
         if (resultSet!= null) {
+
             while (resultSet.hasNext()) {
+
+                System.out.println(" je suis dans le while de construct models");
+
                 model = ModelFactory.createDefaultModel();
                 querySolution = resultSet.next();
                 tripleList = bpConstruct.getList();
+
                 for (Triple triple : tripleList) {
                     node = triple.getSubject();
                     if (node.isVariable()) {
@@ -161,26 +181,72 @@ public class AnalyticQueries {
 
                     }
                     statement = new StatementImpl(subject, property, object);
+
                     if (!model.contains(statement))
                         model.add(statement);
                 }
-                if (querySolution.get(analyticQuery.aggregVariables).isResource()) {
-                    Node rdfNode = getRdfTypeVariable(bpWhereTriples, analyticQuery.aggregVariables);
-                    if (!rdfNode.isBlank())
-                        subject = new ResourceImpl(rdfNode.getName());
-                    else
-                        subject = querySolution.get(analyticQuery.aggregVariables).asResource();
 
-                    property = new PropertyImpl("http://0.0.0.0/lodlinc/countMeasure");
-                    object = new ResourceImpl("http://www.w3.org/2001/XMLSchema#integer");
-                    statement = new StatementImpl(subject, property, object);
-                    model.add(statement);
-                }
+
+                addAgregationMeasures(model, querySolution, analyticQuery, bpWhereTriples);
+
                 modelHashSet.add(model);
             }
         }
+        Consolidation.afficherListInformationsSet(modelHashSet);
         return modelHashSet;
     }
+
+
+
+    private static void addAgregationMeasures (Model model,QuerySolution querySolution, AnalyticQuery analyticQuery,List<Triple> bpWhereTriples){
+        Statement statement;
+        Resource subject;
+        Property property;
+        RDFNode object;
+
+
+        int size= analyticQuery.getAggregVariable().keySet().size();
+        Iterator it= analyticQuery.getAggregVariable().entrySet().iterator();
+
+       for (int i=0; i<size; i++) {
+
+           Map.Entry<String, String> aggregartor_var= (Map.Entry)  it.next();
+
+           if (querySolution.get(aggregartor_var.getValue()).isResource()) {
+
+               Node rdfNode = getRdfTypeVariable(bpWhereTriples, aggregartor_var.getValue());
+
+               //subject
+               if (!rdfNode.isBlank())
+                   subject = new ResourceImpl(rdfNode.getName());
+               else
+                   subject = querySolution.get( aggregartor_var.getValue()).asResource();
+
+               //property
+               if (Pattern.compile(Pattern.quote("COUNT"), Pattern.CASE_INSENSITIVE)
+                       .matcher(aggregartor_var.getKey()).find())
+               {
+                   property = new PropertyImpl("http://0.0.0.0/loglinc/numberOf");
+
+               }else
+               {
+                   property = new PropertyImpl("http://0.0.0.0/loglinc/"+aggregartor_var.getKey());
+               }
+
+               //object
+               object = new ResourceImpl("http://www.w3.org/2001/XMLSchema#integer");
+
+               statement = new StatementImpl(subject, property, object);
+
+               model.add(statement);
+           }
+       }
+
+    }
+
+
+
+
 
     /* Returns the rdf:type variable of an instance variable given in input */
     private static Node getRdfTypeVariable(List<Triple> bpWhereTriples, String variable) {
@@ -245,12 +311,21 @@ public class AnalyticQueries {
 
 class AnalyticQuery {
     Query selectQuery;
-    String aggregVariables;
 
-    String getAggregVariable() {
+     private  HashMap<String, String> aggregatorsMap= new HashMap<>();
 
-        aggregVariables = selectQuery.getAggregators().get(0).getAggregator().getExprList().get(0).getVarName();
-        return aggregVariables;
+
+    HashMap<String, String> getAggregVariable() {
+
+        int size= selectQuery.getAggregators().size();
+        for (int i=0; i<size;i++){
+
+            aggregatorsMap.put(selectQuery.getAggregators().get(i).getAggregator().getName(),
+                    selectQuery.getAggregators().get(i).getAggregator().getExprList().get(0).getVarName() );
+
+        }
+
+        return aggregatorsMap;
     }
 
 }

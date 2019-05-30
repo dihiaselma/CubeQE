@@ -125,7 +125,7 @@
                     </div>
                         <div class="box-footer clearfix">
                             <!--<a href="javascript:void(0)" class="btn  bg-red-gradient pull-left">Cancel</a>-->
-                            <a href="http://localhost:8080/mdGraphEnriched.j?uri=${uri.replace("#","__")}" class="btn  btn-default bg-purple-gradient pull-right">Enriched graph</a>
+                            <a href="http://localhost:8022/mdGraphEnriched.j?uri=${uri.replace("#","__")}" class="btn  btn-default bg-purple-gradient pull-right">Enriched graph</a>
                         </div>
                     </div>
 

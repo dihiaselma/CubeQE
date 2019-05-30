@@ -27,7 +27,7 @@ object AnalyticQueriesScala  {
 
     val QueriesList = Source.fromFile(Declarations.paths.get("AnalyticQueriesFile")).getLines
 
-    QueriesList.grouped(20).foreach {
+    QueriesList.grouped(15).foreach {
 
       groupOfLines => {
 

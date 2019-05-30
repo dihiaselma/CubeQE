@@ -1,8 +1,12 @@
 package Services;
 
+import Services.MDPatternDetection.AnalyticalQueriesClasses.AnalyticQueries;
+import Services.MDPatternDetection.GraphConstructionClasses.QueryUpdate;
 import com.github.jsonldjava.shaded.com.google.common.base.Stopwatch;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.utils.URLEncodedUtils;
+import org.apache.jena.query.Query;
+import org.apache.jena.query.QueryFactory;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -25,39 +29,26 @@ public class AppTest {
 
         Stopwatch stopwatch_total = Stopwatch.createStarted();
 
+        String querytest ="PREFIX  rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\t\t\t\n" +
+                "\n" +
+                "SELECT  (MIN(?val) AS ?min) (MAX(?val) AS ?max)\t\n" +
+                "WHERE\t  { ?X0  rdf:type              <http://data.semanticweb.org/ns/swc/ontology#SocialEvent> ;\t" +
+                "         <http://www.w3.org/2002/12/cal/icaltzd#dtend>  ?val\t  }\t\n" +
+                "GROUP BY ?val\t";
+
+        Query query = QueryFactory.create(querytest);
+
+        // System.out.println("== before ==\n" + query);
+
+        QueryUpdate queryUpdate = new QueryUpdate(query);
+
+        Query  constructedQuery = queryUpdate.toConstruct(query);
+
+
+        AnalyticQueries.executeAnalyticQuery(querytest, "http://www.scholarlydata.org/sparql/");
 
 
 
-
-        File file = new File("C:\\Users\\pc\\Desktop\\PFE\\Files\\wikidata\\ProgramOutput\\Fichier_log_dedup_Nettoye_java.txt");
-        String line;
-        ArrayList<String> collection = new ArrayList<String>();
-        BufferedReader br = null;
-        int linesNumbers = 0; // for statistical matters
-        try {
-            if (!file.isFile()) file.createNewFile();
-            br = new BufferedReader(new FileReader(file));
-
-            while ((line = br.readLine()) != null && linesNumbers<10) {
-                System.out.println(line);
-                linesNumbers++;
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                br.close();
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-        /*System.out.println("number of lines in the file  :   "+linesNumbers );*/
-
-
-            stopwatch_total.stop();
-            System.out.println("\nTime elapsed for the whole program is \t" + stopwatch_total.elapsed(MILLISECONDS));
 
 
         }
