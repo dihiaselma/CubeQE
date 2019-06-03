@@ -82,7 +82,7 @@ object ConsolidationParallel {
   def consolidate(): mutable.HashMap[String, Model] = {
 
     println(" consolidation ")
-    toStringModelsHashmap2(unpersistModelsMap(Declarations.paths.get("dataSetAlleviatedUselessProperties")))
+    toStringModelsHashmap2(unpersistModelsMap(Declarations.paths.get("dataSetAlleviatedUselessProperties")), Declarations.paths.get("_toString") )
 
     // val modelHashMap = TdbOperation.unpersistModelsMap(TdbOperation._toString)
     val modelHashMap = TdbOperation.unpersistModelsMap(Declarations.paths.get("_toString"))
@@ -103,11 +103,11 @@ object ConsolidationParallel {
         while (sizeofObjects != newSizeOfObjects) {
           sizeofObjects = newSizeOfObjects
           nodeIterator = model.listObjects()
-          println("je rentre ici")
+         // println("je rentre ici")
           while (nodeIterator.hasNext) {
             val node: RDFNode = nodeIterator.next
             // if node already exists as key (subject) in the map, and its model is not empty
-            println(" je suis dans le while " + node.toString)
+          //  println(" je suis dans le while " + node.toString)
             if (modelsHashMap.contains(node.toString) && !model.containsAll(modelHashMap.get(node.toString)) && !modelsHashMap(node.toString).isEmpty && modelHashMap.get(node.toString).size() < 10) {
               // then consolidate it with the model in question
               model.add(modelsHashMap(node.toString))
@@ -123,7 +123,7 @@ object ConsolidationParallel {
       nodeName => {
         println(nodeName)
         if (modelHashMap.get(nodeName).size() < 10) {
-          println("je rentre")
+         // println("je rentre")
           modelsHashMap -= nodeName
           // modelsHashMap.remove(nodeName)
         }
@@ -172,7 +172,7 @@ object ConsolidationParallel {
     newResults
   }
 
-  def toStringModelsHashmap2(it: Iterator[String]) = {
+  def toStringModelsHashmap2(it: Iterator[String], tdbPath: String) = {
     val iterator = it
     val modelHashMap = new mutable.HashMap[String, Model]
     var modelsFromOneModel = new mutable.HashMap[String, Model]
@@ -200,8 +200,17 @@ object ConsolidationParallel {
           }
 
         }
+
+        for (key2 <- modelsFromOneModel.keySet) {
+
+          if (modelHashMap.get(key2).size>200) {
+            modelHashMap.remove(key2)
+          }
+
+        }
+
         println(s" ------------------------- finish with the group ------------------------------- ")
-        writeInTdb(modelHashMap, Declarations.paths.get("_toString"))
+        writeInTdb(modelHashMap, tdbPath)
         modelHashMap.clear()
     }
     TdbOperation._toString.close()
@@ -325,6 +334,10 @@ object ConsolidationParallel {
 
     JavaConverters.asScalaIterator(dataset.listNames())
   }
+
+
+
+
 
 
 }

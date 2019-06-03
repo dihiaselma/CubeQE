@@ -225,7 +225,7 @@ public class Consolidation {
 
         Iterator it = listInfoNodes.entrySet().iterator();
 
-        System.out.println(" Afichage des résultats \n");
+        System.out.println(" Affichage des résultats \n");
         int i =0;
 
         while (it.hasNext()) {
@@ -235,7 +235,6 @@ public class Consolidation {
             Iterator<Statement> listStatements = pair.getValue().listStatements();
             while (listStatements.hasNext()) {
                 System.out.println(listStatements.next().toString());
-
             }
 
             System.out.println("\n______________________________________________________________________\n");
@@ -247,6 +246,7 @@ public class Consolidation {
         System.out.println(" Afichage des résultats \n");
         int i =0;
 
+        if (listInfoNodes.isEmpty()) System.out.println("liste vide");
         for (Model m: listInfoNodes)
         {
 

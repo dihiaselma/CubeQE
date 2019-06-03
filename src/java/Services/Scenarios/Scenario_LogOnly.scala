@@ -1,6 +1,4 @@
 package Services.Scenarios
-
-import java.util
 /*
 import Services.MDPatternDetection.Alleviation.MDGraphsAlleviation
 import Services.MDPatternDetection.AnnotationClasses.MDGraphAnnotated
@@ -21,22 +19,12 @@ import org.apache.jena.rdf.model.Model
 
 */
 
-import Services.MDPatternDetection.Alleviation.MDGraphsAlleviation
-import Services.MDPatternDetection.AnnotationClasses.MDGraphAnnotated
-import Services.MDPatternDetection.ConsolidationClasses.ConsolidationParallel
-import Services.MDPatternDetection.ConsolidationClasses.ConsolidationParallel._
-import Services.MDPatternDetection.ExecutionClasses.QueryExecutorParallelFuture
-import Services.MDPatternDetection.ExecutionClasses.QueryExecutorParallelFuture.executeQueriesInFile
+
+
 import Services.MDPatternDetection.GraphConstructionClasses.Queries2GraphesParallel
 import Services.MDPatternDetection.GraphConstructionClasses.Queries2GraphesParallel.TransformQueriesInFile
 import Services.MDfromLogQueries.Declarations.Declarations
-import Services.MDfromLogQueries.LogCleaning.QueriesDeduplicator.DeduplicateQueriesInFile
-import Services.MDfromLogQueries.LogCleaning.{LogCleaningOneFile, QueriesDeduplicator}
-import Services.MDfromLogQueries.SPARQLSyntacticalValidation.SyntacticValidationParallel
-import Services.MDfromLogQueries.SPARQLSyntacticalValidation.SyntacticValidationParallel.valideQueriesInFile
-import Services.MDfromLogQueries.Util.{FileOperation, TdbOperation}
-import Services.Statistics.Statistics1
-import org.apache.jena.rdf.model.Model
+import Services.MDfromLogQueries.Util.FileOperation
 
 
 object Scenario_LogOnly extends App{
@@ -44,7 +32,7 @@ object Scenario_LogOnly extends App{
   val endpoint="DogFood"
   val endpointUrl="http://www.scholarlydata.org/sparql/"
   Declarations.setEndpoint(endpoint)
-
+/*
   /** 1. Nettoyage du log **/
   var t_cleaning: Long = System.currentTimeMillis()
   LogCleaningOneFile.writeFiles(Declarations.paths.get("directoryPath"), Declarations.paths.get("cleanedQueriesFile"))
@@ -64,12 +52,15 @@ object Scenario_LogOnly extends App{
   FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePath"), "Syntactical_Validation", (System.currentTimeMillis() - t_syntacticValidation).toInt)
   FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "Syntactical_Validation", SyntacticValidationParallel.queriesNumber )
 
+*/
+
+
   /** 4. Construct MD graphs **/
   var t_connstructMDgraphs: Long = System.currentTimeMillis()
   TransformQueriesInFile(Declarations.paths.get("syntaxValidFile2"))
   FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePath"), "ConstructMSGraphs", (System.currentTimeMillis() -  t_connstructMDgraphs).toInt)
   FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "ConstructMSGraphs_nbQueriesConstructed", Queries2GraphesParallel.queriesNumber)
-
+/*
 
   /** 5. Execution **/
   var t_execution: Long = System.currentTimeMillis()
@@ -132,6 +123,6 @@ object Scenario_LogOnly extends App{
   //statisticsBySubjectList(subjects)
 
   FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePath"), "Statistics", (System.currentTimeMillis() - t_statistics).toInt)
-
+*/
   //TODO ecrire dans un fichier les stat concernant nombre de req ..Etc
 }

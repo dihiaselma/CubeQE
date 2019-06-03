@@ -241,7 +241,7 @@
                                         <td>
                                             <span class="badge bg-light-blue">
                                                  <fmt:formatNumber
-                                                         value="${(queriesNumbersMap.get('Alleviation_nbModels') / queriesNumbersMap.get('Consolidation_nbModelsB4Consolidation'))*100}"
+                                                         value="${( (queriesNumbersMap.get('Consolidation_nbModelsB4Consolidation')- queriesNumbersMap.get('Alleviation_nbModels') )/ queriesNumbersMap.get('Consolidation_nbModelsB4Consolidation'))*100}"
                                                          maxFractionDigits="2"/>
                                             %</span></td>
 

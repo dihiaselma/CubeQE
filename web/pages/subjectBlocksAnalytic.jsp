@@ -62,7 +62,7 @@
 
         <!-- Main content -->
 
-        <%@ include file="beforeGraphs.jsp" %>
+        <%@ include file="blocksAnalytic.jsp" %>
 
         <!-- /.content -->
     </div>

@@ -44,7 +44,7 @@ public class TdbOperation {
         new TdbOperation();
         Declarations.setEndpoint("DogFood");
         //HashMap<String,Model> modelHashMap = unpersistNumberOfModelsMap(dataSetAlleviated,34);
-        HashMap<String, Model> modelHashMap; //unpersistModelsMap(dataSetAnnotated);
+        HashMap<String, Model> modelHashMap= new HashMap<>(); //unpersistModelsMap(dataSetAnnotated);
         /*//System.out.println(Declarations.paths.get("dataSetConsolidated"));
         Iterator<String> kies = modelHashMap.keySet().iterator();
         System.out.println("to string");
@@ -59,18 +59,19 @@ public class TdbOperation {
 
         }*/
 
-        modelHashMap = unpersistModelsMap(dataSetAnnotated);
+        modelHashMap = unpersistModelsMap(Declarations.paths.get("dataSetAnalyticAnnotated"));
         System.out.println("consolides");
         //Consolidation.afficherListInformations(modelHashMap);
-        Statistics1 statistics1 = new Statistics1();
-        HashMap<String, Model> newMap = new HashMap<>();
-        newMap.put("http://purl.org/spar/fabio/ProceedingsPaper", modelHashMap.get("http://purl.org/spar/fabio/ProceedingsPaper"));
-        statistics1.stat2(newMap);
+        //Statistics1 statistics1 = new Statistics1();
+        //HashMap<String, Model> newMap = new HashMap<>();
+        //newMap.put("http://purl.org/spar/fabio/ProceedingsPaper", modelHashMap.get("http://purl.org/spar/fabio/ProceedingsPaper"));
+        //statistics1.stat2(newMap);
 
          /*modelHashMap = unpersistModelsMap(_toString);
-        System.out.println("consolides");
+        System.out.println("consolides");*/
         Consolidation.afficherListInformations(modelHashMap);
-*/
+
+
     }
 
     public TdbOperation() {
