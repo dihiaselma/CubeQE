@@ -1,9 +1,7 @@
 package Services.MDPatternDetection.AnalyticalQueriesClasses
 
 import java.util
-import java.util.{ArrayList, HashMap}
 
-import Services.MDPatternDetection.AnalyticalQueriesClasses.AnalyticQueries
 import Services.MDPatternDetection.AnnotationClasses.MDGraphAnnotated
 import Services.MDPatternDetection.ConsolidationClasses.ConsolidationParallel
 import Services.MDfromLogQueries.Declarations.Declarations
@@ -29,7 +27,7 @@ object AnalyticQueriesScala  {
 
     val QueriesList = Source.fromFile(Declarations.paths.get("AnalyticQueriesFile")).getLines
 
-    QueriesList.grouped(20).foreach {
+    QueriesList.grouped(15).foreach {
 
       groupOfLines => {
 

@@ -85,7 +85,7 @@ public class QueryExecutor {
 
                 int num = 0;
                 Query query;
-                System.out.println("\nL'execution des requetes \n");
+                //System.out.println("\nL'execution des requetes \n");
 
                 for (String queryStr : allLines) {
                     num++;
@@ -172,8 +172,8 @@ public class QueryExecutor {
            QueryExecution qexec = QueryExecutionFactory.sparqlService(endpoint, query);
             //QueryExecution qexec = QueryExecutionFactory.createServiceRequest(endpoint, query);
             qexec.setTimeout(30, TimeUnit.SECONDS,60, TimeUnit.SECONDS);
-            System.out.println("execution");
-            System.out.println(query.toString().replace("\n"," "));
+           // System.out.println("execution");
+            //System.out.println(query.toString().replace("\n"," "));
             results = qexec.execSelect();
         }
         catch (Exception e){

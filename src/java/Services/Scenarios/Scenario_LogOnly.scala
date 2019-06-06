@@ -1,6 +1,25 @@
 package Services.Scenarios
 
 import java.util
+/*
+import Services.MDPatternDetection.Alleviation.MDGraphsAlleviation
+import Services.MDPatternDetection.AnnotationClasses.MDGraphAnnotated
+import Services.MDPatternDetection.ConsolidationClasses.ConsolidationParallel
+import Services.MDPatternDetection.ConsolidationClasses.ConsolidationParallel._
+import Services.MDPatternDetection.ExecutionClasses.QueryExecutorParallelFuture
+import Services.MDPatternDetection.ExecutionClasses.QueryExecutorParallelFuture.executeQueriesInFile
+import Services.MDPatternDetection.GraphConstructionClasses.Queries2GraphesParallel
+import Services.MDPatternDetection.GraphConstructionClasses.Queries2GraphesParallel.TransformQueriesInFile
+import Services.MDfromLogQueries.Declarations.Declarations
+import Services.MDfromLogQueries.LogCleaning.{LogCleaningOneFile, QueriesDeduplicator}
+import Services.MDfromLogQueries.LogCleaning.QueriesDeduplicator.DeduplicateQueriesInFile
+import Services.MDfromLogQueries.SPARQLSyntacticalValidation.SyntacticValidationParallel
+import Services.MDfromLogQueries.SPARQLSyntacticalValidation.SyntacticValidationParallel.valideQueriesInFile
+import Services.MDfromLogQueries.Util.{FileOperation, TdbOperation}
+import Services.Statistics.Statistics1
+import org.apache.jena.rdf.model.Model
+
+*/
 
 import Services.MDPatternDetection.Alleviation.MDGraphsAlleviation
 import Services.MDPatternDetection.AnnotationClasses.MDGraphAnnotated
@@ -20,14 +39,11 @@ import Services.Statistics.Statistics1
 import org.apache.jena.rdf.model.Model
 
 
-
-
 object Scenario_LogOnly extends App{
 
   val endpoint="DogFood"
   val endpointUrl="http://www.scholarlydata.org/sparql/"
   Declarations.setEndpoint(endpoint)
-
 
   /** 1. Nettoyage du log **/
   var t_cleaning: Long = System.currentTimeMillis()
@@ -35,7 +51,7 @@ object Scenario_LogOnly extends App{
   FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePath"), "Log_Cleaning", (System.currentTimeMillis() - t_cleaning).toInt)
   FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "Log_Cleaning_nbLines", LogCleaningOneFile.nbLines)
   FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "Log_Cleaning_nbQueries", LogCleaningOneFile.queriesNumber)
-/*
+
   /** 2. Deduplication **/
   var t_dedup: Long = System.currentTimeMillis()
   DeduplicateQueriesInFile(Declarations.paths.get("cleanedQueriesFile"))
@@ -104,13 +120,13 @@ object Scenario_LogOnly extends App{
   writeInTdb(convertToScalaMap(modelsAnnotated), Declarations.paths.get("dataSetAnnotated"))
   FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePath"), "Annotation", (System.currentTimeMillis() - t_annotation).toInt)
 
-  */
+
   /** 10. Statistique **/
   println("***********************Statistiques******************")
   var t_statistics: Long = System.currentTimeMillis()
   var statistics : Statistics1 = new Statistics1
   val stat = statistics.stat2(TdbOperation.unpersistModelsMap(Declarations.paths.get("dataSetAnnotated")))
-  println( Declarations.paths.get("statisticsFileYAML"))
+
   Statistics1.writeAllStatsInYAML(stat, Declarations.paths.get("statisticsFileYAML"), Declarations.paths.get("statisticsByTypeFile"))
 
   //statisticsBySubjectList(subjects)

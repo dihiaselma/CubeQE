@@ -2,13 +2,12 @@ package Services.Scenarios
 
 import java.util
 
-import Services.MDPatternDetection.EnrichmentClasses.EnrichParallel.enrichMDSchema
-import Services.MDfromLogQueries.Util.{FileOperation, ModelUtil, TdbOperation}
-import Services.Statistics.Statistics1
 import Services.MDPatternDetection.AnnotationClasses.MDGraphAnnotated
 import Services.MDPatternDetection.ConsolidationClasses.ConsolidationParallel._
+import Services.MDPatternDetection.EnrichmentClasses.EnrichParallel.enrichMDSchema
 import Services.MDfromLogQueries.Declarations.Declarations
-import Services.MDfromLogQueries.Util.{FileOperation, TdbOperation}
+import Services.MDfromLogQueries.Util.{FileOperation, ModelUtil, TdbOperation}
+import Services.Statistics.Statistics1
 import org.apache.jena.rdf.model.Model
 
 object Scenario_Enrichment extends App{

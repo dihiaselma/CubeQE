@@ -242,7 +242,26 @@ public class Consolidation {
 
         }
     }
+    public static void afficherListInformationsSet(HashSet< Model> listInfoNodes) {
 
+        System.out.println(" Afichage des résultats \n");
+        int i =0;
+
+        for (Model m: listInfoNodes)
+        {
+
+            System.out.println(" Subject "+i+" : \t\t " + m.listSubjects().nextResource().toString() + "\n");
+
+            Iterator<Statement> listStatements = m.listStatements();
+            while (listStatements.hasNext()) {
+                System.out.println(listStatements.next().toString());
+
+            }
+
+            System.out.println("\n______________________________________________________________________\n");
+
+        }
+    }
 
 
 

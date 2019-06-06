@@ -105,7 +105,7 @@ public class Constants2 {
             for (Path p : filesInFolder) {
                 OntModel ontology = ModelFactory.createOntologyModel();
                 String chemin = p.toString();
-                //System.out.println("Vous avez saisi l'url: " + chemin);
+                System.out.println("Vous avez saisi l'url: " + chemin);
                 OntologyFactory.readOntology(chemin, ontology);
                 addPropertiesToList(ontology);
             }
