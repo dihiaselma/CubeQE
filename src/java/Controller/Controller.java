@@ -39,17 +39,17 @@ public class Controller {
         statDescriptions.put("NBC", "Number of base classes (dimension hierarchy levels ) of the star S.");
 
 
-        statDescriptions.put("NAFC", "Number of Fact Attributes attributes of the fact class of the star S.");
-        statDescriptions.put("NADC", "Number of Dimension and Dimension Attributes of the dimension classes of the star S.");
-        statDescriptions.put("NABC", "Number of  Dimension and Dimension Attributes of the base classes of the star.");
+        statDescriptions.put("NAFC", "Number of Fact Attributes of the fact class of the star S.");
+        statDescriptions.put("NADC", "Number of Dimension Attributes of the dimension classes of the star S.");
+        statDescriptions.put("NABC", "Number of Dimension Attributes of the base classes of the star.");
 
         statDescriptions.put("NH", "Number of hierarchy relationships of the star S.");
-        statDescriptions.put("NA", "Total number of Fact Attributes, Dimensions and Dimension attributes of the star S.");
+        statDescriptions.put("NA", "Total number of Fact Attributes and Dimension attributes of the star S.");
 
         statDescriptions.put("DHP", "Maximum depth of the hierarchy relationships of the star S.");
 
         statDescriptions.put("RBC", "Ratio of base classes. Number of base classes per dimension class of the star S.");
-        statDescriptions.put("RSA", "Ratio of attributes of the star S. (Number of attributes Fact Attributes) / ( number of Dimension + Dimension attributes).");
+        statDescriptions.put("RSA", "Ratio of attributes of the star S. (Number of attributes Fact Attributes) / ( number of Dimension attributes).");
 
 
         statDescriptions.put("NMH", "Number of multiple hierarchies in the schema.");

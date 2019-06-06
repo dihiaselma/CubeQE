@@ -59,18 +59,19 @@ public class TdbOperation {
 
         }*/
 
-        modelHashMap = unpersistModelsMap(dataSetAnnotated);
+        modelHashMap = unpersistModelsMap(dataSetEnrichedAnnotated);
         System.out.println("consolides");
         //Consolidation.afficherListInformations(modelHashMap);
         Statistics1 statistics1 = new Statistics1();
-        HashMap<String, Model> newMap = new HashMap<>();
+       /* HashMap<String, Model> newMap = new HashMap<>();
         newMap.put("http://purl.org/spar/fabio/ProceedingsPaper", modelHashMap.get("http://purl.org/spar/fabio/ProceedingsPaper"));
-        statistics1.stat2(newMap);
+        statistics1.stat2(newMap);*/
 
          /*modelHashMap = unpersistModelsMap(_toString);
-        System.out.println("consolides");
-        Consolidation.afficherListInformations(modelHashMap);
-*/
+        System.out.println("consolides");*/
+        //Consolidation.afficherListInformations(modelHashMap);
+        System.out.println(dataSetEnrichedAnnotated.getNamedModel("http://data.semanticweb.org/ns/swc/ontology#WorkshopEvent"));
+
     }
 
     public TdbOperation() {
