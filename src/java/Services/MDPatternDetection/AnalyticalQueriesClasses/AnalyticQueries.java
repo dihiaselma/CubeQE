@@ -115,10 +115,10 @@ public class AnalyticQueries {
         // Getting construct BasicPattern to use it to construct the Graph Pattern
         BasicPattern bpConstruct = queryUpdate.getQueryConstruction().getBpConstruct();
 
-        System.out.println(" \nbp construct " +bpConstruct);
+       // System.out.println(" \nbp construct " +bpConstruct);
 
         List<Triple> bpWhereTriples = queryUpdate.getQueryConstruction().getBpWhere().getList();
-        System.out.println(" \nbpWhere "+bpWhereTriples);
+       // System.out.println(" \nbpWhere "+bpWhereTriples);
 
         analyticQuery.selectQuery = query;
 
@@ -132,7 +132,7 @@ public class AnalyticQueries {
         //System.out.println(" je suis avant l'execution ");
 
 
-        System.out.println("** query to execute  "+query);
+        //System.out.println("** query to execute  "+query);
 
         resultSet = queryExecutor.executeQuerySelect(query, endpoint);
 

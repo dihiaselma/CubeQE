@@ -78,15 +78,16 @@ public class Constants2 {
     }
 
     public static void main(String[] args) {
+        Declarations.setEndpoint("DogFood");
         new Constants2();
-        initDefaultProperties();
+        /*initDefaultProperties();
         for (OntProperty ontProperty : otherProperties) {
             try {
                 System.out.println("the range : " + ontProperty.getRange());
             } catch (Exception e) {
                 System.out.println("erreur");
             }
-        }
+        }*/
 
     }
 
@@ -105,7 +106,7 @@ public class Constants2 {
             for (Path p : filesInFolder) {
                 OntModel ontology = ModelFactory.createOntologyModel();
                 String chemin = p.toString();
-                System.out.println("Vous avez saisi l'url: " + chemin);
+                //System.out.println("Vous avez saisi l'url: " + chemin);
                 OntologyFactory.readOntology(chemin, ontology);
                 addPropertiesToList(ontology);
             }

@@ -1,17 +1,19 @@
 package Services.Scenarios
 
-import Services.MDPatternDetection.AnalyticalQueriesClasses.AnalyticQueriesScala
+import Services.MDPatternDetection.AnalyticalQueriesClasses.{AnalyticQueries, AnalyticQueriesScala}
+import Services.MDPatternDetection.ConsolidationClasses.ConsolidationParallel
 import Services.MDfromLogQueries.Declarations.Declarations
 import Services.MDfromLogQueries.Util.{FileOperation, TdbOperation}
 import Services.Statistics.Statistics1
+import ConsolidationParallel.unpersistModelsMap
+import java.util
 
 
 object Scenario_Analytic extends App{
 
-  var endpoint = "http://www.scholarlydata.org/sparql/"
+  var endpoint = "https://dbpedia.org/sparql"
   var t_analytic: Long = System.currentTimeMillis()
-  Declarations.setEndpoint("DogFood")
-/*
+  Declarations.setEndpoint("dbPedia")
   /** 1. Extraction des requêtes analytiques du fichier SyntaxValid */
   var t_extraction: Long = System.currentTimeMillis()
   val queryList = FileOperation.ReadFile(Declarations.paths.get("syntaxValidFile2")).asInstanceOf[util.ArrayList[String]]
@@ -33,7 +35,7 @@ object Scenario_Analytic extends App{
   ConsolidationParallel.toStringModelsHashmap2(
     unpersistModelsMap(Declarations.paths.get("dataSetAnalytic")), Declarations.paths.get("_toStringAnalytic"))
   FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePath"), "Analytic_consolidation", (System.currentTimeMillis() - t_consolidation).toInt)
-  */
+
 
   /** 4. Annotation des requêtes analytiques */
   var t_annotation : Long = System.currentTimeMillis()
