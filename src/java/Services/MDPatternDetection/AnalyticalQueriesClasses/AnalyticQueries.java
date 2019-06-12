@@ -103,6 +103,7 @@ public class AnalyticQueries {
     }
 
     public static HashSet<Model> executeAnalyticQuery(String queryStr,String endpoint) {
+
         QueryExecutor queryExecutor = new QueryExecutor();
         HashSet<Model> modelHashSet = new HashSet<>();
         AnalyticQuery analyticQuery = new AnalyticQuery();
@@ -114,7 +115,10 @@ public class AnalyticQueries {
         // Getting construct BasicPattern to use it to construct the Graph Pattern
         BasicPattern bpConstruct = queryUpdate.getQueryConstruction().getBpConstruct();
 
+        System.out.println(" \nbp construct " +bpConstruct);
+
         List<Triple> bpWhereTriples = queryUpdate.getQueryConstruction().getBpWhere().getList();
+        System.out.println(" \nbpWhere "+bpWhereTriples);
 
         analyticQuery.selectQuery = query;
 
@@ -125,9 +129,16 @@ public class AnalyticQueries {
 
         ResultSet resultSet;
 
-        System.out.println(" je suis avant l'execution ");
+        //System.out.println(" je suis avant l'execution ");
+
+
+        System.out.println("** query to execute  "+query);
+
         resultSet = queryExecutor.executeQuerySelect(query, endpoint);
+
+
         if (resultSet==null) System.out.println("null ");
+     //   if (!resultSet.hasNext()) System.out.println("empty");
 
         modelHashSet.addAll(constructModels(resultSet, bpConstruct, analyticQuery, bpWhereTriples));
         return modelHashSet;
@@ -147,12 +158,10 @@ public class AnalyticQueries {
         Resource subject;
         Property property;
         RDFNode object;
-        System.out.println("je suis da le debut de la fct construct models");
-        if (resultSet!= null) {
+       if (resultSet!= null) {
 
             while (resultSet.hasNext()) {
 
-                System.out.println(" je suis dans le while de construct models");
 
                 model = ModelFactory.createDefaultModel();
                 querySolution = resultSet.next();
@@ -192,7 +201,7 @@ public class AnalyticQueries {
                 modelHashSet.add(model);
             }
         }
-        Consolidation.afficherListInformationsSet(modelHashSet);
+     //   Consolidation.afficherListInformationsSet(modelHashSet);
         return modelHashSet;
     }
 

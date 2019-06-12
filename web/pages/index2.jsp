@@ -102,12 +102,12 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Accueil
+                Home
                 <small>Version 1.0</small>
             </h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
-                <li class="active">Accueil</li>
+                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+
             </ol>
         </section>
 
@@ -122,7 +122,7 @@
 
                     <div class="form-group">
                         <form method="post" action="cleaning.j">
-                            <label>Choisissez le log sur lequel vous souhaitez tester</label>
+                            <label>Choose the log to test on</label>
                             <select  class="form-control select2"  size="1" style="width: 100%;" name="endpoint" id="endpoint">
                                 <option selected="selected" value="dbPedia">Dbpedia</option>
                                 <option value="wikidata">Wikidata</option>

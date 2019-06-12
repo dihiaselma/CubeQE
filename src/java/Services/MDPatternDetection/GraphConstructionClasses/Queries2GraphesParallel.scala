@@ -40,6 +40,7 @@ object Queries2GraphesParallel   {
                 query.setQuerySelectType();
               val queryUpdate = new QueryUpdate(query)
               constructedQuery = queryUpdate.toConstruct(query)
+
               /* Some meaning if there is a result != null */
               Some(constructedQuery)
               //  Some(query)
@@ -58,7 +59,10 @@ object Queries2GraphesParallel   {
 
         println("--------------------- un group finished ---------------------------------- ")
 
-        val constructedQueries: ParSeq[Query]= treatedGroupOfLines.collect { case Some(x) => x }
+        val constructedQueries: ParSeq[Query]= treatedGroupOfLines.collect { case Some(x) =>{
+          queriesNumber+=1
+          x
+        }  }
         writeInFile(Declarations.paths.get("constructQueriesFile2"), constructedQueries )
 
         }
@@ -73,7 +77,7 @@ object Queries2GraphesParallel   {
     val writer = new PrintWriter(new FileOutputStream(new File(destinationFilePath), true))
 
     queries.foreach(query => {
-      queriesNumber+=1
+
       writer.write(query.toString().replaceAll("[\n\r]", "\t") + "\n")
     })
 

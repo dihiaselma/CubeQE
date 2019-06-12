@@ -60,7 +60,7 @@ object AnalyticQueriesScala  {
     new Constants2
     new TdbOperation
     var modelHashMap = new util.HashMap[String,Model]
-    modelHashMap = TdbOperation.unpersistModelsMap(TdbOperation.dataSetAnalytic)
+    modelHashMap = TdbOperation.unpersistModelsMap(Declarations.paths.get("_toStringAnalytic"))
     var modelHashMapAnnotated = new util.HashMap[String, Model]
     if (modelHashMap != null) modelHashMapAnnotated = MDGraphAnnotated.constructMDGraphs(modelHashMap)
     writeInTdb(ConsolidationParallel.convertToScalaMap(modelHashMapAnnotated),TdbOperation.dataSetAnalyticAnnotated)

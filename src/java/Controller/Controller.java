@@ -170,6 +170,7 @@ public class Controller {
         model.addAttribute("erreur", erreur);
         return "MDGraph";
     }
+
     @RequestMapping("/mdGraphEnriched")
     public String pageTreeEnriched(Model model, @RequestParam String uri) {
 
@@ -301,7 +302,7 @@ public class Controller {
 
         int i = 1;
 
-        while (it.hasNext()) {
+        while (it.hasNext()&& i<30) {
             String key = it.next();
             org.apache.jena.rdf.model.Model modelRDF = TdbOperation.dataSetAnalyticAnnotated.getNamedModel(key);
             JSONObject jsonObject = new JSONObject();
@@ -341,7 +342,10 @@ public class Controller {
 
         org.apache.jena.rdf.model.Model graphModel = TdbOperation.dataSetAnalyticAnnotated.getNamedModel(uri);
 
-        if (graphModel.size() < 200) jsonArray.add(ModelUtil.modelToJSON(graphModel, graphModel.listSubjects().next().getURI()));
+
+        System.out.println(graphModel.toString());
+
+        if (graphModel.size() < 200) jsonArray.add(ModelUtil.modelToJSON(graphModel, uri));
 
         System.out.println(jsonArray.toJSONString());
         String erreur = "";

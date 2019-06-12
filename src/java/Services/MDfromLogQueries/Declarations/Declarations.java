@@ -90,6 +90,7 @@ public class Declarations {
         paths.put("dataSetConsolidated", rootTdb + "dataSetConsolidated");
         paths.put("dataSetAnnotated", rootTdb + "dataSetAnnotated");
         paths.put("_toString", rootTdb + "_toString");
+        paths.put("_toStringAnalytic", rootTdb + "_toStringAnalytic");
         paths.put("dataSetAnalytic", rootTdb + "dataSetAnalytic");
         paths.put("dataSetAnalyticAnnotated", rootTdb + "dataSetAnalyticAnnotated");
         paths.put("dataSetAlleviated", rootTdb + "dataSetAlleviated");
