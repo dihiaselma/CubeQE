@@ -17,6 +17,13 @@ public class GenericClasses {
         resources.add(OWL.Thing);
         resources.add(RDFS.Resource);
         resources.add(RDFS.Class);
+        resources.add(OWL.DatatypeProperty);
+        resources.add(OWL.ObjectProperty);
+        resources.add(RDF.Property);
+        resources.add(RDFS.subPropertyOf);
+        resources.add(OWL.AnnotationProperty);
+        resources.add(OWL.inverseOf);
+
     }
 
 }
