@@ -8,6 +8,7 @@
   import org.apache.jena.rdf.model._
   import org.apache.jena.tdb.{TDB, TDBFactory}
 
+  import scala.collection.parallel.ParMap
   import scala.collection.{JavaConverters, mutable}
 
   object ConsolidationParallel {
@@ -139,33 +140,36 @@
       println(" consolidation ")
       //toStringModelsHashmap2(unpersistModelsMap(Declarations.paths.get("dataSetAlleviatedUselessProperties")), Declarations.paths.get("_toString") )
       /** use an iterator not to load the models into memory **/
-      val iterator = unpersistModelsMap(Declarations.paths.get("_toString"))
+      var iterator = unpersistModelsMap(Declarations.paths.get("_toString"))
       /** use a list to verify if the node exists as a subject **/
       val listOfModels = iterator.toList
       /** open tdb to lod models directly from it **/
       val dataset_toString = TDBFactory.createDataset(Declarations.paths.get("_toString"))
 
       /** Hashmap to persist consolidated models **/
-      val modelHashMap = new mutable.HashMap[String, Model]()
+      var modelHashMap : ParMap[String,Model] = null
 
       var nb = 0
 
-      var nodeIterator: NodeIterator = null
+    //  var listOfObjects : util.List[RDFNode] = null
       val consolidatedNodes: mutable.HashSet[String] = new mutable.HashSet[String]()
-      iterator.grouped(50000).foreach {
+      iterator = listOfModels.iterator
+      iterator.grouped(10000).foreach {
         listOfKies =>
-          listOfKies.foreach {
+          val resultingModels = listOfKies.par.map {
             key => {
               nb += 1
               println(s"la consolidation numero : $nb")
+              var nodeIterator: util.Iterator[RDFNode] = null
               val model = getModelFromTDB(key, dataset_toString)
-              nodeIterator = model.listObjects
-              var newSizeOfObjects = 0
-              var sizeofObjects = nodeIterator.toList.size()
+              var listOfObjects = model.listObjects().toList
+              var newSizeOfObjects = listOfObjects.size()
+              var sizeofObjects = 0
               // for all nodes in modelsHashMap
               while (sizeofObjects != newSizeOfObjects && newSizeOfObjects <= 200) {
+                println("size of objects : "+ sizeofObjects + "size of new objects : "+ newSizeOfObjects)
                 sizeofObjects = newSizeOfObjects
-                nodeIterator = model.listObjects()
+                nodeIterator = listOfObjects.iterator()
 
                 while (nodeIterator.hasNext) {
                   val node: RDFNode = nodeIterator.next
@@ -180,23 +184,26 @@
                     }
                   }
                 }
-                newSizeOfObjects = model.listObjects().toList.size()
+                listOfObjects = model.listObjects().toList
+                newSizeOfObjects = listOfObjects.size()
               }
-              modelHashMap.put(key,model)
+              (key,model)
+              //modelHashMap.put(key,model)
             }
           }
 
           consolidatedNodes.foreach{
             nodeName => {
+              modelHashMap = resultingModels.toMap
               if (modelHashMap.contains(nodeName))
-                modelHashMap.remove(nodeName)
+                modelHashMap = modelHashMap.-(nodeName)
               }
           }
 
           println(s" ------------------------- finish with the group ------------------------------- ")
           modelsNumber += modelHashMap.size
           writeInTdb(modelHashMap, tdbPath)
-          modelHashMap.clear()
+          modelHashMap.init
       }
 
     }
@@ -401,6 +408,27 @@
 
       JavaConverters.asScalaIterator(dataset.listNames())
     }
+    def writeInTdb(models: ParMap[String, Model], datasetName: String) = {
 
+      println(" nombres des models pour persisting " + models.size)
+      val dataset = TDBFactory.createDataset(datasetName)
+      models.foreach(m => {
+        try {
+          if (m != null) {
+            if (dataset.containsNamedModel(m._1)) {
+              val model = dataset.getNamedModel(m._1).union(m._2)
+              dataset.replaceNamedModel(m._1, model)
+            }
+            else
+              dataset.addNamedModel(m._1, m._2)
+          }
+        }
+        catch {
+          case ex: Exception => ex.printStackTrace()
+        }
+      })
+      TDB.sync(dataset)
+      dataset.close()
+    }
 
   }

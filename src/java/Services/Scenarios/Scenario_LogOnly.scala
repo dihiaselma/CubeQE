@@ -21,6 +21,9 @@ import org.apache.jena.rdf.model.Model
 
 
 
+import Services.MDPatternDetection.ConsolidationClasses.ConsolidationParallel
+import Services.MDPatternDetection.ConsolidationClasses.ConsolidationParallel._
+import Services.MDPatternDetection.ExecutionClasses.QueryExecutorParallelFuture
 import Services.MDPatternDetection.GraphConstructionClasses.Queries2GraphesParallel
 import Services.MDPatternDetection.GraphConstructionClasses.Queries2GraphesParallel.TransformQueriesInFile
 import Services.MDfromLogQueries.Declarations.Declarations
@@ -29,7 +32,7 @@ import Services.MDfromLogQueries.Util.FileOperation
 
 object Scenario_LogOnly extends App{
 
-  val endpoint="DogFood"
+  val endpoint="dbPedia"
   val endpointUrl="http://www.scholarlydata.org/sparql/"
   Declarations.setEndpoint(endpoint)
 /*
@@ -52,7 +55,7 @@ object Scenario_LogOnly extends App{
   FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePath"), "Syntactical_Validation", (System.currentTimeMillis() - t_syntacticValidation).toInt)
   FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "Syntactical_Validation", SyntacticValidationParallel.queriesNumber )
 
-*/
+
 
 
   /** 4. Construct MD graphs **/
@@ -60,7 +63,7 @@ object Scenario_LogOnly extends App{
   TransformQueriesInFile(Declarations.paths.get("syntaxValidFile2"))
   FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePath"), "ConstructMSGraphs", (System.currentTimeMillis() -  t_connstructMDgraphs).toInt)
   FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "ConstructMSGraphs_nbQueriesConstructed", Queries2GraphesParallel.queriesNumber)
-/*
+
 
   /** 5. Execution **/
   var t_execution: Long = System.currentTimeMillis()
@@ -79,16 +82,17 @@ object Scenario_LogOnly extends App{
   FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePath"), "Alleviation_UselessProperties", (System.currentTimeMillis() - t_alleviation1).toInt)
   FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "Alleviation_nbStatementsRemoved", MDGraphsAlleviation.numberStatementRemoved)
 
-
+  */
   /** 7. Consolidation **/
   println("***********************Consolidation******************")
   var t_consolidation: Long = System.currentTimeMillis()
   //writeInTdb(consolidate(), TdbOperation.dataSetConsolidate)
-  writeInTdb(consolidate(), Declarations.paths.get("dataSetConsolidated"))
+  //writeInTdb(consolidate(), Declarations.paths.get("dataSetConsolidated"))
+  consolidateParallel(Declarations.paths.get("dataSetConsolidated"))
   FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePath"), "Consolidation", (System.currentTimeMillis() - t_consolidation).toInt)
   FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "Consolidation_nbModelsB4Consolidation", ConsolidationParallel.originalModelsNumber)
   FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "Consolidation_nbModels", ConsolidationParallel.modelsNumber) // after consolidation
-
+/*
 
   /** 8. Alleviation 2  (Small graph removement) **/
   println("***********************Alleviation 2******************")
