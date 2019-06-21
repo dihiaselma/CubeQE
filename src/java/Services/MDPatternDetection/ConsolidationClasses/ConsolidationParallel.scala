@@ -147,30 +147,28 @@
       val dataset_toString = TDBFactory.createDataset(Declarations.paths.get("_toString"))
 
       /** Hashmap to persist consolidated models **/
-      var modelHashMap : ParMap[String,Model] = null
+      val modelHashMap = new mutable.HashMap[String, Model]()
 
       var nb = 0
 
-    //  var listOfObjects : util.List[RDFNode] = null
+      var listOfObjects : util.List[RDFNode] = null
+      var nodeIterator: util.Iterator[RDFNode] = null
       val consolidatedNodes: mutable.HashSet[String] = new mutable.HashSet[String]()
       iterator = listOfModels.iterator
-      iterator.grouped(10000).foreach {
+      iterator.grouped(50000).foreach {
         listOfKies =>
-          val resultingModels = listOfKies.par.map {
+          listOfKies.foreach {
             key => {
               nb += 1
               println(s"la consolidation numero : $nb")
-              var nodeIterator: util.Iterator[RDFNode] = null
               val model = getModelFromTDB(key, dataset_toString)
-              var listOfObjects = model.listObjects().toList
-              var newSizeOfObjects = listOfObjects.size()
-              var sizeofObjects = 0
+              listOfObjects = model.listObjects().toList
+              var newSizeOfObjects = 0
+              var sizeofObjects = listOfObjects.size()
               // for all nodes in modelsHashMap
               while (sizeofObjects != newSizeOfObjects && newSizeOfObjects <= 200) {
-                println("size of objects : "+ sizeofObjects + "size of new objects : "+ newSizeOfObjects)
                 sizeofObjects = newSizeOfObjects
                 nodeIterator = listOfObjects.iterator()
-
                 while (nodeIterator.hasNext) {
                   val node: RDFNode = nodeIterator.next
                   // if node already exists as key (subject) in the map, and its model is not empty
@@ -187,23 +185,21 @@
                 listOfObjects = model.listObjects().toList
                 newSizeOfObjects = listOfObjects.size()
               }
-              (key,model)
-              //modelHashMap.put(key,model)
+              modelHashMap.put(key,model)
             }
           }
 
           consolidatedNodes.foreach{
             nodeName => {
-              modelHashMap = resultingModels.toMap
               if (modelHashMap.contains(nodeName))
-                modelHashMap = modelHashMap.-(nodeName)
-              }
+                modelHashMap.remove(nodeName)
+            }
           }
 
           println(s" ------------------------- finish with the group ------------------------------- ")
           modelsNumber += modelHashMap.size
           writeInTdb(modelHashMap, tdbPath)
-          modelHashMap.init
+          modelHashMap.clear()
       }
 
     }
