@@ -19,7 +19,7 @@
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 2 | Dashboard</title>
+    <title>LogLinc | Log Cleaning</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
@@ -61,12 +61,12 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Home
+                Log Cleaning
                 <small>Version 1.0</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li class="active">Home</li>
+                <li class="active">Log Cleaning</li>
             </ol>
         </section>
 
@@ -114,7 +114,7 @@
                                         </td>
                                         <td><span class="badge bg-red">
                                                 <fmt:formatNumber
-                                                        value=" ${(queriesNumbersMap.get('Log_Cleaning_nbQueries')/queriesNumbersMap.get('Log_Cleaning_nbLines'))*100}"
+                                                        value="${((queriesNumbersMap.get('Log_Cleaning_nbLines')-queriesNumbersMap.get('Log_Cleaning_nbQueries'))/queriesNumbersMap.get('Log_Cleaning_nbLines'))*100}"
                                                         maxFractionDigits="2"/>
                                             %</span></td>
                                     </tr>
@@ -129,7 +129,7 @@
                                         <td><span class="badge bg-yellow">
 
                                                    <fmt:formatNumber
-                                                           value="${(queriesNumbersMap.get('Deduplication')/queriesNumbersMap.get('Log_Cleaning_nbQueries'))*100}"
+                                                           value="${((queriesNumbersMap.get('Log_Cleaning_nbQueries')-queriesNumbersMap.get('Deduplication'))/queriesNumbersMap.get('Log_Cleaning_nbQueries'))*100}"
                                                            maxFractionDigits="2"/>
 
                                             %</span></td>
@@ -145,7 +145,7 @@
                                         </td>
                                         <td><span class="badge bg-light-blue">
                                                    <fmt:formatNumber
-                                                           value="${(queriesNumbersMap.get('Syntactical_Validation')/ queriesNumbersMap.get('Deduplication'))*100} "
+                                                           value="${((queriesNumbersMap.get('Deduplication')-queriesNumbersMap.get('Syntactical_Validation'))/ queriesNumbersMap.get('Deduplication'))*100} "
                                                            maxFractionDigits="2"/>
                                             %</span></td>
                                     </tr>
@@ -160,7 +160,7 @@
                             <!--<a href="javascript:void(0)" class="btn  bg-red-gradient pull-left">Cancel</a>-->
                             <a href="analyticScenario.j" class="btn  btn-default bg-aqua-gradient pull-left">Scenario 1 :
                                 Explore Analytic queries</a>
-                            <a href="execution.j" class="btn  btn-default bg-purple-gradient pull-right">Scneario 2 :
+                            <a href="execution.j" class="btn  btn-default bg-purple-gradient pull-right">Scenario 2 :
                                 Construct MD graphs</a>
                         </div>
                         <!-- /.box-footer -->

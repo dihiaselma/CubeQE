@@ -17,5 +17,11 @@ public class BasicProperties {
         properties.add(RDFS.subClassOf);
         properties.add(OWL.equivalentClass);
         properties.add(OWL.sameAs);
+        properties.add(OWL.inverseOf);
+        properties.add(RDFS.subPropertyOf);
+        properties.add(RDFS.range);
+        properties.add(RDFS.domain);
+        properties.add(RDFS.comment);
+        properties.add(OWL.hasValue);
     }
 }

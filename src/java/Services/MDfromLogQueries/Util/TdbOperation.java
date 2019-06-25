@@ -52,9 +52,9 @@ public class TdbOperation {
 
     public static void main(String... argv) {
         new TdbOperation();
-        Declarations.setEndpoint("DogFood");
+        Declarations.setEndpoint("dbPedia");
         //HashMap<String,Model> modelHashMap = unpersistNumberOfModelsMap(dataSetAlleviated,34);
-        HashMap<String, Model> modelHashMap= new HashMap<>(); //unpersistModelsMap(dataSetAnnotated);
+        HashMap<String, Model> modelHashMap; //unpersistModelsMap(dataSetAnnotated);
         /*//System.out.println(Declarations.paths.get("dataSetConsolidated"));
         Iterator<String> kies = modelHashMap.keySet().iterator();
         System.out.println("to string");
@@ -69,19 +69,32 @@ public class TdbOperation {
 
         }*/
 
-        modelHashMap = unpersistModelsMap(Declarations.paths.get("dataSetAnalyticAnnotated"));
+       /* modelHashMap = unpersistModelsMap(dataSetEnrichedAnnotated);
         System.out.println("consolides");
         //Consolidation.afficherListInformations(modelHashMap);
-        //Statistics1 statistics1 = new Statistics1();
-        //HashMap<String, Model> newMap = new HashMap<>();
-        //newMap.put("http://purl.org/spar/fabio/ProceedingsPaper", modelHashMap.get("http://purl.org/spar/fabio/ProceedingsPaper"));
-        //statistics1.stat2(newMap);
+        Statistics1 statistics1 = new Statistics1();
+       /* HashMap<String, Model> newMap = new HashMap<>();
+        newMap.put("http://purl.org/spar/fabio/ProceedingsPaper", modelHashMap.get("http://purl.org/spar/fabio/ProceedingsPaper"));
+        statistics1.stat2(newMap);*/
 
          /*modelHashMap = unpersistModelsMap(_toString);
         System.out.println("consolides");*/
-        Consolidation.afficherListInformations(modelHashMap);
+        //Consolidation.afficherListInformations(modelHashMap);
+       // System.out.println(dataSetEnrichedAnnotated.getNamedModel("http://data.semanticweb.org/ns/swc/ontology#WorkshopEvent"));
+        int nb = 0;
+        Iterator<String> it = TdbOperation.originalDataSet.listNames();
+        try {
+            while (it.hasNext()) {
+                nb++;
+                it.next();
+            }
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
 
-
+        System.out.println("taille du dataset "+nb);
     }
 
     public TdbOperation() {

@@ -20,7 +20,7 @@
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 2 | Dashboard</title>
+    <title>Loglinc | MD schema</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
@@ -62,12 +62,14 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Home
+                Multidimensional schema
                 <small>Version 1.0</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li class="active">Home</li>
+                <li class="active">Scenario 2 </li>
+                <li class="active">Multidimensional schemas</li>
+                <li class="active">Multidimensional schema</li>
             </ol>
         </section>
 
@@ -125,7 +127,7 @@
                     </div>
                         <div class="box-footer clearfix">
                             <!--<a href="javascript:void(0)" class="btn  bg-red-gradient pull-left">Cancel</a>-->
-                            <a href="http://localhost:8022/mdGraphEnriched.j?uri=${uri.replace("#","__")}" class="btn  btn-default bg-purple-gradient pull-right">Enriched graph</a>
+                            <a href="http://localhost:8080/mdGraphEnriched.j?uri=${uri.replace("#","__")}" class="btn  btn-default bg-purple-gradient pull-right">Enriched graph</a>
                         </div>
                     </div>
 

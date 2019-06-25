@@ -20,7 +20,7 @@
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 2 | Dashboard</title>
+    <title>LogLinc | Scenario 2 </title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
@@ -62,12 +62,12 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Home
+                Graphs Exploration
                 <small>Version 1.0</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li class="active">Home</li>
+                <li class="active">Graphs Exploration</li>
             </ol>
         </section>
 
@@ -131,8 +131,8 @@
                         </div>
                         <!-- /.box-body -->
                         <div class="box-footer clearfix">
-                            <a href="javascript:void(0)" class="btn  btn-default bg-purple-gradient pull-right">Construct
-                                MD graphs</a>
+                         <!--   <a href="javascript:void(0)" class="btn  btn-default bg-purple-gradient pull-right">Construct
+                                MD graphs</a>-->
                         </div>
                         <!-- /.box-footer -->
                     </div>
@@ -195,8 +195,8 @@
                         </div>
                         <!-- /.box-body -->
                         <div class="box-footer clearfix">
-                            <a href="javascript:void(0)" class="btn  btn-default bg-purple-gradient pull-right">Consolidate
-                                MD graphs</a>
+                            <!--<a href="javascript:void(0)" class="btn  btn-default bg-purple-gradient pull-right">Consolidate
+                                MD graphs</a>-->
                         </div>
                         <!-- /.box-footer -->
                     </div>
