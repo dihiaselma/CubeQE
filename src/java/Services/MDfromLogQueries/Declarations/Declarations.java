@@ -87,14 +87,21 @@ public class Declarations {
         /* Triple databases directories **/
         paths.put("tdbDirectory", rootTdb + "tdbDirectory");
         paths.put("dataSetOriginal", rootTdb + "dataSetOriginal");
+        /** Consolidation */
         paths.put("dataSetConsolidated", rootTdb + "dataSetConsolidated");
+        paths.put("dataSetConsolidated_iteration2", rootTdb + "dataSetConsolidated_iteration2");
+        paths.put("dataSetConsolidated_iteration3", rootTdb + "dataSetConsolidated_iteration3");
+       /** nkk **/
         paths.put("dataSetAnnotated", rootTdb + "dataSetAnnotated");
         paths.put("_toString", rootTdb + "_toString");
         paths.put("_toStringAnalytic", rootTdb + "_toStringAnalytic");
         paths.put("dataSetAnalytic", rootTdb + "dataSetAnalytic");
         paths.put("dataSetAnalyticAnnotated", rootTdb + "dataSetAnalyticAnnotated");
         paths.put("dataSetAlleviated", rootTdb + "dataSetAlleviated");
+        paths.put("dataSetAlleviated2", rootTdb + "dataSetAlleviated2");
+        paths.put("dataSetAlleviated20", rootTdb + "dataSetAlleviated20");
         paths.put("dataSetNonAlleviated", rootTdb + "dataSetNonAlleviated");
+        paths.put("dataSetNonAlleviated2", rootTdb + "dataSetNonAlleviated2");
         paths.put("dataSetAlleviatedUselessProperties", rootTdb + "dataSetAlleviatedUselessProperties");
         paths.put("dataSetEnriched",rootTdb + "dataSetEnriched");
         paths.put("dataSetEnrichedAnnotated", rootTdb + "dataSetEnrichedAnnotated");
@@ -114,6 +121,16 @@ public class Declarations {
         paths.put("timesFilePathTest",root + statististicsRoot + "Fichier_TempsTest.yaml");
         paths.put("queriesNumberFilePath",root + statististicsRoot +"Fichier_queriesNumber.yaml");
         paths.put("queriesNumberFilePathTest",root + statististicsRoot +"Fichier_queriesNumberTest.yaml");
+
+
+        /* Special for consolidation  */
+
+        paths.put("consolidationYAML",root + statististicsRoot + "consolidationYAML.yaml");
+
+        /* Temp Files */
+
+        paths.put("listSubjectsTemp", rootTdb+"listSubjectsTemp.txt");
+
 
 
 

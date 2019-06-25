@@ -1,5 +1,6 @@
 package Services.MDPatternDetection.ConsolidationClasses
 
+import java.io._
 import java.util
 
 import Services.MDfromLogQueries.Declarations.Declarations
@@ -82,9 +83,9 @@ object ConsolidationParallel {
   def consolidate(): mutable.HashMap[String, Model] = {
 
     println(" consolidation ")
-    toStringModelsHashmap2(unpersistModelsMap(Declarations.paths.get("dataSetAlleviatedUselessProperties")), Declarations.paths.get("_toString") )
+    //toStringModelHashMap(unpersistModelsMap(Declarations.paths.get("dataSetAlleviatedUselessProperties")), Declarations.paths.get("_toString") )
 
-    // val modelHashMap = TdbOperation.unpersistModelsMap(TdbOperation._toString)
+    //val modelHashMap = TdbOperation.unpersistModelsMap(TdbOperation._toString)
     val modelHashMap = TdbOperation.unpersistModelsMap(Declarations.paths.get("_toString"))
 
     if (modelHashMap == null) return null
@@ -96,6 +97,8 @@ object ConsolidationParallel {
     modelsHashMap.foreach {
       pair => {
         val model = pair._2
+        nb+=1
+        println ("consolidation model num : "+nb)
         nodeIterator = model.listObjects
         var newSizeOfObjects = 0
         var sizeofObjects = nodeIterator.toList.size()
@@ -108,7 +111,7 @@ object ConsolidationParallel {
             val node: RDFNode = nodeIterator.next
             // if node already exists as key (subject) in the map, and its model is not empty
           //  println(" je suis dans le while " + node.toString)
-            if (modelsHashMap.contains(node.toString) && !model.containsAll(modelHashMap.get(node.toString)) && !modelsHashMap(node.toString).isEmpty && modelHashMap.get(node.toString).size() < 10) {
+            if (modelsHashMap.contains(node.toString) && !model.containsAll(modelHashMap.get(node.toString)) && !modelsHashMap(node.toString).isEmpty ) {
               // then consolidate it with the model in question
               model.add(modelsHashMap(node.toString))
               consolidatedNodes.add(node.toString)
@@ -121,12 +124,12 @@ object ConsolidationParallel {
     }
     consolidatedNodes.foreach {
       nodeName => {
-        println(nodeName)
-        if (modelHashMap.get(nodeName).size() < 10) {
+      //  println(nodeName)
+
          // println("je rentre")
           modelsHashMap -= nodeName
           // modelsHashMap.remove(nodeName)
-        }
+
       }
     }
     modelsNumber += modelsHashMap.size
@@ -177,7 +180,7 @@ object ConsolidationParallel {
     val modelHashMap = new mutable.HashMap[String, Model]
     var modelsFromOneModel = new mutable.HashMap[String, Model]
     var nb = 0
-    iterator.grouped(100000).foreach {
+    iterator.grouped(10000).foreach {
       listOfKies =>
         listOfKies.foreach {
           key => {
@@ -217,7 +220,7 @@ object ConsolidationParallel {
 
   }
 
-  def toStringModelHashMap(it: Iterator[String]): Unit = {
+  def toStringModelHashMap(it: Iterator[String], tdbPath: String): Unit = {
     val iterator = it
     var num = 0
     var nb_grp = 0
@@ -229,15 +232,16 @@ object ConsolidationParallel {
         listOfModelNames.foreach {
           nb_grp += 1
           modelName => {
-            val model = getModelFromTDB(modelName, TdbOperation.originalDataSet)
+            val model = getModelFromTDB(modelName, TdbOperation.dataSetAlleviatedUselessProperties)
 
             num += 1
-            System.out.println(" model num : " + num)
+            System.out.println("tostring model num : " + num)
 
             val list = model.listStatements
 
             // For every Statement in the model
             while (list.hasNext) {
+
               val statement = list.next
               val subject = statement.getSubject.toString
               // if the pair doesn't exist in the map create a new instance
@@ -252,8 +256,14 @@ object ConsolidationParallel {
 
           }
         }
+        for (key2 <- modelHashMap.keySet) {
 
-        writeInTdb(modelHashMap, Declarations.paths.get("_toString"))
+          if (modelHashMap.get(key2).size>200) {
+            modelHashMap.remove(key2)
+          }
+
+        }
+        writeInTdb(modelHashMap, tdbPath)
         modelHashMap.clear()
         println(s" ------------------------- finish with the group number: $nb_grp -------------------------------- ")
     }
@@ -282,7 +292,7 @@ object ConsolidationParallel {
             dataset.addNamedModel(m._1, m._2)
         }
       }
-      catch {
+      catch{
         case ex: Exception => ex.printStackTrace()
       }
     })
@@ -335,7 +345,108 @@ object ConsolidationParallel {
     JavaConverters.asScalaIterator(dataset.listNames())
   }
 
+  def WriteListSubjectsInFile(writingFilePath: String, list: List[String]): Unit = {
+    val file = new File(writingFilePath)
+    var bw = null
+      if (!file.isFile) file.createNewFile
+try{
+  val writer = new PrintWriter(new File(writingFilePath))
+  list.foreach(subject => if (subject != null) {
 
+    writer.write(subject.replaceAll("[\n\r]", "\t") + "\n")
+  })
+
+  writer.close()
+}
+
+
+
+
+  }
+
+  def consolidateParallel(tdbPath : String) =  {
+
+    println(" consolidation ")
+    //toStringModelsHashmap2(unpersistModelsMap(Declarations.paths.get("dataSetAlleviatedUselessProperties")), Declarations.paths.get("_toString") )
+    /** use an iterator not to load the models into memory **/
+    var iterator = unpersistModelsMap(Declarations.paths.get("dataSetConsolidated"))
+    println("unpersist")
+
+    /** use a list to verify if the node exists as a subject **/
+    val listOfModels = iterator.toList
+
+    println("iterator to list")
+
+   // WriteListSubjectsInFile(Declarations.paths.get("listSubjectsTemp"),listOfModels)
+
+    println("finished wrinting in file")
+    /** open tdb to load models directly from it **/
+    val dataset_toString = TDBFactory.createDataset(Declarations.paths.get("dataSetConsolidated"))
+
+    /** Hashmap to persist consolidated models **/
+    val modelHashMap = new mutable.HashMap[String, Model]()
+
+    var nb = 0
+
+    var listOfObjects :util.List[RDFNode] = null
+    var nodeIterator : util.Iterator[RDFNode]= null
+    val consolidatedNodes = new mutable.HashSet[String]()
+
+    iterator = listOfModels.iterator
+
+    //var queryList = Source.fromFile(dir.listFiles().toIterator.next()).getLines
+
+    //var iteratorLazy =Source.fromFile(Declarations.paths.get("listSubjectsTemp")).getLines
+
+    //iteratorLazy.grouped(50000).foreach {
+    iterator.grouped(50000).foreach {
+      listOfKies =>
+        listOfKies.foreach {
+          key => {
+            nb += 1
+            println(s"la consolidation numero : $nb")
+            val model = getModelFromTDB(key, dataset_toString)
+            listOfObjects = model.listObjects().toList
+            var sizeofObjects = 0
+            var  newSizeOfObjects = listOfObjects.size()
+            // for all nodes in modelsHashMap
+            while (sizeofObjects != newSizeOfObjects && newSizeOfObjects <= 200) {
+              sizeofObjects = newSizeOfObjects
+              nodeIterator = listOfObjects.iterator()
+              while (nodeIterator.hasNext) {
+                val node = nodeIterator.next
+                // if node already exists as key (subject) in the map, and its model is not empty
+                if (listOfModels.contains(node.toString)) {
+                  val newModel = getModelFromTDB(node.toString, dataset_toString)
+                  if (!model.containsAll(newModel) && newModel.size() < 100)
+                  // then consolidate it with the model in question
+                  {
+                    model.add(newModel)
+                    consolidatedNodes.add(node.toString)
+                  }
+                }
+              }
+              listOfObjects = model.listObjects().toList
+              newSizeOfObjects = listOfObjects.size()
+            }
+            modelHashMap.put(key,model)
+          }
+        }
+
+        consolidatedNodes.foreach{
+          nodeName => {
+            if (modelHashMap.contains(nodeName))
+              modelHashMap.remove(nodeName)
+          }
+        }
+
+        println(s" ------------------------- finish with the group ------------------------------- ")
+        modelsNumber += modelHashMap.size
+        writeInTdb(modelHashMap, tdbPath)
+        modelHashMap.clear()
+    }
+
+  }
 
 
 

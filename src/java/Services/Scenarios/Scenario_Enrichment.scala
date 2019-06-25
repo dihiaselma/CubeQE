@@ -14,13 +14,17 @@ object Scenario_Enrichment extends App{
 
 
 
-  Declarations.setEndpoint("DogFood")
+
   /** 1. Unpersisting of annotated models **/
   var t_total: Long = System.currentTimeMillis()
-  var endpoint = "http://www.scholarlydata.org/sparql/"
+
+  val endpoint="dbPedia"
+  val endpointUrl="http://www.scholarlydata.org/sparql/"
+
+  Declarations.setEndpoint(endpoint)
   val modelsAnnotated: util.HashMap[String, Model] = TdbOperation.unpersistModelsMap(TdbOperation.dataSetAnnotated)
 
-
+/*
   /** 2. Annotate non alleviated models **/
   var t_annotation: Long = System.currentTimeMillis()
   val modelsNonAlleviated: util.HashMap[String, Model] = TdbOperation.unpersistModelsMap(TdbOperation.dataSetNonAlleviated)
@@ -28,17 +32,17 @@ object Scenario_Enrichment extends App{
   FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePath"), "modelsNonAlleviatedAnnotation", (System.currentTimeMillis() - t_annotation).toInt)
   modelsAnnotated.putAll(modelsNonAlleviatedAnnotated)
   FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"),"Average_size_before_enrichment",ModelUtil.averageSize(modelsAnnotated).toInt)
-
+*/
 
   /** 3. Enrichment of annotated models **/
   var t_enrichment: Long = System.currentTimeMillis()
-  enrichMDSchema(modelsAnnotated,endpoint)
+  enrichMDSchema(modelsAnnotated,endpointUrl)
   FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePath"), "Enrichment", (System.currentTimeMillis() - t_enrichment).toInt)
   FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"),"Average_size_after_enrichment",ModelUtil.averageSize(modelsAnnotated).toInt)
 
 
   /** 4. Annotation of new models **/
-  var t_annotation2 : Long = System.currentTimeMillis()
+ var t_annotation2 : Long = System.currentTimeMillis()
   val enrichedModelsAnnotated : util.HashMap[String, Model] = MDGraphAnnotated.constructMDGraphs(modelsAnnotated)
   writeInTdb(convertToScalaMap(enrichedModelsAnnotated), Declarations.paths.get("dataSetEnrichedAnnotated"))
   FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePath"), "enrichedModelsAnnotation", (System.currentTimeMillis() - t_annotation2).toInt)

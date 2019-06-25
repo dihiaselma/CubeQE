@@ -78,15 +78,9 @@ public class Constants2 {
     }
 
     public static void main(String[] args) {
+        Declarations.setEndpoint("dbPedia");
         new Constants2();
-        initDefaultProperties();
-        for (OntProperty ontProperty : otherProperties) {
-            try {
-                System.out.println("the range : " + ontProperty.getRange());
-            } catch (Exception e) {
-                System.out.println("erreur");
-            }
-        }
+
 
     }
 

@@ -41,7 +41,8 @@ public class MDGraphsAlleviation {
 
             for (Map.Entry<String, Model> pair : hashMapModels.entrySet()) {
 
-                if (pair.getValue() != null && pair.getValue().size() > 2) {
+              //  if (pair.getValue() != null && pair.getValue().size() > 2) {
+                if (pair.getValue() != null && pair.getValue().size() < 200) {
 
                     MDGraphAlleviated.put(pair.getKey(), pair.getValue());
 
@@ -56,8 +57,8 @@ public class MDGraphsAlleviation {
        }
 
        // TODO à enlever si y a pas besoin de sauvegarder
-       TdbOperation.persistHashMap(MDGraphAlleviated, TdbOperation.dataSetAlleviated);
-       TdbOperation.persistHashMap(MDGraphLessThen2, Declarations.paths.get("dataSetNonAlleviated"));
+   //    TdbOperation.persistHashMap(MDGraphAlleviated, TdbOperation.dataSetAlleviated);
+      // TdbOperation.persistHashMap(MDGraphLessThen2, Declarations.paths.get("dataSetNonAlleviated"));
 
        numberModelsAlleviated+=MDGraphAlleviated.size();
        numberModelsRemoved+=MDGraphLessThen2.size();
@@ -73,9 +74,12 @@ public class MDGraphsAlleviation {
        new GenericClasses();
        HashMap<String,Model> modifiedModels = new HashMap<>();
        Model model;
+       int i=0;
        try {
 
            for (Object o : modelHashMap.entrySet()) {
+               i++;
+               System.out.println(" Alleviation le model n° "+i);
                Map.Entry<String, Model> pair = (Map.Entry) o;
                model = pair.getValue();
                List<Statement> stmtList = model.listStatements().toList();
