@@ -4,6 +4,7 @@ package Services.MDPatternDetection.EnrichmentClasses;
 import Services.MDPatternDetection.AnnotationClasses.Annotations;
 import Services.MDPatternDetection.ConsolidationClasses.Consolidation;
 import Services.MDPatternDetection.ExecutionClasses.QueryExecutor;
+import Services.MDPatternDetection.ExecutionClasses.QueryExecutorScala;
 import Services.MDfromLogQueries.Declarations.Declarations;
 import Services.MDfromLogQueries.Util.*;
 import Services.Statistics.StatisticsAnalytic;
@@ -30,7 +31,7 @@ import static Services.MDfromLogQueries.Util.FileOperation.writeStatisticsListIn
 
 public class Enrich {
 
-    public static String endpoint = "http://scholarlydata.org/sparql/";
+    public static String endpoint = "http://linkedgeodata.org/sparql";
     public static Constants2 constants2;
     public static ArrayList<StatisticsAnalytic> statisticsAnalytics4Fact = new ArrayList<>();
     public static ArrayList<StatisticsAnalytic> statisticsAnalytics4Dimension = new ArrayList<>();
@@ -108,7 +109,7 @@ public class Enrich {
 
     public static void countOtherProperties(Resource node, Resource subject, boolean finish) {
         ConstantsUtil constantsUtil = new ConstantsUtil();
-        String queryStr = "SELECT DISTINCT ?p ?o WHERE { <" + node.getURI() + "> ?p ?o. Optional { ?o a ?otype.}}";
+        String queryStr = "SELECT DISTINCT ?p ?o WHERE { <" + node.getURI() + "> ?p ?o. Optional { ?o a ?otype.}} LIMIT 40";
         QueryExecutor queryExecutor = new QueryExecutor();
         QuerySolution querySolution;
         RDFNode predicate;
@@ -118,7 +119,9 @@ public class Enrich {
         System.out.println("count properties");
         try {
             Query query = QueryFactory.create(queryStr);
-            ResultSet results = queryExecutor.executeQuerySelect(query, endpoint);
+            //ResultSet results = queryExecutor.executeQuerySelect(query, endpoint);
+            ResultSet results = QueryExecutorScala.executeQuerySelect(query,endpoint);
+
             if (results != null) {
             while (results.hasNext()) {
                 querySolution = results.nextSolution();
@@ -171,6 +174,7 @@ public class Enrich {
                             }
 
                         }
+                        if (addedObject!=null)
                         subject.addProperty(new PropertyImpl(predicate.asResource().getURI()), addedObject);
                     } else if (predicate.equals(RDFS.subClassOf) && !finish) {
                         countOtherProperties(object.asResource(), subject, true);
@@ -187,13 +191,14 @@ public class Enrich {
     private static RDFNode datatypePropertyTreatement(Resource subject, RDFNode predicate, RDFNode objectType, ConstantsUtil constantsUtil) {
         Node propertyRange;
         RDFNode object;
-        if ((propertyRange = constantsUtil.getRangeofProperty(new PropertyImpl(predicate.asResource().getURI())) )!= null) {
 
-            object = new ResourceImpl(propertyRange.getURI());
-        }
-        else if (objectType != null)
+        if (objectType != null)
         {
             object = objectType;
+        }
+        else if ((propertyRange = constantsUtil.getRangeofProperty(new PropertyImpl(predicate.asResource().getURI())) )!= null) {
+
+            object = new ResourceImpl(propertyRange.getURI());
         }
         else {
             object = RDFS.Literal;
@@ -211,8 +216,8 @@ public class Enrich {
             returnObject = new ResourceImpl(propertyRange.getURI());
         }
         else {
-            returnObject = object;
-            subject.addProperty(new PropertyImpl(predicate.asResource().getURI()),object);
+            returnObject = null;
+            //subject.addProperty(new PropertyImpl(predicate.asResource().getURI()),object);
         }
         return returnObject;
     }

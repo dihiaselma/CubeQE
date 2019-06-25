@@ -14,21 +14,21 @@ object Scenario_Enrichment extends App{
 
 
 
-  Declarations.setEndpoint("DogFood")
+  Declarations.setEndpoint("LinkedGeoData")
   /** 1. Unpersisting of annotated models **/
   var t_total: Long = System.currentTimeMillis()
-  var endpoint = "http://www.scholarlydata.org/sparql/"
+  var endpoint = "http://linkedgeodata.org/sparql"
   val modelsAnnotated: util.HashMap[String, Model] = TdbOperation.unpersistModelsMap(TdbOperation.dataSetAnnotated)
 
 
-  /** 2. Annotate non alleviated models **/
+  /*/** 2. Annotate non alleviated models **/
   var t_annotation: Long = System.currentTimeMillis()
   val modelsNonAlleviated: util.HashMap[String, Model] = TdbOperation.unpersistModelsMap(TdbOperation.dataSetNonAlleviated)
   val modelsNonAlleviatedAnnotated : util.HashMap[String, Model] = MDGraphAnnotated.constructMDGraphs(modelsNonAlleviated)
   FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePath"), "modelsNonAlleviatedAnnotation", (System.currentTimeMillis() - t_annotation).toInt)
   modelsAnnotated.putAll(modelsNonAlleviatedAnnotated)
   FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"),"Average_size_before_enrichment",ModelUtil.averageSize(modelsAnnotated).toInt)
-
+*/
 
   /** 3. Enrichment of annotated models **/
   var t_enrichment: Long = System.currentTimeMillis()

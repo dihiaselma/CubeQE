@@ -2,6 +2,7 @@
 
   import java.util
 
+  import Services.MDPatternDetection.Alleviation.MDGraphsAlleviation
   import Services.MDfromLogQueries.Declarations.Declarations
   import Services.MDfromLogQueries.Util.TdbOperation
   import org.apache.jena.query.Dataset
@@ -10,6 +11,7 @@
 
   import scala.collection.parallel.ParMap
   import scala.collection.{JavaConverters, mutable}
+  import scala.collection.JavaConversions._
 
   object ConsolidationParallel {
 
@@ -147,10 +149,10 @@
       val dataset_toString = TDBFactory.createDataset(Declarations.paths.get("_toString"))
 
       /** Hashmap to persist consolidated models **/
-      val modelHashMap = new mutable.HashMap[String, Model]()
+      var modelHashMap = new mutable.HashMap[String, Model]()
 
       var nb = 0
-
+      var nblevels = 0
       var listOfObjects : util.List[RDFNode] = null
       var nodeIterator: util.Iterator[RDFNode] = null
       val consolidatedNodes: mutable.HashSet[String] = new mutable.HashSet[String]()
@@ -161,12 +163,16 @@
             key => {
               nb += 1
               println(s"la consolidation numero : $nb")
-              val model = getModelFromTDB(key, dataset_toString)
+              var model = getModelFromTDB(key, dataset_toString)
               listOfObjects = model.listObjects().toList
-              var newSizeOfObjects = 0
-              var sizeofObjects = listOfObjects.size()
+              var newSizeOfObjects = listOfObjects.size()
+              var sizeofObjects = 0
               // for all nodes in modelsHashMap
-              while (sizeofObjects != newSizeOfObjects && newSizeOfObjects <= 200) {
+              nblevels = 0
+              if (newSizeOfObjects <=30)
+              while (sizeofObjects != newSizeOfObjects && newSizeOfObjects <= 30 && nblevels<4) {
+                nblevels+=1
+                println("size of new objects : "+newSizeOfObjects + " size of objects : "+sizeofObjects)
                 sizeofObjects = newSizeOfObjects
                 nodeIterator = listOfObjects.iterator()
                 while (nodeIterator.hasNext) {
@@ -174,7 +180,7 @@
                   // if node already exists as key (subject) in the map, and its model is not empty
                   if (listOfModels.contains(node.toString)) {
                     val newModel = getModelFromTDB(node.toString, dataset_toString)
-                    if (!model.containsAll(newModel) && newModel.size() < 100)
+                    if (!model.containsAll(newModel) && newModel.size() < 10)
                     // then consolidate it with the model in question
                     {
                       model.add(newModel)
@@ -185,6 +191,17 @@
                 listOfObjects = model.listObjects().toList
                 newSizeOfObjects = listOfObjects.size()
               }
+              else
+                {
+                  val reducedModel = ModelFactory.createDefaultModel()
+                 val it = model.listStatements()
+                  var nbStm = 0
+                  while (it.hasNext && nbStm<10)
+                    {
+                      reducedModel.add(it.next)
+                    }
+                  model = reducedModel
+                }
               modelHashMap.put(key,model)
             }
           }
@@ -196,6 +213,7 @@
             }
           }
 
+          //modelHashMap = removeRedundantTriples(modelHashMap)
           println(s" ------------------------- finish with the group ------------------------------- ")
           modelsNumber += modelHashMap.size
           writeInTdb(modelHashMap, tdbPath)
@@ -274,6 +292,7 @@
           for (key2 <- modelsFromOneModel.keySet) {
 
             if (modelHashMap.get(key2).size > 200) {
+              println(key2)
               modelHashMap.remove(key2)
             }
 
@@ -287,7 +306,7 @@
 
     }
 
-    def toStringModelHashMap(it: Iterator[String]): Unit = {
+    def toStringModelHashMap(it: Iterator[String], tdbPath : String): Unit = {
       val iterator = it
       var num = 0
       var nb_grp = 0
@@ -299,7 +318,7 @@
           listOfModelNames.foreach {
             nb_grp += 1
             modelName => {
-              val model = getModelFromTDB(modelName, TdbOperation.originalDataSet)
+              val model = getModelFromTDB(modelName, dataset)
 
               num += 1
               System.out.println(" model num : " + num)
@@ -323,10 +342,11 @@
             }
           }
 
-          writeInTdb(modelHashMap, Declarations.paths.get("_toString"))
+          writeInTdb(modelHashMap, tdbPath)
           modelHashMap.clear()
           println(s" ------------------------- finish with the group number: $nb_grp -------------------------------- ")
       }
+      TdbOperation._toString.close()
 
     }
 
@@ -425,6 +445,34 @@
       })
       TDB.sync(dataset)
       dataset.close()
+    }
+
+    def removeRedundantTriples(modelHashMap: mutable.HashMap[String, Model]): mutable.HashMap[String, Model] = {
+      var model : Model  = null
+      modelHashMap.foreach {
+        pair => {
+          model = pair._2
+          val stmtList = model.listStatements.toList
+          for (statement <- stmtList) {
+            for (statement1 <- stmtList) {
+              if (statement.getObject.asResource.getLocalName == statement1.getObject.asResource.getLocalName) {
+                model.remove(statement1)
+                model.add(statement1.getSubject, statement1.getPredicate, statement.getObject)
+              }
+              if (statement.getSubject.asResource.getLocalName == statement1.getSubject.asResource.getLocalName) {
+                model.remove(statement1)
+                model.add(statement.getSubject, statement1.getPredicate, statement1.getObject)
+              }
+              if (statement.getPredicate.asResource.getLocalName == statement1.getPredicate.asResource.getLocalName) {
+                model.remove(statement1)
+                model.add(statement1.getSubject, statement.getPredicate, statement1.getObject)
+              }
+            }
+          }
+          modelHashMap.replace(pair._1,model)
+        }
+      }
+      modelHashMap
     }
 
   }

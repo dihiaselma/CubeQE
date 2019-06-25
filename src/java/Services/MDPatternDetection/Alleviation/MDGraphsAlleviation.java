@@ -6,18 +6,19 @@ import Services.MDfromLogQueries.Util.BasicProperties;
 import Services.MDfromLogQueries.Util.GenericClasses;
 import Services.MDfromLogQueries.Util.ModelUtil;
 import Services.MDfromLogQueries.Util.TdbOperation;
-import org.apache.jena.rdf.model.Model;
-import org.apache.jena.rdf.model.Statement;
+import org.apache.jena.rdf.model.*;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 public class MDGraphsAlleviation {
 
     public static int numberModelsAlleviated=0;
     public static int numberModelsRemoved=0;
     public static int numberStatementRemoved = 0;
+    public static int numberModelAlleviated = 0 ;
 
 
     public static void main(String[] args) {
@@ -35,19 +36,36 @@ public class MDGraphsAlleviation {
 
        HashMap<String, Model> MDGraphAlleviated = new HashMap<>();
        HashMap<String, Model> MDGraphLessThen2 = new HashMap<>();
-
+       long size =0;
+       int nb=0;
         try {
 
 
             for (Map.Entry<String, Model> pair : hashMapModels.entrySet()) {
-
-                if (pair.getValue() != null && pair.getValue().size() > 2) {
+                size = pair.getValue().size();
+                if (pair.getValue() != null && size > 2 && size<20 && !Pattern.compile(Pattern.quote("wikicat"), Pattern.CASE_INSENSITIVE)
+                        .matcher(pair.getKey()).find()) {
 
                     MDGraphAlleviated.put(pair.getKey(), pair.getValue());
 
                 } else {
-                    MDGraphLessThen2.put(pair.getKey(), pair.getValue());
+                    if (size >20)
+                    {
+                        Model reducedModel = ModelFactory.createDefaultModel();
+                        StmtIterator it = pair.getValue().listStatements();
+                        int nbStm = 0;
+                        while (it.hasNext() && nbStm<10)
+                        {
+                            nbStm++;
+                            reducedModel.add(it.next());
+                        }
+                        MDGraphAlleviated.put(pair.getKey(), reducedModel);
+                    }
+                    //MDGraphLessThen2.put(pair.getKey(), pair.getValue());
                 }
+                nb++;
+
+                System.out.println("next : "+nb);
 
             }
 
@@ -56,8 +74,8 @@ public class MDGraphsAlleviation {
        }
 
        // TODO à enlever si y a pas besoin de sauvegarder
-       TdbOperation.persistHashMap(MDGraphAlleviated, TdbOperation.dataSetAlleviated);
-       TdbOperation.persistHashMap(MDGraphLessThen2, Declarations.paths.get("dataSetNonAlleviated"));
+       //TdbOperation.persistHashMap(MDGraphAlleviated, TdbOperation.dataSetAlleviated);
+       //TdbOperation.persistHashMap(MDGraphLessThen2, Declarations.paths.get("dataSetNonAlleviated"));
 
        numberModelsAlleviated+=MDGraphAlleviated.size();
        numberModelsRemoved+=MDGraphLessThen2.size();
@@ -66,6 +84,39 @@ public class MDGraphsAlleviation {
    }
 
 
+    public static HashMap<String,Model > removeRedundantTriples(HashMap<String,Model> modelHashMap)
+    {
+        Model model;
+        for (Object o : modelHashMap.entrySet()) {
+            Map.Entry<String, Model> pair = (Map.Entry) o;
+            model = pair.getValue();
+            List<Statement> stmtList = model.listStatements().toList();
+            for (Statement statement : stmtList) {
+                for (Statement statement1 : stmtList)
+                {
+                    if (statement.getObject().asResource().getLocalName().equals(statement1.getObject().asResource().getLocalName()))
+                    {
+                        model.remove(statement1);
+                        model.add(statement1.getSubject(),statement1.getPredicate(),statement.getObject());
+                    }
+                    if (statement.getSubject().asResource().getLocalName().equals(statement1.getSubject().asResource().getLocalName()))
+                    {
+                        model.remove(statement1);
+                        model.add(statement.getSubject(),statement1.getPredicate(),statement1.getObject());
+                    }
+                    if (statement.getPredicate().asResource().getLocalName().equals(statement1.getPredicate().asResource().getLocalName()))
+                    {
+                        model.remove(statement1);
+                        model.add(statement1.getSubject(),statement.getPredicate(),statement1.getObject());
+                    }
+                }
+
+            }
+
+        }
+        return modelHashMap;
+    }
+
 
    public static HashMap<String,Model> removeUselessProperties(HashMap<String,Model> modelHashMap)
    {
@@ -73,6 +124,7 @@ public class MDGraphsAlleviation {
        new GenericClasses();
        HashMap<String,Model> modifiedModels = new HashMap<>();
        Model model;
+       Boolean alleviated = false;
        try {
 
            for (Object o : modelHashMap.entrySet()) {
@@ -83,11 +135,15 @@ public class MDGraphsAlleviation {
                    if (BasicProperties.properties.contains(statement.getPredicate())
                    || GenericClasses.resources.contains(statement.getObject().asResource())
                    || GenericClasses.resources.contains(statement.getSubject())) {
+                       alleviated = true;
                        model.remove(statement);
                        numberStatementRemoved++;
                    }
 
                }
+               if (alleviated)
+                   numberModelAlleviated++;
+               alleviated = false;
                modifiedModels.put(pair.getKey(), model);
 
            }
@@ -97,5 +153,29 @@ public class MDGraphsAlleviation {
        }
        return modifiedModels;
    }
+    public static HashMap<String,Model> getModelsByTheme(HashMap<String,Model> modelHashMap, String theme)
+    {
+        HashMap<String,Model> modifiedModels = new HashMap<>();
+        int nb = 0 ;
+        try {
+
+            for (Object o : modelHashMap.entrySet()) {
+                Map.Entry<String, Model> pair = (Map.Entry) o;
+                if (Pattern.compile(Pattern.quote(theme), Pattern.CASE_INSENSITIVE)
+                        .matcher(pair.getKey()).find())
+                {
+                    System.out.println("Model by theme"+ nb++);
+                    modifiedModels.put(pair.getKey(),pair.getValue());
+                }
+
+            }
+
+        }catch (NullPointerException ignoredException){
+
+        }
+        return modifiedModels;
+    }
+
+
 
 }

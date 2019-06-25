@@ -5,8 +5,10 @@ import Services.MDfromLogQueries.Util.FileOperation;
 import Services.MDfromLogQueries.Util.ModelUtil;
 import Services.MDfromLogQueries.Util.TdbOperation;
 import Services.Statistics.Statistics1;
+import org.apache.jena.query.Dataset;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.rdf.model.impl.ResourceImpl;
+import org.apache.jena.tdb.TDBFactory;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.ui.Model;
@@ -152,8 +154,11 @@ public class Controller {
 
         JSONArray jsonArray = new JSONArray();
         uri = uri.replace("__", "#");
+        //Dataset dataset = TDBFactory.createDataset(Declarations.paths.get("dataSetAnnotated")+"university");
 
         org.apache.jena.rdf.model.Model graphModel = TdbOperation.dataSetAnnotated.getNamedModel(uri);
+        //org.apache.jena.rdf.model.Model graphModel = dataset.getNamedModel(uri);
+
         if (statisticsByModel.size()==0)
             statisticsByModel = (HashMap<String, Object>) FileOperation.loadYamlFile(Declarations.paths.get("statisticsFileYAML"));
         model.addAttribute("statistics", (HashMap<String,Object>) statisticsByModel.get(uri));
@@ -202,8 +207,10 @@ public class Controller {
         JSONArray jsonArray = new JSONArray();
         JSONArray jsonArrayGlobal = new JSONArray();
 
+      //  Dataset dataset = TDBFactory.createDataset(Declarations.paths.get("dataSetAnnotated")+"university");
 
         Iterator<String> it = TdbOperation.dataSetAnnotated.listNames();
+       // Iterator<String> it = dataset.listNames();
 
 
         int i = 1;
@@ -357,4 +364,25 @@ public class Controller {
     }
 
 
+
+    @RequestMapping("/graphsTable")
+    public String dataTable(Model model) {
+        String error = "Error";
+
+
+        List<Resource> listNames = new ArrayList<>();
+        Iterator<String> it = TdbOperation.dataSetAnnotated.listNames();
+
+
+        int i = 1;
+
+      while (it.hasNext())
+      {
+          listNames.add(new ResourceImpl(it.next()));
+      }
+
+        model.addAttribute("subjects", listNames);
+        model.addAttribute("error", error);
+        return "graphsTable";
+    }
 }
