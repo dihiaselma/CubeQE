@@ -68,6 +68,7 @@
             </span>
                 </a>
                 <ul class="treeview-menu">
+                    <li><a href="subjectsBlocksEnriched.j"><i class="fa  fa-pie-chart"></i> Multidimentional schemas </a></li>
                     <li><a href="statisticsEnrichment.j"><i class="fa  fa-pie-chart"></i> Statistics </a></li>
                 </ul>
             </li>

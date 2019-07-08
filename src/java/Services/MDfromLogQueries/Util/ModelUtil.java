@@ -37,7 +37,7 @@ public class ModelUtil {
         jsonObject.put("id",subject.getLocalName());
         jsonObject.put("color", "#713E8D");
         jsonObject.put("value",4);
-        jsonObject.put("children",propertyIterate(subject,visitedNodes, 0,limit));
+        jsonObject.put("children",propertyIterate(subject,visitedNodes, 0));
 
         return jsonObject;
     }
@@ -67,11 +67,12 @@ public class ModelUtil {
                 jsonObject.put("color","#A5ABEE");
                 jsonObject.put("value",1);
             }
-            jsonObject.put("name",stat.getPredicate().getLocalName());
+
             if (stat.getObject().isResource() && stat.getObject().asResource().listProperties().hasNext() && !visitedNodes.contains(stat.getObject().asResource())) {
                 if (stat.getObject().asResource().hasProperty(annotProperty, Annotations.DIMENSION.toString()) ||
                         stat.getObject().asResource().hasProperty(annotProperty, Annotations.DIMENSIONLEVEL.toString()))
                 {
+                    jsonObject.put("name",stat.getPredicate().getLocalName());
                     jsonObject.put("id",stat.getObject().asResource().getLocalName());
                     visitedNodes.add(subject);
                     jsonObject.put("color","#6A6DDE");
@@ -89,7 +90,7 @@ public class ModelUtil {
         }
         return jsonArray;
     }
-    public static JSONArray propertyIterate(Resource subject,Set<Resource> visitedNodes,int level, int limit)
+    public static JSONArray propertyIterate(Resource subject,Set<Resource> visitedNodes,int level)
     {
         List<Statement> propertyIterator = subject.listProperties().toList();
         JSONArray jsonArray = new JSONArray();
@@ -103,10 +104,12 @@ public class ModelUtil {
                     jsonObject.put("color", "#A5ABEE");
                     jsonObject.put("value", 1);
                 }
-                jsonObject.put("name", stat.getPredicate().getLocalName());
+
                 if (stat.getObject().isResource() && stat.getObject().asResource().listProperties().hasNext() && !visitedNodes.contains(stat.getObject().asResource())) {
                     if (stat.getObject().asResource().hasProperty(annotProperty, Annotations.DIMENSION.toString()) ||
                             stat.getObject().asResource().hasProperty(annotProperty, Annotations.DIMENSIONLEVEL.toString())) {
+
+                        jsonObject.put("name", stat.getPredicate().getLocalName());
                         jsonObject.put("id", stat.getObject().asResource().getLocalName());
                         visitedNodes.add(subject);
                         jsonObject.put("color", "#6A6DDE");

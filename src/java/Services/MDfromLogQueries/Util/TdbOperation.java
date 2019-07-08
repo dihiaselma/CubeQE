@@ -23,6 +23,8 @@ public class TdbOperation {
     public static Dataset dataSetAnalyticAnnotated = TDBFactory.createDataset(Declarations.paths.get("dataSetAnalyticAnnotated"));
     public static Dataset dataSetAlleviated = TDBFactory.createDataset(Declarations.paths.get("dataSetAlleviated"));
     public static Dataset dataSetAlleviated2 = TDBFactory.createDataset(Declarations.paths.get("dataSetAlleviated2"));
+    public static Dataset dataSetAlleviated_B4 = TDBFactory.createDataset(Declarations.paths.get("dataSetAlleviated_B4"));
+    //public static Dataset dataSetAlleviated_after= TDBFactory.createDataset(Declarations.paths.get("dataSetAlleviated_after"));
     public static Dataset dataSetAlleviated20 = TDBFactory.createDataset(Declarations.paths.get("dataSetAlleviated20"));
     public static Dataset dataSetAlleviatedUselessProperties = TDBFactory.createDataset(Declarations.paths.get("dataSetAlleviatedUselessProperties"));
     public static Dataset dataSetNonAlleviated = TDBFactory.createDataset(Declarations.paths.get("dataSetNonAlleviated"));
@@ -45,6 +47,8 @@ public class TdbOperation {
         dataSetNonAlleviated = TDBFactory.createDataset(Declarations.paths.get("dataSetNonAlleviated"));
         dataSetNonAlleviated2 = TDBFactory.createDataset(Declarations.paths.get("dataSetNonAlleviated2"));
         dataSetEnriched = TDBFactory.createDataset(Declarations.paths.get("dataSetEnriched"));
+        dataSetAlleviated_B4 = TDBFactory.createDataset(Declarations.paths.get("dataSetAlleviated_B4"));
+        //dataSetAlleviated_after= TDBFactory.createDataset(Declarations.paths.get("dataSetAlleviated_after"));
 
         dataSetConsolidated_iteration3= TDBFactory.createDataset(Declarations.paths.get("dataSetConsolidated_iteration3"));
     }

@@ -189,7 +189,7 @@ object ConsolidationParallel {
             nb += 1
             originalModelsNumber += 1
 
-            System.out.println("model num " + nb)
+            System.out.println("consolidation model num " + nb)
             modelsFromOneModel = getModelsofModel(model)
             import scala.collection.JavaConversions._
             for (key2 <- modelsFromOneModel.keySet) {
@@ -364,71 +364,73 @@ try{
 
   }
 
-  def consolidateParallel(tdbPath : String) =  {
+
+  def consolidateParallel(tdbPath : String) = {
 
     println(" consolidation ")
-    //toStringModelsHashmap2(unpersistModelsMap(Declarations.paths.get("dataSetAlleviatedUselessProperties")), Declarations.paths.get("_toString") )
+   // toStringModelHashMap(unpersistModelsMap(Declarations.paths.get("dataSetAlleviatedUselessProperties")), Declarations.paths.get("_toString") )
     /** use an iterator not to load the models into memory **/
-    var iterator = unpersistModelsMap(Declarations.paths.get("dataSetConsolidated"))
-    println("unpersist")
-
+    var iterator = unpersistModelsMap(Declarations.paths.get("dataSetAlleviated_B4"))
     /** use a list to verify if the node exists as a subject **/
     val listOfModels = iterator.toList
-
-    println("iterator to list")
-
-   // WriteListSubjectsInFile(Declarations.paths.get("listSubjectsTemp"),listOfModels)
-
-    println("finished wrinting in file")
-    /** open tdb to load models directly from it **/
-    val dataset_toString = TDBFactory.createDataset(Declarations.paths.get("dataSetConsolidated"))
+    /** open tdb to lod models directly from it **/
+    val dataset_toString = TDBFactory.createDataset(Declarations.paths.get("dataSetAlleviated_B4"))
 
     /** Hashmap to persist consolidated models **/
-    val modelHashMap = new mutable.HashMap[String, Model]()
+    var modelHashMap = new mutable.HashMap[String, Model]()
 
     var nb = 0
-
-    var listOfObjects :util.List[RDFNode] = null
-    var nodeIterator : util.Iterator[RDFNode]= null
-    val consolidatedNodes = new mutable.HashSet[String]()
-
+    var nblevels = 0
+    var listOfObjects : util.List[RDFNode] = null
+    var nodeIterator: util.Iterator[RDFNode] = null
+    val consolidatedNodes: mutable.HashSet[String] = new mutable.HashSet[String]()
     iterator = listOfModels.iterator
-
-    //var queryList = Source.fromFile(dir.listFiles().toIterator.next()).getLines
-
-    //var iteratorLazy =Source.fromFile(Declarations.paths.get("listSubjectsTemp")).getLines
-
-    //iteratorLazy.grouped(50000).foreach {
     iterator.grouped(50000).foreach {
       listOfKies =>
         listOfKies.foreach {
           key => {
             nb += 1
             println(s"la consolidation numero : $nb")
-            val model = getModelFromTDB(key, dataset_toString)
+            var model = getModelFromTDB(key, dataset_toString)
             listOfObjects = model.listObjects().toList
+            var newSizeOfObjects = listOfObjects.size()
             var sizeofObjects = 0
-            var  newSizeOfObjects = listOfObjects.size()
             // for all nodes in modelsHashMap
-            while (sizeofObjects != newSizeOfObjects && newSizeOfObjects <= 200) {
-              sizeofObjects = newSizeOfObjects
-              nodeIterator = listOfObjects.iterator()
-              while (nodeIterator.hasNext) {
-                val node = nodeIterator.next
-                // if node already exists as key (subject) in the map, and its model is not empty
-                if (listOfModels.contains(node.toString)) {
-                  val newModel = getModelFromTDB(node.toString, dataset_toString)
-                  if (!model.containsAll(newModel) && newModel.size() < 100)
-                  // then consolidate it with the model in question
-                  {
-                    model.add(newModel)
-                    consolidatedNodes.add(node.toString)
+            nblevels = 0
+            if (newSizeOfObjects <=30)
+              while (sizeofObjects != newSizeOfObjects && newSizeOfObjects <= 30 && nblevels<4) {
+                nblevels+=1
+              //  println("size of new objects : "+newSizeOfObjects + " size of objects : "+sizeofObjects)
+                sizeofObjects = newSizeOfObjects
+                nodeIterator = listOfObjects.iterator()
+                while (nodeIterator.hasNext) {
+                  val node: RDFNode = nodeIterator.next
+                  // if node already exists as key (subject) in the map, and its model is not empty
+                  if (listOfModels.contains(node.toString)) {
+                    val newModel = getModelFromTDB(node.toString, dataset_toString)
+                    if (!model.containsAll(newModel) && newModel.size() < 20)
+                    // then consolidate it with the model in question
+                    {
+                      model.add(newModel)
+                      consolidatedNodes.add(node.toString)
+                    }
                   }
                 }
+                listOfObjects = model.listObjects().toList
+                newSizeOfObjects = listOfObjects.size()
               }
-              listOfObjects = model.listObjects().toList
-              newSizeOfObjects = listOfObjects.size()
-            }
+          /*  else
+            {
+              val reducedModel = ModelFactory.createDefaultModel()
+              val it = model.listStatements()
+              var nbStm = 0
+              while (it.hasNext && nbStm<20)
+              {
+                nbStm+=1
+                reducedModel.add(it.next)
+              }
+              model = reducedModel
+            }*/
             modelHashMap.put(key,model)
           }
         }
@@ -440,6 +442,7 @@ try{
           }
         }
 
+        //modelHashMap = removeRedundantTriples(modelHashMap)
         println(s" ------------------------- finish with the group ------------------------------- ")
         modelsNumber += modelHashMap.size
         writeInTdb(modelHashMap, tdbPath)
@@ -447,8 +450,6 @@ try{
     }
 
   }
-
-
 
 
 }

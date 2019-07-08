@@ -5,8 +5,10 @@ import Services.MDfromLogQueries.Util.FileOperation;
 import Services.MDfromLogQueries.Util.ModelUtil;
 import Services.MDfromLogQueries.Util.TdbOperation;
 import Services.Statistics.Statistics1;
+import org.apache.jena.query.Dataset;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.rdf.model.impl.ResourceImpl;
+import org.apache.jena.tdb.TDBFactory;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.ui.Model;
@@ -20,6 +22,7 @@ import java.util.*;
 @org.springframework.stereotype.Controller
 
 public class Controller {
+
 
     private Map<String, Object> times;
     private Map<String, Object> queriesNumbers;
@@ -153,7 +156,13 @@ public class Controller {
         JSONArray jsonArray = new JSONArray();
         uri = uri.replace("__", "#");
 
-        org.apache.jena.rdf.model.Model graphModel = TdbOperation.dataSetAnnotated.getNamedModel(uri);
+       // org.apache.jena.rdf.model.Model graphModel = TdbOperation.dataSetAnnotated.getNamedModel(uri);
+
+        Dataset dataset = TDBFactory.createDataset(Declarations.paths.get("dataSetAnnotated")+"selection");
+     //   Iterator<String> it = dataset.listNames();
+
+        org.apache.jena.rdf.model.Model graphModel = dataset.getNamedModel(uri);
+
         if (statisticsByModel.size()==0)
             statisticsByModel = (HashMap<String, Object>) FileOperation.loadYamlFile(Declarations.paths.get("statisticsFileYAML"));
         model.addAttribute("statistics", (HashMap<String,Object>) statisticsByModel.get(uri));
@@ -203,7 +212,10 @@ public class Controller {
         JSONArray jsonArrayGlobal = new JSONArray();
 
 
-        Iterator<String> it = TdbOperation.dataSetAnnotated.listNames();
+      //  Iterator<String> it = TdbOperation.dataSetAnnotated.listNames();
+
+        Dataset dataset = TDBFactory.createDataset(Declarations.paths.get("dataSetAnnotated")+"selection");
+        Iterator<String> it = dataset.listNames();
 
 
         int i = 1;
@@ -223,7 +235,7 @@ public class Controller {
             jsonObject.put("value", 10);
             jsonArray.add(jsonObject);
 
-            if (jsonArray.size() == 5) {
+            if (jsonArray.size() <= 5) {
 
                 JSONObject jsonChildren = new JSONObject();
                 jsonChildren.put("children", jsonArray);
@@ -333,6 +345,49 @@ public class Controller {
         return "subjectBlocksAnalytic";
     }
 
+    @RequestMapping("/subjectsBlocksEnriched")
+    public String subjectsBlockEnriched (Model model) {
+        String error = "Error";
+        //Declarations.setEndpoint("DogFood");
+        JSONArray jsonArray = new JSONArray();
+        JSONArray jsonArrayGlobal = new JSONArray();
+
+
+        Iterator<String> it = TdbOperation.dataSetEnrichedAnnotated.listNames();
+
+        int i = 1;
+
+        while (it.hasNext()&& i<30) {
+            String key = it.next();
+            org.apache.jena.rdf.model.Model modelRDF = TdbOperation.dataSetEnrichedAnnotated.getNamedModel(key);
+            JSONObject jsonObject = new JSONObject();
+
+            Resource subject = modelRDF.listSubjects().next();
+
+            jsonObject.put("name", subject.getLocalName());
+
+            jsonObject.put("id", key.replace("#", "__"));
+            jsonObject.put("value", 10);
+            jsonArray.add(jsonObject);
+
+            if (jsonArray.size() == 5) {
+
+                JSONObject jsonChildren = new JSONObject();
+                jsonChildren.put("children", jsonArray);
+                jsonChildren.put("name", "subjects" + i);
+                jsonArrayGlobal.add(jsonChildren);
+                i++;
+                jsonArray = new JSONArray();
+            }
+
+        }
+
+
+        model.addAttribute("subjects", jsonArrayGlobal.toJSONString());
+        model.addAttribute("error", error);
+        return "subjectBlocksEnriched";
+    }
+
 
     @RequestMapping("/mdGraphAnalytic")
     public String analyticGraph(Model model, @RequestParam String uri) {
@@ -355,6 +410,7 @@ public class Controller {
         model.addAttribute("erreur", erreur);
         return "mdGraphAnalytic";
     }
+
 
 
 }

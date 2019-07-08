@@ -24,12 +24,22 @@ public class MDGraphAnnotated {
 
         Iterator it = hashMapModels.entrySet().iterator();
         int i = 0;
-        while (it.hasNext()) {
+        try {
+            while (it.hasNext()) {
+            try{
+                Map.Entry<String, Model> pair = (Map.Entry) it.next();
+              //  System.out.println(" annotation du model n° " + i++);
+                construtMDGraph(pair.getKey(), pair.getValue());
+            }catch (Exception e){
+                //System.out.print("\t*\terreur dans la boucle");
+               // e.printStackTrace();
+            }
 
-            Map.Entry<String, Model> pair = (Map.Entry) it.next();
-            System.out.println(" annotation du model n° " + i++);
-            construtMDGraph(pair.getKey(), pair.getValue());
+            }
+        }catch (Exception e){
+          //  e.printStackTrace();
         }
+
         return hashMapModels;
     }
 
@@ -42,25 +52,32 @@ public class MDGraphAnnotated {
         //Iterator<Resource> subjects = mdModel.listSubjects();
         ConstantsUtil constantsUtil = new ConstantsUtil();
         Set<RDFNode> visitedNodes = new HashSet<>();
+
+        System.out.println("size of model "+model.size());
         if (model.getResource(modelSubject) != null)
             subject = model.getResource(modelSubject);
         else
             subject = model.listSubjects().next();
 
         if (subject != null) {
+
             if (!subject.hasProperty(annotProperty))
                 subject.addProperty(annotProperty, Annotations.FACT.toString());
+
             visitedNodes.add(subject);
+
             List<Statement> propertyIterator = subject.listProperties().toList();
-
+            System.out.println("je suis la 2 :  "+propertyIterator.size());
             int nb_statement = 0;
-            for (Statement stat : propertyIterator) {
+            try {
+                for (Statement stat : propertyIterator) {
 
+                    System.out.println("je suis la 3 ");
                 nb_statement++;
                 System.out.println(" ---  statement nb : " + nb_statement);
                 statement = stat;
                 property = statement.getPredicate();
-                try {
+
                     if (!property.equals(annotProperty) && !statement.getObject().asResource().hasProperty(annotProperty)) {
                         propertyType = constantsUtil.getPropertyType(property);
                         //  System.out.println(" predicat :"+property+ "type dialha : "+propertyType);
@@ -100,12 +117,11 @@ public class MDGraphAnnotated {
                         }
                     }
 
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-
             }
+
+            } catch (Exception e) {
+            e.printStackTrace();
+        }
         }
 
         // return model;

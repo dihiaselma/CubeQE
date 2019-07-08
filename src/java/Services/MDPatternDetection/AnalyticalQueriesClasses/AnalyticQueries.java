@@ -67,7 +67,7 @@ public class AnalyticQueries {
                     analyticQueriesList.add(query.toString());
                     queriesNumber++;
                 }
-                System.out.println("line \t" + nb_line);
+               // System.out.println("line \t" + nb_line);
             } catch (Exception e) {
                 // e.printStackTrace();
                 System.out.println("erreur");
@@ -92,7 +92,7 @@ public class AnalyticQueries {
                 System.out.println("requete num : " + nb_line);
                 queryStr = queryList.get(nb_line);
                 modelHashSet.addAll(executeAnalyticQuery(queryStr,endpoint));
-                System.out.println("line \t" + nb_line);
+             //   System.out.println("line \t" + nb_line);
             } catch (Exception e) {
                 e.printStackTrace();
                 System.out.println("erreur");
@@ -137,7 +137,7 @@ public class AnalyticQueries {
         resultSet = queryExecutor.executeQuerySelect(query, endpoint);
 
 
-        if (resultSet==null) System.out.println("null ");
+        if (resultSet==null) System.out.println("result set null ");
      //   if (!resultSet.hasNext()) System.out.println("empty");
 
         modelHashSet.addAll(constructModels(resultSet, bpConstruct, analyticQuery, bpWhereTriples));

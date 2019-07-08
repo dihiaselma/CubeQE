@@ -1,19 +1,24 @@
 package Services.Scenarios
 
-import Services.MDPatternDetection.AnalyticalQueriesClasses.{AnalyticQueries, AnalyticQueriesScala}
-import Services.MDPatternDetection.ConsolidationClasses.ConsolidationParallel
+import Services.MDPatternDetection.AnalyticalQueriesClasses.AnalyticQueriesScala
 import Services.MDfromLogQueries.Declarations.Declarations
 import Services.MDfromLogQueries.Util.{FileOperation, TdbOperation}
 import Services.Statistics.Statistics1
-import ConsolidationParallel.unpersistModelsMap
-import java.util
 
 
 object Scenario_Analytic extends App{
 
-  var endpoint = "https://dbpedia.org/sparql"
+
+  val endpoint="DogFood"
+  val endpointUrl="http://www.scholarlydata.org/sparql/"
+
+  Declarations.setEndpoint(endpoint)
+
   var t_analytic: Long = System.currentTimeMillis()
-  Declarations.setEndpoint("dbPedia")
+
+
+
+/*
   /** 1. Extraction des requêtes analytiques du fichier SyntaxValid */
   var t_extraction: Long = System.currentTimeMillis()
   val queryList = FileOperation.ReadFile(Declarations.paths.get("syntaxValidFile2")).asInstanceOf[util.ArrayList[String]]
@@ -29,14 +34,14 @@ object Scenario_Analytic extends App{
   FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePath"), "Analytic_execution", (System.currentTimeMillis() - t_executing).toInt)
 
 
-
-    /** 3. Consolidation **/
-  var t_consolidation: Long = System.currentTimeMillis()
+/** 3. Consolidation **/
+  var
+    / t_consolidation: Long = System.currentTimeMillis()
   ConsolidationParallel.toStringModelsHashmap2(
     unpersistModelsMap(Declarations.paths.get("dataSetAnalytic")), Declarations.paths.get("_toStringAnalytic"))
-  FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePath"), "Analytic_consolidation", (System.currentTimeMillis() - t_consolidation).toInt)
-
-
+  Fil
+eOperation.writeInYAMLFile(Declarations.paths.get("timesFilePath"), "Analytic_consolidation", (System.currentTimeMillis() - t_consolidation).toInt)
+  */
   /** 4. Annotation des requêtes analytiques */
   var t_annotation : Long = System.currentTimeMillis()
   AnalyticQueriesScala.AnalyticQueriesAnnotation()

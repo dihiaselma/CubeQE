@@ -60,10 +60,18 @@ object AnalyticQueriesScala  {
     new Constants2
     new TdbOperation
     var modelHashMap = new util.HashMap[String,Model]
-    modelHashMap = TdbOperation.unpersistModelsMap(Declarations.paths.get("_toStringAnalytic"))
+    println("Annotation *********************************")
+    modelHashMap = TdbOperation.unpersistModelsMap(Declarations.paths.get("dataSetAnalytic"))
     var modelHashMapAnnotated = new util.HashMap[String, Model]
+
     if (modelHashMap != null) modelHashMapAnnotated = MDGraphAnnotated.constructMDGraphs(modelHashMap)
-    writeInTdb(ConsolidationParallel.convertToScalaMap(modelHashMapAnnotated),TdbOperation.dataSetAnalyticAnnotated)
+    if (modelHashMapAnnotated.size()>0){
+      writeInTdb(ConsolidationParallel.convertToScalaMap(modelHashMapAnnotated),TdbOperation.dataSetAnalyticAnnotated)
+
+    }else
+        println("ERROR")
+
+    print("######################## fin d annotation")
    // TdbOperation.persistHashMap(modelHashMapAnnotated, TdbOperation.dataSetAnalyticAnnotated)
 
   }

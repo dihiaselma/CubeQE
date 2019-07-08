@@ -6,8 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 
-<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="tg" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -20,7 +19,7 @@
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Loglinc | MD schema</title>
+    <title>Loglinc | MD schemas</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
@@ -51,9 +50,9 @@
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
     <!-- contains the header -->
-    <%@ include file="header.jsp"%>
+    <%@ include file="header.jsp" %>
 
-    <%@ include file="menu.jsp"%>
+    <%@ include file="menu.jsp" %>
 
     <!-- Left side column. contains the logo and sidebar -->
 
@@ -62,93 +61,28 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Multidimensional schema
+               Multidimensional schemas' facts
                 <small>Version 1.0</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li class="active">Scenario 2 </li>
+                <li class="active">Scenario 1 </li>
                 <li class="active">Multidimensional schemas</li>
-                <li class="active">Multidimensional schema</li>
             </ol>
         </section>
-
         <!-- Main content -->
-        <section class="content">
 
-            <!-- Main row -->
-            <div class="row">
+        <%@ include file="blocksEnriched.jsp" %>
 
-                <div class="col-md-12">
-                    <!-- TABLE: LATEST ORDERS -->
-                    <%@ include file="mdGraphView.jsp"%>
-                    <div class="box box-info">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">Statistics</h3>
-
-                            <div class="box-tools pull-right">
-                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
-                                        class="fa fa-minus"></i>
-                                </button>
-
-                            </div>
-                        </div>
-                    <div class="box-body">
-                    <div class="table-responsive">
-                        <table class="table no-margin table-bordered table-striped">
-                            <thead>
-                            <tr >
-                                <th>Stat</th>
-                                <th>Description</th>
-                                <th>Values</th>
-
-                            </tr>
-
-                            </thead>
-
-                            <tbody>
-
-                            <tg:forEach var="entry" items="${statistics.entrySet()}">
-                                <tr>
-                                    <!-- nom du type de la stat  -->   <td><c:out value ="${entry.key}"/></td>
-                                    <!-- description  -->              <td><c:out value ="${statisticsDescription.get(entry.key)}"/></td>
-
-                                    <!-- Average -->
-                                    <td><fmt:formatNumber value="${statistics.get(entry.key)}" maxFractionDigits="2"/></td>
-
-
-                                </tr>
-                            </tg:forEach>
-
-                            </tbody>
-                        </table>
-
-                    </div>
-                    </div>
-                        <div class="box-footer clearfix">
-                            <!--<a href="javascript:void(0)" class="btn  bg-red-gradient pull-left">Cancel</a>-->
-                            <a href="http://localhost:8022/mdGraphEnriched.j?uri=${uri.replace("#","__")}" class="btn  btn-default bg-purple-gradient pull-right">Enriched graph</a>
-                        </div>
-                    </div>
-
-                </div>
-                <!-- /.col -->
-
-
-                <!-- /.col-->
-
-            </div>
-            <!-- /.row -->
-        </section>
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
 
 
-    <%@ include file="footer.jsp"%>
+    <%@ include file="footer.jsp" %>
 
 
-    <%@ include file="menu-side.jsp"%>
+    <%@ include file="menu-side.jsp" %>
 
 
     <!-- Add the sidebar's background. This div must be placed

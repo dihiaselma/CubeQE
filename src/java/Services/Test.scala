@@ -18,7 +18,7 @@ object Test extends App {
 
   val stopwatchSelect: Stopwatch = Stopwatch.createStarted
 
-  val endpoint = "dbPedia"
+  val endpoint = "DogFood"
 
   Declarations.setEndpoint(endpoint)
 

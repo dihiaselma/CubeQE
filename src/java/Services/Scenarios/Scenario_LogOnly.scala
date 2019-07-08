@@ -20,22 +20,18 @@ import java.util
 */
 
 
-import java.util
-
-import Services.MDPatternDetection.AnnotationClasses.MDGraphAnnotated
-import Services.MDPatternDetection.ConsolidationClasses.ConsolidationParallel._
 import Services.MDfromLogQueries.Declarations.Declarations
 import Services.MDfromLogQueries.Util.{FileOperation, TdbOperation}
-import org.apache.jena.rdf.model.Model
+import Services.Statistics.Statistics1
 
 object Scenario_LogOnly extends App{
 
   val endpoint="dbPedia"
-  val endpointUrl="http://www.scholarlydata.org/sparql/"
+ // val endpointUrl="http://www.scholarlydata.org/sparql/"
 
   Declarations.setEndpoint(endpoint)
 /*
-  /** 1. Nettoyage du log **/
+  /** 1. Nettoyage du log *
   var t_cleaning: Long = System.currentTimeMillis()
   LogCleaningOneFile.writeFiles(Declarations.paths.get("directoryPath"), Declarations.paths.get("cleanedQueriesFile"))
   FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePath"), "Log_Cleaning", (System.currentTimeMillis() - t_cleaning).toInt)
@@ -77,8 +73,9 @@ object Scenario_LogOnly extends App{
   /** 6. Alleviation 1 (Useless properties removement) **/
   println("***********************Alleviation 1******************")
   var t_alleviation1: Long = System.currentTimeMillis()
-  val modelsAlleviated_UselessProp: util.HashMap[String, Model]=MDGraphsAlleviation.removeUselessProperties( TdbOperation.unpersistModelsMap(TdbOperation.originalDataSet))
-  writeInTdb(convertToScalaMap(modelsAlleviated_UselessProp), Declarations.paths.get("dataSetAlleviatedUselessProperties"))
+  //val modelsAlleviated_UselessProp: util.HashMap[String, Model]= MDGraphsAlleviation.removeUselessProperties( TdbOperation.unpersistModelsMap(TdbOperation.originalDataSet))
+  val modelsAlleviated_UselessProp: mutable.HashMap[String, Model]= MdGraphsAlleviationParallel.removeUselessProperties( convertToScalaMap(TdbOperation.unpersistModelsMap(TdbOperation.originalDataSet)))
+  writeInTdb(modelsAlleviated_UselessProp, Declarations.paths.get("dataSetAlleviatedUselessProperties"))
   FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePath"), "Alleviation_UselessProperties", (System.currentTimeMillis() - t_alleviation1).toInt)
   FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "Alleviation_nbStatementsRemoved", MDGraphsAlleviation.numberStatementRemoved)
 
@@ -87,18 +84,34 @@ object Scenario_LogOnly extends App{
 
   //toStringModelHashMap(unpersistModelsMap(Declarations.paths.get("dataSetAlleviatedUselessProperties")), Declarations.paths.get("_toString") )
 
+  /** 8. Alleviation 2  (Small graph removement) **
+  println("***********************Alleviation 2******************")
+  var t_alleviation: Long = System.currentTimeMillis()
+  val modelsAlleviated: mutable.HashMap[String, Model]= MdGraphsAlleviationParallel.MDGraphsAlleviate( convertToScalaMap(TdbOperation.unpersistModelsMap(Declarations.paths.get("_toString"))))
+  // writeInTdb(convertToScalaMap(modelsAlleviated), TdbOperation.dataSetAlleviated)
+  writeInTdb(modelsAlleviated, Declarations.paths.get("dataSetAlleviated_B4"))
+  FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePath"), "Alleviation_B4", (System.currentTimeMillis() - t_alleviation).toInt)
+  FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "Alleviation_B4_nbModelsRemoved2", MDGraphsAlleviation.numberModelsRemoved)
+  FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "Alleviation_B4_nbModels2", MDGraphsAlleviation.numberModelsAlleviated)
 
   /** 7. Consolidation **/
+
   println ("***********************Consolidation******************")
   var t_consolidation: Long = System.currentTimeMillis()
-  consolidateParallel(Declarations.paths.get("dataSetConsolidated_iteration3"))
-  FileOperation.writeInYAMLFile(Declarations.paths.get("consolidationYAML"), "time_Consolidation_it3", (System.currentTimeMillis() - t_consolidation).toInt)
-  FileOperation.writeInYAMLFile(Declarations.paths.get("consolidationYAML"), "Consolidation_nbModelsB4Consolidation_it3", ConsolidationParallel.originalModelsNumber)
-  FileOperation.writeInYAMLFile(Declarations.paths.get("consolidationYAML"), "Consolidation_nbModels_it3", ConsolidationParallel.modelsNumber) // after consolidation
+  consolidateParallel(Declarations.paths.get("dataSetConsolidated"))
+  FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePath"), "Consolidation", (System.currentTimeMillis() - t_consolidation).toInt)
+  FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "Consolidation_nbModelsB4Consolidation", ConsolidationParallel.originalModelsNumber)
+  FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "Consolidation_nbModels", ConsolidationParallel.modelsNumber) // after consolidation
 
 
 
   //writeInTdb(consolidate(), TdbOperation.dataSetConsolidate)
+/*
+
+ FileOperation.writeInYAMLFile(Declarations.paths.get("consolidationYAML"), "time_Consolidation", (System.currentTimeMillis() - t_consolidation).toInt)
+  FileOperation.writeInYAMLFile(Declarations.paths.get("consolidationYAML"), "Consolidation_nbModelsB4Consolidation", ConsolidationParallel.originalModelsNumber)
+  FileOperation.writeInYAMLFile(Declarations.paths.get("consolidationYAML"), "Consolidation_nbModels", ConsolidationParallel.modelsNumber) // after consolidation
+
 
   writeInTdb(consolidate(), Declarations.paths.get("dataSetConsolidated"))
   FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePath"), "Consolidation", (System.currentTimeMillis() - t_consolidation).toInt)
@@ -109,31 +122,32 @@ object Scenario_LogOnly extends App{
 
   /** 8. Alleviation 2  (Small graph removement) **/
   println("***********************Alleviation 2******************")
-  var t_alleviation: Long = System.currentTimeMillis()
-  val modelsAlleviated: util.HashMap[String, Model]=MDGraphsAlleviation.MDGraphsAlleviate( TdbOperation.unpersistModelsMap(Declarations.paths.get("dataSetAlleviated")))
+  var t_alleviation2: Long = System.currentTimeMillis()
+  val modelsAlleviated2: mutable.HashMap[String, Model]= MdGraphsAlleviationParallel.MDGraphsAlleviate( convertToScalaMap(TdbOperation.unpersistModelsMap(Declarations.paths.get("dataSetConsolidated"))))
  // writeInTdb(convertToScalaMap(modelsAlleviated), TdbOperation.dataSetAlleviated)
-  writeInTdb(convertToScalaMap(modelsAlleviated), Declarations.paths.get("dataSetAlleviated2"))
-  FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePath"), "Alleviation200", (System.currentTimeMillis() - t_alleviation).toInt)
-  FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "Alleviation_nbModelsRemoved200", MDGraphsAlleviation.numberModelsRemoved)
-  FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "Alleviation_nbModels200", MDGraphsAlleviation.numberModelsAlleviated)
+  writeInTdb(modelsAlleviated, Declarations.paths.get("dataSetAlleviated2"))
+  FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePath"), "Alleviation2", (System.currentTimeMillis() - t_alleviation2).toInt)
+  FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "Alleviation_nbModelsRemoved2", MDGraphsAlleviation.numberModelsRemoved)
+  FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "Alleviation_nbModels2", MDGraphsAlleviation.numberModelsAlleviated)
 
-  */
+
 
   /** 9. Annotation **/
   println ("***********************Annotation******************")
   var t_annotation: Long = System.currentTimeMillis()
-  val modelsAlleviate: util.HashMap[String, Model] = TdbOperation.unpersistModelsMap(Declarations.paths.get("dataSetAlleviated20"))
+  val modelsAlleviate: util.HashMap[String, Model] = TdbOperation.unpersistModelsMap(Declarations.paths.get("dataSetAlleviated2"))
   val modelsAnnotated : util.HashMap[String, Model] = MDGraphAnnotated.constructMDGraphs(modelsAlleviate)
   //writeInTdb(convertToScalaMap(modelsAnnotated), TdbOperation.dataSetAnnotated)
   writeInTdb(convertToScalaMap(modelsAnnotated), Declarations.paths.get("dataSetAnnotated"))
   FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePath"), "Annotation", (System.currentTimeMillis() - t_annotation).toInt)
-/*
+  */*/*/*/
 
   /** 10. Statistique **/
   println("***********************Statistiques******************")
+
   var t_statistics: Long = System.currentTimeMillis()
   var statistics : Statistics1 = new Statistics1
-  val stat = statistics.stat2(TdbOperation.unpersistModelsMap(Declarations.paths.get("dataSetAnnotated")))
+  val stat = statistics.stat2(TdbOperation.unpersistModelsMap(Declarations.paths.get("dataSetAnnotated")+"selection"))
 
   Statistics1.writeAllStatsInYAML(stat, Declarations.paths.get("statisticsFileYAML"), Declarations.paths.get("statisticsByTypeFile"))
 
@@ -142,5 +156,5 @@ object Scenario_LogOnly extends App{
   FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePath"), "Statistics", (System.currentTimeMillis() - t_statistics).toInt)
 
   //TODO ecrire dans un fichier les stat concernant nombre de req ..Etc
-  */
+
 }

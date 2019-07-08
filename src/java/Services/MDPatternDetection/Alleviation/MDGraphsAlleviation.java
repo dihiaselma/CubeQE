@@ -15,11 +15,6 @@ import java.util.Map;
 
 public class MDGraphsAlleviation {
 
-    public static int numberModelsAlleviated=0;
-    public static int numberModelsRemoved=0;
-    public static int numberStatementRemoved = 0;
-
-
     public static void main(String[] args) {
         HashMap<String, Model> modelHashMap = TdbOperation.unpersistModelsMap(TdbOperation.dataSetAnnotated);
         System.out.println("moyenne des tailles avant modification : " + ModelUtil.averageSize(modelHashMap));
@@ -28,6 +23,13 @@ public class MDGraphsAlleviation {
         System.out.println("moyenne des tailles après modification : " + ModelUtil.averageSize(modifiedModels));
         TdbOperation.persistNonAnnotated(modifiedModels, TdbOperation.dataSetAlleviated);
     }
+
+
+    public static int numberModelsAlleviated=0;
+    public static int numberModelsRemoved=0;
+    public static int numberStatementRemoved = 0;
+
+
 
 
 
@@ -42,7 +44,9 @@ public class MDGraphsAlleviation {
             for (Map.Entry<String, Model> pair : hashMapModels.entrySet()) {
 
               //  if (pair.getValue() != null && pair.getValue().size() > 2) {
-                if (pair.getValue() != null && pair.getValue().size() < 200) {
+                //if (pair.getValue() != null &&  pair.getValue().size() > 2 && pair.getValue().size() < 200) {
+                if (pair.getValue() != null &&  pair.getValue().size() > 2 ) {
+
 
                     MDGraphAlleviated.put(pair.getKey(), pair.getValue());
 
