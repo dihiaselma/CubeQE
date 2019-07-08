@@ -21,6 +21,7 @@ object AnalyticQueriesScala  {
 
   def executeAnalyticQueriesList(endpoint: String)={
     var nb_line = 0
+    new Constants2
     //for statistical needs
     var nb = 0
     val modelHashSet = new util.HashSet[Model]

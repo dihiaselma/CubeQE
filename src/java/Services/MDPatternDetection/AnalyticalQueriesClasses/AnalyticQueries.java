@@ -3,6 +3,7 @@ package Services.MDPatternDetection.AnalyticalQueriesClasses;
 import Services.MDPatternDetection.AnnotationClasses.MDGraphAnnotated;
 import Services.MDPatternDetection.ConsolidationClasses.Consolidation;
 import Services.MDPatternDetection.ExecutionClasses.QueryExecutor;
+import Services.MDPatternDetection.ExecutionClasses.QueryExecutorScala;
 import Services.MDPatternDetection.GraphConstructionClasses.QueryUpdate;
 import Services.MDfromLogQueries.Declarations.Declarations;
 import Services.MDfromLogQueries.Util.Constants2;
@@ -33,6 +34,7 @@ import java.util.regex.Pattern;
 public class AnalyticQueries {
 
     public static int queriesNumber=0;
+    public static int nbModels=0;
 
     /* Returns if a query is analytic or not (if aggregator is count(*) it's not analytics ) */
     public static boolean isAnalytic(Query query) {
@@ -134,7 +136,8 @@ public class AnalyticQueries {
 
         //System.out.println("** query to execute  "+query);
 
-        resultSet = queryExecutor.executeQuerySelect(query, endpoint);
+        //resultSet = queryExecutor.executeQuerySelect(query, endpoint);
+        resultSet = QueryExecutorScala.executeQuerySelect(query,endpoint);
 
 
         if (resultSet==null) System.out.println("result set null ");
@@ -197,7 +200,7 @@ public class AnalyticQueries {
 
 
                 addAgregationMeasures(model, querySolution, analyticQuery, bpWhereTriples);
-
+                nbModels++;
                 modelHashSet.add(model);
             }
         }

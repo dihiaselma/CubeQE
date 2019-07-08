@@ -56,13 +56,14 @@ public class TdbOperation {
 
     public static void main(String... argv) {
         new TdbOperation();
-        Declarations.setEndpoint("dbPedia");
+        Declarations.setEndpoint("DogFood");
         //HashMap<String,Model> modelHashMap = unpersistNumberOfModelsMap(dataSetAlleviated,34);
-        HashMap<String, Model> modelHashMap; //unpersistModelsMap(dataSetAnnotated);
+        HashMap<String, Model> modelHashMap= unpersistModelsMap(dataSetAnnotated);
+        Consolidation.afficherListInformations(modelHashMap);
         /*//System.out.println(Declarations.paths.get("dataSetConsolidated"));
         Iterator<String> kies = modelHashMap.keySet().iterator();
         System.out.println("to string");
-        Consolidation.afficherListInformations(modelHashMap);
+
       /*  while (kies.hasNext())
         {
             String key = kies.next();
@@ -84,21 +85,8 @@ public class TdbOperation {
          /*modelHashMap = unpersistModelsMap(_toString);
         System.out.println("consolides");*/
         //Consolidation.afficherListInformations(modelHashMap);
-       // System.out.println(dataSetEnrichedAnnotated.getNamedModel("http://data.semanticweb.org/ns/swc/ontology#WorkshopEvent"));
-        int nb = 0;
-        Iterator<String> it = TdbOperation.originalDataSet.listNames();
-        try {
-            while (it.hasNext()) {
-                nb++;
-                it.next();
-            }
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
+       // System.out.println(dataSetEnrichedAnnotated.getNamedModel("http://data.semanticweb.org/ns/swc/ontology#WorkshopEvent"));int nb = 0;
 
-        System.out.println("taille du dataset "+nb);
     }
 
     public TdbOperation() {

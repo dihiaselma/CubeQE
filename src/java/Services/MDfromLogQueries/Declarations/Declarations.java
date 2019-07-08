@@ -106,7 +106,7 @@ public class Declarations {
         paths.put("dataSetAlleviatedUselessProperties", rootTdb + "dataSetAlleviatedUselessProperties");
         paths.put("dataSetEnriched",rootTdb + "dataSetEnriched");
         paths.put("dataSetEnrichedAnnotated", rootTdb + "dataSetEnrichedAnnotated");
-
+        paths.put("dataSetAlleviatedAnalytic",rootTdb + "dataSetAlleviatedAnalytic" );
 
         /* Scénario 2 : Analytic Queries **/
         //paths.put("AggregQueriesFile",root + rootScenarioAnalytic + "ProgramOutput\\Fichier_Aggreg_Queries.txt");
@@ -115,6 +115,7 @@ public class Declarations {
         paths.put("AnalyticQueriesFile",root + rootScenarioAnalytic + "ProgramOutput\\Fichier_Analytic_Queries_test.txt");
         //paths.put("AnalyticSelectQueriesFile",root + rootScenarioAnalytic + "ProgramOutput\\Fichier_Analytic_Select_Queries.txt");
         //paths.put("SelectQueriesAndResult",root + rootScenarioAnalytic + "ProgramOutput\\Fichier_Analytic_Select_Queries_Results.txt");
+
 
 
         /* Execution time of programs **/
