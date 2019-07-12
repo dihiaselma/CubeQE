@@ -43,13 +43,13 @@ public class MDGraphsAlleviation {
 
             for (Map.Entry<String, Model> pair : hashMapModels.entrySet()) {
                 size = pair.getValue().size();
-                if (pair.getValue() != null && size > 2 && size<20 && !Pattern.compile(Pattern.quote("wikicat"), Pattern.CASE_INSENSITIVE)
+                if (pair.getValue() != null && size > 2 && size<30 && !Pattern.compile(Pattern.quote("wikicat"), Pattern.CASE_INSENSITIVE)
                         .matcher(pair.getKey()).find()) {
 
                     MDGraphAlleviated.put(pair.getKey(), pair.getValue());
 
                 } else {
-                    if (size >20)
+                    /*if (size >20)
                     {
                         Model reducedModel = ModelFactory.createDefaultModel();
                         StmtIterator it = pair.getValue().listStatements();
@@ -60,7 +60,7 @@ public class MDGraphsAlleviation {
                             reducedModel.add(it.next());
                         }
                         MDGraphAlleviated.put(pair.getKey(), reducedModel);
-                    }
+                    }*/
                     //MDGraphLessThen2.put(pair.getKey(), pair.getValue());
                 }
                 nb++;

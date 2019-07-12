@@ -72,7 +72,7 @@ public class TdbOperation {
         System.out.println("consolides");*/
         //Consolidation.afficherListInformations(modelHashMap);
        // System.out.println(dataSetEnrichedAnnotated.getNamedModel("http://data.semanticweb.org/ns/swc/ontology#WorkshopEvent"));int nb = 0;
-
+        unpersistModelsMap(_toString);
     }
 
     public TdbOperation() {

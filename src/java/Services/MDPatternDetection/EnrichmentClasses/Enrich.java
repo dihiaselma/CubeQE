@@ -109,7 +109,7 @@ public class Enrich {
 
     public static void countOtherProperties(Resource node, Resource subject, boolean finish) {
         ConstantsUtil constantsUtil = new ConstantsUtil();
-        String queryStr = "SELECT DISTINCT ?p ?o WHERE { <" + node.getURI() + "> ?p ?o. Optional { ?o a ?otype.}} LIMIT 40";
+        String queryStr = "SELECT DISTINCT ?p ?o ?otype WHERE { <" + node.getURI() + "> ?p ?o. Optional { ?o a ?otype.}} LIMIT 40";
         QueryExecutor queryExecutor = new QueryExecutor();
         QuerySolution querySolution;
         RDFNode predicate;

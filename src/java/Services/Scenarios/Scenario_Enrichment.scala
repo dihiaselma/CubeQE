@@ -14,11 +14,11 @@ object Scenario_Enrichment extends App{
 
 
 
-  Declarations.setEndpoint("LinkedGeoData")
+  Declarations.setEndpoint("dbPedia")
   /** 1. Unpersisting of annotated models **/
   var t_total: Long = System.currentTimeMillis()
-  var endpoint = "http://linkedgeodata.org/sparql"
-  val modelsAnnotated: util.HashMap[String, Model] = TdbOperation.unpersistModelsMap(TdbOperation.dataSetAnnotated)
+  var endpoint = "https://dbpedia.org/sparql"
+  val modelsAnnotated: util.HashMap[String, Model] = TdbOperation.unpersistModelsMap(Declarations.paths.get("dataSetAnnotated")+"selection")
 
 
   /*/** 2. Annotate non alleviated models **/

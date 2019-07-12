@@ -191,17 +191,7 @@
                 listOfObjects = model.listObjects().toList
                 newSizeOfObjects = listOfObjects.size()
               }
-              else
-                {
-                  val reducedModel = ModelFactory.createDefaultModel()
-                 val it = model.listStatements()
-                  var nbStm = 0
-                  while (it.hasNext && nbStm<10)
-                    {
-                      reducedModel.add(it.next)
-                    }
-                  model = reducedModel
-                }
+
               modelHashMap.put(key,model)
             }
           }

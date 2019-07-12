@@ -94,7 +94,7 @@ object Scenario_LogOnly extends App{
   FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePath"), "Consolidation", (System.currentTimeMillis() - t_consolidation).toInt)
   FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "Consolidation_nbModelsB4Consolidation", ConsolidationParallel.originalModelsNumber)
   FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "Consolidation_nbModels", ConsolidationParallel.modelsNumber) // after consolidation
-
+*/
 
   /** 8. Alleviation 2  (Small graph removement) **/
   println("***********************Alleviation 2******************")
@@ -105,7 +105,7 @@ object Scenario_LogOnly extends App{
  //FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePath"), "Alleviation", (System.currentTimeMillis() - t_alleviation).toInt)
  // FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "Alleviation_nbModelsRemoved", MDGraphsAlleviation.numberModelsRemoved)
   //FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePath"), "Alleviation_nbModels", MDGraphsAlleviation.numberModelsAlleviated)
-*/
+
   /** 9. Annotation **/
   println("***********************Annotation******************")
   var t_annotation: Long = System.currentTimeMillis()

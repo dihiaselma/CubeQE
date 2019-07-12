@@ -2,66 +2,51 @@ package Services;
 
 import Services.MDfromLogQueries.Declarations.Declarations;
 import Services.MDfromLogQueries.Util.FileOperation;
+import Services.MDfromLogQueries.Util.TdbOperation;
 import com.google.common.base.Stopwatch;
+import org.apache.jena.rdf.model.Model;
 
 import javax.naming.event.ObjectChangeListener;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Set;
 
 
 public class test {
 
     public static void main(String args[]) {
+        Declarations.setEndpoint("dbPedia");
 
-        Stopwatch stopwatchSelect = Stopwatch.createStarted();
-
- /*       FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePathTest"), "Log_Cleaning", 10*60 );
-        FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePathTest"), "Deduplication", 60 );
-        FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePathTest"), "Syntactical_Validation", 3*60 );
-        FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePathTest"), "ConstructMSGraphs", 16*60 );
-        FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePathTest"), "Execution", 5*24*60*60 );
-        FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePathTest"), "Consolidation", (32+77)*60 );
-        FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePathTest"), "Annotation", (33+60)*60 );
-        FileOperation.writeInYAMLFile(Declarations.paths.get("timesFilePathTest"), "Statistics", (2*60+20)*60 );
-*/
+        HashSet<String> namedModel = new HashSet<>();
+        HashMap<String, Model> stringModelHashMap = new HashMap<>();
+        namedModel.add("http://dbpedia.org/class/yago/Film103338821");
+        namedModel.add("http://dbpedia.org/class/yago/SoundFilm104261868");
+        namedModel.add("http://dbpedia.org/class/yago/TechnicalSchool108285246");
+        namedModel.add("http://dbpedia.org/class/yago/Painter110393909");
 
 
 
-      /*  FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePathTest"), "Log_Cleaning_nbLines", 3286774 );
-        FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePathTest"), "Log_Cleaning", 3193672);
-        FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePathTest"), "Deduplication", 1358987 );
-        FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePathTest"), "Syntactical_Validation", 1358987-7705 );
-        FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePathTest"), "ConstructMSGraphs_nbQueriesConstructed", 1311286 );
-        FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePathTest"), "ConstructMSGraphs_nbQueriesNonConstructed", 39999 );
-        FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePathTest"), "Execution_nbQueriesExecuted", 1200000 );
-        FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePathTest"), "Execution_nbQueriesNonExecuted", 318615 );
-        FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePathTest"), "Consolidation_nbModelsNonConsolidated", 34117400 );
-        FileOperation.writeInYAMLFile(Declarations.paths.get("queriesNumberFilePathTest"), "Consolidation_nbModels", 197377 );
+        namedModel.add("http://dbpedia.org/class/yago/SummerSchool115225526");
+        namedModel.add("http://dbpedia.org/ontology/Photographer");
+        namedModel.add("http://dbpedia.org/class/yago/Address106356515");
+        namedModel.add("http://dbpedia.org/class/yago/Book107954211");
+        namedModel.add("http://dbpedia.org/class/yago/DanceMusic107054433");
+        namedModel.add("http://dbpedia.org/class/yago/Scholarship113266170");
 
 
-        HashMap<String, Object> map2= (HashMap<String, Object>) FileOperation.loadYamlFile(Declarations.paths.get("queriesNumberFilePathTest"));
-*/
 
-        Declarations.setEndpoint("DogFood");
-        HashMap<String, Object> map= (HashMap<String, Object>) FileOperation.loadYamlFile(Declarations.paths.get("statisticsFileYAML"));
-
-        Set<String> kies= map.keySet();
-
-        for (String key:kies){
-            System.out.println(" Model : " +key);
-            HashMap<String, Object > stat = ( HashMap<String, Object >) map.get(key);
+        namedModel.add("http://dbpedia.org/class/yago/CommunicationSystem103078287");
+        namedModel.add("http://dbpedia.org/class/yago/CommunityCenter103078506");
+        namedModel.add("http://dbpedia.org/class/yago/Plastic114592610");
 
 
-            Set<String> kies2= stat.keySet();
+        namedModel.add("http://dbpedia.org/class/yago/Spreadsheet106579952");
 
-            for (String key2:kies2) {
-                System.out.println(key2 + " : " + stat.get(key2));
-            }
+        for(String s : namedModel) {
+            stringModelHashMap.put(s, TdbOperation.dataSetAnnotated.getNamedModel(s));
         }
 
-        stopwatchSelect.stop();
-
-        System.out.println(" Temps de transformation " + stopwatchSelect);
+        TdbOperation.persistHashMap(stringModelHashMap,Declarations.paths.get("dataSetAnnotated")+"selection");
     }
 
 
