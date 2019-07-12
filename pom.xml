@@ -49,6 +49,12 @@
             <artifactId>log4j</artifactId>
             <version>1.2.17</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-tx -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>3.2.4.RELEASE</version>
+        </dependency>
 
         <dependency>
             <groupId>org.slf4j</groupId>

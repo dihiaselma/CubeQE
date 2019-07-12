@@ -4,49 +4,58 @@ import Services.MDfromLogQueries.Declarations.Declarations;
 import Services.MDfromLogQueries.Util.FileOperation;
 import Services.MDfromLogQueries.Util.TdbOperation;
 import com.google.common.base.Stopwatch;
+import org.apache.jena.query.Dataset;
 import org.apache.jena.rdf.model.Model;
+import org.apache.jena.tdb.TDBFactory;
 
 import javax.naming.event.ObjectChangeListener;
 import java.util.HashMap;
-import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.Set;
 
 
 public class test {
 
     public static void main(String args[]) {
-        Declarations.setEndpoint("dbPedia");
 
-        HashSet<String> namedModel = new HashSet<>();
-        HashMap<String, Model> stringModelHashMap = new HashMap<>();
-        namedModel.add("http://dbpedia.org/class/yago/Film103338821");
-        namedModel.add("http://dbpedia.org/class/yago/SoundFilm104261868");
-        namedModel.add("http://dbpedia.org/class/yago/TechnicalSchool108285246");
-        namedModel.add("http://dbpedia.org/class/yago/Painter110393909");
+        Stopwatch stopwatchSelect = Stopwatch.createStarted();
+
+        String endpoint="dbPedia";
+
+        Declarations.setEndpoint(endpoint);
 
 
-
-        namedModel.add("http://dbpedia.org/class/yago/SummerSchool115225526");
-        namedModel.add("http://dbpedia.org/ontology/Photographer");
-        namedModel.add("http://dbpedia.org/class/yago/Address106356515");
-        namedModel.add("http://dbpedia.org/class/yago/Book107954211");
-        namedModel.add("http://dbpedia.org/class/yago/DanceMusic107054433");
-        namedModel.add("http://dbpedia.org/class/yago/Scholarship113266170");
+         Dataset destination_dataset=  TDBFactory.createDataset(Declarations.paths.get("dataSetAlleviated20"));
 
 
+        int nb_models=0;
 
-        namedModel.add("http://dbpedia.org/class/yago/CommunicationSystem103078287");
-        namedModel.add("http://dbpedia.org/class/yago/CommunityCenter103078506");
-        namedModel.add("http://dbpedia.org/class/yago/Plastic114592610");
+        HashMap<String, Model> models= TdbOperation.unpersistModelsMap(Declarations.paths.get("dataSetAlleviated2"));
+        HashMap<String, Model> models_destination= new HashMap<>();
+
+        try {
+            Iterator it = models.entrySet().iterator();
+
+            while (it.hasNext()) {
+
+                Map.Entry<String, Model> pair = (Map.Entry) it.next();
+
+                if (pair.getValue().size()<=20) {
+                    models_destination.put(pair.getKey(), pair.getValue()) ;
+                    nb_models++;
+                }
+            }
 
 
-        namedModel.add("http://dbpedia.org/class/yago/Spreadsheet106579952");
+        }catch(Exception e){
 
-        for(String s : namedModel) {
-            stringModelHashMap.put(s, TdbOperation.dataSetAnnotated.getNamedModel(s));
         }
+                TdbOperation.persistHashMap(models_destination, destination_dataset);
+        System.out.println("nb_models == \t"+nb_models);
+        stopwatchSelect.stop();
 
-        TdbOperation.persistHashMap(stringModelHashMap,Declarations.paths.get("dataSetAnnotated")+"selection");
+        System.out.println(" Temps de transformation " + stopwatchSelect);
     }
 
 

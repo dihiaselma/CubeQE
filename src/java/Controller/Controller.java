@@ -23,6 +23,7 @@ import java.util.*;
 
 public class Controller {
 
+
     private Map<String, Object> times;
     private Map<String, Object> queriesNumbers;
     private HashMap<String, Object> statisticsTotal;
@@ -154,10 +155,13 @@ public class Controller {
 
         JSONArray jsonArray = new JSONArray();
         uri = uri.replace("__", "#");
-        //Dataset dataset = TDBFactory.createDataset(Declarations.paths.get("dataSetAnnotated")+"university");
 
-        org.apache.jena.rdf.model.Model graphModel = TdbOperation.dataSetAnnotated.getNamedModel(uri);
-        //org.apache.jena.rdf.model.Model graphModel = dataset.getNamedModel(uri);
+       // org.apache.jena.rdf.model.Model graphModel = TdbOperation.dataSetAnnotated.getNamedModel(uri);
+
+        Dataset dataset = TDBFactory.createDataset(Declarations.paths.get("dataSetAnnotated")+"selection");
+     //   Iterator<String> it = dataset.listNames();
+
+        org.apache.jena.rdf.model.Model graphModel = dataset.getNamedModel(uri);
 
         if (statisticsByModel.size()==0)
             statisticsByModel = (HashMap<String, Object>) FileOperation.loadYamlFile(Declarations.paths.get("statisticsFileYAML"));
@@ -207,10 +211,11 @@ public class Controller {
         JSONArray jsonArray = new JSONArray();
         JSONArray jsonArrayGlobal = new JSONArray();
 
-      //  Dataset dataset = TDBFactory.createDataset(Declarations.paths.get("dataSetAnnotated")+"university");
 
-        Iterator<String> it = TdbOperation.dataSetAnnotated.listNames();
-       // Iterator<String> it = dataset.listNames();
+      //  Iterator<String> it = TdbOperation.dataSetAnnotated.listNames();
+
+        Dataset dataset = TDBFactory.createDataset(Declarations.paths.get("dataSetAnnotated")+"selection");
+        Iterator<String> it = dataset.listNames();
 
 
         int i = 1;
@@ -230,7 +235,7 @@ public class Controller {
             jsonObject.put("value", 10);
             jsonArray.add(jsonObject);
 
-            if (jsonArray.size() == 5) {
+            if (jsonArray.size() <= 5) {
 
                 JSONObject jsonChildren = new JSONObject();
                 jsonChildren.put("children", jsonArray);
@@ -340,6 +345,49 @@ public class Controller {
         return "subjectBlocksAnalytic";
     }
 
+    @RequestMapping("/subjectsBlocksEnriched")
+    public String subjectsBlockEnriched (Model model) {
+        String error = "Error";
+        //Declarations.setEndpoint("DogFood");
+        JSONArray jsonArray = new JSONArray();
+        JSONArray jsonArrayGlobal = new JSONArray();
+
+
+        Iterator<String> it = TdbOperation.dataSetEnrichedAnnotated.listNames();
+
+        int i = 1;
+
+        while (it.hasNext()&& i<30) {
+            String key = it.next();
+            org.apache.jena.rdf.model.Model modelRDF = TdbOperation.dataSetEnrichedAnnotated.getNamedModel(key);
+            JSONObject jsonObject = new JSONObject();
+
+            Resource subject = modelRDF.listSubjects().next();
+
+            jsonObject.put("name", subject.getLocalName());
+
+            jsonObject.put("id", key.replace("#", "__"));
+            jsonObject.put("value", 10);
+            jsonArray.add(jsonObject);
+
+            if (jsonArray.size() == 5) {
+
+                JSONObject jsonChildren = new JSONObject();
+                jsonChildren.put("children", jsonArray);
+                jsonChildren.put("name", "subjects" + i);
+                jsonArrayGlobal.add(jsonChildren);
+                i++;
+                jsonArray = new JSONArray();
+            }
+
+        }
+
+
+        model.addAttribute("subjects", jsonArrayGlobal.toJSONString());
+        model.addAttribute("error", error);
+        return "subjectBlocksEnriched";
+    }
+
 
     @RequestMapping("/mdGraphAnalytic")
     public String analyticGraph(Model model, @RequestParam String uri) {
@@ -365,24 +413,4 @@ public class Controller {
 
 
 
-    @RequestMapping("/graphsTable")
-    public String dataTable(Model model) {
-        String error = "Error";
-
-
-        List<Resource> listNames = new ArrayList<>();
-        Iterator<String> it = TdbOperation.dataSetAnnotated.listNames();
-
-
-        int i = 1;
-
-      while (it.hasNext())
-      {
-          listNames.add(new ResourceImpl(it.next()));
-      }
-
-        model.addAttribute("subjects", listNames);
-        model.addAttribute("error", error);
-        return "graphsTable";
-    }
 }
