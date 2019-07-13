@@ -148,6 +148,8 @@ public class QueryFixer {
         return queryStr;
     }
 
+
+    /** Method that fixes syntactical errors of aggregators */
     private static String aggregatorBetweenBrackets(String queryStr)
     {
         Pattern aggregatorPattern = Pattern.compile("(COUNT|SUM|AVG|MIN|MAX)([ ]*[\\(])([* \\?\\w_-]*)(\\))( as )+(\\?[\\w_-]+)",Pattern.CASE_INSENSITIVE);

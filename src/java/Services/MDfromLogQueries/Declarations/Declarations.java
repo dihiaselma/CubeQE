@@ -1,7 +1,6 @@
 package Services.MDfromLogQueries.Declarations;
 
 
-import Services.MDfromLogQueries.Util.FileOperation;
 import Services.MDfromLogQueries.Util.TdbOperation;
 
 import java.util.HashMap;
@@ -26,9 +25,11 @@ public class Declarations {
         Declarations.endpoint = endpoint;
         root = "C:\\Users\\KamilaB\\Desktop\\demo\\"+endpoint;
         rootTdb = "C:\\Users\\KamilaB\\Desktop\\demo\\"+endpoint+"TdbDirectories\\";
+       // root = "C:\\Users\\KamilaB\\Desktop\\PFE\\Files\\"+endpoint+"\\Support_Files\\";
+        //rootTdb = "C:\\Users\\KamilaB\\Desktop\\PFE\\Files\\"+endpoint+"\\Support_Files\\TdbDirectories\\";
 
-       // root = "C:\\Users\\pc\\Desktop\\PFE\\Files\\"+endpoint+"\\";
-       //rootTdb = "E:\\TdbDirectories\\"+endpoint+"\\";
+       root = "C:\\Users\\pc\\Desktop\\PFE\\Files\\"+endpoint+"\\";
+       rootTdb = "E:\\TdbDirectories\\"+endpoint+"\\";
 
 
         /* Queries log Path **/
@@ -87,14 +88,22 @@ public class Declarations {
         /* Triple databases directories **/
         paths.put("tdbDirectory", rootTdb + "tdbDirectory");
         paths.put("dataSetOriginal", rootTdb + "dataSetOriginal");
+        /** Consolidation */
         paths.put("dataSetConsolidated", rootTdb + "dataSetConsolidated");
+        paths.put("dataSetConsolidated_iteration2", rootTdb + "dataSetConsolidated_iteration2");
+        paths.put("dataSetConsolidated_iteration3", rootTdb + "dataSetConsolidated_iteration3");
+       /** nkk **/
         paths.put("dataSetAnnotated", rootTdb + "dataSetAnnotated");
         paths.put("_toString", rootTdb + "_toString");
         paths.put("_toStringAnalytic", rootTdb + "_toStringAnalytic");
         paths.put("dataSetAnalytic", rootTdb + "dataSetAnalytic");
         paths.put("dataSetAnalyticAnnotated", rootTdb + "dataSetAnalyticAnnotated");
         paths.put("dataSetAlleviated", rootTdb + "dataSetAlleviated");
+        paths.put("dataSetAlleviated2_B4", rootTdb + "dataSetAlleviated2_B4");
+        paths.put("dataSetAlleviated2_after", rootTdb + "dataSetAlleviated2_after");
+        paths.put("dataSetAlleviated20", rootTdb + "dataSetAlleviated20");
         paths.put("dataSetNonAlleviated", rootTdb + "dataSetNonAlleviated");
+        paths.put("dataSetNonAlleviated2", rootTdb + "dataSetNonAlleviated2");
         paths.put("dataSetAlleviatedUselessProperties", rootTdb + "dataSetAlleviatedUselessProperties");
         paths.put("dataSetEnriched",rootTdb + "dataSetEnriched");
         paths.put("dataSetEnrichedAnnotated", rootTdb + "dataSetEnrichedAnnotated");
@@ -115,6 +124,16 @@ public class Declarations {
         paths.put("timesFilePathTest",root + statististicsRoot + "Fichier_TempsTest.yaml");
         paths.put("queriesNumberFilePath",root + statististicsRoot +"Fichier_queriesNumber.yaml");
         paths.put("queriesNumberFilePathTest",root + statististicsRoot +"Fichier_queriesNumberTest.yaml");
+
+
+        /* Special for consolidation  */
+
+        paths.put("consolidationYAML",root + statististicsRoot + "consolidationYAML.yaml");
+
+        /* Temp Files */
+
+        paths.put("listSubjectsTemp", rootTdb+"listSubjectsTemp.txt");
+
 
 
 

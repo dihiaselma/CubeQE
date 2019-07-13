@@ -32,6 +32,7 @@ public class MDGraphsAlleviation {
 
 
 
+    /** Eliminates Graphs that have size less than 2 or more than 30*/
    public static HashMap<String, Model> MDGraphsAlleviate (HashMap<String, Model> hashMapModels){
 
        HashMap<String, Model> MDGraphAlleviated = new HashMap<>();
@@ -43,8 +44,7 @@ public class MDGraphsAlleviation {
 
             for (Map.Entry<String, Model> pair : hashMapModels.entrySet()) {
                 size = pair.getValue().size();
-                if (pair.getValue() != null && size > 2 && size<30 && !Pattern.compile(Pattern.quote("wikicat"), Pattern.CASE_INSENSITIVE)
-                        .matcher(pair.getKey()).find()) {
+                if (pair.getValue() != null && size > 2 && size<30) {
 
                     MDGraphAlleviated.put(pair.getKey(), pair.getValue());
 
@@ -84,40 +84,8 @@ public class MDGraphsAlleviation {
    }
 
 
-    public static HashMap<String,Model > removeRedundantTriples(HashMap<String,Model> modelHashMap)
-    {
-        Model model;
-        for (Object o : modelHashMap.entrySet()) {
-            Map.Entry<String, Model> pair = (Map.Entry) o;
-            model = pair.getValue();
-            List<Statement> stmtList = model.listStatements().toList();
-            for (Statement statement : stmtList) {
-                for (Statement statement1 : stmtList)
-                {
-                    if (statement.getObject().asResource().getLocalName().equals(statement1.getObject().asResource().getLocalName()))
-                    {
-                        model.remove(statement1);
-                        model.add(statement1.getSubject(),statement1.getPredicate(),statement.getObject());
-                    }
-                    if (statement.getSubject().asResource().getLocalName().equals(statement1.getSubject().asResource().getLocalName()))
-                    {
-                        model.remove(statement1);
-                        model.add(statement.getSubject(),statement1.getPredicate(),statement1.getObject());
-                    }
-                    if (statement.getPredicate().asResource().getLocalName().equals(statement1.getPredicate().asResource().getLocalName()))
-                    {
-                        model.remove(statement1);
-                        model.add(statement1.getSubject(),statement.getPredicate(),statement1.getObject());
-                    }
-                }
 
-            }
-
-        }
-        return modelHashMap;
-    }
-
-
+   /** Removes Basic properties and classes */
    public static HashMap<String,Model> removeUselessProperties(HashMap<String,Model> modelHashMap)
    {
        new BasicProperties();
@@ -153,6 +121,8 @@ public class MDGraphsAlleviation {
        }
        return modifiedModels;
    }
+
+   /** Select models that are of a given theme*/
     public static HashMap<String,Model> getModelsByTheme(HashMap<String,Model> modelHashMap, String theme)
     {
         HashMap<String,Model> modifiedModels = new HashMap<>();

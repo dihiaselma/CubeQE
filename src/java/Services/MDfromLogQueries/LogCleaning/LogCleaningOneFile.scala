@@ -10,7 +10,7 @@ import scala.collection.parallel.ParSeq
 import scala.io.Source
 
 object LogCleaningOneFile {
-  /** This class reads the log files and extract queries **/
+  /** This class reads one log file and extract queries **/
   var queriesNumber = 0
   var nbLines = 0
 
